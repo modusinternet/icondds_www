@@ -1,0 +1,459 @@
+{CCMS_DB_PRELOAD:all,index}<!DOCTYPE html>
+<html dir="{CCMS_LIB:_default.php;FUNC:ccms_lng_dir}" lang="{CCMS_LIB:_default.php;FUNC:ccms_lng}" prefix="og: http://ogp.me/ns#">
+	<head>
+		<!-- Repeated content and can be placed once in your header head template. -->
+		{CCMS_TPL:header-head.html}
+		<!-- Should be representative of the page in reference. -->
+		<title dir="{CCMS_DB_DIR:all,homepage}">ICONIC Dentistry / {CCMS_DB:all,homepage}</title>
+		<meta property="og:title" dir="{CCMS_DB_DIR:index,title}" content="{CCMS_DB:index,title}" />
+		<meta name="twitter:title" dir="{CCMS_DB_DIR:index,title}" content="{CCMS_DB:index,title}" />
+		<meta name="description" dir="{CCMS_DB_DIR:index,description}" content="{CCMS_DB:index,description}" />
+		<meta property="og:description" dir="{CCMS_DB_DIR:index,description}" content="{CCMS_DB:index,description}" />
+		<meta name="twitter:description" dir="{CCMS_DB_DIR:index,description}" content="{CCMS_DB:index,description}" />
+		<meta property="og:image" content="/ccmstpl/_img/main-image-or-logo.jpg" />
+		<meta property="og:image:secure_url" content="/ccmstpl/_img/main-image-or-logo.jpg" />
+		<meta property="og:image:width" content="123" />
+		<meta property="og:image:height" content="123" />
+		<!-- Must be at least 60px by 60px.	Images greater than 120px by 120px will be resized and cropped in a square aspect ratio. -->
+		<meta name="twitter:image" content="/ccmstpl/_img/main-image-or-logo.jpg" />
+		<meta property="og:url" content="https://{CCMS_LIB:_default.php;FUNC:ccms_cfgDomain}/" />
+		<script type="application/ld+json">
+			[{
+				"@context":"https://schema.org",
+				"@type":"WebSite",
+				"name":"mywebsite",
+				"url":"https://{CCMS_LIB:_default.php;FUNC:ccms_cfgDomain}",
+				"alternateName":"mywebsite description"
+			},{
+				"@context":"https://schema.org",
+				"@type":"Organization",
+				"name":"mywebsite name, LLC",
+				"url":"https://{CCMS_LIB:_default.php;FUNC:ccms_cfgDomain}",
+				"logo":{
+					"@type":"ImageObject",
+					"url":"/ccmstpl/_img/main-image-or-logo.jpg"
+				},
+				"sameAs":[
+					"https://twitter.com/mywebsite",
+					"https://instagram.com/mywebsite",
+					"https://plus.google.com/+mywebsite",
+					"https://www.facebook.com/mywebsite",
+					"https://www.pinterest.com/mywebsite/",
+					"https://www.youtube.com/user/mywebsite"
+				]
+			}]
+		</script>
+		<style>
+			{CCMS_TPL:/_css/header.html}
+
+			.owl-carousel{
+				box-shadow:0 2px 12px rgba(136,136,136,.5);
+				cursor:col-resize;
+				height:500px;
+				margin-bottom:15px;
+				overflow:hidden
+			}
+
+			.owl-carousel .item>img{
+				display:block;
+				min-height:500px;
+				width:unset
+			}
+
+			.owl-carousel .owl-item img.owl-lazy {
+				left:50%;
+				position:relative;
+				transform:translate(-50%);
+				top:-202px
+			}
+
+			.owlDivContainer{
+				color:#fff;
+				background-image:url(/ccmstpl/_img/hatchBg.png);
+				display:block;
+				height:50%;
+				margin:-10% 10% 0 10%;
+				opacity:0;
+				position:fixed;
+				top:50%;
+				transition:all 2s
+			}
+
+			.owlDivContainer>div>h1{font-weight:600}
+
+			.owlDivContainerSmall{
+				display:block;
+				padding:10px
+			}
+
+			.owlDivContainerMedium{
+				display:none;
+				padding:10px
+			}
+
+			.owlDivContainerLarge{
+				display:none;
+				padding:10px
+			}
+
+			#carousel,.owl-carousel{transition:all 1.0s ease-in-out}
+
+
+			/* ==========
+			BEGINNING of video settings used in the carousel
+			========== */
+			/* Default to hide the video on all devices */
+			#video{
+				display:none;
+				height:auto;
+				left:0px;
+				object-fit:cover;
+				top:0px;
+				width:100vw;
+				z-index:1
+			}
+
+			/* Default to display the image on all devices */
+			#videosubstitute{
+				display:block;
+				width:auto;
+				height:100%
+			}
+
+			@media (min-aspect-ratio:16/9){
+				#video{
+					height:100%;
+					top:-100%
+				}
+
+				#videosubstitute{
+					display:block;
+					width:100%;
+					height:auto
+				}
+			}
+
+			@media (max-aspect-ratio:16/9){
+				#video{
+					width:100%;
+					left:-100%
+				}
+
+				#videosubstitute{
+					display:block;
+					width:100%;
+					height:100%
+				}
+			}
+
+			/*if there is 992 pixels or more, then display the video but hide the image*/
+			@media only screen and (min-width:992px){
+				#video{display:block}
+
+				#videosubstitute{display:none}
+			}
+			/* ==========
+			END of video settings used in the carousel
+			========== */
+
+
+			/* 400px or medium. */
+			@media only screen and (min-width:400px){
+				.owlDivContainerSmall{display:none}
+
+				.owlDivContainerMedium{display:block}
+
+				.owlDivContainerLarge{display:none}
+			}
+
+
+			/* 640px or larger. */
+			@media only screen and (min-width:640px){
+				.owlDivContainerSmall{display:none}
+
+				.owlDivContainerMedium{display:none}
+
+				.owlDivContainerLarge{display:block}
+			}
+
+
+			/* 824px or larger. Pixel Xl Landscape resolution is 411 x 823. */
+			@media only screen and (min-width:824px){
+				.owl-carousel .item>img{
+					/* height:auto; */
+					width:100%
+				}
+			}
+
+
+			/* 1024px or larger. */
+			@media only screen and (min-width:1024px){.owlDivContainer{height:40%}}
+
+
+			/* 1336px or larger. iPad Pro 12.9 inch. */
+			@media only screen and (min-width:1336px){.owlDivContainer{height:30%}}
+
+
+			/* 1800px or larger. */
+			@media only screen and (min-width:1800px){.owlDivContainer{height:20%}}
+		</style>
+		<script>
+			var navActiveArray = ["nl-lng","lng-{CCMS_LIB:_default.php;FUNC:ccms_lng}"];
+			var navActiveFooterArray = ["fl-home"];
+		</script>
+	</head>
+	<body>
+		<div id="loading_svg"></div>
+		<main class="cd-main-content">
+			<div class="owl-carousel" id="carousel">
+				<div class="item" style="background-image:url(/ccmstpl/_img/carousel-02-min.jpg);background-position:center;background-size:cover;height:500px;overflow:hidden;background-repeat:no-repeat">
+					<div class="owlDivContainer">
+						<div class="owlDivContainerSmall">
+							<p data-animation-in="fadeInRight">At ICONIC Dentistry we practice in keeping with the core values of "respect, integrity, responsibility, and quality".</p>
+						</div>
+						<div class="owlDivContainerMedium">
+							<h1 data-animation-in="fadeInUp">Quality and Commitment</h1>
+							<p data-animation-in="fadeInRight">At ICONIC Dentistry we practice in keeping with the core values of "respect, integrity, responsibility, and quality".</p>
+						</div>
+						<div class="owlDivContainerLarge">
+							<h1 data-animation-in="fadeInUp">Quality and Commitment</h1>
+							<p data-animation-in="fadeInRight">As ICONIC Dentistry transitioned to the new office location, our commitment to patients has not changed; and the “Golden Rule” remains a fundamental belief that lies at the heart of our practice. We stay true to our core values of "respect, integrity, responsibility, and quality".</p>
+						</div>
+					</div>
+				</div>
+				<div class="item videosubstitute" style="background-image:url(/ccmstpl/_img/carousel-04-min.jpg);background-position:center;background-size:cover;height:500px;overflow:hidden;background-repeat:no-repeat">
+					<div id="videoDiv">
+						<video autoplay="autoplay" loop="loop" muted="muted" id="video">
+							<source src="/ccmstpl/_img/carousel.mp4" type="video/mp4">
+							<source src="/ccmstpl/_img/carousel.webm" type="video/webm">
+							Your browser does not support HTML5 video.
+						</video>
+					</div>
+					<div class="owlDivContainer">
+						<div class="owlDivContainerSmall">
+							<p data-animation-in="fadeInRight">From our new location in Tustin, we proudly serve patients from all over Orange County in the newly built, state-of-the-art dental office.</p>
+						</div>
+						<div class="owlDivContainerMedium">
+							<h1 data-animation-in="fadeInUp">Local and High Tech</h1>
+							<p data-animation-in="fadeInRight">From our new location in Tustin, we proudly serve patients from all over Orange County in the newly built, state-of-the-art dental office.</p>
+						</div>
+						<div class="owlDivContainerLarge">
+							<h1 data-animation-in="fadeInUp">Local and High Tech</h1>
+							<p data-animation-in="fadeInRight">To modernize and better accommodate patients in the 21st Century, a few years ago we decided to relocate to a new space. Today, from our newly built, state-of-the-art dental office in the City of Tustin, we proudly serve patients from all over Orange County and surrounding areas.</p>
+						</div>
+					</div>
+				</div>
+				<div class="item" style="background-image:url(/ccmstpl/_img/carousel-01-min.jpg);background-position:center;background-size:cover;height:500px;overflow:hidden;background-repeat:no-repeat">
+					<div class="owlDivContainer">
+						<div class="owlDivContainerSmall">
+							<p data-animation-in="fadeInRight">From our new location in Tustin, we proudly serve patients from all over Orange County in the newly built, state-of-the-art dental office.</p>
+						</div>
+						<div class="owlDivContainerMedium">
+							<h1 data-animation-in="fadeInUp">Local and High Tech</h1>
+							<p data-animation-in="fadeInRight">From our new location in Tustin, we proudly serve patients from all over Orange County in the newly built, state-of-the-art dental office.</p>
+						</div>
+						<div class="owlDivContainerLarge">
+							<h1 data-animation-in="fadeInUp">Local and High Tech</h1>
+							<p data-animation-in="fadeInRight">To modernize and better accommodate patients in the 21st Century, a few years ago we decided to relocate to a new space. Today, from our newly built, state-of-the-art dental office in the City of Tustin, we proudly serve patients from all over Orange County and surrounding areas.</p>
+						</div>
+					</div>
+				</div>
+				<div class="item" style="background-image:url(/ccmstpl/_img/carousel-03-min.jpg);background-position:center;background-size:cover;height:500px;overflow:hidden;background-repeat:no-repeat">
+					<div class="owlDivContainer">
+						<div class="owlDivContainerSmall">
+							<!-- h1 data-animation-in="fadeInUp">test 3 small</h1 -->
+							<p data-animation-in="fadeInRight">Ozone use in dentistry is a safe and effective therapy that not only kill pathogens, but also supports the body’s own healing abilities.</p>
+						</div>
+						<div class="owlDivContainerMedium">
+							<h1 data-animation-in="fadeInUp">Holistic and Safe</h1>
+							<p data-animation-in="fadeInRight">Ozone use in dentistry is a safe and effective therapy that not only kill pathogens, but also supports the body’s own healing abilities.</p>
+						</div>
+						<div class="owlDivContainerLarge">
+							<h1 data-animation-in="fadeInUp">Holistic and Safe</h1>
+							<p data-animation-in="fadeInRight">True to our holistic and integrative mindset, we have recently added ozone therapy as one of our new services. When used correctly, ozone is incredibly safe and phenomenally effective in killing all sorts of pathogens and viruses, and it also stimulates the body’s innate healing abilities.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="contentType1">
+				<div style="margin-bottom:4rem">
+					<h1 style="margin-bottom:3rem" dir="{CCMS_DB_DIR:index,welcome:1}">{CCMS_DB:index,welcome}</h1>
+					<p dir="{CCMS_DB_DIR:index,text-01:1}">{CCMS_DB:index,text-01}</p>
+					<!-- button class="bigButton" onclick="window.location='/{CCMS_LIB:_default.php;FUNC:ccms_lng}/about-us/past-and-present.html'" role="button">more about us</button -->
+				</div>
+				<div class="cssgrid">
+					<div class="box c1">
+						<div style="text-align:center">
+							<svg style="margin-bottom:1rem" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"><title>What We Believe Icon</title><desc>The What We Believe icon.</desc><path d="m25 39h-4-2-4.486c-1.188 0-2.34.349-3.328 1.008l-.48.32c-.66.44-1.427.672-2.22.672h-7.486v2h5v8h-5v2h7c.552 0 1 .449 1 1 0 1.654 1.346 3 3 3v5c0 .552.447 1 1 1h1c2.206 0 4-1.794 4-4v-2h1 2 4c1.654 0 3-1.346 3-3 0-.771-.301-1.468-.78-2 .48-.532.78-1.229.78-2s-.301-1.468-.78-2c.48-.532.78-1.229.78-2s-.301-1.468-.78-2c.48-.532.78-1.229.78-2 0-1.654-1.346-3-3-3zm0 16h-4-2-2c-.553 0-1 .448-1 1v3c0 1.103-.897 2-2 2v-5c0-.552-.447-1-1-1h-1c-.552 0-1-.449-1-1 0-1.654-1.346-3-3-3v-8h.486c1.188 0 2.34-.349 3.328-1.008l.48-.32c.66-.44 1.427-.672 2.22-.672h4.486 2 4c.552 0 1 .449 1 1s-.448 1-1 1h-6v2h6c.552 0 1 .449 1 1s-.448 1-1 1h-6v2h6c.552 0 1 .449 1 1s-.448 1-1 1h-6v2h6c.552 0 1 .449 1 1s-.448 1-1 1z"/><path d="m55 48c0-1.654-1.346-3-3-3v-5c0-.552-.447-1-1-1h-1c-2.206 0-4 1.794-4 4v2h-1-2-4c-1.654 0-3 1.346-3 3 0 .771.301 1.468.78 2-.48.532-.78 1.229-.78 2s.301 1.468.78 2c-.48.532-.78 1.229-.78 2s.301 1.468.78 2c-.48.532-.78 1.229-.78 2 0 1.654 1.346 3 3 3h4 2 4.486c1.188 0 2.34-.349 3.328-1.008l.48-.32c.66-.44 1.427-.672 2.22-.672h7.486v-2h-5v-8h5v-2h-7c-.552 0-1-.449-1-1zm1 11h-.486c-1.188 0-2.34.349-3.328 1.008l-.48.32c-.66.44-1.427.672-2.22.672h-4.486-2-4c-.552 0-1-.449-1-1s.448-1 1-1h6v-2h-6c-.552 0-1-.449-1-1s.448-1 1-1h6v-2h-6c-.552 0-1-.449-1-1s.448-1 1-1h6v-2h-6c-.552 0-1-.449-1-1s.448-1 1-1h4 2 2c.553 0 1-.448 1-1v-3c0-1.103.897-2 2-2v5c0 .552.447 1 1 1h1c.552 0 1 .449 1 1 0 1.654 1.346 3 3 3z"/><path d="m27 9h2v2h-2z"/><path d="m31 9h2v2h-2z"/><path d="m35 9h2v2h-2z"/><path d="m41 10c0-4.962-4.037-9-9-9s-9 4.038-9 9c0 4.624 3.507 8.442 8 8.941v18.059h2v-18.059c4.493-.499 8-4.317 8-8.941zm-16 0c0-3.86 3.141-7 7-7s7 3.14 7 7-3.141 7-7 7-7-3.14-7-7z"/><path d="m5 23h2v2h-2z"/><path d="m9 23h2v2h-2z"/><path d="m13 23h2v2h-2z"/><path d="m19 24c0-4.962-4.037-9-9-9s-9 4.038-9 9 4.037 9 9 9c2.47 0 4.71-1.001 6.338-2.618l12.138 7.469 1.049-1.703-11.929-7.341c.884-1.392 1.404-3.038 1.404-4.807zm-9 7c-3.859 0-7-3.14-7-7s3.141-7 7-7 7 3.14 7 7-3.141 7-7 7z"/><path d="m49 23h2v2h-2z"/><path d="m53 23h2v2h-2z"/><path d="m57 23h2v2h-2z"/><path d="m54 33c4.963 0 9-4.038 9-9s-4.037-9-9-9-9 4.038-9 9c0 1.769.52 3.415 1.405 4.807l-11.929 7.341 1.049 1.703 12.138-7.469c1.627 1.617 3.867 2.618 6.337 2.618zm0-16c3.859 0 7 3.14 7 7s-3.141 7-7 7-7-3.14-7-7 3.141-7 7-7z"/></svg>
+							<!-- Icons made by https://www.freepik.com/ from https://www.flaticon.com/ is licensed by http://creativecommons.org/licenses/by/3.0/ -->
+							<h3>What We Believe</h3>
+						</div>
+						<p>We believe that all people deserve living a dignified life and therefore should be treated with respect. That’s why at ICONIC we never treat our patients based on their insurance coverage or the size of their wallet. We will always keep your best interest in mind.</p>
+						<p>We also believe that people have the right and responsibility to choose what’s best for them. As such, we are committed to provide our patients with unbiased, complete and true information regarding their health, and will help them in making informed decisions. And, we promise never to pressure you into doing something you’re not comfortable with.</p>
+						<p>For a thorough explanation of what we believe in, go to <a href="/{CCMS_LIB:_default.php;FUNC:ccms_lng}/about-us/our-philosophy.html">Our Philosophy</a> page.</p>
+					</div>
+					<div class="box c2">
+						<div style="text-align:center">
+							<svg style="margin-bottom:1rem" viewBox="0 0 496 496" xmlns="https://www.w3.org/2000/svg"><title>Why Choose Us Icon</title><desc>The Why Choose Us icon.</desc><path d="m352.503906 256c4.753906 0 9.351563 1.390625 13.3125 4.03125l55.871094 37.25c6.601562 4.390625 14.273438 6.71875 22.191406 6.71875h52.121094v-16h-52.113281c-4.75 0-9.359375-1.390625-13.320313-4.03125l-22.566406-15.046875v-268.921875h-304v48h-104v448h304v-48h104v-67.304688c.503906-.121093 1.023438-.160156 1.527344-.28125l37.214844-9.300781c8.257812-2.066406 16.753906-3.113281 25.257812-3.113281h24v-16h-24c-9.808594 0-19.617188 1.207031-29.136719 3.585938l-37.214843 9.300781c-19.128907 4.777343-39.488282 4-58.175782-2.230469l-13.480468-4.496094c-12.273438-4.089844-25.054688-6.160156-37.992188-6.160156h-69.808594c0-13.230469 10.769532-24 24-24h88c13.234375 0 24-10.769531 24-24 0-12.273438-9.296875-22.304688-21.191406-23.71875l6.566406-24.28125zm-10.105468 121.832031c12.273437 4.097657 25.058593 6.167969 37.992187 6.167969 3.882813 0 7.753906-.335938 11.609375-.710938v48.710938h-88v-26.167969c2.808594-3.238281 4.984375-7.070312 6.152344-11.40625l6.550781-24.265625c4.121094.839844 8.207031 1.839844 12.21875 3.183594zm-41.726563-9.648437-5.960937 22.0625c-1.550782 5.746094-6.789063 9.753906-12.734376 9.753906h-2.59375c-7.269531 0-13.183593-5.910156-13.183593-13.183594 0-1.167968.152343-2.320312.457031-3.441406l4.152344-15.375h25.191406c1.558594 0 3.113281.121094 4.671875.183594zm-46.441406-.183594-3.023438 11.191406c-.671875 2.480469-1.007812 5.039063-1.007812 7.625 0 10.816406 5.984375 20.167969 14.746093 25.207032l-2.511718 10.03125 15.519531 3.882812 2.488281-9.9375h1.535156c2.0625 0 4.0625-.289062 6.023438-.703125v64.703125h-272v-416h104v-48h272v242.257812l-17.304688-11.539062c-6.597656-4.390625-14.269531-6.71875-22.191406-6.71875h-.617187l33.296875-123.191406c.671875-2.480469 1.007812-5.039063 1.007812-7.625 0-16.09375-13.09375-29.183594-29.183594-29.183594h-2.59375c-13.15625 0-24.742187 8.871094-28.175781 21.574219l-22.238281 82.289062v-135.863281h-168v16h152v176h-16.550781c-8.707031 0-16.90625 2.886719-23.761719 8h-79.6875v16h62.878906l-16 16h-46.878906v16h30.886719l-13.367188 13.367188c-4.71875 4.710937-7.320312 10.984374-7.320312 17.664062 0 13.769531 11.199219 24.96875 24.976562 24.96875 2.464844 0 4.839844-.472656 7.144531-1.160156-.007812.390625-.121093.761718-.121093 1.160156 0 8.824219 7.175781 16 16 16zm61.625-56h-29.910157l33.78125-124.992188 27.441407 9.144532zm-61.375-48.976562c4.472656-4.464844 10.65625-7.023438 16.96875-7.023438h13.054687l-6.527344 24.144531c-10.121093.367188-19.609374 4.367188-26.808593 11.566407l-41.65625 41.65625c-1.671875 1.671874-3.984375 2.632812-6.34375 2.632812-4.953125 0-8.976563-4.023438-8.976563-8.96875 0-2.398438.9375-4.648438 2.632813-6.34375zm8 40c3.023437-3.023438 6.871093-5.085938 10.976562-6.160157l-4.089843 15.136719h-15.855469zm107.253906-190.390626-9.796875 36.246094-27.441406-9.144531 9.183594-33.980469c1.558593-5.746094 6.792968-9.753906 12.734374-9.753906h2.59375c7.273438 0 13.183594 5.910156 13.183594 13.183594 0 1.167968-.152344 2.320312-.457031 3.449218zm-41.414063 42.574219 27.441407 9.144531-4.417969 16.328126-27.441406-9.144532zm9.871094 140.792969c4.410156 0 8 3.59375 8 8s-3.589844 8-8 8h-5.765625l4.328125-16zm0 0"/><path d="m240 80h-208v80h208zm-16 64h-176v-48h176zm0 0"/><path d="m64 112h16v16h-16zm0 0"/><path d="m96 112h16v16h-16zm0 0"/><path d="m128 112h16v16h-16zm0 0"/><path d="m160 112h16v16h-16zm0 0"/><path d="m192 112h16v16h-16zm0 0"/><path d="m128 256h-16v32h-64v-64h48v-16h-64v96h96zm0 0"/><path d="m154.34375 178.34375-74.34375 74.34375-10.34375-10.34375-11.3125 11.3125 21.65625 21.65625 85.65625-85.65625zm0 0"/><path d="m112 424h-64v-64h48v-16h-64v96h96v-48h-16zm0 0"/><path d="m69.65625 378.34375-11.3125 11.3125 21.65625 21.65625 85.65625-85.65625-11.3125-11.3125-74.34375 74.34375zm0 0"/><path d="m256 440h16v16h-16zm0 0"/><path d="m152 440h88v16h-88zm0 0"/><path d="m168 216h104v16h-104zm0 0"/></svg>
+							<!-- Icons made by https://www.freepik.com/ from https://www.flaticon.com/ is licensed by http://creativecommons.org/licenses/by/3.0/ -->
+							<h3>Why Choose Us</h3>
+						</div>
+						<ul style="margin-left:25px">
+							<li>Commitment to patients and high-quality service.</li>
+							<li>Proactive on prevention and conservative treatments.</li>
+							<li>Emphasis and education on oral-systemic health—click here to learn about our integrative approach to dental and overall health.</li>
+							<li>In-house cross-specialty consultation and multi-disciplinary collaboration.</li>
+							<li>State-of-the-art technologies and materials.</li>
+							<li>Long-term follow-up.</li>
+							<li>Multilingual capability: English, Spanish, Vietnamese, and Mandarin.</li>
+							<li>In-network provider for a wide variety of dental and medical insurance plans; <a href="/{CCMS_LIB:_default.php;FUNC:ccms_lng}/contact-us.html">call</a> and ask for an up-to-date list of insurance carriers with which we have contract.</li>
+							<li>For more information check out 'An Integrative Approach to Total Health' on <a href="/{CCMS_LIB:_default.php;FUNC:ccms_lng}/about-us/our-philosophy.html#integrative-approach">Our Philosophy</a> page.</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<!-- div style="margin:0 auto;max-width:1044px">
+				<div style="background-color:#f7f6f4;border-radius:7px;padding:20px;text-align:center;margin:0 10px;max-width:1024px">
+					<svg style="margin-bottom:1rem" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"><title>What Our Patients Say Icon</title><desc>The What Our Patients Say icon.</desc><path d="m41 30.829c0-2.112-1.718-3.829-3.828-3.829-1.023 0-1.984.398-2.707 1.122l-8.872 8.872c-1.202 1.202-2.641 2.151-4.206 2.804 1.008-1.34 1.613-2.998 1.613-4.798 0-4.411-3.589-8-8-8s-8 3.589-8 8c0 2.498 1.152 4.73 2.951 6.199-5.088.963-8.951 5.436-8.951 10.801v11h23v-12.829c0-.488.19-.948.535-1.293l15.344-15.343c.723-.723 1.121-1.684 1.121-2.706zm-25 12.171.899-.125c-.257 1.212-1.018 2.125-1.899 2.125-.851 0-1.59-.85-1.873-2zm-7-8c0-3.309 2.691-6 6-6s6 2.691 6 6-2.691 6-6 6-6-2.691-6-6zm29.465-2.878-15.344 15.343c-.723.723-1.121 1.684-1.121 2.706v10.829h-14v-12h-2v12h-3v-9c0-4.656 3.554-8.497 8.091-8.954.386 2.256 1.99 3.954 3.909 3.954 2.05 0 3.724-1.944 3.954-4.43 3.031-.526 5.877-1.987 8.053-4.163l8.872-8.872c.341-.34.811-.535 1.293-.535 1.008 0 1.828.82 1.828 1.829 0 .488-.19.947-.535 1.293z"/><path d="m57.016 41.223c1.817-1.468 2.984-3.711 2.984-6.223 0-4.411-3.589-8-8-8s-8 3.589-8 8c0 3.808 2.677 6.998 6.246 7.8-1.215 1.001-2.143 2.355-2.578 3.95l-1.432 5.25h-9.736c-1.93 0-3.5 1.57-3.5 3.5s1.57 3.5 3.5 3.5h9.5v4h17v-14.196c0-3.676-2.557-6.758-5.984-7.581zm-11.016-6.223c0-3.309 2.691-6 6-6s6 2.691 6 6-2.691 6-6 6-6-2.691-6-6zm15 26h-13v-2h.838c1.725 0 3.249-1.099 3.794-2.735l3.316-9.949-1.896-.633-3.316 9.949c-.274.819-1.036 1.368-1.898 1.368h-12.338c-.827 0-1.5-.673-1.5-1.5s.673-1.5 1.5-1.5h11.264l1.834-6.724c.686-2.518 2.989-4.276 5.598-4.276 3.2 0 5.804 2.604 5.804 5.804z"/><path d="m13 11h2v2h-2z"/><path d="m17 11h12v2h-12z"/><path d="m13 15h16v2h-16z"/><path d="m13 19h16v2h-16z"/><path d="m57 9h2v2h-2z"/><path d="m35 9h20v2h-20z"/><path d="m35 13h24v2h-24z"/><path d="m35 17h24v2h-24z"/><path d="m58 1h-22c-2.757 0-5 2.243-5 5v1h-18c-2.206 0-4 1.794-4 4v10c0 2.206 1.794 4 4 4h9v4.869l7.303-4.869h1.697c1.542 0 2.91-.907 3.572-2.233.456.137.929.233 1.428.233h2.697l7.303 4.869v-4.869h12c2.757 0 5-2.243 5-5v-12c0-2.757-2.243-5-5-5zm-27 22h-2.303l-4.697 3.131v-3.131h-11c-1.103 0-2-.897-2-2v-10c0-1.103.897-2 2-2h18v9c0 1.541.715 2.903 1.814 3.821-.318.697-1.019 1.179-1.814 1.179zm30-5c0 1.654-1.346 3-3 3h-14v3.131l-4.697-3.131h-3.303c-1.654 0-3-1.346-3-3v-12c0-1.654 1.346-3 3-3h22c1.654 0 3 1.346 3 3z"/><path d="m35 5h2v2h-2z"/><path d="m39 5h2v2h-2z"/><path d="m43 5h16v2h-16z"/></svg>
+					<h3 style="font-weight:unset">What Our Patients Say</h3>
+					<div style="text-align:left">
+						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+					</div>
+				</div>
+			</div>
+			<div class="contentType1">
+				<div style="text-align:center">
+					<h2 style="margin-bottom:3.4rem">Community</h2>
+					<div class="cssgrid">
+						<div class="box c1">
+							<svg style="margin-bottom:1rem" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><title>Events Icon</title><desc>The Events icon.</desc><path d="M345.863,281.853c19.152-8.872,38.221-15.344,56.953-19.308c5.403-1.143,8.856-6.45,7.713-11.853c-1.143-5.403-6.444-8.857-11.854-7.713c-21.683,4.588-43.704,12.261-65.728,22.865c-12.303-14.673-26.387-30.015-41.582-45.21c-16.147-16.146-32.462-31.048-47.961-43.878c13.412-16.959,24.359-35.947,32.641-56.728c12.913-32.401,19.461-69.419,19.461-110.029c0-5.523-4.478-10-10-10s-10,4.477-10,10c0,62.572-16.044,114.358-47.728,154.32c-5.979-4.561-11.776-8.753-17.312-12.486c-29.637-19.989-47.289-24.674-57.155-15.162c-0.07,0.065-0.143,0.129-0.211,0.196c-0.01,0.01-0.02,0.019-0.03,0.028c-0.006,0.006-0.011,0.013-0.017,0.018c-2.527,2.533-4.087,5.596-4.678,9.251L0.778,498.133c-1.57,3.744-0.72,8.067,2.151,10.938C4.843,510.984,7.401,512,10.003,512c1.302,0,2.616-0.254,3.865-0.778c0.028-0.012,0,0,0.028-0.012l351.941-147.588c3.337-0.54,6.172-1.904,8.569-4.061c0.174-0.145,0.337-0.299,0.5-0.453c0.064-0.063,0.133-0.115,0.196-0.179c0.01-0.01,0.018-0.021,0.027-0.03c0.069-0.068,0.133-0.142,0.199-0.213c9.511-9.867,4.826-27.518-15.163-57.153C355.94,295.269,351.139,288.675,345.863,281.853z M79.315,440.759c-2.087,13.013-6.728,21.567-8.961,25.087l-41.679,17.478l42.329-100.938C79.286,403.147,82.157,423.035,79.315,440.759z M140.851,406.923c-4.032,22.984-14.726,34.063-17.767,36.811l-26.351,11.05c5.858-20.854,7.398-53.957-15.241-97.409l29.968-71.459C142.553,344.866,144.886,383.926,140.851,406.923z M176.522,421.323l-21.554,9.04c2.054-5.189,3.865-11.099,5.177-17.796c8.004-40.853-5.062-91.365-38.815-150.187l10.82-25.801c8.564,10.305,18.322,24.89,22.274,34.086c1.627,3.787,5.316,6.055,9.192,6.055c1.317,0,2.657-0.263,3.944-0.815c5.074-2.181,7.419-8.061,5.239-13.136c-5.864-13.644-20.733-34.874-32.107-46.559l16.533-39.425c2.896,5.31,6.483,11.128,10.785,17.506c2.962,4.392,6.207,8.945,9.697,13.625c34.207,51.906,33.433,105.035,26.746,140.484C197.342,386.105,182.115,413.71,176.522,421.323z M253.575,389.012l-47.474,19.908c6.855-15.036,13.848-34.775,18.004-56.812c4.642-24.614,6.683-56.982-1.906-91.935c4.737,5.004,9.61,10.019,14.609,15.018c14.958,14.957,30.056,28.836,44.52,41C279.894,363.404,258.239,384.918,253.575,389.012z M288.045,374.557c5.353-11.075,10.08-25.348,12.188-43.175c6.036,4.608,11.889,8.842,17.475,12.609c6.381,4.304,12.198,7.889,17.51,10.785L288.045,374.557z M323.217,323.485c-21.74-15.403-47.405-37.577-72.266-62.438c-24.86-24.86-47.035-50.525-62.437-72.265c-14.895-21.023-18.909-31.758-19.966-36.408c4.65,1.058,15.385,5.072,36.408,19.966c3.118,2.209,6.322,4.57,9.586,7.045c-0.701,0.722-1.393,1.451-2.106,2.164c-3.905,3.905-3.905,10.237,0,14.143c1.953,1.952,4.512,2.929,7.071,2.929c2.559,0,5.119-0.977,7.071-2.929c1.256-1.256,2.493-2.529,3.716-3.814c15.169,12.539,31.208,27.179,46.929,42.9c13.519,13.519,26.23,27.271,37.504,40.504c-1.806,1.003-3.611,2.023-5.416,3.065c-4.783,2.762-6.422,8.878-3.66,13.66c1.852,3.208,5.213,5.002,8.67,5.002c1.696,0,3.416-0.433,4.99-1.342c2.776-1.604,5.554-3.143,8.331-4.646c4.345,5.518,8.377,10.883,12.018,16.023c14.896,21.023,18.909,31.758,19.966,36.408C354.974,342.393,344.239,338.379,323.217,323.485z"/><path d="M180.884,288.533c-2.267-5.037-8.186-7.283-13.223-5.016c-4.88,2.196-7.14,7.822-5.214,12.751c1.514,3.963,5.299,6.43,9.34,6.43c1.096,0,2.21-0.182,3.304-0.564c5.212-1.824,7.96-7.529,6.135-12.742C181.131,289.121,181.002,288.795,180.884,288.533z"/><path d="M373.433,154.691c1.953,1.952,4.512,2.929,7.071,2.929c2.56,0,5.118-0.977,7.071-2.929c22.343-22.343,58.542-32.583,84.971-34.716c5.505-0.444,9.607-5.268,9.163-10.772c-0.445-5.505-5.258-9.591-10.772-9.163c-29.973,2.419-71.326,14.331-97.504,40.509C369.528,144.454,369.528,150.786,373.433,154.691z"/><path d="M504.589,101.963c-0.283-0.076-0.571-0.151-0.862-0.224c-5.359-1.336-10.785,1.929-12.12,7.288c-1.334,5.359,1.929,10.786,7.288,12.12l0.511,0.132c0.868,0.233,1.74,0.345,2.598,0.345c4.414,0,8.454-2.945,9.652-7.411C513.087,108.879,509.924,103.395,504.589,101.963z"/><path d="M73.504,83.621h10v10c0,5.522,4.477,10,10,10c5.523,0,10-4.478,10-10v-10h10c5.523,0,10-4.478,10-10s-4.477-10-10-10h-10v-10c0-5.522-4.477-10-10-10c-5.523,0-10,4.478-10,10v10h-10c-5.523,0-10,4.478-10,10C63.504,79.144,67.981,83.621,73.504,83.621z"/><path d="M307.502,180.62h10.001v9.999c0,5.523,4.478,10,10,10c5.523,0,10-4.477,10-10v-9.999h9.999c5.522,0,10-4.478,10-10c0-5.522-4.478-10-10-10h-9.999v-10.001c0-5.522-4.477-10-10-10c-5.522,0-10,4.478-10,10v10.001h-10.001c-5.522,0-10,4.478-10,10C297.502,176.143,301.98,180.62,307.502,180.62z"/><path d="M446.501,417.618h-10v-10c0-5.522-4.478-10-10-10c-5.522,0-10,4.478-10,10v10h-10c-5.522,0-10,4.478-10,10c0,5.522,4.478,10,10,10h10v10c0,5.522,4.478,10,10,10c5.522,0,10-4.478,10-10v-10h10c5.522,0,10-4.478,10-10C456.501,422.096,452.024,417.618,446.501,417.618z"/><path d="M389.969,60.001c16.542,0,30-13.458,30-30s-13.458-30-30-30s-30,13.458-30,30S373.427,60.001,389.969,60.001z M389.969,20.001c5.514,0,10,4.486,10,10c0,5.514-4.486,10-10,10s-10-4.486-10-10C379.969,24.487,384.455,20.001,389.969,20.001z"/><path d="M452.501,173.619c-16.542,0-30,13.458-30,30s13.458,30,30,30s30-13.458,30-30S469.042,173.619,452.501,173.619z M452.501,213.619c-5.514,0-10-4.486-10-10s4.486-10,10-10s10,4.486,10,10S458.015,213.619,452.501,213.619z"/><path d="M198.503,95.62c16.542,0,30-13.458,30-30s-13.458-30-30-30s-30,13.458-30,30S181.961,95.62,198.503,95.62z M198.503,55.62c5.514,0,10,4.486,10,10c0,5.514-4.486,10-10,10s-10-4.486-10-10C188.503,60.107,192.989,55.62,198.503,55.62z"/><path d="M449.19,294.058c0-5.508-4.492-10-10-10c-5.508,0-10,4.492-10,10s4.492,10,10,10C444.698,304.058,449.19,299.565,449.19,294.058z"/><path d="M335.189,95.06c5.508,0,10-4.492,10-10s-4.492-10-10-10c-5.508,0-10,4.492-10,10C325.19,90.567,329.682,95.06,335.189,95.06z"/><path d="M469.189,359.057c-5.508,0-10.001,4.493-10.001,10.001c0,5.508,4.493,10,10.001,10c5.507,0,10-4.492,10-10C479.189,363.55,474.696,359.057,469.189,359.057z"/><path d="M139.192,30.001c5.508,0,10-4.492,10-10c0-5.508-4.492-10-10-10s-10,4.492-10,10C129.192,25.509,133.684,30.001,139.192,30.001z"/></svg>
+							<h3 style="font-weight:unset">Events</h3>
+							<p style="text-align:initial">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+						</div>
+						<div class="box c2">
+							<svg style="margin-bottom:1rem" viewBox="0 0 169.351 169.351" xmlns="http://www.w3.org/2000/svg"><title>Patient Appreciation Icon</title><desc>The Patient Appreciation icon.</desc><path d="M19.449,100.249c0,8.281,50.336,8.281,50.336,0c0-7.003-8.068-16.465-18.962-19.229c4.552-3.054,7.691-9.101,7.691-14.538c0-7.675-6.217-13.904-13.898-13.904c-7.675,0-13.899,6.229-13.899,13.904c0,5.438,3.136,11.484,7.676,14.538C27.523,83.784,19.449,93.246,19.449,100.249z M43.498,85.062h-0.061l-2.302-2.648c1.12,0.396,2.268,0.651,3.486,0.651c1.215,0,2.363-0.243,3.483-0.64l-2.305,2.637h-0.058l5.943,14.358l-7.063,7.039l-7.06-7.039L43.498,85.062z"/><path d="M69.785,79.509c0,1.802,1.44,3.251,3.242,3.251h39.391c0.512-0.365,1.114-0.694,1.937-0.925v-5.572H73.027C71.234,76.263,69.785,77.715,69.785,79.509z"/><path d="M114.354,61.467H73.027c-1.793,0-3.242,1.446-3.242,3.249c0,1.79,1.44,3.249,3.242,3.249h41.327V61.467z"/><path d="M20.164,128.612c-6.67,0-12.096-5.432-12.096-12.093V42.52c0-6.667,5.426-12.093,12.096-12.093h94.19v-8.062h-94.19C9.042,22.365,0,31.402,0,42.52v73.993c0,11.118,9.042,20.148,20.164,20.148h94.738l2.156-8.062H20.164V128.612z"/><path d="M153.995,23.007v8.431c4.287,1.863,7.289,6.123,7.289,11.082v73.993c0,6.234-4.769,11.319-10.827,11.965l2.101,7.855c9.518-1.62,16.794-9.853,16.794-19.82V42.52C169.351,33.073,162.788,25.178,153.995,23.007z"/><path d="M119.469,75.518c1.912-2.271,5.206-2.409,8.805,0.085c3.021-6.348,8.769-6.342,11.795-0.006c3.599-2.494,6.887-2.356,8.805-0.079c1.163,1.382,1.626,3.339,1.419,5.976c0.231-0.023,0.371,0.037,0.591,0.024V16.23h-33.411v65.3c0.219,0,0.353-0.055,0.597-0.037C117.837,78.864,118.312,76.9,119.469,75.518z"/><path d="M128.579,119.083c-0.098-0.024-0.183-0.055-0.286-0.092c-2.211,1.596-4.232,2.083-5.895,1.767l-7.154,26.707l6.929-4.713l3.075,7.404l7.143-26.652C130.905,122.851,129.62,121.396,128.579,119.083z"/><path d="M140.056,118.991c-0.097,0.037-0.188,0.067-0.286,0.092c-1.205,2.697-2.752,4.189-4.555,4.622l7.886,29.416l2.667-10.084l7.35,7.398l-7.922-29.538C143.673,120.916,141.926,120.349,140.056,118.991z"/><path d="M137.846,116.86c0.938-0.183,1.827-0.487,2.722-0.792c4.865,4.092,7.514,2.558,6.406-3.702c0.7-0.608,1.352-1.267,1.954-1.973c6.272,1.12,7.794-1.534,3.702-6.394c0.311-0.889,0.615-1.771,0.792-2.716c5.882-2.168,5.882-5.188-0.013-7.355c-0.17-0.938-0.469-1.827-0.779-2.716c4.092-4.865,2.558-7.514-3.702-6.406c-0.615-0.693-1.267-1.352-1.961-1.961c1.108-6.262-1.54-7.791-6.405-3.701c-0.889-0.305-1.766-0.604-2.716-0.78c-2.168-5.897-5.188-5.897-7.355,0c-0.932,0.176-1.827,0.475-2.716,0.78c-4.865-4.089-7.515-2.561-6.394,3.701c-0.707,0.621-1.364,1.268-1.974,1.967c-6.259-1.113-7.794,1.541-3.702,6.4c-0.304,0.895-0.608,1.777-0.779,2.716c-5.894,2.167-5.894,5.2,0,7.355c0.177,0.938,0.476,1.827,0.779,2.722c-4.092,4.865-2.557,7.514,3.702,6.4c0.615,0.706,1.267,1.352,1.961,1.96c-1.108,6.267,1.541,7.794,6.406,3.702c0.889,0.305,1.777,0.609,2.728,0.792C132.658,122.748,135.691,122.748,137.846,116.86z"/></svg>
+							<h3 style="font-weight: unset;">Patient Appreciation</h3>
+							<p style="text-align:initial">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+						</div>
+					</div>
+				</div>
+			</div -->
+{CCMS_TPL:footer.html}
+		</main>
+{CCMS_TPL:header-body.html}
+{CCMS_TPL:msg-popup.html}
+{CCMS_TPL:a2hs-box.html}
+		<script>
+			/*window.performance.mark("mark_beginning_javascript");*/
+{CCMS_TPL:footer-js.html}
+			function loadFirst(e,t){var a=document.createElement("script");a.async="true";a.readyState?a.onreadystatechange=function(){("loaded"==a.readyState||"complete"==a.readyState)&&(a.onreadystatechange=null,t())}:a.onload=function(){t()},a.src=e,document.body.appendChild(a)}
+
+			var l=document.createElement("link");l.rel="stylesheet";
+			l.href = "{CCMS_LIB:site.php;FUNC:css_01}";
+			var h=document.getElementsByTagName("head")[0];h.parentNode.insertBefore(l,h);
+
+			var l=document.createElement("link");l.rel="stylesheet";
+			l.href="{CCMS_LIB:site.php;FUNC:load_resource("ANIMATE")}";
+			var h=document.getElementsByTagName("head")[0];h.parentNode.insertBefore(l,h);
+
+			function loadJSResources(){
+				loadFirst("{CCMS_LIB:site.php;FUNC:load_resource("JQUERY")}",function(){
+
+					loadFirst("{CCMS_LIB:site.php;FUNC:load_resource("JQUERY-MOBILE-CUST")}",function(){
+
+						loadFirst("{CCMS_LIB:site.php;FUNC:load_resource("JQUERY-VALIDATE")}",function(){
+
+							loadFirst("{CCMS_LIB:site.php;FUNC:load_resource("JQUERY-VALIDATE-ADDITIONAL-METHODS")}",function(){
+
+								loadFirst("{CCMS_LIB:site.php;FUNC:load_resource("MODERNIZER")}",function(){
+
+									loadFirst("{CCMS_LIB:site.php;FUNC:js_01}",function(){
+
+										/*loadFirst("//cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js",function(){*/
+										loadFirst("{CCMS_LIB:site.php;FUNC:load_resource("OWL-JS")}",function(){
+
+											var l=document.createElement("link");l.rel="stylesheet";
+											/*l.href="//cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css";*/
+											l.href = "{CCMS_LIB:site.php;FUNC:load_resource("OWL-CSS")}";
+											var h=document.getElementsByTagName("head")[0];h.parentNode.insertBefore(l,h);
+
+											var owl = $('#carousel');
+
+											owl.owlCarousel({
+												autoplay:true,
+												autoplayTimeout:100000,
+												autoplayHoverPause:true,
+												dots:false,
+												items:1,
+												lazyLoad:true,
+												loop:true,
+												rtl:false
+											});
+
+											/* add animate.css class(es) to the elements to be animated */
+											function setAnimation(_elem,_InOut){
+												/* Store all animationend event name in a string. */
+												var animationEndEvent = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
+												_elem.each(function(){
+													var $elem = $(this);
+													var $animationType = 'animated '+$elem.data( 'animation-'+_InOut);
+													$elem.addClass($animationType).one(animationEndEvent,function(){
+														/* remove animate.css Class at the end of the animations */
+														$elem.removeClass($animationType);
+													});
+												});
+											}
+
+											/* Fired before current slide change */
+											owl.on('change.owl.carousel',function(event){
+												var $currentItem = $('.owl-item',owl).eq(event.item.index);
+												var $elemsToanim = $currentItem.find("[data-animation-out]");
+												setAnimation($elemsToanim,'out');
+											});
+
+											/* Fired after current slide has been changed */
+											var round = 0;
+											owl.on('changed.owl.carousel',function(event){
+												var $currentItem = $('.owl-item',owl).eq(event.item.index);
+												var $elemsToanim = $currentItem.find("[data-animation-in]");
+												setAnimation($elemsToanim,'in');
+											});
+
+											owl.on('translated.owl.carousel',function(event){
+												/*console.log (event.item.index, event.page.count);*/
+												if(event.item.index==(event.page.count-1)){
+													if(round<1){
+														round++
+														/*console.log (round);*/
+													}else{
+														owl.trigger('stop.owl.autoplay');
+														var owlData = owl.data('owl.carousel');
+														/* don't know if both are necessary */
+														owlData.settings.autoplay = false;
+														owlData.options.autoplay = false;
+														owl.trigger('refresh.owl.carousel');
+													}
+												}
+											});
+
+											$(".owlDivContainer").attr("style","opacity:1");
+											/*window.setTimeout(function(){document.getElementsByClassName("owlDivContainer")[0].style.opacity="1";},500);*/
+
+											/*window.performance.mark("mark_end_javascript");
+											console.log(window.performance.getEntriesByName("mark_beginning_javascript"));
+											console.log(window.performance.getEntriesByName("mark_end_javascript"));*/
+										});
+									});
+								});
+							});
+						});
+					});
+				});
+			}
+
+			if(window.addEventListener){window.addEventListener("load",loadJSResources,false)}
+			else if(window.attachEvent){window.attachEvent("onload",loadJSResources)}
+			else{window.onload=loadJSResources}
+		</script>
+	</body>
+</html>

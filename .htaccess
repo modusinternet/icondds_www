@@ -1,0 +1,252 @@
+# If you are attempting to use Custodian CMS you experience problems getting
+# the templates to work properly.  Try doing the following in the code below:
+# Uncomment: SetEnv HTTP_MOD_REWRITE On
+# Uncomment: php_flag register_globals off
+# Uncomment: php_flag magic_quotes_gpc off
+
+# To enable Mod Rewrite on GoDaddy servers uncomment the following code.
+#------------------------------
+#SetEnv HTTP_MOD_REWRITE On
+
+# Bad Request
+#------------------------------
+ErrorDocument 400 /index.php?ccms_tpl=error400
+
+# Forbidden
+#------------------------------
+ErrorDocument 403 /index.php?ccms_tpl=error403
+#ErrorDocument 403 /index.php?ccms_tpl=search
+
+# Not Found
+#------------------------------
+ErrorDocument 404 /index.php?ccms_tpl=error404
+
+# Internal Server Error
+#------------------------------
+ErrorDocument 500 /index.php?ccms_tpl=error500
+
+# Disable your Apache version number from showing up in HTTP headers for added security.
+#------------------------------
+ServerSignature Off
+
+# Prevent people from being able to see the directory of folders that do not contain an index file.
+#------------------------------
+Options -Indexes
+
+Options +FollowSymLinks
+
+Options -Multiviews
+
+# Add GZIP compression to the server.  https://varvy.com/pagespeed/enable-compression.html
+#------------------------------
+AddOutputFilterByType DEFLATE text/plain
+AddOutputFilterByType DEFLATE text/html
+AddOutputFilterByType DEFLATE text/xml
+AddOutputFilterByType DEFLATE text/css
+AddOutputFilterByType DEFLATE application/xml
+AddOutputFilterByType DEFLATE application/xhtml+xml
+AddOutputFilterByType DEFLATE application/rss+xml
+AddOutputFilterByType DEFLATE application/javascript
+AddOutputFilterByType DEFLATE application/x-javascript
+
+<Files .htaccess>
+	# Prevent viewing of .htaccess file.
+	#------------------------------
+	order allow,deny
+	deny from all
+</Files>
+
+<IfModule mod_access.c>
+	# Set timezone for your server. A list of supported timezone can be found at
+	# http://www.php.net/manual/en/timezones.php
+	#------------------------------
+	SetEnv TZ America/Vancouver
+
+	# Do Not Track: Universal Third-Party Web Tracking Opt Out
+	# http://datatracker.ietf.org/doc/draft-mayer-do-not-track/
+	#------------------------------
+	SetEnvIfNoCase DNT 1 DO_NOT_TRACK
+
+	# Protect against Apache HTTP Server Denial Of Service Vulnerability.  CVE-2011-3192
+	#------------------------------
+	SetEnvIf Range (,.*?){5,} bad-range=1
+	RequestHeader unset Range env=bad-range
+</IfModule>
+
+<IfModule mod_headers.c>
+	# Disable your PHP version number from showing up in HTTP headers for added security.
+	#------------------------------
+	Header unset X-Powered-By
+
+	# Don't allow any pages to be framed - Defends against CSRF
+	#------------------------------
+	Header set X-Frame-Options DENY
+
+	# Turn on IE8-IE9 XSS prevention tools
+	#------------------------------
+	Header set X-XSS-Protection "1; mode=block"
+
+	# Prevent mime based attacks
+	#------------------------------
+	Header set X-Content-Type-Options "nosniff"
+
+	# Use this to force IE to hide that annoying browser compatibility button in the address bar.
+	# IE=edge means IE should use the latest (edge) version of its rendering engine.
+	#------------------------------
+	BrowserMatch MSIE ie
+	Header set X-UA-Compatible "IE=edge"
+</IfModule>
+
+<IfModule mod_rewrite.c>
+	RewriteEngine on
+	RewriteBase /
+
+	# If we managed to get passed all those rules then the next step is to call the correct template on the server and
+	# start producing output, but first lets make sure the php environment is setup the way we like it first.
+	# Comment the two lines of code out below if experiencing problems on a GoDaddy hosted services.
+	#------------------------------
+	#php_flag register_globals off
+	# magic_quotes_gpc are DEPRECATED and will eventually be removed all together, best to disable them now.
+	# http://www.php.net/manual/en/security.magicquotes.what.php
+	#php_flag magic_quotes_gpc off
+
+	# Disable the HTTP TRACE Method for added security.
+	#------------------------------
+	RewriteCond %{REQUEST_METHOD} ^TRACE
+	RewriteRule .* - [F]
+
+	# Block empty user agents and empty HTTP referrers.
+	#------------------------------
+	RewriteCond %{HTTP_REFERER} ^$ [NC]
+	RewriteCond %{HTTP_USER_AGENT} ^$ [NC]
+	RewriteRule .* - [F,L]
+
+	# Stop hot linking.
+	#------------------------------
+	RewriteCond %{HTTP_REFERER} !^$
+	# Add to allow abc.com to pull images from the server.
+	#RewriteCond %{HTTP_REFERER} !^http(s)?://abc.com [NC]
+	# Add to allow www.123.com to pull images from the server.
+	#RewriteCond %{HTTP_REFERER} !^http(s)?://www.123.com [NC]
+	RewriteCond %{HTTP_HOST}@@%{HTTP_REFERER} !^([^@]*)@@https?://\1/.* [NC]
+	RewriteRule \.(bmp|gif|jpe?g|png|swf)$ - [F,L,NC]
+
+	# Stop file and MySQL injection attacks.
+	#------------------------------
+	RewriteCond %{REQUEST_METHOD} GET
+	RewriteCond %{QUERY_STRING} (;|<|>|'|"|\)|%0A|%0D|%22|%27|%3C|%3E|%00).*(/\*|union|select|insert|cast|set|declare|drop|update|md5|benchmark) [NC,OR]
+	RewriteCond %{QUERY_STRING} [a-zA-Z0-9_]=http:// [OR]
+	RewriteCond %{QUERY_STRING} [a-zA-Z0-9_]=http%3A%2F%2F [OR]
+	RewriteCond %{QUERY_STRING} [a-zA-Z0-9_]=(\.\.//?)+ [OR]
+	RewriteCond %{QUERY_STRING} [a-zA-Z0-9_]=/([a-z0-9_.]//?)+ [NC,OR]
+	RewriteCond %{QUERY_STRING} (localhost|loopback|127\.0\.0\.1) [NC,OR]
+	RewriteCond %{QUERY_STRING} (<|>|'|%0A|%0D|%27|%3C|%3E|%00) [NC]
+	RewriteRule .* - [F,L]
+
+	# Force all connection to https and NOT http.
+	#------------------------------
+	RewriteCond %{SERVER_PORT} !^443$
+	RewriteRule (.*) https://%{SERVER_NAME}/$1 [R,L]
+
+	# The following two lines of code build an environment variable that either contains nothing or an 's' to
+	# indicate the server port is http or https.
+	#------------------------------
+	RewriteCond %{SERVER_PORT}s ^(443(s)|[0-9]+s)$
+	RewriteRule ^(.*)$ - [env=variable:%2]
+
+	# The following two lines look to see if www. is found in your URI and removes it.
+	# The next two lines look to see if www. is not found if your URI and adds it.
+	# Comment one set or the other out depending on your needs.
+	#------------------------------
+	RewriteCond %{HTTP_HOST} ^www\.(.+) [NC]
+	RewriteRule ^(.*)$ http%{ENV:variable}://%1/$1 [R=301,L]
+	#RewriteRule ^(.*)$ http%{ENV:variable}://%1%{REQUEST_URI} [R=301,L]
+	#RewriteRule ^(.*)$ http%{ENV:variable}://%{HTTP_HOST}/$1 [R=301,L]
+	#RewriteCond %{HTTP_HOST} !^www\.(.+) [NC]
+	#RewriteRule ^(.*)$ http%{ENV:variable}://www.%{HTTP_HOST}/$1 [R=301,L]
+
+	# Look to see if 'user' is found at the beginning of the {REQUEST_URI}, if so send the visitor to the
+	# Custodian CMS admin index template.  If you change the location of your CCMS admin directory in the
+	# config you will need to make the update here by hand.
+	#------------------------------
+	RewriteRule ^(([a-z]{2})(-[a-z]{2})?)/user(/.*)$ /ccmsusr/index.php?ccms_lng=$1&ccms_tpl=$4 [QSA,L,NC]
+	RewriteRule ^(([a-z]{2})(-[a-z]{2})?)(/([a-z0-9-_\./]*))?$ /index.php?ccms_lng=$1&ccms_tpl=$4 [QSA,L,NC]
+
+	# The following examples will FAIL and result in /ccmstpl/error.php page being called.
+	#------------------------------
+	# http://abc.com/1
+	# http://abc.com/a
+	# http://abc.com/12
+	# http://abc.com/ab_
+	# http://abc.com/ab-s
+
+	# The following examples will SUCCEED and result in /index.php successfully being called.
+	#------------------------------
+	# http://abc.com/ab
+	# http://abc.com/ab-cd
+	# http://abc.com/ab-cd/somepage
+	# http://abc.com/ab-cd/somepage.html
+	# http://abc.com/ab-cd/somedir/somepage.html
+	# http://abc.com/ab-cd/somedir-02/somepage_some-where.html
+</IfModule>
+
+<IfModule mod_expires.c>
+	# Optimize default expiration time
+	#------------------------------
+	ExpiresActive On
+
+	# Default expiration: 1 day after request	ExpiresDefault "access plus 1 month"
+
+	# CSS and JS expiration: 2 weeks after request
+	ExpiresByType text/css "access plus 2 weeks"
+	ExpiresByType text/javascript "access plus 2 weeks"
+	ExpiresByType text/x-javascript "access plus 2 weeks"
+	ExpiresByType application/javascript "access plus 2 weeks"
+	ExpiresByType application/x-javascript "access plus 2 weeks"
+
+	# Image files expiration: 1 month after request
+	ExpiresByType image/bmp "access plus 1 month"
+	ExpiresByType image/gif "access plus 1 month"
+	ExpiresByType image/jpeg "access plus 1 month"
+	ExpiresByType image/jp2 "access plus 1 month"
+	ExpiresByType image/pipeg "access plus 1 month"
+	ExpiresByType image/png "access plus 1 month"
+	ExpiresByType image/svg+xml "access plus 1 month"
+	ExpiresByType image/tiff "access plus 1 month"
+	ExpiresByType image/vnd.microsoft.icon "access plus 1 month"
+	ExpiresByType image/x-icon "access plus 1 month"
+	ExpiresByType image/ico "access plus 1 month"
+	ExpiresByType image/icon "access plus 1 month"
+	ExpiresByType text/ico "access plus 1 month"
+	ExpiresByType application/ico "access plus 1 month"
+	ExpiresByType image/vnd.wap.wbmp "access plus 1 month"
+	ExpiresByType application/vnd.wap.wbxml "access plus 1 month"
+	ExpiresByType application/smil "access plus 1 month"
+
+	# Audio files expiration: 1 month after request
+	ExpiresByType audio/basic "access plus 1 month"
+	ExpiresByType audio/mid "access plus 1 month"
+	ExpiresByType audio/midi "access plus 1 month"
+	ExpiresByType audio/mpeg "access plus 1 month"
+	ExpiresByType audio/x-aiff "access plus 1 month"
+	ExpiresByType audio/x-mpegurl "access plus 1 month"
+	ExpiresByType audio/x-pn-realaudio "access plus 1 month"
+	ExpiresByType audio/x-wav "access plus 1 month"
+
+	# Movie files expiration: 1 month after request
+	ExpiresByType application/x-shockwave-flash "access plus 1 month"
+	ExpiresByType x-world/x-vrml "access plus 1 month"
+	ExpiresByType video/x-msvideo "access plus 1 month"
+	ExpiresByType video/mpeg "access plus 1 month"
+	ExpiresByType video/mp4 "access plus 1 month"
+	ExpiresByType video/quicktime "access plus 1 month"
+	ExpiresByType video/x-la-asf "access plus 1 month"
+	ExpiresByType video/x-ms-asf "access plus 1 month"
+</IfModule>
+
+# php -- BEGIN cPanel-generated handler, do not edit
+# Set the “ea-php73” package as the default “PHP” programming language.
+<IfModule mime_module>
+  AddHandler application/x-httpd-ea-php73 .php .php7 .phtml
+</IfModule>
+# php -- END cPanel-generated handler, do not edit

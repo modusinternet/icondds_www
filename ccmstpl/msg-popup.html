@@ -1,0 +1,29 @@
+<div class="hide" id="msg">
+	<div dir="{CCMS_DB_DIR:all,message-form}">
+		{CCMS_DB:all,message-form}
+		<svg aria-label="title desc" class="msg-svg-fill" onclick="msg_hide()" role="button" viewBox="0 0 216 216" xmlns="https://www.w3.org/2000/svg"><title dir="{CCMS_DB_DIR:all,message-form-svg-title}">{CCMS_DB:all,message-form-svg-title}</title><desc dir="{CCMS_DB_DIR:all,message-form-svg-desc-01}">{CCMS_DB:all,message-form-svg-desc-01}</desc><a xlink:href="#"><path d="M9.4,65c4.4-5.4,12.4-6.1,17.6-1.9l80.9,65.9l80.9-65.9c5.4-4.4,13.3-3.6,17.6,1.9c1.9,2.3,2.7,5,2.7,7.9 c0,3.8-1.6,7.3-4.6,9.8L115.7,155c-2.3,1.9-5.1,2.7-7.9,2.7c-2.7,0-5.7-0.9-7.9-2.7L11.2,82.7C5.9,78.3,5,70.3,9.4,65z"></path></a></svg>
+	</div>
+	<div class="" id="msgFormMessage" role="alert"></div>
+		<form action="#" id="msgForm" method="post" name="msgForm">
+		<div>
+			<label for="msgName" dir="{CCMS_DB_DIR:all,name}">{CCMS_DB:all,name}</label>
+			<input dir="{CCMS_DB_DIR:all,name}" id="msgName" placeholder="{CCMS_DB:all,name-placeholder}" name="msgName" type="text">
+			<label id="error-msgName" class="error" for="msgName" style="display:none;"></label>
+		</div>
+		<div>
+			<label for="msgEmail" dir="{CCMS_DB_DIR:all,email}">{CCMS_DB:all,email}</label>
+			<input dir="{CCMS_DB_DIR:all,email}" id="msgEmail" placeholder="{CCMS_DB:all,email-placeholder}" name="msgEmail" type="text">
+			<label id="error-msgEmail" class="error" for="msgEmail" style="display:none;"></label>
+		</div>
+		<div>
+			<label for="msgTextarea" dir="{CCMS_DB_DIR:all,message}">{CCMS_DB:all,message}</label>
+			<textarea data-gramm="false" dir="{CCMS_DB_DIR:all,message}" id="msgTextarea" placeholder="{CCMS_DB:all,message-placeholder}" name="msgTextarea"></textarea>
+			<label id="error-msgTextarea" class="error" for="msgTextarea" style="display:none;"></label>
+		</div>
+		<button dir="{CCMS_DB_DIR:all,cancel}" id="msgCancel" onclick="msg_hide()" role="button" type="button">{CCMS_DB:all,cancel}</button>
+		<button dir="{CCMS_DB_DIR:all,submit}" id="msgSubmit" role="button" type="submit">{CCMS_DB:all,submit}</button>
+	</form>
+</div>
+<svg aria-label="title desc" class="msg-svg-fill" id="msg-svg-fill" onclick="msg_show()" role="button" viewBox="0 0 375 375" xmlns="https://www.w3.org/2000/svg"><title dir="{CCMS_DB_DIR:all,message-form}">
+	{CCMS_DB:all,message-form}</title><desc dir="{CCMS_DB_DIR:all,message-form-svg-desc-02}">{CCMS_DB:all,message-form-svg-desc-02}</desc><a xlink:href="#"><circle cx="264.64" cy="117.126" r="7.52"/><circle cx="216.08" cy="117.126" r="7.52"/><path d="M342.12 54.686c-22.258-17.12-49.643-26.224-77.72-25.84-28.077-.384-55.462 8.721-77.72 25.84-20.32 16.24-32.88 38.8-32.88 63.8 0 2.08.08 4.133.24 6.16h-124C13.459 124.668.022 138.104 0 154.686v161.44c.022 16.581 13.458 30.018 30.04 30.04H324.4c16.581-.022 30.018-13.458 30.04-30.04v-145.64c13.018-14.213 20.339-32.727 20.56-52 0-25-12.56-47.52-32.88-63.8zM17 141.606c3.449-3.477 8.143-5.434 13.04-5.44h125.88c4.226 14.819 12.107 28.34 22.92 39.32 2.12 2.24 7.76 6.92 7.76 6.92l-5.36 35.52c-.385 3.18 1.88 6.07 5.06 6.456 1.352.164 2.718-.153 3.86-.896l36-20.88c11.097 3.196 22.54 5.036 34.08 5.48l-83.04 56.44-165.4-112.8c.623-3.837 2.443-7.379 5.2-10.12zm325.84 174.52c-.044 10.166-8.274 18.396-18.44 18.44H30.04c-10.213.022-18.516-8.227-18.56-18.44l.08-150.52 162.4 110.68c1.982 1.385 4.618 1.385 6.6 0l101.64-69.36c10.79-1.254 21.363-3.945 31.44-8 21.28-9.8 29.2-17.12 29.2-17.12v134.32zm1.52-151.84c-9.813 10.326-21.775 18.369-35.04 23.56-14.391 5.378-29.599 8.246-44.96 8.48-12.645.678-25.295-1.256-37.16-5.68-1.607-.513-3.352-.355-4.84.44l-28 16.24 4-27.2c.11-.978-.028-1.969-.4-2.88-.276-.694-.715-1.312-1.28-1.8-7.82-6.224-14.763-13.476-20.64-21.56-5.021-7.356-8.404-15.704-9.92-24.48v-.44c-.614-3.54-.922-7.127-.92-10.72.16-21.12 11.04-40.52 28.64-54.76 20.217-15.475 45.063-23.677 70.52-23.28 25.457-.397 50.303 7.805 70.52 23.28 17.6 14.08 28.52 33.48 28.52 54.8-.252 17.199-7.062 33.654-19.04 46z"/><circle cx="313.2" cy="117.126" r="7.52"/></a></svg>
+<button aria-label="Scroll to Top" class="scrollToTopButton" onclick="document.getElementsByTagName('body')[0].scrollIntoView({behavior:'smooth',block:'start',inline:'nearest'});" role="button"></button>

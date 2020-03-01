@@ -1,0 +1,3 @@
+# This folder does not require access over HTTP(s).
+# The following directive denies access to all accept local.
+Require local

@@ -1,0 +1,141 @@
+{CCMS_DB_PRELOAD:all,index}<!DOCTYPE html>
+<html dir="{CCMS_LIB:_default.php;FUNC:ccms_lng_dir}" lang="{CCMS_LIB:_default.php;FUNC:ccms_lng}" prefix="og: http://ogp.me/ns#">
+	<head>
+		<!-- Repeated content and can be placed once in your header head template. -->
+		{CCMS_TPL:header-head.html}
+		<!-- Should be representative of the page in reference. -->
+		<title dir="{CCMS_LIB:_default.php;FUNC:ccms_lng_dir}">ICONIC Dentistry / For Patients / Downloadable Forms</title>
+		<meta property="og:title" dir="{CCMS_DB_DIR:index,title}" content="{CCMS_DB:index,title}" />
+		<meta name="twitter:title" dir="{CCMS_DB_DIR:index,title}" content="{CCMS_DB:index,title}" />
+		<meta name="description" dir="{CCMS_DB_DIR:index,description}" content="{CCMS_DB:index,description}" />
+		<meta property="og:description" dir="{CCMS_DB_DIR:index,description}" content="{CCMS_DB:index,description}" />
+		<meta name="twitter:description" dir="{CCMS_DB_DIR:index,description}" content="{CCMS_DB:index,description}" />
+		<meta property="og:image" content="/ccmstpl/_img/main-image-or-logo.jpg" />
+		<meta property="og:image:secure_url" content="/ccmstpl/_img/main-image-or-logo.jpg" />
+		<meta property="og:image:width" content="123" />
+		<meta property="og:image:height" content="123" />
+		<!-- Must be at least 60px by 60px.	Images greater than 120px by 120px will be resized and cropped in a square aspect ratio. -->
+		<meta name="twitter:image" content="/ccmstpl/_img/main-image-or-logo.jpg" />
+		<meta property="og:url" content="https://{CCMS_LIB:_default.php;FUNC:ccms_cfgDomain}/" />
+		<script type="application/ld+json">
+			[{
+				"@context":"https://schema.org",
+				"@type":"WebSite",
+				"name":"mywebsite",
+				"url":"https://{CCMS_LIB:_default.php;FUNC:ccms_cfgDomain}",
+				"alternateName":"mywebsite description"
+			},{
+				"@context":"https://schema.org",
+				"@type":"Organization",
+				"name":"mywebsite name, LLC",
+				"url":"https://{CCMS_LIB:_default.php;FUNC:ccms_cfgDomain}",
+				"logo":{
+					"@type":"ImageObject",
+					"url":"/ccmstpl/_img/main-image-or-logo.jpg"
+				},
+				"sameAs":[
+					"https://twitter.com/mywebsite",
+					"https://instagram.com/mywebsite",
+					"https://plus.google.com/+mywebsite",
+					"https://www.facebook.com/mywebsite",
+					"https://www.pinterest.com/mywebsite/",
+					"https://www.youtube.com/user/mywebsite"
+				]
+			}]
+		</script>
+		<style>
+			{CCMS_TPL:/_css/header.html}
+		</style>
+		<script>
+			var navActiveArray = ["nl-about-us","nl-about-us_more","nl-about-us_faq","nl-lng","lng-{CCMS_LIB:_default.php;FUNC:ccms_lng}"];
+			var navActiveFooterArray = ["fl-for-patients"];
+		</script>
+	</head>
+	<body>
+		<div id="loading_svg"></div>
+		<main class="cd-main-content">
+			<div class="parallax" style="background-image:url('/ccmstpl/_img/for-patients_faq-01-min.jpg')"></div>
+			<div style="padding-bottom:15px">
+				<div class="bcGrid" dir="{CCMS_LIB:_default.php;FUNC:ccms_lng_dir}">
+					<h1 class="c1">Downloadable Forms</h1>
+					<i class="c2"></i>
+					<h4 class="c3" style="margin:8px 0 0">
+						<a dir="{CCMS_DB_DIR:all,homepage}" href="/{CCMS_LIB:_default.php;FUNC:ccms_lng}/">{CCMS_DB:all,homepage}</a> <span style="color:#888888">/</span> <a dir="{CCMS_LIB:_default.php;FUNC:ccms_lng_dir}" href="/{CCMS_LIB:_default.php;FUNC:ccms_lng}/for-patents/">For Patients</a> <span style="color:#888888">/</span> <span style="color:var(--green)">Downloadable Forms</span>
+					</h4>
+				</div>
+			</div>
+			<div class="contentType1" style="margin:0 auto;max-width:1024px">
+				<p>The following PDF document links are the most commonly requested.</p>
+				<ol style="margin-left:50px">
+					<li><a href="/ccmstpl/_docs/New_Patient_Forms_and_Office_Policies.pdf" target="_blank">New Patient Forms and Office Policies</a></li>
+					<li><a href="/ccmstpl/_docs/Notice_of_Privacy_Practices.pdf" target="_blank">Notice of Privacy Practices</a></li>
+					<li><a href="/ccmstpl/_docs/Acknowledgement_of_Receipt_of_Notice_of_Privacy_Practices.pdf" target="_blank">Acknowledgment of Receipt of Notice of Privacy Practices</a></li>
+					<li><a href="/ccmstpl/_docs/Authorization_to_Release_Medical_Records.pdf" target="_blank">Authorization to Release Medical Records</a></li>
+				</ol>
+			</div>
+{CCMS_TPL:footer.html}
+		</main>
+{CCMS_TPL:header-body.html}
+{CCMS_TPL:msg-popup.html}
+{CCMS_TPL:a2hs-box.html}
+		<script>
+			/*window.performance.mark("mark_beginning_javascript");*/
+{CCMS_TPL:footer-js.html}
+			function loadFirst(e,t){var a=document.createElement("script");a.async="true";a.readyState?a.onreadystatechange=function(){("loaded"==a.readyState||"complete"==a.readyState)&&(a.onreadystatechange=null,t())}:a.onload=function(){t()},a.src=e,document.body.appendChild(a)}
+
+			var l=document.createElement("link");l.rel="stylesheet";
+			l.href = "{CCMS_LIB:site.php;FUNC:css_01}";
+			var h=document.getElementsByTagName("head")[0];h.parentNode.insertBefore(l,h);
+
+			function loadJSResources(){
+				loadFirst("{CCMS_LIB:site.php;FUNC:load_resource("JQUERY")}",function(){
+
+					loadFirst("{CCMS_LIB:site.php;FUNC:load_resource("JQUERY-MOBILE-CUST")}",function(){
+
+						loadFirst("{CCMS_LIB:site.php;FUNC:load_resource("JQUERY-VALIDATE")}",function(){
+
+							loadFirst("{CCMS_LIB:site.php;FUNC:load_resource("JQUERY-VALIDATE-ADDITIONAL-METHODS")}",function(){
+
+								loadFirst("{CCMS_LIB:site.php;FUNC:load_resource("MODERNIZER")}",function(){
+
+									loadFirst("{CCMS_LIB:site.php;FUNC:js_01}",function(){
+
+										jQuery(document).ready(function(e){
+											(function(){
+												e(".faq input[type=text]").keyup(function(){
+													var t=e(this).val().toLowerCase();
+													if(t.length>2){
+														e(".faq li").each(function(){
+															var n=e(this).find("h3").text();
+															var r=e(this).find("p").text();
+															var i=(n+r).toLowerCase();
+															if(i.indexOf(t)==-1){
+																e(this).hide();
+															}else{
+																e(this).show();
+															}
+														});
+													}else{
+														e(".faq li").show();
+													}
+												})
+											})
+										()});
+
+										/*window.performance.mark("mark_end_javascript");
+										console.log(window.performance.getEntriesByName("mark_beginning_javascript"));
+										console.log(window.performance.getEntriesByName("mark_end_javascript"));*/
+									});
+								});
+							});
+						});
+					});
+				});
+			}
+
+			if(window.addEventListener){window.addEventListener("load",loadJSResources,false)}
+			else if(window.attachEvent){window.attachEvent("onload",loadJSResources)}
+			else{window.onload=loadJSResources}
+		</script>
+	</body>
+</html>

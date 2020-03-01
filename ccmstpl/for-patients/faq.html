@@ -1,0 +1,253 @@
+{CCMS_DB_PRELOAD:all,index}<!DOCTYPE html>
+<html dir="{CCMS_LIB:_default.php;FUNC:ccms_lng_dir}" lang="{CCMS_LIB:_default.php;FUNC:ccms_lng}" prefix="og: http://ogp.me/ns#">
+	<head>
+		<!-- Repeated content and can be placed once in your header head template. -->
+		{CCMS_TPL:header-head.html}
+		<!-- Should be representative of the page in reference. -->
+		<title dir="{CCMS_LIB:_default.php;FUNC:ccms_lng_dir}">ICONIC Dentistry / For Patients / Frequently Asked Questions (FAQs)</title>
+		<meta property="og:title" dir="{CCMS_DB_DIR:index,title}" content="{CCMS_DB:index,title}" />
+		<meta name="twitter:title" dir="{CCMS_DB_DIR:index,title}" content="{CCMS_DB:index,title}" />
+		<meta name="description" dir="{CCMS_DB_DIR:index,description}" content="{CCMS_DB:index,description}" />
+		<meta property="og:description" dir="{CCMS_DB_DIR:index,description}" content="{CCMS_DB:index,description}" />
+		<meta name="twitter:description" dir="{CCMS_DB_DIR:index,description}" content="{CCMS_DB:index,description}" />
+		<meta property="og:image" content="/ccmstpl/_img/main-image-or-logo.jpg" />
+		<meta property="og:image:secure_url" content="/ccmstpl/_img/main-image-or-logo.jpg" />
+		<meta property="og:image:width" content="123" />
+		<meta property="og:image:height" content="123" />
+		<!-- Must be at least 60px by 60px.	Images greater than 120px by 120px will be resized and cropped in a square aspect ratio. -->
+		<meta name="twitter:image" content="/ccmstpl/_img/main-image-or-logo.jpg" />
+		<meta property="og:url" content="https://{CCMS_LIB:_default.php;FUNC:ccms_cfgDomain}/" />
+		<script type="application/ld+json">
+			[{
+				"@context":"https://schema.org",
+				"@type":"WebSite",
+				"name":"mywebsite",
+				"url":"https://{CCMS_LIB:_default.php;FUNC:ccms_cfgDomain}",
+				"alternateName":"mywebsite description"
+			},{
+				"@context":"https://schema.org",
+				"@type":"Organization",
+				"name":"mywebsite name, LLC",
+				"url":"https://{CCMS_LIB:_default.php;FUNC:ccms_cfgDomain}",
+				"logo":{
+					"@type":"ImageObject",
+					"url":"/ccmstpl/_img/main-image-or-logo.jpg"
+				},
+				"sameAs":[
+					"https://twitter.com/mywebsite",
+					"https://instagram.com/mywebsite",
+					"https://plus.google.com/+mywebsite",
+					"https://www.facebook.com/mywebsite",
+					"https://www.pinterest.com/mywebsite/",
+					"https://www.youtube.com/user/mywebsite"
+				]
+			}]
+		</script>
+		<style>
+			{CCMS_TPL:/_css/header.html}
+
+			.faq>ol>li{margin-bottom:50px}
+
+			.faq>ul{
+				margin-left:30px;
+				margin-top:20px
+			}
+
+			.faq>ul li{margin-bottom:30px}
+
+			.faq>button{
+				background:var(--green);
+				border:1px solid rgba(0,0,0,0.1);
+				border-top-right-radius:25px;
+				border-bottom-right-radius:25px;
+				color:#ffffff;
+				font-size:1.2rem;
+				height:48px;
+				padding:0 16px;
+				transition:all 0.25s
+			}
+
+			.faq>button:hover{background:var(--green-tran)}
+
+			#faq{
+				border:1px solid rgba(0,0,0,0.1);
+				border-top-left-radius:25px;
+				border-bottom-left-radius:25px;
+				color:#555;
+				font-size:1.2rem;
+				height:48px;
+				padding:0 16px;
+				width:80%
+			}
+
+			/* 400px or larger. */
+			@media only screen and (min-width:400px){#faq{width:85%}}
+
+			/* 768px or larger. */
+			@media only screen and (min-width:768px){#faq{width:90%}}
+		</style>
+		<script>
+			var navActiveArray = ["nl-about-us","nl-about-us_more","nl-about-us_faq","nl-lng","lng-{CCMS_LIB:_default.php;FUNC:ccms_lng}"];
+			var navActiveFooterArray = ["fl-for-patients"];
+		</script>
+	</head>
+	<body>
+		<div id="loading_svg"></div>
+		<main class="cd-main-content">
+			<div class="parallax" style="background-image:url('/ccmstpl/_img/for-patients_faq-01-min.jpg')"></div>
+			<div style="padding-bottom:15px">
+				<div class="bcGrid" dir="{CCMS_LIB:_default.php;FUNC:ccms_lng_dir}">
+					<h1 class="c1">Frequently Asked Questions (FAQs)</h1>
+					<i class="c2"></i>
+					<h4 class="c3" style="margin:8px 0 0">
+						<a dir="{CCMS_DB_DIR:all,homepage}" href="/{CCMS_LIB:_default.php;FUNC:ccms_lng}/">{CCMS_DB:all,homepage}</a> <span style="color:#888888">/</span> <a dir="{CCMS_LIB:_default.php;FUNC:ccms_lng_dir}" href="/{CCMS_LIB:_default.php;FUNC:ccms_lng}/for-patents/">For Patients</a> <span style="color:#888888">/</span> <span style="color:var(--green)">Frequently Asked Questions (FAQs)</span>
+					</h4>
+				</div>
+			</div>
+			<div class="contentType1" style="margin:0 auto;max-width:1024px">
+				<p>The following PDF document links are the most commonly requested.</p>
+				<ol style="margin-left:50px">
+					<li><a href="/ccmstpl/_docs/New_Patient_Forms_and_Office_Policies.pdf" target="_blank">New Patient Forms and Office Policies</a></li>
+					<li><a href="/ccmstpl/_docs/Notice_of_Privacy_Practices.pdf" target="_blank">Notice of Privacy Practices</a></li>
+					<li><a href="/ccmstpl/_docs/Acknowledgement_of_Receipt_of_Notice_of_Privacy_Practices.pdf" target="_blank">Acknowledgment of Receipt of Notice of Privacy Practices</a></li>
+					<li><a href="/ccmstpl/_docs/Authorization_to_Release_Medical_Records.pdf" target="_blank">Authorization to Release Medical Records</a></li>
+				</ol>
+			</div>
+
+
+
+			<div class="contentType1">
+				<div style="text-align:center">
+					<div style="padding:20px;background-color:#f7f6f4;border-radius:7px">
+
+
+			<!-- div class="contentType2">
+				<div style="margin:0 auto;max-width:1024px" -->
+					<h3>FAQ Search Form</h3><br>
+					<p>Use the form below to search through some of our most commonly asked and answered questions.</p>
+					<div class="faq" style="margin-bottom:40px;text-align:initial">
+						<label dir="{CCMS_DB_DIR:all,search}" for="faq" style="color:var(--green);cursor:pointer">{CCMS_DB:all,search}</label><br>
+						<input id="faq" name="faq" placeholder="ie. apples, oranges or bannanas" style="outline:0" type="text" />
+						<button dir="{CCMS_DB_DIR:all,go}" role="button" style="cursor:pointer" type="submit">{CCMS_DB:all,go}</button>
+						<div class="faq">
+							<ul>
+								<li>
+									<h3 style="text-align:inherit">There are so many dentists in Orange County, why should I choose you?</h3>
+									<p>All of us want to be under the care of the most honest and professional doctors. With over 50 years of combined experience in clinical practice, the doctors at ICONIC form a competent team who will do their best to treat all patients to the best of their abilities, and never treat patients based on their insurance. To learn more about the team, go to our <a href="/{CCMS_LIB:_default.php;FUNC:ccms_lng}/about-us/">About Us</a> page.</p>
+								</li>
+								<li>
+									<h3 style="text-align:inherit">What are your hours?</h3>
+									<p>Our office hours are<br>
+										Mon-Fri: 9am - 5pm<br>
+										Sat-Sun: Closed<br>
+										For office address and direction, go to our <a href="/{CCMS_LIB:_default.php;FUNC:ccms_lng}/contact-us.html">Contact Us</a> page.</p>
+								</li>
+								<li>
+									<h3 style="text-align:inherit">What insurances do you take?</h3>
+									<p>We take most PPO dental insurance as well as Denti-Cal.
+									For a complete and current list of insurance carriers, give us a call and ask.</p>
+								</li>
+								<li>
+									<h3 style="text-align:inherit">Do I need to come early for my first appointment?</h3>
+									<p>Yes. Please arrive at least 10 minutes prior to your appointment time. For a new patient’s first visit, give yourself 15-30 minutes to complete all necessary paperwork.</p>
+								</li>
+								<li>
+									<h3 style="text-align:inherit">What do I need to bring to my first appointment?</h3>
+									<p>1. Driver’s license, or non-driver state-issued photo ID (or other legally accepted forms of identification).<br>
+										2. Current insurance card(s).<br>
+										3. When required by your insurance carriers, co-pays and deductibles are due at the time of appointment. If you have no insurance, please be prepared to pay $100 in full at your initial appointment, which includes acquiring digital x-rays; you will pay $75 if you bring existing x-rays—but only when they’re current within the last 6 months and are of good diagnostic quality.<br>
+										4. List of current medications, and all other pertinent medical and dental records from the past.<br>
+										5. If possible, please arrive with your new patient forms filled out and signed. These forms can also be accessed from the top of this page.</p>
+								</li>
+								<li>
+									<h3 style="text-align:inherit">How long will my first appointment take?</h3>
+									<p>It can vary, but please allow 1 to 1 1/2 hours for the first visit.</p>
+								</li>
+								<li>
+									<h3 style="text-align:inherit">Why do you need to take x-rays on the first visit?</h3>
+									<p>Many diseases of the teeth and surrounding tissues cannot be seen when the dentist examines the mouth by visual inspection alone. An x-ray examination may reveal cavities and bone loss due to periodontal disease.</p>
+								</li>
+								<li>
+									<h3 style="text-align:inherit">Do you offer discounts?</h3>
+									<p>We do not offer discounts, and here is the two-fold reason. After much research and evaluating our local competitive market, we come up with a fee schedule that’s at or below the national average for most dental services. Because we believe our fees are fairly priced, discounting a fair fee on quality work will send the wrong message about our integrity and competence. Instead of discounts, we offer additional value and perks when you pay in full prior to rendering a service. For more details, give us a call. Also, ask about our reduced fee schedule for any active duty, reserve, and retired military service members and veterans.</p>
+								</li>
+								<li>
+									<h3 style="text-align:inherit">Why do I need to keep coming back to your office? </h3>
+									<p>It’s without question that prevention is the key to a long term health. Therefore, it’s in the best interest of the patient to come back for periodic check up and “catch things early.”</p>
+								</li>
+								<li>
+									<h3 style="text-align:inherit">What should I do if require premedication?</h3>
+									<p>Please be sure to request a prescription from your physician prior to your appointment, or if you are unsure, contact us and we can help.</p>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				</div>
+			</div>
+{CCMS_TPL:footer.html}
+		</main>
+{CCMS_TPL:header-body.html}
+{CCMS_TPL:msg-popup.html}
+{CCMS_TPL:a2hs-box.html}
+		<script>
+			/*window.performance.mark("mark_beginning_javascript");*/
+{CCMS_TPL:footer-js.html}
+			function loadFirst(e,t){var a=document.createElement("script");a.async="true";a.readyState?a.onreadystatechange=function(){("loaded"==a.readyState||"complete"==a.readyState)&&(a.onreadystatechange=null,t())}:a.onload=function(){t()},a.src=e,document.body.appendChild(a)}
+
+			var l=document.createElement("link");l.rel="stylesheet";
+			l.href = "{CCMS_LIB:site.php;FUNC:css_01}";
+			var h=document.getElementsByTagName("head")[0];h.parentNode.insertBefore(l,h);
+
+			function loadJSResources(){
+				loadFirst("{CCMS_LIB:site.php;FUNC:load_resource("JQUERY")}",function(){
+
+					loadFirst("{CCMS_LIB:site.php;FUNC:load_resource("JQUERY-MOBILE-CUST")}",function(){
+
+						loadFirst("{CCMS_LIB:site.php;FUNC:load_resource("JQUERY-VALIDATE")}",function(){
+
+							loadFirst("{CCMS_LIB:site.php;FUNC:load_resource("JQUERY-VALIDATE-ADDITIONAL-METHODS")}",function(){
+
+								loadFirst("{CCMS_LIB:site.php;FUNC:load_resource("MODERNIZER")}",function(){
+
+									loadFirst("{CCMS_LIB:site.php;FUNC:js_01}",function(){
+
+										jQuery(document).ready(function(e){
+											(function(){
+												e(".faq input[type=text]").keyup(function(){
+													var t=e(this).val().toLowerCase();
+													if(t.length>2){
+														e(".faq li").each(function(){
+															var n=e(this).find("h3").text();
+															var r=e(this).find("p").text();
+															var i=(n+r).toLowerCase();
+															if(i.indexOf(t)==-1){
+																e(this).hide();
+															}else{
+																e(this).show();
+															}
+														});
+													}else{
+														e(".faq li").show();
+													}
+												})
+											})
+										()});
+
+										/*window.performance.mark("mark_end_javascript");
+										console.log(window.performance.getEntriesByName("mark_beginning_javascript"));
+										console.log(window.performance.getEntriesByName("mark_end_javascript"));*/
+									});
+								});
+							});
+						});
+					});
+				});
+			}
+
+			if(window.addEventListener){window.addEventListener("load",loadJSResources,false)}
+			else if(window.attachEvent){window.attachEvent("onload",loadJSResources)}
+			else{window.onload=loadJSResources}
+		</script>
+	</body>
+</html>
