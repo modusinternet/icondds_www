@@ -354,8 +354,10 @@
 														/* Disable the inputs for the duration of the ajax request. */
 														$inputs.prop("disabled", true);
 
+alert("1");
+
 														request = $.ajax({
-															beforeSend:function(XMLHttpRequest){
+															beforeSend: function (XMLHttpRequest){
 																$('#cuForm .has-error').removeClass('has-error');
 																$('#cuForm .help-block').html('').hide();
 																$('#cuAlertMessage').removeClass('alert-success').html('');
