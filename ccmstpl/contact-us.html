@@ -241,184 +241,184 @@
 
 								loadFirst("{CCMS_LIB:site.php;FUNC:load_resource("MODERNIZER")}",function(){
 
-									loadFirst("{CCMS_LIB:site.php;FUNC:js_01}",function(){
+									loadFirst("https://maps.googleapis.com/maps/api/js?key={CCMS_LIB:_default.php;FUNC:ccms_googleCredKey}&language={CCMS_LIB:_default.php;FUNC:ccms_lng}",function(){
 
-										loadFirst("https://maps.googleapis.com/maps/api/js?key={CCMS_LIB:_default.php;FUNC:ccms_googleCredKey}&language={CCMS_LIB:_default.php;FUNC:ccms_lng}",function(){
+										loadFirst("//www.google.com/recaptcha/api.js?hl={CCMS_LIB:_default.php;FUNC:ccms_lng}", function(){ /* Google reCaptcha loaded */
 
-											loadFirst("//www.google.com/recaptcha/api.js?hl={CCMS_LIB:_default.php;FUNC:ccms_lng}", function(){ /* Google reCaptcha loaded */
+											loadFirst("{CCMS_LIB:site.php;FUNC:js_01}",function(){
 
-											var center = {lat: 33.7502339, lng: -117.8263036};
-											var icondds = {lat: 33.7484893, lng: -117.8271579};
-											var map = new google.maps.Map(document.getElementById('map'), {
-												zoom:16,
-												center:center,
-												disableDefaultUI:false,
-												/*gestureHandling:'cooperative',*/
-												scrollwheel:false,
-												mapTypeControl:false,
-												fullscreenControl:false
-											});
+												var center = {lat: 33.7502339, lng: -117.8263036};
+												var icondds = {lat: 33.7484893, lng: -117.8271579};
+												var map = new google.maps.Map(document.getElementById('map'), {
+													zoom:16,
+													center:center,
+													disableDefaultUI:false,
+													/*gestureHandling:'cooperative',*/
+													scrollwheel:false,
+													mapTypeControl:false,
+													fullscreenControl:false
+												});
 
-											var contentString = '<div id="content">'+
-												'<h2>Iconic DDS</h2>'+
-												'<h4>(Dr. Sheldon Lu)</h4>'+
-												'<p dir="{CCMS_DB_DIR:contact-us,gen-family}">{CCMS_DB:contact-us,gen-family}</p>'+
-												'<p>17501 Irvine Blvd Ste 101<br>Tustin, CA 92780</p>'+
-												'<p><a dir="{CCMS_DB_DIR:contact-us,view-large}" href="https://goo.gl/maps/Mb8dJQxC7K42" target="_blank">{CCMS_DB:contact-us,view-large}</a></p>'+
-												'</div>';
-											infowindow = new google.maps.InfoWindow({content:contentString});
-											var marker = new google.maps.Marker({
-												position:icondds,
-												map:map,
-												title:'Iconic Doctors of Denial Surgery'
-											});
+												var contentString = '<div id="content">'+
+													'<h2>Iconic DDS</h2>'+
+													'<h4>(Dr. Sheldon Lu)</h4>'+
+													'<p dir="{CCMS_DB_DIR:contact-us,gen-family}">{CCMS_DB:contact-us,gen-family}</p>'+
+													'<p>17501 Irvine Blvd Ste 101<br>Tustin, CA 92780</p>'+
+													'<p><a dir="{CCMS_DB_DIR:contact-us,view-large}" href="https://goo.gl/maps/Mb8dJQxC7K42" target="_blank">{CCMS_DB:contact-us,view-large}</a></p>'+
+													'</div>';
+												infowindow = new google.maps.InfoWindow({content:contentString});
+												var marker = new google.maps.Marker({
+													position:icondds,
+													map:map,
+													title:'Iconic Doctors of Denial Surgery'
+												});
 
-											marker.addListener('click', function() {infowindow.open(map, marker);});
-											google.maps.event.addListener(map, 'click', function() {infowindow.close();});
+												marker.addListener('click', function() {infowindow.open(map, marker);});
+												google.maps.event.addListener(map, 'click', function() {infowindow.close();});
 
-											infowindow.open(map, marker);
-										/*});
+												infowindow.open(map, marker);
+											/*});
 
-										loadFirst("//www.google.com/recaptcha/api.js?hl={CCMS_LIB:_default.php;FUNC:ccms_lng}", function(){ *//* Google reCaptcha loaded */
+											loadFirst("//www.google.com/recaptcha/api.js?hl={CCMS_LIB:_default.php;FUNC:ccms_lng}", function(){ *//* Google reCaptcha loaded */
 
-											$.validator.addMethod(
-												"badCharRegex",
-												function(value,element,regexp){
-													var re=new RegExp(regexp);
-													return this.optional(element)||re.test(value);
-												},
-												"Please check your input."
-											);
-
-											$("#cuForm").validate({
-												rules:{
-													cuName:{
-														required:true,
-														minlength:2,
-														maxlength:32,
-														badCharRegex:/^[^\<\>&#]+$/i
+												$.validator.addMethod(
+													"badCharRegex",
+													function(value,element,regexp){
+														var re=new RegExp(regexp);
+														return this.optional(element)||re.test(value);
 													},
-													cuEmail:{
-														required:true,
-														email:true,
-														maxlength:256
-													},
-													cuMessage:{
-														required:true,
-														maxlength:512,
-														badCharRegex:/^[^\<\>&#]+$/i
-													}
-												},
-												messages:{
-													cuName:{
-														required:"{CCMS_DB:all,name-error-req}",
-														minlength:"{CCMS_DB:all,name-error-minMax}",
-														maxlength:"{CCMS_DB:all,name-error-minMax}",
-														badCharRegex:"{CCMS_DB:all,name-error-badChar}"
-													},
-													cuEmail: {
-														required:"{CCMS_DB:all,email-error-req}",
-														maxlength:"{CCMS_DB:all,email-error-max}"
-													},
-													cuMessage:{
-														required:"{CCMS_DB:all,message-error-req}",
-														maxlength:"{CCMS_DB:all,message-error-max}",
-														badCharRegex:"{CCMS_DB:all,name-error-badChar}"
-													}
-												},
-												errorPlacement:function($error,$element){
-													var name=$element.attr("name");
-													$("#"+name+"-error").append($error);
-												},
-												submitHandler:function(form){
-													var request;
-													/* Abort any pending request. */
-													if(request) request.abort();
+													"Please check your input."
+												);
 
-													var response = grecaptcha.getResponse();
-													if(response.length == 0){
-														/* recaptcha failed validation */
-														/*$('#grecaptcha-error').show();*/
-														$('#grecaptcha-error').slideDown();
-														$('#grecaptcha-error').html("{CCMS_DB:all,grecaptcha-error}");
-														return false;
-													} else {
-														/* recaptcha passed validation */
-														/*$('#grecaptcha-error').hide();*/
-														$('#grecaptcha-error').slideUp();
-														return true;
-													}
-
-													var $inputs = $(form).find("input, select, textarea, button");
-													var serializedData = $(form).serialize();
-													/* Disable the inputs for the duration of the ajax request. */
-													$inputs.prop("disabled", true);
-
-													request = $.ajax({
-														beforeSend:function(XMLHttpRequest){
-															$('#cuForm .has-error').removeClass('has-error');
-															$('#cuForm .help-block').html('').hide();
-															$('#cuAlertMessage').removeClass('alert-success').html('');
+												$("#cuForm").validate({
+													rules:{
+														cuName:{
+															required:true,
+															minlength:2,
+															maxlength:32,
+															badCharRegex:/^[^\<\>&#]+$/i
 														},
-														cache: false,
-														data: serializedData,
-														dataType: 'json',
-														type: "post",
-														url: "/{CCMS_LIB:_default.php;FUNC:ccms_lng}/contact-us-ajax.html"
-													});
-													/* Called on success. */
-													request.done(function(json, textStatus) {
-														if(json.error) {
-															/* Error messages */
-															if(json.error.cuName) {
-																$('#cuName').parent().addClass('has-error');
-																$('#cuName-error').html(json.error.cuName).slideDown();
-															}
-															if(json.error.cuEmail) {
-																$('#cuEmail').parent().addClass('has-error');
-																$('#cuEmail-error').html(json.error.cuEmail).slideDown();
-															}
-															if(json.error.cuMessage) {
-																$('#cuMessage').parent().addClass('has-error');
-																$('#cuMessage-error').html(json.error.cuMessage).slideDown();
-															}
-															if(json.error.grecaptcha) {
-																$('#grecaptcha-error').html(json.error.grecaptcha).slideDown();
-															}
-															$inputs.prop("disabled", false);
+														cuEmail:{
+															required:true,
+															email:true,
+															maxlength:256
+														},
+														cuMessage:{
+															required:true,
+															maxlength:512,
+															badCharRegex:/^[^\<\>&#]+$/i
 														}
-														/* Refresh Captcha */
-														grecaptcha.reset();
-														if(json.success) {
-															$('#cuAlertMessage').addClass('alert-success').html(json.success).slideDown();
-															setTimeout(function() {
-																$('#cuAlertMessage').slideUp("fast", function() {
-																	$(this).removeClass('alert-success').html('');
-																});
-															},4000);
-															$('#cuForm').find('.form-control').val('');
+													},
+													messages:{
+														cuName:{
+															required:"{CCMS_DB:all,name-error-req}",
+															minlength:"{CCMS_DB:all,name-error-minMax}",
+															maxlength:"{CCMS_DB:all,name-error-minMax}",
+															badCharRegex:"{CCMS_DB:all,name-error-badChar}"
+														},
+														cuEmail: {
+															required:"{CCMS_DB:all,email-error-req}",
+															maxlength:"{CCMS_DB:all,email-error-max}"
+														},
+														cuMessage:{
+															required:"{CCMS_DB:all,message-error-req}",
+															maxlength:"{CCMS_DB:all,message-error-max}",
+															badCharRegex:"{CCMS_DB:all,name-error-badChar}"
+														}
+													},
+													errorPlacement:function($error,$element){
+														var name=$element.attr("name");
+														$("#"+name+"-error").append($error);
+													},
+													submitHandler:function(form){
+														var request;
+														/* Abort any pending request. */
+														if(request) request.abort();
+
+														var response = grecaptcha.getResponse();
+														if(response.length == 0){
+															/* recaptcha failed validation */
+															/*$('#grecaptcha-error').show();*/
+															$('#grecaptcha-error').slideDown();
+															$('#grecaptcha-error').html("{CCMS_DB:all,grecaptcha-error}");
+															return false;
+														} else {
+															/* recaptcha passed validation */
+															/*$('#grecaptcha-error').hide();*/
+															$('#grecaptcha-error').slideUp();
+															return true;
+														}
+
+														var $inputs = $(form).find("input, select, textarea, button");
+														var serializedData = $(form).serialize();
+														/* Disable the inputs for the duration of the ajax request. */
+														$inputs.prop("disabled", true);
+
+														request = $.ajax({
+															beforeSend:function(XMLHttpRequest){
+																$('#cuForm .has-error').removeClass('has-error');
+																$('#cuForm .help-block').html('').hide();
+																$('#cuAlertMessage').removeClass('alert-success').html('');
+															},
+															cache: false,
+															data: serializedData,
+															dataType: 'json',
+															type: "post",
+															url: "/{CCMS_LIB:_default.php;FUNC:ccms_lng}/contact-us-ajax.html"
+														});
+														/* Called on success. */
+														request.done(function(json, textStatus) {
+															if(json.error) {
+																/* Error messages */
+																if(json.error.cuName) {
+																	$('#cuName').parent().addClass('has-error');
+																	$('#cuName-error').html(json.error.cuName).slideDown();
+																}
+																if(json.error.cuEmail) {
+																	$('#cuEmail').parent().addClass('has-error');
+																	$('#cuEmail-error').html(json.error.cuEmail).slideDown();
+																}
+																if(json.error.cuMessage) {
+																	$('#cuMessage').parent().addClass('has-error');
+																	$('#cuMessage-error').html(json.error.cuMessage).slideDown();
+																}
+																if(json.error.grecaptcha) {
+																	$('#grecaptcha-error').html(json.error.grecaptcha).slideDown();
+																}
+																$inputs.prop("disabled", false);
+															}
+															/* Refresh Captcha */
+															grecaptcha.reset();
+															if(json.success) {
+																$('#cuAlertMessage').addClass('alert-success').html(json.success).slideDown();
+																setTimeout(function() {
+																	$('#cuAlertMessage').slideUp("fast", function() {
+																		$(this).removeClass('alert-success').html('');
+																	});
+																},4000);
+																$('#cuForm').find('.form-control').val('');
+																/* reenable the inputs */
+																setTimeout(function() {
+																	$inputs.prop("disabled", false);
+																}, 2000);
+															}
+														});
+														/* Called on failure. */
+														request.fail(function (jqXHR, textStatus, errorThrown){
+															/* log the error to the console */
+															$("#cuForm").html("The following error occurred: " + textStatus, errorThrown);
+														});
+														/* Called if the request failed or succeeded. */
+														request.always(function () {
 															/* reenable the inputs */
 															setTimeout(function() {
 																$inputs.prop("disabled", false);
 															}, 2000);
-														}
-													});
-													/* Called on failure. */
-													request.fail(function (jqXHR, textStatus, errorThrown){
-														/* log the error to the console */
-														$("#cuForm").html("The following error occurred: " + textStatus, errorThrown);
-													});
-													/* Called if the request failed or succeeded. */
-													request.always(function () {
-														/* reenable the inputs */
-														setTimeout(function() {
-															$inputs.prop("disabled", false);
-														}, 2000);
-													});
-													/* Prevent default posting of form. */
-													return false;
-												}
-											});
+														});
+														/* Prevent default posting of form. */
+														return false;
+													}
+												});
 											});
 
 											/*window.performance.mark("mark_end_javascript");
