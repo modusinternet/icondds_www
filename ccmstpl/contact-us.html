@@ -213,7 +213,7 @@
 {CCMS_TPL:footer.html}
 		</main>
 {CCMS_TPL:header-body.html}
-<!-- {  CCMS_TPL:msg-popup.html} -->
+{CCMS_TPL:msg-popup.html}
 {CCMS_TPL:a2hs-box.html}
 		<script>
 			/*window.performance.mark("mark_beginning_javascript");*/
@@ -243,6 +243,7 @@
 
 									loadFirst("{CCMS_LIB:site.php;FUNC:js_01}",function(){
 
+										/*
 										loadFirst("https://maps.googleapis.com/maps/api/js?key={CCMS_LIB:_default.php;FUNC:ccms_googleCredKey}&language={CCMS_LIB:_default.php;FUNC:ccms_lng}",function(){
 
 											var center = {lat: 33.7502339, lng: -117.8263036};
@@ -251,7 +252,7 @@
 												zoom:16,
 												center:center,
 												disableDefaultUI:false,
-												/*gestureHandling:'cooperative',*/
+												//gestureHandling:'cooperative',
 												scrollwheel:false,
 												mapTypeControl:false,
 												fullscreenControl:false
@@ -276,6 +277,7 @@
 
 											infowindow.open(map, marker);
 										});
+										*/
 
 										loadFirst("//www.google.com/recaptcha/api.js?hl={CCMS_LIB:_default.php;FUNC:ccms_lng}", function(){
 											/* Google reCaptcha loaded */
