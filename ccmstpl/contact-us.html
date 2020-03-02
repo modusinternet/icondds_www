@@ -334,7 +334,6 @@
 														var request;
 														/* Abort any pending request. */
 														if(request) request.abort();
-
 														var response = grecaptcha.getResponse();
 														if(response.length == 0){
 															/* recaptcha failed validation */
@@ -346,20 +345,14 @@
 															/* recaptcha passed validation */
 															/*$('#grecaptcha-error').hide();*/
 															$('#grecaptcha-error').slideUp();
-															//return true;
+															/*return true;*/
 														}
-
-alert("1");
-
 														var $inputs = $(form).find("input, select, textarea, button");
 														var serializedData = $(form).serialize();
 														/* Disable the inputs for the duration of the ajax request. */
 														$inputs.prop("disabled", true);
-
-alert("2");
-
 														request = $.ajax({
-															beforeSend: function (XMLHttpRequest){
+															beforeSend:function(XMLHttpRequest){
 																$('#cuForm .has-error').removeClass('has-error');
 																$('#cuForm .help-block').html('').hide();
 																$('#cuAlertMessage').removeClass('alert-success').html('');
