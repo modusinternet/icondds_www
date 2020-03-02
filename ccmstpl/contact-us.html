@@ -245,6 +245,8 @@
 
 										loadFirst("https://maps.googleapis.com/maps/api/js?key={CCMS_LIB:_default.php;FUNC:ccms_googleCredKey}&language={CCMS_LIB:_default.php;FUNC:ccms_lng}",function(){
 
+											loadFirst("//www.google.com/recaptcha/api.js?hl={CCMS_LIB:_default.php;FUNC:ccms_lng}", function(){ /* Google reCaptcha loaded */
+
 											var center = {lat: 33.7502339, lng: -117.8263036};
 											var icondds = {lat: 33.7484893, lng: -117.8271579};
 											var map = new google.maps.Map(document.getElementById('map'), {
@@ -275,9 +277,9 @@
 											google.maps.event.addListener(map, 'click', function() {infowindow.close();});
 
 											infowindow.open(map, marker);
-										});
+										/*});
 
-										loadFirst("//www.google.com/recaptcha/api.js?hl={CCMS_LIB:_default.php;FUNC:ccms_lng}", function(){ /* Google reCaptcha loaded */
+										loadFirst("//www.google.com/recaptcha/api.js?hl={CCMS_LIB:_default.php;FUNC:ccms_lng}", function(){ *//* Google reCaptcha loaded */
 
 											$.validator.addMethod(
 												"badCharRegex",
@@ -416,6 +418,7 @@
 													/* Prevent default posting of form. */
 													return false;
 												}
+											});
 											});
 
 											/*window.performance.mark("mark_end_javascript");
