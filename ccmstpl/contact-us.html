@@ -346,15 +346,17 @@
 															/* recaptcha passed validation */
 															/*$('#grecaptcha-error').hide();*/
 															$('#grecaptcha-error').slideUp();
-															return true;
+															//return true;
 														}
+
+alert("1");
 
 														var $inputs = $(form).find("input, select, textarea, button");
 														var serializedData = $(form).serialize();
 														/* Disable the inputs for the duration of the ajax request. */
 														$inputs.prop("disabled", true);
 
-alert("1");
+alert("2");
 
 														request = $.ajax({
 															beforeSend: function (XMLHttpRequest){
