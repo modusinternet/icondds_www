@@ -280,53 +280,62 @@
 										loadFirst("//www.google.com/recaptcha/api.js?hl={CCMS_LIB:_default.php;FUNC:ccms_lng}", function(){
 											/* Google reCaptcha loaded */
 
+											$.validator.addMethod(
+												"badCharRegex",
+												function(value,element,regexp){
+													var re=new RegExp(regexp);
+													return this.optional(element)||re.test(value);
+												},
+												"Please check your input."
+											);
+
 											$("#cuForm").validate({
-												rules: {
-													cuName: {
-														required: true,
-														minlength: 2,
-														maxlength: 32,
-														badCharRegex: /^[^\<\>&#]+$/i
+												rules:{
+													cuName:{
+														required:true,
+														minlength:2,
+														maxlength:32,
+														badCharRegex:/^[^\<\>&#]+$/i
 													},
-													cuEmail: {
-														required: true,
-														email: true,
-														maxlength: 256
+													cuEmail:{
+														required:true,
+														email:true,
+														maxlength:256
 													},
-													cuMessage: {
-														required: true,
-														maxlength: 512,
-														badCharRegex: /^[^\<\>&#]+$/i
+													cuMessage:{
+														required:true,
+														maxlength:512,
+														badCharRegex:/^[^\<\>&#]+$/i
 													}
 												},
-												messages: {
-													cuName: {
-														required: "{CCMS_DB:all,name-error-req}",
-														minlength: "{CCMS_DB:all,name-error-minMax}",
-														maxlength: "{CCMS_DB:all,name-error-minMax}",
-														badCharRegex: "{CCMS_DB:all,name-error-badChar}"
+												messages:{
+													cuName:{
+														required:"{CCMS_DB:all,name-error-req}",
+														minlength:"{CCMS_DB:all,name-error-minMax}",
+														maxlength:"{CCMS_DB:all,name-error-minMax}",
+														badCharRegex:"{CCMS_DB:all,name-error-badChar}"
 													},
 													cuEmail: {
-														required: "{CCMS_DB:all,email-error-req}",
-														maxlength: "{CCMS_DB:all,email-error-max}"
+														required:"{CCMS_DB:all,email-error-req}",
+														maxlength:"{CCMS_DB:all,email-error-max}"
 													},
-													cuMessage: {
-														required: "{CCMS_DB:all,message-error-req}",
-														maxlength: "{CCMS_DB:all,message-error-max}",
-														badCharRegex: "{CCMS_DB:all,name-error-badChar}"
+													cuMessage:{
+														required:"{CCMS_DB:all,message-error-req}",
+														maxlength:"{CCMS_DB:all,message-error-max}",
+														badCharRegex:"{CCMS_DB:all,name-error-badChar}"
 													}
 												},
-												errorPlacement: function ($error, $element) {
-													var name = $element.attr("name");
-													$("#" + name + "-error").append($error);
+												errorPlacement:function($error,$element){
+													var name=$element.attr("name");
+													$("#"+name+"-error").append($error);
 												},
-												submitHandler: function(form) {
+												submitHandler:function(form){
 													var request;
 													/* Abort any pending request. */
-													if (request) request.abort();
+													if(request) request.abort();
 
 													var response = grecaptcha.getResponse();
-													if(response.length == 0) {
+													if(response.length == 0){
 														/* recaptcha failed validation */
 														/*$('#grecaptcha-error').show();*/
 														$('#grecaptcha-error').slideDown();
@@ -345,7 +354,7 @@
 													$inputs.prop("disabled", true);
 
 													request = $.ajax({
-														beforeSend: function (XMLHttpRequest) {
+														beforeSend:function(XMLHttpRequest){
 															$('#cuForm .has-error').removeClass('has-error');
 															$('#cuForm .help-block').html('').hide();
 															$('#cuAlertMessage').removeClass('alert-success').html('');
