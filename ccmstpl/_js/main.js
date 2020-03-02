@@ -219,6 +219,9 @@ msgContainer.addEventListener('click',function(e){
 document.addEventListener("click", function(a) {
 	msgContainer === a.target || svgButton === a.target || msgContainer.contains(a.target) || (svgButton.classList.remove("hide"), msgContainer.classList.add("hide"))
 });
+/*
+
+
 $.validator.addMethod(
 	"badCharRegex",
 	function(value,element,regexp){
@@ -269,11 +272,9 @@ $("#msgForm").validate({
 	},
 	submitHandler:function(form){
 		var request;
-		/* Abort any pending request. */
 		if(request) request.abort();
 		var $inputs=$(form).find("input,select,textarea,button");
 		var serializedData=$(form).serialize();
-		/* Disable the inputs for the duration of the ajax request. */
 		$inputs.prop("disabled",true);
 		request=$.ajax({
 			beforeSend:function(XMLHttpRequest){
@@ -287,10 +288,8 @@ $("#msgForm").validate({
 			type:"post",
 			url:"/{CCMS_LIB:_default.php;FUNC:ccms_lng}/msgForm-ajax.html"
 		});
-		/* Called on success. */
 		request.done(function(json,textStatus) {
 			if(json.error){
-				/* Error messages */
 				if(json.error.msgName){
 					$('#msgName').parent().addClass('has-error');
 					$('#error-msgName').html(json.error.msgName).slideDown();
@@ -313,28 +312,23 @@ $("#msgForm").validate({
 					});
 				},5000);
 				$('#msgForm').find('.form-control').val('');
-				/* reenable the inputs */
 				setTimeout(function(){
 					$inputs.prop("disabled",false);
 				},2000);
 			}
 		});
-		/* Called on failure. */
 		request.fail(function(jqXHR,textStatus,errorThrown){
-			/* log the error to the console */
 			$("#msgForm").html("The following error occurred: "+textStatus,errorThrown);
 		});
-		/* Called if the request failed or succeeded. */
 		request.always(function(){
-			/* reenable the inputs */
 			setTimeout(function(){
 				$inputs.prop("disabled",false);
 			},5000);
 		});
-		/* Prevent default posting of form. */
 		return false;
 	}
 });
+*/
 /* ---------- */
 /* MSG Popup Email Form End */
 /* ---------- */
