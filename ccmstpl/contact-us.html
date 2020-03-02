@@ -64,7 +64,7 @@
 				padding:unset
 			}
 
-			#cuForm .alert-success{
+			#cuAlertMessage .alert-success{
 				background:var(--green);
 				color:white;
 				display:block;
@@ -213,7 +213,7 @@
 {CCMS_TPL:footer.html}
 		</main>
 {CCMS_TPL:header-body.html}
-<!-- {  CCMS_TPL:msg-popup.html} -->
+{CCMS_TPL:msg-popup.html}
 {CCMS_TPL:a2hs-box.html}
 		<script>
 			/*window.performance.mark("mark_beginning_javascript");*/
@@ -258,7 +258,6 @@
 													mapTypeControl:false,
 													fullscreenControl:false
 												});
-
 												var contentString = '<div id="content">'+
 													'<h2>Iconic DDS</h2>'+
 													'<h4>(Dr. Sheldon Lu)</h4>'+
@@ -272,14 +271,10 @@
 													map:map,
 													title:'Iconic Doctors of Denial Surgery'
 												});
-
 												marker.addListener('click', function() {infowindow.open(map, marker);});
 												google.maps.event.addListener(map, 'click', function() {infowindow.close();});
-
 												infowindow.open(map, marker);
-											/*});
 
-											loadFirst("//www.google.com/recaptcha/api.js?hl={CCMS_LIB:_default.php;FUNC:ccms_lng}", function(){ *//* Google reCaptcha loaded */
 
 												$.validator.addMethod(
 													"badCharRegex",
@@ -392,7 +387,7 @@
 																	$('#cuAlertMessage').slideUp("fast", function() {
 																		$(this).removeClass('alert-success').html('');
 																	});
-																},4000);
+																},5000);
 																$('#cuForm').find('.form-control').val('');
 																/* reenable the inputs */
 																setTimeout(function() {
