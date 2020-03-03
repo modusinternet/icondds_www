@@ -39,7 +39,6 @@ sup{
 	width:150px
 }
 
-/*
 .bcGrid>.c1{grid-area:c1}
 .bcGrid>.c2{grid-area:c2}
 .bcGrid>.c3{grid-area:c3}
@@ -52,7 +51,6 @@ sup{
 		"c3";
 	padding:10px
 }
-*/
 
 .cssgrid.c1{grid-area:c1}
 .cssgrid.c2{grid-area:c2}
@@ -1165,13 +1163,11 @@ input[type="search"]::-webkit-search-results-decoration{display:none}
 	/*==========
 	BEGINNING of tags found in the MAIN tag
 	==========*/
-	/*
 	.bcGrid{
 		grid-template-columns:40% auto 40%;
 		grid-template-areas:
 			"c1 c2 c3"
 	}
-	*/
 
 	.cssgrid{
 		/*grid-template-columns:50% 50%;*/
