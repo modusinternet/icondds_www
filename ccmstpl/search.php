@@ -111,7 +111,7 @@ header("Cache-Control: public, must-revalidate, proxy-revalidate");
 					<h1 class="c1" dir="{CCMS_DB_DIR:all,search}">{CCMS_DB:all,search}</h1>
 					<i class="c2"></i>
 					<h4 class="c3" style="margin:8px 0 0">
-						<a dir="{CCMS_DB_DIR:all,homepage}" href="/{CCMS_LIB:_default.php;FUNC:ccms_lng}/">{CCMS_DB:all,homepage}</a> <span style="color:#888888">/</span> <span dir="{CCMS_DB_DIR:all,search}" style="color:var(--green)">{CCMS_DB:all,search}</span>
+						<a dir="{CCMS_DB_DIR:all,homepage}" href="/{CCMS_LIB:_default.php;FUNC:ccms_lng}/">{CCMS_DB:all,homepage}</a> <span style="color:#888888">/</span> <span dir="{CCMS_DB_DIR:all,search}" style="color:var(--cl2)">{CCMS_DB:all,search}</span>
 					</h4>
 				</div>
 			</div>
