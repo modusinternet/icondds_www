@@ -71,16 +71,16 @@
 				overflow:hidden
 			}
 
-			.c2>p{margin-top:10px}
+			.c2>div{}
 
 			/* 768px or larger. */
 			@media only screen and (min-width:768px){
 				.teamGrid{
-					/*grid-template-columns:50% 50%;*/
-					grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+					/*grid-template-columns:repeat(auto-fit,minmax(200px,1fr));*/
 					/* repeat = as many times as you can fit */
 					/* auto-fit = fit as many items on the line as possible, go bigger if you need to */
 					/* minmax = (min size, max size) = the minimum size the column should be is 200px, but if there's space then give them all 1fr of that width. */
+					grid-template-columns:80% 20%;
 					grid-template-areas:
 						"c1 c2"
 				}
@@ -169,22 +169,32 @@
 						</div>
 					</div>
 					<div class="c2">
-						<p style="">Office Manager</p>
-						Nancy
-						<p style="">Front Office</p>
-						Christin
-						Terry
-						Karla
-						<p style="">Back Office</p>
-						Liz
-						Saba
-						Vinh
-						Chelsea
-						<p style="">Lab Consultant</p>
-						Rick
-						Rose
-						<p style="">Tech Support</p>
-						Chuck
+						<div>
+							<span style="">Office Manager</span>
+							Nancy
+						</div>
+						<div>
+							<span style="">Front Office</p>
+							Christin
+							Terry
+							Karla
+						</div>
+						<div>
+							<span style="">Back Office</p>
+							Liz
+							Saba
+							Vinh
+							Chelsea
+						</div>
+						<div>
+							<span style="">Lab Consultant</p>
+							Rick
+							Rose
+						</div>
+						<div>
+							<span style="">Tech Support</p>
+							Chuck
+						</div>
 					</div>
 				</div>
 			</div>
