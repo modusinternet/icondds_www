@@ -239,6 +239,7 @@ AddOutputFilterByType DEFLATE application/x-javascript
 	ExpiresByType video/x-msvideo "access plus 1 month"
 	ExpiresByType video/mpeg "access plus 1 month"
 	ExpiresByType video/mp4 "access plus 1 month"
+	ExpiresByType video/webm "access plus 1 month"
 	ExpiresByType video/quicktime "access plus 1 month"
 	ExpiresByType video/x-la-asf "access plus 1 month"
 	ExpiresByType video/x-ms-asf "access plus 1 month"
