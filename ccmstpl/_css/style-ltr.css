@@ -718,7 +718,7 @@ input[type="search"]::-webkit-search-results-decoration{display:none}
 	position:fixed;
 	top:0;
 	right:0;
-	/*height:200%;*/
+	height:200%;
 	width:260px;
 	background:var(--cl2);
 	/*background:rgb(78,78,78);*/
