@@ -237,6 +237,8 @@ cssgrid-events.ev3{grid-area:ev3}
 .svg-nav-icon path{fill:var(--cl0)}
 
 .toggle-scroll-dropshadow{filter:drop-shadow(0px 0px 4px rgba(0,0,0,.6))}
+
+.underl{text-decoration:underline}
 /*==========
 END of tags found in the MAIN tag
 ==========*/
