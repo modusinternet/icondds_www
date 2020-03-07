@@ -214,6 +214,7 @@ AddOutputFilterByType DEFLATE application/x-javascript
 	ExpiresByType image/svg+xml "access plus 1 month"
 	ExpiresByType image/tiff "access plus 1 month"
 	ExpiresByType image/vnd.microsoft.icon "access plus 1 month"
+	ExpiresByType image/webp "access plus 1 month"
 	ExpiresByType image/x-icon "access plus 1 month"
 	ExpiresByType image/ico "access plus 1 month"
 	ExpiresByType image/icon "access plus 1 month"
