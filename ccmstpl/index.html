@@ -46,6 +46,30 @@
 		<style>
 			{CCMS_TPL:/_css/header.html}
 
+			.carousel-01{
+				height:500px;
+				background-position:center;
+				background-repeat:no-repeat;
+				background-size:cover;
+				overflow:hidden;
+			}
+
+			.webp .carousel-01{
+				background-image:linear-gradient(to left,
+					rgba(255,255,255,0)40%,
+					rgba(255,255,255,.7)60%),
+					url("/ccmstpl/_img/index-carousel-01.webp");
+			}
+
+			.no-webp .carousel-01{
+				background-image:linear-gradient(to left,
+					rgba(255,255,255,0)40%,
+					rgba(255,255,255,.7)60%),
+					url("/ccmstpl/_img/index-carousel-01-min.jpg");
+			}
+
+
+
 
 
 			.owl-carousel{
@@ -255,7 +279,7 @@
 		<div id="loading_svg"></div>
 		<main class="cd-main-content">
 			<div class="owl-carousel" id="carousel">
-				<div class="item" style="background-image:linear-gradient(to left,rgba(255,255,255,0)40%,rgba(255,255,255,.7)60%),url(/ccmstpl/_img/index-carousel-01-min.jpg);background-position:center;background-size:cover;height:500px;overflow:hidden;background-repeat:no-repeat">
+				<div class="item carousel-01">
 					<div class="owlDivContainer">
 						<div class="owlDivContainerSmall">
 							<h1 style="text-align:unset;margin-left:40px" data-animation-in="fadeInUp">Quality</h1>
