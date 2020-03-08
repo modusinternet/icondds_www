@@ -1107,13 +1107,43 @@ input[type="search"]::-webkit-search-results-decoration{display:none}
 
 #headerTop{display:none}
 
+
+
+
+
+
+
+
 #logo1{
 	left:8px;
 	opacity:1;
 	position:absolute;
 	top:18px;
 	width:150px
+
+	height:500px;
+	background-position:center;
+	background-repeat:no-repeat;
+	background-size:cover;
+	overflow:hidden;
 }
+
+.webp #logo1{
+	background-image:url("/ccmstpl/_img/logo1.3.webp");
+}
+
+.no-webp #logo1{
+	background-image:url("/ccmstpl/_img/logo1.3.png");
+}
+
+
+
+
+
+
+
+
+
 
 #logo2{
 	left:10px;
