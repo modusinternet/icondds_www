@@ -160,12 +160,31 @@ cssgrid-events.ev3{grid-area:ev3}
 .footerBG{
 	/*background-image:url("//d3rifeizl63fms.cloudfront.net/ccmstpl/_img/footerBg.png");*/
 	/*background-image:url("//d22d9mrn42f6vf.cloudfront.net/ccmstpl/_img/bgfooter.png");*/
-	background-image:url("/ccmstpl/_img/footerBG.png");
+	/*background-image:url("/ccmstpl/_img/footerBG.png");*/
 	background-position:center bottom;
 	background-repeat:no-repeat;
 	padding:240px 0 0;
 	max-width:unset
+
+	/*
+	height:500px;
+	background-position:center;
+	background-repeat:no-repeat;
+	background-size:cover;
+	overflow:hidden;
+	*/
 }
+
+.webp .footerBG{
+	background-image:url("/ccmstpl/_img/footerBG.webp");
+}
+
+.no-webp .footerBG{
+	background-image:url("/ccmstpl/_img/footerBG.png");
+}
+
+
+
 
 .footerQuickSiteNav{
 	margin-left:25px;
