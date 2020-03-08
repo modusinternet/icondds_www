@@ -270,7 +270,7 @@ BEGINNING of Add to Home Screen (A2HS) Box
 
 #A2HS-box>div:nth-child(2){text-align:right}
 
-#A2HS-box>div>img{
+#A2HS-box>div img{
 	float:left;
 	margin-right:10px;
 	width:75px
