@@ -4,7 +4,7 @@ header('Expires: ' . gmdate('D, d M Y H:i:s \G\M\T', time() + ($CFG["CACHE_EXPIR
 ?>{
 	"short_name": "ICONIC",
 	"name": "ICONIC Dentistry",
-	"description": "Description goes here.",
+	"description": "At ICONIC Dentistry we serve patients with the goal of achieving better oral and systemic health.",
 	"icons": [
 		{
 			"src": "/ccmstpl/_img/ico/android-chrome-192x192.png",
