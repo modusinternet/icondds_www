@@ -44,8 +44,27 @@
 		</div>
 	</div>
 	<a href="/{CCMS_LIB:_default.php;FUNC:ccms_lng}/" title="{CCMS_DB:all,homepage}">
-		<img alt="{CCMS_DB:all,homepage}" class="logo" id="logo1" src="/ccmstpl/_img/logo1.3.png">
-		<img alt="{CCMS_DB:all,homepage}" class="logo" id="logo2" src="/ccmstpl/_img/logo2.png">
+		<!-- img alt="{CCMS_DB:all,homepage}" class="logo" id="logo1" src="/ccmstpl/_img/logo1.3.png">
+		<img alt="{CCMS_DB:all,homepage}" class="logo" id="logo2" src="/ccmstpl/_img/logo2.png" -->
+
+
+
+
+		<picture class="logo" id="logo1">
+			<source srcset="/ccmstpl/_img/logo1.3.webp">
+			<source srcset="/ccmstpl/_img/logo1.3.png">
+			<img src="/ccmstpl/_img/logo1.3.png">
+		</picture>
+
+
+		<picture class="logo" id="logo2">
+			<source srcset="/ccmstpl/_img/logo2.webp">
+			<source srcset="/ccmstpl/_img/logo2.png">
+			<img src="/ccmstpl/_img/logo2.png">
+		</picture>
+
+
+
 	</a>
 	<ul class="cd-header-buttons">
 		<li><a class="cd-search-trigger" dir="{CCMS_DB_DIR:all,search}" href="#cd-search">{CCMS_DB:all,search}<span></span></a></li>
@@ -123,7 +142,7 @@
 						<li><a class="dropdown-item" dir="ltr" href="/{CCMS_LIB:_default.php;FUNC:ccms_lng}/for-patients/faq.html" title="Frequently Asked Questions (FAQs)">Frequently Asked Questions (FAQs)</a></li>
 						<li><a class="dropdown-item" dir="ltr" href="/{CCMS_LIB:_default.php;FUNC:ccms_lng}/for-patients/forms.html" title="Forms">Downloadable Forms</a></li>
 
-						<li>more coming soon...</li>
+						<li><a href="#">more coming soon...</a></li>
 
 						<!-- li><a class="dropdown-item" dir="ltr" href="/{CCMS_LIB:_default.php;FUNC:ccms_lng}/for-patients/asdf7.html" title="asdf7">asdf7</a></li -->
 
