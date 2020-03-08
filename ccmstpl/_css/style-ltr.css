@@ -266,7 +266,8 @@ BEGINNING of Add to Home Screen (A2HS) Box
 #A2HS-box>div{
 	box-shadow:0 0 20px 3px rgba(0,0,0,.22);
 	background:#fff;
-	padding:1.286em;
+	/*padding:1.286em;*/
+	padding:20px;
 	position:relative;
 	margin:0 auto;
 	max-width:500px;
