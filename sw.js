@@ -2,7 +2,6 @@ const cacheName='v2020.03.08-02';
 
 var cacheFiles=[
 	'/ccmsusr/_css/animate.min.css',
-	'/en/_css/style-ltr.css',
 	'/ccmsusr/_js/jquery-3.4.1.min.js',
 	'/ccmstpl/_js/jquery.mobile.custom.min.js',
 	'/ccmsusr/_js/jquery-validate-1.19.0.min.js',
@@ -10,7 +9,8 @@ var cacheFiles=[
 	'/en/_js/main.js',
 	'/ccmstpl/_js/modernizr-3.6.0-custom-min.js',
 	'/ccmstpl/_css/owl.carousel-2.3.4.min.css',
-	'/ccmstpl/_js/owl.carousel.min.js'
+	'/ccmstpl/_js/owl.carousel.min.js',
+	'/en/_css/style-ltr.css'
 ]
 
 self.addEventListener('install',e=>{
