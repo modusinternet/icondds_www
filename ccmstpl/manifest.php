@@ -2,7 +2,7 @@
 header("Content-Type: application/json; charset=UTF-8");
 header('Expires: ' . gmdate('D, d M Y H:i:s \G\M\T', time() + ($CFG["CACHE_EXPIRE"] * 60)));
 ?>{
-	"short_name": "Modus",
+	"short_name": "ICONIC",
 	"name": "ICONIC Dentistry",
 	"description": "Description goes here.",
 	"icons": [
