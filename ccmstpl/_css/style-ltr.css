@@ -1119,7 +1119,7 @@ input[type="search"]::-webkit-search-results-decoration{display:none}
 	opacity:1;
 	position:absolute;
 	top:18px;
-	width:150px
+	width:150px;
 
 	height:500px;
 	background-position:center;
