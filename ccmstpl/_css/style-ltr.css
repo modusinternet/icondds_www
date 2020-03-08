@@ -478,6 +478,7 @@ input[type="search"]::-webkit-search-results-decoration{display:none}
 
 .cd-header-buttons li{display:inline-block}
 
+/*
 .cd-logo{
 	position:absolute;
 	top:12px;
@@ -485,6 +486,7 @@ input[type="search"]::-webkit-search-results-decoration{display:none}
 }
 
 .cd-logo img{display:block}
+*/
 
 .cd-main-content{
 	/*background:#e2e3df;*/
@@ -1048,10 +1050,12 @@ input[type="search"]::-webkit-search-results-decoration{display:none}
 
 .nav-is-fixed .cd-search{position:fixed}
 
+/*
 .nav-on-left .cd-logo{
 	left:auto;
 	right:5%
 }
+*/
 
 .nav-on-left .cd-header-buttons{
 	right:auto;
@@ -1275,10 +1279,12 @@ input[type="search"]::-webkit-search-results-decoration{display:none}
 
 	.cd-header-buttons.scrolled{top:20px}
 
+	/*
 	.cd-logo{
 		top:26px;
 		left:4em
 	}
+	*/
 
 	.cd-main-header{height:80px}
 
