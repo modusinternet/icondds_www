@@ -49,6 +49,14 @@ header("Cache-Control: public, must-revalidate, proxy-revalidate");
 		<style>
 			{CCMS_TPL:/_css/header.html}
 
+			.webp .search-01{
+				background-image:url("/ccmstpl/_img/search-01.webp");
+			}
+
+			.no-webp .search-01{
+				background-image:url("/ccmstpl/_img/search-01-min.jpg");
+			}
+
 			.gsc-adBlock{opacity:.3 !important}
 
 			.gsc-input {
@@ -105,7 +113,7 @@ header("Cache-Control: public, must-revalidate, proxy-revalidate");
 	<body>
 		<div id="loading_svg"></div>
 		<main class="cd-main-content">
-			<div class="parallax" style="background-image:url('/ccmstpl/_img/search-01-min.jpg')"></div>
+			<div class="parallax search-01"></div>
 			<div style="padding-bottom:15px">
 				<div class="bcGrid" dir="{CCMS_LIB:_default.php;FUNC:ccms_lng_dir}">
 					<h1 class="c1" dir="{CCMS_DB_DIR:all,search}">{CCMS_DB:all,search}</h1>
@@ -165,15 +173,15 @@ header("Cache-Control: public, must-revalidate, proxy-revalidate");
 			var h=document.getElementsByTagName("head")[0];h.parentNode.insertBefore(l,h);
 
 			function loadJSResources(){
-				loadFirst("{CCMS_LIB:site.php;FUNC:load_resource("JQUERY")}",function(){
+				loadFirst("{CCMS_LIB:site.php;FUNC:load_resource("MODERNIZER")}",function(){
 
-					loadFirst("{CCMS_LIB:site.php;FUNC:load_resource("JQUERY-MOBILE-CUST")}",function(){
+					loadFirst("{CCMS_LIB:site.php;FUNC:load_resource("JQUERY")}",function(){
 
-						loadFirst("{CCMS_LIB:site.php;FUNC:load_resource("JQUERY-VALIDATE")}",function(){
+						loadFirst("{CCMS_LIB:site.php;FUNC:load_resource("JQUERY-MOBILE-CUST")}",function(){
 
-							loadFirst("{CCMS_LIB:site.php;FUNC:load_resource("JQUERY-VALIDATE-ADDITIONAL-METHODS")}",function(){
+							loadFirst("{CCMS_LIB:site.php;FUNC:load_resource("JQUERY-VALIDATE")}",function(){
 
-								loadFirst("{CCMS_LIB:site.php;FUNC:load_resource("MODERNIZER")}",function(){
+								loadFirst("{CCMS_LIB:site.php;FUNC:load_resource("JQUERY-VALIDATE-ADDITIONAL-METHODS")}",function(){
 
 									loadFirst("{CCMS_LIB:site.php;FUNC:js_01}",function(){
 
