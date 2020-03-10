@@ -45,6 +45,38 @@
 		</script>
 		<style>
 			{CCMS_TPL:/_css/header.html}
+
+			.webp .services_esthetic-dentistry_01{
+				background-image:url("/ccmstpl/_img/services_esthetic-dentistry_01.webp");
+			}
+
+			.no-webp .services_esthetic-dentistry_01{
+				background-image:url("/ccmstpl/_img/services_esthetic-dentistry_01-min.jpg");
+			}
+
+			.webp .services_esthetic-dentistry_02{
+				background-image:url("/ccmstpl/_img/services_esthetic-dentistry_02.webp");
+			}
+
+			.no-webp .services_esthetic-dentistry_02{
+				background-image:url("/ccmstpl/_img/services_esthetic-dentistry_02-min.jpg");
+			}
+
+			.webp .services_esthetic-dentistry_03{
+				background-image:url("/ccmstpl/_img/services_esthetic-dentistry_03.webp");
+			}
+
+			.no-webp .services_esthetic-dentistry_03{
+				background-image:url("/ccmstpl/_img/services_esthetic-dentistry_03-min.jpg");
+			}
+
+			.webp .services_esthetic-dentistry_04{
+				background-image:url("/ccmstpl/_img/services_esthetic-dentistry_04.webp");
+			}
+
+			.no-webp .services_esthetic-dentistry_04{
+				background-image:url("/ccmstpl/_img/services_esthetic-dentistry_04-min.jpg");
+			}
 		</style>
 		<script>
 			var navActiveArray = ["nl-2","nl-2-2","nl-lng","lng-{CCMS_LIB:_default.php;FUNC:ccms_lng}"];
@@ -54,7 +86,7 @@
 	<body>
 		<div id="loading_svg"></div>
 		<main class="cd-main-content">
-			<div class="parallax" style="background-image:url('/ccmstpl/_img/esthetic-dentistry-01-min.jpg')"></div>
+			<div class="parallax services_esthetic-dentistry_01"></div>
 			<div style="padding-bottom:15px">
 				<div class="bcGrid" dir="{CCMS_LIB:_default.php;FUNC:ccms_lng_dir}">
 					<h1 class="c1">Esthetic Dentistry</h1>
@@ -70,7 +102,7 @@
 					<p>Dentistry has come a long way from its historic roots from many world civilizations—from the ancient Sumerians who left written description of dental decay, which they thought was caused by the “tooth worms”; to an Egyptian scribe thought to be the first dentist based on the inscription on his tomb; to the Greek philosopher Aristotle who, among many other things, had written about tooth eruption pattern, dental diseases and treatments; to the Chinese medical text from 700 AD that recorded the use of silver fillings. The forerunners of modern-day dentists and surgeons were the Medieval barbers of Western Europe—for a concise and interesting history of dentistry, check out the ADA website: <a href="https://www.ada.org/en/about-the-ada/ada-history-and-presidents-of-the-ada/ada-history-of-dentistry-timeline" target="_blank">www.ada.org</a></p>
 				</div>
 			</div>
-			<div class="parallax" style="background-image:url('/ccmstpl/_img/esthetic-dentistry-02-min.jpg')"></div>
+			<div class="parallax services_esthetic-dentistry_02"></div>
 			<div class="contentType1">
 				<div>
 					<p>Modern dentistry is so much more than how it used to be, what's hard to shake is the dreaded reputation of a "drill and fill" profession where doctors cause people pain. Today, nothing can be further from the truth—a well-trained dentist with a <a href="">minimally invasive</a> mindset can do wonders. Click <a href="">here</a> to learn about our "no-drill" method of <a href="">caries</a> removal using our laser systems.</p>
@@ -88,13 +120,13 @@
 					<p>In addition, the adoption of <a href="">ozone therapy</a> has allowed for more conservative management of compromised teeth--our doctors were able to save teeth with significant carious lesions from needing root canal procedures and even rescued teeth with severe <a href="">periodontal disease</a> from extractions.</p>
 				</div>
 			</div>
-			<div class="parallax" style="background-image:url('/ccmstpl/_img/esthetic-dentistry-03-min.jpg')"></div>
+			<div class="parallax services_esthetic-dentistry_03"></div>
 			<div class="contentType1">
 				<div>
 					<p>At ICONIC Dentistry our doctors believe that esthetic procedures should complement and not supersede the overall oral health needs of the patient—more foundational issues such as periodontal health must always be addressed first. This means that although any esthetic/cosmetic goal will be planned for from the very beginning of treatment, we still need to work our way up from the basics; and sometimes it may take a while before our doctors can get to the stage where they can actually work on the esthetic part. This is exemplified by the "dental treatment pyramid" below.</p>
 				</div>
 			</div>
-			<div class="parallax" style="background-image:url('/ccmstpl/_img/esthetic-dentistry-04-min.jpg')"></div>
+			<div class="parallax services_esthetic-dentistry_04"></div>
 			<div class="contentType1">
 				<div>
 					<p>When done appropriately, esthetic dentistry has the power to transform smiles and lives. Smile enhancement can have dramatic results on your overall appearance—even the smallest step can boost your confidence, self-esteem, and make you want to smile more.</p>
@@ -116,15 +148,15 @@
 			var h=document.getElementsByTagName("head")[0];h.parentNode.insertBefore(l,h);
 
 			function loadJSResources(){
-				loadFirst("{CCMS_LIB:site.php;FUNC:load_resource("JQUERY")}",function(){
+				loadFirst("{CCMS_LIB:site.php;FUNC:load_resource("MODERNIZER")}",function(){
 
-					loadFirst("{CCMS_LIB:site.php;FUNC:load_resource("JQUERY-MOBILE-CUST")}",function(){
+					loadFirst("{CCMS_LIB:site.php;FUNC:load_resource("JQUERY")}",function(){
 
-						loadFirst("{CCMS_LIB:site.php;FUNC:load_resource("JQUERY-VALIDATE")}",function(){
+						loadFirst("{CCMS_LIB:site.php;FUNC:load_resource("JQUERY-MOBILE-CUST")}",function(){
 
-							loadFirst("{CCMS_LIB:site.php;FUNC:load_resource("JQUERY-VALIDATE-ADDITIONAL-METHODS")}",function(){
+							loadFirst("{CCMS_LIB:site.php;FUNC:load_resource("JQUERY-VALIDATE")}",function(){
 
-								loadFirst("{CCMS_LIB:site.php;FUNC:load_resource("MODERNIZER")}",function(){
+								loadFirst("{CCMS_LIB:site.php;FUNC:load_resource("JQUERY-VALIDATE-ADDITIONAL-METHODS")}",function(){
 
 									loadFirst("{CCMS_LIB:site.php;FUNC:js_01}",function(){
 

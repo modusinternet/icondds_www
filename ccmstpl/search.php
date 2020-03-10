@@ -49,12 +49,12 @@ header("Cache-Control: public, must-revalidate, proxy-revalidate");
 		<style>
 			{CCMS_TPL:/_css/header.html}
 
-			.webp .search-01{
-				background-image:url("/ccmstpl/_img/search-01.webp");
+			.webp .search_01{
+				background-image:url("/ccmstpl/_img/search_01.webp");
 			}
 
-			.no-webp .search-01{
-				background-image:url("/ccmstpl/_img/search-01-min.jpg");
+			.no-webp .search_01{
+				background-image:url("/ccmstpl/_img/search_01-min.jpg");
 			}
 
 			.gsc-adBlock{opacity:.3 !important}
@@ -113,7 +113,7 @@ header("Cache-Control: public, must-revalidate, proxy-revalidate");
 	<body>
 		<div id="loading_svg"></div>
 		<main class="cd-main-content">
-			<div class="parallax search-01"></div>
+			<div class="parallax search_01"></div>
 			<div style="padding-bottom:15px">
 				<div class="bcGrid" dir="{CCMS_LIB:_default.php;FUNC:ccms_lng_dir}">
 					<h1 class="c1" dir="{CCMS_DB_DIR:all,search}">{CCMS_DB:all,search}</h1>

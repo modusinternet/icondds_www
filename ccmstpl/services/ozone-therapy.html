@@ -45,6 +45,38 @@
 		</script>
 		<style>
 			{CCMS_TPL:/_css/header.html}
+
+			.webp .services_ozone-therapy_01{
+				background-image:url("/ccmstpl/_img/services_ozone-therapy_01.webp");
+			}
+
+			.no-webp .services_ozone-therapy_01{
+				background-image:url("/ccmstpl/_img/services_ozone-therapy_01-min.jpg");
+			}
+
+			.webp .services_ozone-therapy_02{
+				background-image:url("/ccmstpl/_img/services_ozone-therapy_02.webp");
+			}
+
+			.no-webp .services_ozone-therapy_02{
+				background-image:url("/ccmstpl/_img/services_ozone-therapy_02-min.jpg");
+			}
+
+			.webp .services_ozone-therapy_03{
+				background-image:url("/ccmstpl/_img/services_ozone-therapy_03.webp");
+			}
+
+			.no-webp .services_ozone-therapy_03{
+				background-image:url("/ccmstpl/_img/services_ozone-therapy_03-min.jpg");
+			}
+
+			.webp .services_ozone-therapy_04{
+				background-image:url("/ccmstpl/_img/services_ozone-therapy_04.webp");
+			}
+
+			.no-webp .services_ozone-therapy_04{
+				background-image:url("/ccmstpl/_img/services_ozone-therapy_04-min.jpg");
+			}
 		</style>
 		<script>
 			var navActiveArray = ["nl-2","nl-2-1","nl-lng","lng-{CCMS_LIB:_default.php;FUNC:ccms_lng}"];
@@ -54,7 +86,7 @@
 	<body>
 		<div id="loading_svg"></div>
 		<main class="cd-main-content">
-			<div class="parallax" style="background-image:url('/ccmstpl/_img/ozone-therapy-01-min.jpg')"></div>
+			<div class="parallax services_ozone-therapy_01"></div>
 			<div style="padding-bottom:15px">
 				<div class="bcGrid" dir="{CCMS_LIB:_default.php;FUNC:ccms_lng_dir}">
 					<h1 class="c1">Ozone Therapy</h1>
@@ -70,21 +102,21 @@
 					<p>Closely related to O<sub>2</sub>, ozone (from the Greek word <i>ozein</i>, meaning "to smell") is a triatomic oxygen (O<sub>3</sub>) gas with a distinctive odor. It is most famous as the namesake of the "<a href="https://en.wikipedia.org/wiki/Ozone_layer" target="_blank">ozone layer</a>"—the part of the Earth's stratosphere that absorbs most of the sun's ultraviolet (UV) radiation—in a process known as the "<a href="https://en.wikipedia.org/wiki/Ozone%E2%80%93oxygen_cycle" target="_blank">ozone-oxygen cycle</a>", O<sub>3</sub> is continuously regenerated from O<sub>2</sub> as UV is converted to heat. Only a small amount of UV is getting through to the Earth's surface, but it can still give us a tan (or burn) at the beach; and too much of it can damage DNA and potentially cause skin cancer.</p>
 				</div>
 			</div>
-			<div class="parallax" style="background-image:url('/ccmstpl/_img/ozone-therapy-02-min.jpg')"></div>
+			<div class="parallax services_ozone-therapy_02"></div>
 			<div class="contentType1">
 				<div>
 					<p>Ozone therapy is the use of medical grade gas mixture composed of oxygen (95%) and ozone (5%) for a healing response. As a strong oxidizing agent, ozone is highly reactive and kills all known infective microorganisms, even antibiotic-resistant or anaerobic bacteria and viruses. In addition to controlling infection, ozone gas and solutions (ozone-infused water and oil) can reduce bleeding and inflammation, also improve metabolism.<a href="#NL1"><sup>1,2,3</sup></a></p>
 					<p>While the use of ozone may sound like another new thing, in reality, ozone has been used in medicine for 150 years to disinfect and treat diseases.<a href="#NL1"><sup>2</sup></a> in 1896, the famous inventor and futurist Nikola Tesla patented a corona discharge ozone generator in the US; and his company "Tesla Ozone Co." used to manufacture these units for medical use. Worth noting is the fact that Tesla was the first person to ozonate olive oil.<a href="#NL1"><sup>4</sup></a></p>
 				</div>
 			</div>
-			<div class="parallax" style="background-image:url('/ccmstpl/_img/ozone-therapy-03-min.jpg')"></div>
+			<div class="parallax services_ozone-therapy_03"></div>
 			<div class="contentType1">
 				<div>
 					<p>After World War II, the proven effectiveness and convenience of pharmaceutical antibiotics contributed to the disuse of ozone as a method to treat infections. However, medical ozone has endured in many European clinics and hospitals. Over time, much advancement was made in the areas of generator technologies and the development of newer therapeutic uses. Following a re-introduction to the US in the early 1980s, ozone therapy has been adopted by more and more doctors, dentists, and other healthcare providers.</p>
 					<p>A dentist from Switzerland, Dr. E.A. Fisch, was the first to use ozone in his practice in the 1930s. Since then, great strides have been made by pioneers in ozone therapy in Europe and America as both the knowledge and technology advanced. When used correctly by a competent practitioner, ozone can be safely introduced into and around teeth and surrounding oral tissues against infectious agents that cause caries, pulpal diseases, periodontal diseases, and other oral pathological conditions. Additional benefits of ozone use in dentistry and oral medicine may include reducing inflammation, speeding up wound healing after surgery, decreasing root sensitivity, increasing bonding strength of composite fillings, etc.</p>
 				</div>
 			</div>
-			<div class="parallax" style="background-image:url('/ccmstpl/_img/ozone-therapy-04-min.jpg')"></div>
+			<div class="parallax services_ozone-therapy_04"></div>
 			<div class="contentType1">
 				<div>
 					<p><a href="/{CCMS_LIB:_default.php;FUNC:ccms_lng}/about-us/meet-the-team.html">Dr. Sheldon Lu</a> has been trained and certified competent in the dental use of ozone by the American College of Integrative Medicine and Dentistry. He is currently in the process of receiving board certification from both the American Board of Integrative Medicine and Dentistry and the American Naturopathic Medical Association. In addition, Dr. Lu is pursuing a Fellow status with the <a href="https://aaot.us" target="_blank">American Academy of Ozonotherapy</a>.</p>
@@ -113,15 +145,15 @@
 			var h=document.getElementsByTagName("head")[0];h.parentNode.insertBefore(l,h);
 
 			function loadJSResources(){
-				loadFirst("{CCMS_LIB:site.php;FUNC:load_resource("JQUERY")}",function(){
+				loadFirst("{CCMS_LIB:site.php;FUNC:load_resource("MODERNIZER")}",function(){
 
-					loadFirst("{CCMS_LIB:site.php;FUNC:load_resource("JQUERY-MOBILE-CUST")}",function(){
+					loadFirst("{CCMS_LIB:site.php;FUNC:load_resource("JQUERY")}",function(){
 
-						loadFirst("{CCMS_LIB:site.php;FUNC:load_resource("JQUERY-VALIDATE")}",function(){
+						loadFirst("{CCMS_LIB:site.php;FUNC:load_resource("JQUERY-MOBILE-CUST")}",function(){
 
-							loadFirst("{CCMS_LIB:site.php;FUNC:load_resource("JQUERY-VALIDATE-ADDITIONAL-METHODS")}",function(){
+							loadFirst("{CCMS_LIB:site.php;FUNC:load_resource("JQUERY-VALIDATE")}",function(){
 
-								loadFirst("{CCMS_LIB:site.php;FUNC:load_resource("MODERNIZER")}",function(){
+								loadFirst("{CCMS_LIB:site.php;FUNC:load_resource("JQUERY-VALIDATE-ADDITIONAL-METHODS")}",function(){
 
 									loadFirst("{CCMS_LIB:site.php;FUNC:js_01}",function(){
 

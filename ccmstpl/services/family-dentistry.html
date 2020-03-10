@@ -45,6 +45,30 @@
 		</script>
 		<style>
 			{CCMS_TPL:/_css/header.html}
+
+			.webp .services_family-dentistry_01{
+				background-image:url("/ccmstpl/_img/services_family-dentistry_01.webp");
+			}
+
+			.no-webp .services_family-dentistry_01{
+				background-image:url("/ccmstpl/_img/services_family-dentistry_01-min.jpg");
+			}
+
+			.webp .services_family-dentistry_02{
+				background-image:url("/ccmstpl/_img/services_family-dentistry_02.webp");
+			}
+
+			.no-webp .services_family-dentistry_02{
+				background-image:url("/ccmstpl/_img/services_family-dentistry_02-min.jpg");
+			}
+
+			.webp .services_family-dentistry_03{
+				background-image:url("/ccmstpl/_img/services_family-dentistry_03.webp");
+			}
+
+			.no-webp .services_family-dentistry_03{
+				background-image:url("/ccmstpl/_img/services_family-dentistry_03-min.jpg");
+			}
 		</style>
 		<script>
 			var navActiveArray = ["nl-2","nl-2-1","nl-lng","lng-{CCMS_LIB:_default.php;FUNC:ccms_lng}"];
@@ -54,7 +78,7 @@
 	<body>
 		<div id="loading_svg"></div>
 		<main class="cd-main-content">
-			<div class="parallax" style="background-image:url('/ccmstpl/_img/family-dentistry-01-min.jpg')"></div>
+			<div class="parallax services_family-dentistry_01"></div>
 			<div style="padding-bottom:15px">
 				<div class="bcGrid" dir="{CCMS_LIB:_default.php;FUNC:ccms_lng_dir}">
 					<h1 class="c1">Family Dentistry</h1>
@@ -71,7 +95,7 @@
 					<p>A comprehensive family practice such as ICONIC Dentistry also emphasizes <a href="">active prevention</a> and early intervention. Have you heard the old saying, "an ounce of prevention is worth a pound of cure"? While it’s great to catch a problem early and take care of it, it’s even better not to get it in the first place. This is especially important for children—a sugar-laden modern diet can silently inflict immense harm to their teeth—unless proper instructions are given at a young age and reinforced. The two most common, yet easily preventable afflictions that can result in premature tooth loss are <a href="">caries</a> and <a href="">gum disease</a>.</p>
 				</div>
 			</div>
-			<div class="parallax" style="background-image:url('/ccmstpl/_img/family-dentistry-02-min.jpg')"></div>
+			<div class="parallax services_family-dentistry_02"></div>
 			<div class="contentType1">
 				<div>
 					<p>During regularly scheduled checkups and cleanings, we focus on prevention by educating patients of all ages on good oral hygiene practices. Whether they are teaching a toddler proper brushing techniques or showing an elderly patient the correct way to clean their dentures, our dentists, hygienists, and technicians make it a priority to see to it that you and your family members maintain good dental care habits.</p>
@@ -96,7 +120,7 @@
 					<p>At ICONIC, we do our best to ensure a positive office experience for your children, you, and the rest of your family in a caring and comfortable environment. Oftentimes, a child’s life-long fear of dentists was triggered from one stressful visit. Our doctors’ gentle approach helps children develop a positive association with regular dental appointments and help build good oral hygiene habits for life.</p>
 				</div>
 			</div>
-			<div class="parallax" style="background-image:url('/ccmstpl/_img/services_family-dentistry-03-min.jpg')"></div>
+			<div class="parallax services_family-dentistry_03"></div>
 			<div class="contentType1">
 				<div>
 					<p>Instead of visiting multiple dentists, all your family’s dental needs can be met in one convenient location. We proudly serve patients in Tustin and surrounding cities in Orange County, California.</p>
@@ -118,15 +142,15 @@
 			var h=document.getElementsByTagName("head")[0];h.parentNode.insertBefore(l,h);
 
 			function loadJSResources(){
-				loadFirst("{CCMS_LIB:site.php;FUNC:load_resource("JQUERY")}",function(){
+				loadFirst("{CCMS_LIB:site.php;FUNC:load_resource("MODERNIZER")}",function(){
 
-					loadFirst("{CCMS_LIB:site.php;FUNC:load_resource("JQUERY-MOBILE-CUST")}",function(){
+					loadFirst("{CCMS_LIB:site.php;FUNC:load_resource("JQUERY")}",function(){
 
-						loadFirst("{CCMS_LIB:site.php;FUNC:load_resource("JQUERY-VALIDATE")}",function(){
+						loadFirst("{CCMS_LIB:site.php;FUNC:load_resource("JQUERY-MOBILE-CUST")}",function(){
 
-							loadFirst("{CCMS_LIB:site.php;FUNC:load_resource("JQUERY-VALIDATE-ADDITIONAL-METHODS")}",function(){
+							loadFirst("{CCMS_LIB:site.php;FUNC:load_resource("JQUERY-VALIDATE")}",function(){
 
-								loadFirst("{CCMS_LIB:site.php;FUNC:load_resource("MODERNIZER")}",function(){
+								loadFirst("{CCMS_LIB:site.php;FUNC:load_resource("JQUERY-VALIDATE-ADDITIONAL-METHODS")}",function(){
 
 									loadFirst("{CCMS_LIB:site.php;FUNC:js_01}",function(){
 
