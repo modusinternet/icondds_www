@@ -15,7 +15,7 @@ $(window).scroll(function() {
 		$(".cd-nav").addClass("scrolled");
 		$(".cd-header-buttons").addClass("scrolled");
 		$(".cd-search").addClass("scrolled");
-		$(".scrollToTopButton").addClass("scrollToTopButton-active");
+		/*$(".scrollToTopButton").addClass("scrollToTopButton-active");*/
 	} else {
 		$("#logo1").attr("style","opacity:1");
 		$("#logo2").attr("style","opacity:0");
