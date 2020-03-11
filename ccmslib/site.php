@@ -26,6 +26,23 @@ function navLngList() {
 	}
 }
 
+function lngList() {
+	global $CFG, $CLEAN;
+	// this line of code produces the wrong output on GoDaddy servers.
+	//$tpl = htmlspecialchars(preg_replace('/^\/([\pL\pN\-]*)\/?(.*)\z/i', '${2}', $_SERVER['REDIRECT_URL']));
+	$tpl = htmlspecialchars(preg_replace('/^\/([\pL\pN\-]*)\/?(.*)\z/i', '${2}', $_SERVER['REQUEST_URI']));
+	$qry = $CFG["DBH"]->prepare("SELECT * FROM `ccms_lng_charset` WHERE `status` = 1 ORDER BY lngDesc ASC;");
+	if($qry->execute()) {
+		while($row = $qry->fetch()) {
+			if($row["ptrLng"]) {
+				echo "<li><a id=\"lng-" . $row["lng"] . "\" dir=\"" . $row["dir"] . "\" href=\"/" . $row["ptrLng"] . "/" . $tpl . "\" onclick=\"ccms_lcu('" . $row["ptrLng"] . "');\" title=\"" . $row["lngDesc"] . "\">" . $row["lngDesc"] . "</a></li>";
+			} else {
+				echo "<li><a id=\"lng-" . $row["lng"] . "\" dir=\"" . $row["dir"] . "\" href=\"/" . $row["lng"] . "/" . $tpl . "\" onclick=\"ccms_lcu('" . $row["lng"] . "');\" title=\"" . $row["lngDesc"] . "\">" . $row["lngDesc"] . "</a></li>";
+			}
+		}
+	}
+}
+
 function lng_dir_left_go_right_right_go_left() {
 	global $CFG;
 	if($CFG["CCMS_LNG_DIR"] == "ltr") {
