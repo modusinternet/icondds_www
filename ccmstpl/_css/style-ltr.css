@@ -724,10 +724,10 @@ input[type="search"]::-webkit-search-results-decoration{display:none}
 	background-size:40px 40px
 }
 
-.cd-primary-nav li.active{background:var(--cl4)}
+.cd-primary-nav li.active{background:var(--cl3)}
 
 .cd-primary-nav li>a.active{
-	color:var(--cl4);
+	color:var(--cl3);
 	font-weight:400
 }
 
