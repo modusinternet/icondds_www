@@ -45,6 +45,14 @@
 		</script>
 		<style>
 			{CCMS_TPL:/_css/header.html}
+
+			.webp .about-us_01{
+				background-image:url("/ccmstpl/_img/about-us_01.webp");
+			}
+
+			.no-webp .about-us_01{
+				background-image:url("/ccmstpl/_img/about-us_01-min.jpg");
+			}
 		</style>
 		<script>
 			var navActiveArray = ["nl-about-us","nl-about-us_index","nl-lng","lng-{CCMS_LIB:_default.php;FUNC:ccms_lng}"];
@@ -54,7 +62,7 @@
 	<body>
 		<div id="loading_svg"></div>
 		<main class="cd-main-content">
-			<div class="parallax" style="background-image:url('/ccmstpl/_img/about-us-01-min.jpg')"></div>
+			<div class="parallax about-us_01"></div>
 			<div style="padding-bottom:15px">
 				<div class="bcGrid" dir="{CCMS_LIB:_default.php;FUNC:ccms_lng_dir}">
 					<h1 class="c1">{CCMS_DB:all,about-us}</h1>
@@ -90,15 +98,15 @@
 			var h=document.getElementsByTagName("head")[0];h.parentNode.insertBefore(l,h);
 
 			function loadJSResources(){
-				loadFirst("{CCMS_LIB:site.php;FUNC:load_resource("JQUERY")}",function(){
+				loadFirst("{CCMS_LIB:site.php;FUNC:load_resource("MODERNIZER")}",function(){
 
-					loadFirst("{CCMS_LIB:site.php;FUNC:load_resource("JQUERY-MOBILE-CUST")}",function(){
+					loadFirst("{CCMS_LIB:site.php;FUNC:load_resource("JQUERY")}",function(){
 
-						loadFirst("{CCMS_LIB:site.php;FUNC:load_resource("JQUERY-VALIDATE")}",function(){
+						loadFirst("{CCMS_LIB:site.php;FUNC:load_resource("JQUERY-MOBILE-CUST")}",function(){
 
-							loadFirst("{CCMS_LIB:site.php;FUNC:load_resource("JQUERY-VALIDATE-ADDITIONAL-METHODS")}",function(){
+							loadFirst("{CCMS_LIB:site.php;FUNC:load_resource("JQUERY-VALIDATE")}",function(){
 
-								loadFirst("{CCMS_LIB:site.php;FUNC:load_resource("MODERNIZER")}",function(){
+								loadFirst("{CCMS_LIB:site.php;FUNC:load_resource("JQUERY-VALIDATE-ADDITIONAL-METHODS")}",function(){
 
 									loadFirst("{CCMS_LIB:site.php;FUNC:js_01}",function(){
 
