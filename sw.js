@@ -1,4 +1,4 @@
-const cacheName='v2020.03.11-01';
+const cacheName='v2020.03.11-02';
 
 var cacheFiles=[
 	'/ccmsusr/_css/animate.min.css',
