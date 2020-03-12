@@ -730,7 +730,14 @@ input[type="search"]::-webkit-search-results-decoration{display:none}
 
 .cd-primary-nav li.see-all.active>a{color:var(--cl0)}
 
+.cd-primary-nav #nl--for-patients li>a.active{
+	background:unset;
+	color:var(--cl3);
+	font-weight:400
+}
+
 .cd-primary-nav #nl-lng li>a.active{
+	background:unset;
 	color:var(--cl3);
 	font-weight:400
 }
