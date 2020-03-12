@@ -726,10 +726,16 @@ input[type="search"]::-webkit-search-results-decoration{display:none}
 
 .cd-primary-nav li.active{background:var(--cl3)}
 
+.cd-primary-nav li.see-all.active{color:var(--cl0)}
+
 .cd-primary-nav li>a.active{
 	color:var(--cl3);
 	font-weight:400
 }
+
+
+
+
 
 
 .cd-primary-nav,.cd-primary-nav ul{
