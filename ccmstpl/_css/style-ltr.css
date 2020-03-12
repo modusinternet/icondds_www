@@ -1415,7 +1415,7 @@ input[type="search"]::-webkit-search-results-decoration{display:none}
 		opacity:1
 	}
 
-	.cd-primary-nav li>ul>li>a.active{background-color:var(--cl0)}
+	.cd-primary-nav li>ul>li>a.active{background-color:#f6f6f5}
 
 	.cd-primary-nav ul{
 		position:static;
