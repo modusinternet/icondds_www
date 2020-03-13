@@ -80,7 +80,7 @@ AddOutputFilterByType DEFLATE application/x-javascript
 
 	# Don't allow any pages to be framed - Defends against CSRF
 	#------------------------------
-	Header set X-Frame-Options DENY
+	#Header set X-Frame-Options DENY
 
 	# Turn on IE8-IE9 XSS prevention tools
 	#------------------------------
