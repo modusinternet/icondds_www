@@ -155,10 +155,6 @@ svg{max-width:100px}
 
 svg>path,svg>g>path{fill:var(--cl2)}
 
-#lz_overlay_chat svg>path,#lz_overlay_chat svg>g>path{fill:unset}
-
-#lz_overlay_wm svg>path,#lz_overlay_wm svg>g>path{fill:unset}
-
 .cd-main-content{
 	min-height:100vh;
 	z-index:2
@@ -242,6 +238,12 @@ svg>path,svg>g>path{fill:var(--cl2)}
 	transition:opacity 2s;
 	z-index:var(--z-index-loading_svg)
 }
+
+#lz_overlay_wm .lz_overlay_wm_sh_act{box-shadow:0 5px 36px rgb(0,0,.5)}
+
+#lz_overlay_chat svg>path,#lz_overlay_chat svg>g>path{fill:unset}
+
+#lz_overlay_wm svg>path,#lz_overlay_wm svg>g>path{fill:unset}
 
 #msg.hide{opacity:0}
 
