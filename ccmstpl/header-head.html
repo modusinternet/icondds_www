@@ -4,6 +4,12 @@
 		<meta property="og:type" content="website" />
 		<meta property="og:locale" content="{CCMS_LIB:_default.php;FUNC:ccms_lng}" />
 		<meta property="og:site_name" content="{CCMS_DB:all,company-name}" />
+		<meta property="og:image" content="/ccmstpl/_img/logo1.3.png" />
+		<meta property="og:image:secure_url" content="/ccmstpl/_img/logo1.3.png" />
+		<meta property="og:image:width" content="500" />
+		<meta property="og:image:height" content="425" />
+		<!-- Must be at least 60px by 60px.	Images greater than 120px by 120px will be resized and cropped in a square aspect ratio. -->
+		<!-- meta name="twitter:image" content="/ccmstpl/_img/main-image-or-logo.jpg" -->
 		<!-- https://developer.twitter.com/en/docs/tweets/optimize-with-cards/guides/getting-started -->
 		<!-- meta name="twitter:card" content="summary" / -->
 		<!-- @username for the website used in the card footer. -->
@@ -34,51 +40,5 @@
 		<meta name="geo.placename" content="Tustin" />
 		<meta name="geo.position" content="33.748438;-117.82662" />
 		<meta name="ICBM" content="33.748438,-117.82662" />
-
-		<script type="application/ld+json">
-			[{
-				"@context":"https://schema.org",
-				"@type":"WebSite",
-				"name":"{CCMS_DB:all,company-name}",
-				"url":"https://{CCMS_LIB:_default.php;FUNC:ccms_cfgDomain}",
-				"alternateName":"{CCMS_DB:index,description}"
-			},{
-				"@context":"https://schema.org",
-				"@type":"Dentist",
-				"name":"{CCMS_DB:all,company-name}",
-				"description":"{CCMS_DB:index,description}",
-				"url":"https://{CCMS_LIB:_default.php;FUNC:ccms_cfgDomain}",
-				"logo":{
-					"@type":"ImageObject",
-					"url":"/ccmstpl/_img/logo1.3.png"
-				},
-				"telephone":"(714) 835-4441",
-				"email":"info@icondds.com",
-				"priceRange":"Call for pricing options",
-				"address":{
-					"@type":"PostalAddress",
-					"addressLocality":"Tustin",
-					"addressRegion":"CA",
-					"postalCode":"92780",
-					"streetAddress":"17501 Irvine Blvd Ste 101 Tustin",
-					"addressCountry":"US"
-				},
-				"sameAs":[
-					/*"https://twitter.com/mywebsite",*/
-					"https://www.instagram.com/iconic.dds/?hl=en",
-					/*"https://plus.google.com/+mywebsite",*/
-					"https://www.facebook.com/tustindentistry/"
-					/*"https://www.pinterest.com/mywebsite/",*/
-					/*"https://www.youtube.com/user/mywebsite"*/
-				],
-				"geo":{
-					"@type":"GeoCoordinates",
-					"latitude":33.748438,
-					"longitude":-117.82662
-				},
-				"openingHours":["Mon-Fri: 9am - 5pm", "Sat-Sun: Closed"],
-				"image":"/ccmstpl/_img/logo1.3.png"
-			}]
-		</script>
 
 		{CCMS_LIB:_default.php;FUNC:ccms_hrefLang_list}
