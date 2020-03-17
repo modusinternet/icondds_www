@@ -3,9 +3,10 @@
 	<head>
 		<!-- Repeated content and can be placed once in your header head template. -->
 		{CCMS_TPL:header-head.html}
+
 		<!-- Should be representative of the page in reference. -->
 		<title dir="{CCMS_DB_DIR:all,company-name}">{CCMS_DB:all,company-name} / {CCMS_DB:all,homepage}</title>
-		<meta name="description" dir="{CCMS_DB_DIR:index,description}" content="{CCMS_DB:index,description}" />
+		<meta name="description" content="{CCMS_DB:index,description}" />
 
 		<!-- Google / Search Engine Tags -->
 		<meta itemprop="name" content="{CCMS_DB:all,company-name} / {CCMS_DB:all,homepage}">

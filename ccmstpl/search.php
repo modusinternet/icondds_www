@@ -1,51 +1,75 @@
 <?
 header("Content-Type: text/html; charset=UTF-8");
 header("Cache-Control: public, must-revalidate, proxy-revalidate");
-?>{CCMS_DB_PRELOAD:all}<!DOCTYPE html>
+?>{CCMS_DB_PRELOAD:all,search}<!DOCTYPE html>
 <html dir="{CCMS_LIB:_default.php;FUNC:ccms_lng_dir}" lang="{CCMS_LIB:_default.php;FUNC:ccms_lng}" prefix="og: http://ogp.me/ns#">
 	<head>
 		<!-- Repeated content and can be placed once in your header head template. -->
 		{CCMS_TPL:header-head.html}
+
 		<!-- Should be representative of the page in reference. -->
-		<title dir="{CCMS_LIB:_default.php;FUNC:ccms_lng_dir}">ICONIC Dentistry / {CCMS_DB:all,search}</title>
-		<meta property="og:title" dir="{CCMS_DB_DIR:index,title}" content="{CCMS_DB:index,title}" />
-		<meta name="twitter:title" dir="{CCMS_DB_DIR:index,title}" content="{CCMS_DB:index,title}" />
-		<meta name="description" dir="{CCMS_DB_DIR:index,description}" content="{CCMS_DB:index,description}" />
-		<meta property="og:description" dir="{CCMS_DB_DIR:index,description}" content="{CCMS_DB:index,description}" />
-		<meta name="twitter:description" dir="{CCMS_DB_DIR:index,description}" content="{CCMS_DB:index,description}" />
-		<meta property="og:image" content="/ccmstpl/_img/main-image-or-logo.jpg" />
-		<meta property="og:image:secure_url" content="/ccmstpl/_img/main-image-or-logo.jpg" />
-		<meta property="og:image:width" content="123" />
-		<meta property="og:image:height" content="123" />
-		<!-- Must be at least 60px by 60px.	Images greater than 120px by 120px will be resized and cropped in a square aspect ratio. -->
-		<meta name="twitter:image" content="/ccmstpl/_img/main-image-or-logo.jpg" />
-		<meta property="og:url" content="https://{CCMS_LIB:_default.php;FUNC:ccms_cfgDomain}/" />
+		<title dir="{CCMS_DB_DIR:all,company-name}">{CCMS_DB:all,company-name} / {CCMS_DB:all,search}</title>
+		<meta name="description" content="{CCMS_DB:search,description}" />
+
+		<!-- Google / Search Engine Tags -->
+		<meta itemprop="name" content="{CCMS_DB:all,company-name} / {CCMS_DB:all,search}">
+		<meta itemprop="description" content="{CCMS_DB:search,description}">
+
+		<!-- Facebook Meta Tags -->
+		<meta property="og:url" content="https://{CCMS_LIB:_default.php;FUNC:ccms_cfgDomain}/{CCMS_LIB:_default.php;FUNC:ccms_lng}/">
+		<meta property="og:title" content="{CCMS_DB:all,company-name} / {CCMS_DB:all,search}">
+		<meta property="og:description" content="{CCMS_DB:search,description}">
+
+		<!-- Twitter Meta Tags -->
+		<meta name="twitter:title" content="{CCMS_DB:all,company-name} / {CCMS_DB:all,search}">
+		<meta name="twitter:description" content="{CCMS_DB:search,description}">
+
 		<script type="application/ld+json">
 			[{
 				"@context":"https://schema.org",
 				"@type":"WebSite",
-				"name":"mywebsite",
-				"url":"https://{CCMS_LIB:_default.php;FUNC:ccms_cfgDomain}",
-				"alternateName":"mywebsite description"
+				"name":"{CCMS_DB:all,company-name}",
+				"url":"https://{CCMS_LIB:_default.php;FUNC:ccms_cfgDomain}/{CCMS_LIB:_default.php;FUNC:ccms_lng}/",
+				"alternateName":"{CCMS_DB:all,company-name} / {CCMS_DB:all,search}"
 			},{
 				"@context":"https://schema.org",
-				"@type":"Organization",
-				"name":"mywebsite name, LLC",
-				"url":"https://{CCMS_LIB:_default.php;FUNC:ccms_cfgDomain}",
+				"@type":"Dentist",
+				"name":"{CCMS_DB:all,company-name}",
+				"description":"{CCMS_DB:search,description}",
+				"url":"https://{CCMS_LIB:_default.php;FUNC:ccms_cfgDomain}/{CCMS_LIB:_default.php;FUNC:ccms_lng}/",
 				"logo":{
 					"@type":"ImageObject",
-					"url":"/ccmstpl/_img/main-image-or-logo.jpg"
+					"url":"https://{CCMS_LIB:_default.php;FUNC:ccms_cfgDomain}/ccmstpl/_img/logo1.3.png"
+				},
+				"telephone":"(714) 835-4441",
+				"email":"info@icondds.com",
+				"priceRange":"Call for pricing options",
+				"address":{
+					"@type":"PostalAddress",
+					"addressLocality":"Tustin",
+					"addressRegion":"CA",
+					"postalCode":"92780",
+					"streetAddress":"17501 Irvine Blvd Ste 101 Tustin",
+					"addressCountry":"US"
 				},
 				"sameAs":[
-					"https://twitter.com/mywebsite",
-					"https://instagram.com/mywebsite",
-					"https://plus.google.com/+mywebsite",
-					"https://www.facebook.com/mywebsite",
-					"https://www.pinterest.com/mywebsite/",
-					"https://www.youtube.com/user/mywebsite"
-				]
+					/*"https://twitter.com/mywebsite",*/
+					"https://www.instagram.com/iconic.dds/?hl=en",
+					/*"https://plus.google.com/+mywebsite",*/
+					"https://www.facebook.com/tustindentistry/"
+					/*"https://www.pinterest.com/mywebsite/",*/
+					/*"https://www.youtube.com/user/mywebsite"*/
+				],
+				"geo":{
+					"@type":"GeoCoordinates",
+					"latitude":33.748438,
+					"longitude":-117.82662
+				},
+				"openingHours":["Mon-Fri: 9am - 5pm", "Sat-Sun: Closed"],
+				"image":"https://{CCMS_LIB:_default.php;FUNC:ccms_cfgDomain}/ccmstpl/_img/business-card.png"
 			}]
 		</script>
+
 		<style>
 			{CCMS_TPL:/_css/header.html}
 
