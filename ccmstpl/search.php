@@ -42,7 +42,7 @@ header("Cache-Control: public, must-revalidate, proxy-revalidate");
 					"url":"https://{CCMS_LIB:_default.php;FUNC:ccms_cfgDomain}/ccmstpl/_img/logo1.3.png"
 				},
 				"telephone":"(714) 835-4441",
-				"email":"info@icondds.com",
+				"email":"info@{CCMS_LIB:_default.php;FUNC:ccms_cfgDomain}",
 				"priceRange":"Call for pricing options",
 				"address":{
 					"@type":"PostalAddress",
