@@ -1,8 +1,77 @@
-{CCMS_DB_PRELOAD:all,services}<!DOCTYPE html>
+{CCMS_DB_PRELOAD:all,esthetic-dentistry}<!DOCTYPE html>
 <html dir="{CCMS_LIB:_default.php;FUNC:ccms_lng_dir}" lang="{CCMS_LIB:_default.php;FUNC:ccms_lng}" prefix="og: http://ogp.me/ns#">
 	<head>
 		<!-- Repeated content and can be placed once in your header head template. -->
 		{CCMS_TPL:header-head.html}
+
+		<!-- Should be representative of the page in reference. -->
+		<title dir="{CCMS_LIB:_default.php;FUNC:ccms_lng_dir}">{CCMS_DB:all,company-name} / {CCMS_DB:all,services} / {CCMS_DB:all,esthetic-dentistry}</title>
+		<meta name="description" content="{CCMS_DB:esthetic-dentistry,description}" />
+
+		<!-- Google / Search Engine Tags -->
+		<meta itemprop="name" content="{CCMS_DB:all,company-name} / {CCMS_DB:all,services} / {CCMS_DB:all,esthetic-dentistry}">
+		<meta itemprop="description" content="{CCMS_DB:esthetic-dentistry,description}">
+
+		<!-- Facebook Meta Tags -->
+		<meta property="og:url" content="https://{CCMS_LIB:_default.php;FUNC:ccms_cfgDomain}/{CCMS_LIB:_default.php;FUNC:ccms_lng}/services/esthetic-dentistry.html">
+		<meta property="og:title" content="{CCMS_DB:all,company-name} / {CCMS_DB:all,services} / {CCMS_DB:all,esthetic-dentistry}">
+		<meta property="og:description" content="{CCMS_DB:esthetic-dentistry,description}">
+
+		<!-- Twitter Meta Tags -->
+		<meta name="twitter:title" content="{CCMS_DB:all,company-name} / {CCMS_DB:all,services} / {CCMS_DB:all,esthetic-dentistry}">
+		<meta name="twitter:description" content="{CCMS_DB:esthetic-dentistry,description}">
+
+		<script type="application/ld+json">
+			[{
+				"@context":"https://schema.org",
+				"@type":"WebSite",
+				"name":"{CCMS_DB:all,company-name}",
+				"url":"https://{CCMS_LIB:_default.php;FUNC:ccms_cfgDomain}/{CCMS_LIB:_default.php;FUNC:ccms_lng}/services/esthetic-dentistry.html",
+				"alternateName":"{CCMS_DB:all,company-name} / {CCMS_DB:all,services} / {CCMS_DB:all,esthetic-dentistry}"
+			},{
+				"@context":"https://schema.org",
+				"@type":"Dentist",
+				"name":"{CCMS_DB:all,company-name}",
+				"description":"{CCMS_DB:esthetic-dentistry,description}",
+				"url":"https://{CCMS_LIB:_default.php;FUNC:ccms_cfgDomain}/{CCMS_LIB:_default.php;FUNC:ccms_lng}/services/esthetic-dentistry.html",
+				"logo":{
+					"@type":"ImageObject",
+					"url":"https://{CCMS_LIB:_default.php;FUNC:ccms_cfgDomain}/ccmstpl/_img/logo1.3.png"
+				},
+				"telephone":"(714) 835-4441",
+				"email":"info@{CCMS_LIB:_default.php;FUNC:ccms_cfgDomain}",
+				"priceRange":"Call for pricing options",
+				"address":{
+					"@type":"PostalAddress",
+					"addressLocality":"Tustin",
+					"addressRegion":"CA",
+					"postalCode":"92780",
+					"streetAddress":"17501 Irvine Blvd Ste 101 Tustin",
+					"addressCountry":"US"
+				},
+				"sameAs":[
+					/*"https://twitter.com/mywebsite",*/
+					"https://www.instagram.com/iconic.dds/?hl=en",
+					/*"https://plus.google.com/+mywebsite",*/
+					"https://www.facebook.com/tustindentistry/"
+					/*"https://www.pinterest.com/mywebsite/",*/
+					/*"https://www.youtube.com/user/mywebsite"*/
+				],
+				"geo":{
+					"@type":"GeoCoordinates",
+					"latitude":33.748438,
+					"longitude":-117.82662
+				},
+				"openingHours":["Mon-Fri: 9am - 5pm", "Sat-Sun: Closed"],
+				"image":"https://{CCMS_LIB:_default.php;FUNC:ccms_cfgDomain}/ccmstpl/_img/business-card.png"
+			}]
+		</script>
+
+
+
+
+
+
 		<!-- Should be representative of the page in reference. -->
 		<title dir="{CCMS_LIB:_default.php;FUNC:ccms_lng_dir}">ICONIC Dentistry / {CCMS_DB:all,services} / Esthetic Dentistry</title>
 		<meta property="og:title" dir="{CCMS_DB_DIR:index,title}" content="{CCMS_DB:index,title}" />
