@@ -165,11 +165,11 @@ cssgrid-events.ev3{grid-area:ev3}
 }
 
 .webp .footerBG{
-	background-image:url("/ccmstpl/_img/footerBG.webp");
+	background-image:url("https://d23cij6660kk94.cloudfront.net/ccmstpl/_img/footerBG.webp");
 }
 
 .no-webp .footerBG{
-	background-image:url("/ccmstpl/_img/footerBG.png");
+	background-image:url("https://d23cij6660kk94.cloudfront.net/ccmstpl/_img/footerBG.png");
 }
 
 .footerQuickSiteNav{
@@ -183,7 +183,7 @@ cssgrid-events.ev3{grid-area:ev3}
 .footerQuickSiteNav>li>a.active{font-weight:400}
 
 .hatchPattern{
-	background-image:url("//d3rifeizl63fms.cloudfront.net/ccmstpl/_img/hatchBg.png");
+	background-image:url("https://d23cij6660kk94.cloudfront.net/ccmstpl/_img/hatchBg.png");
 	height:100%;
 	left:0;
 	opacity:.4;
