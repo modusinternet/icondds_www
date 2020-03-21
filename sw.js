@@ -1,4 +1,4 @@
-const cacheName='v2020.03.19-01';
+const cacheName='v2020.03.21-01';
 
 //https://d23cij6660kk94.cloudfront.net
 
