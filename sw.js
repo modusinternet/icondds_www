@@ -40,6 +40,13 @@ self.addEventListener('fetch',e=>{
 			if(response) {
 				return response;
 			}
+
+			/*
+			const successfulRequest = new Request('https://cors-test.appspot.com/test', {
+				mode: 'cors'
+			});
+			*/
+
 			return fetch(e.request);
 		})
 	);
