@@ -1,16 +1,16 @@
-const cacheName='v2020.03.21-01';
+const cacheName='v2020.03.21-02';
 
 //https://d23cij6660kk94.cloudfront.net
 
 var cacheFiles=[
-	'/ccmsusr/_css/animate.min.css',
-	'/ccmsusr/_js/jquery-3.4.1.min.js',
-	'/ccmsusr/_js/jquery-validate-1.19.0.min.js',
-	'/ccmsusr/_js/jquery-validate-additional-methods-1.19.0.min.js',
-	'/ccmstpl/_css/owl.carousel-2.3.4.min.css',
-	'/ccmstpl/_js/owl.carousel.min.js',
-	'/ccmstpl/_js/jquery.mobile.custom.min.js',
-	'/ccmstpl/_js/modernizr-3.6.0-custom-min.js',
+	'https://d23cij6660kk94.cloudfront.net/ccmsusr/_css/animate.min.css',
+	'https://d23cij6660kk94.cloudfront.net/ccmsusr/_js/jquery-3.4.1.min.js',
+	'https://d23cij6660kk94.cloudfront.net/ccmsusr/_js/jquery-validate-1.19.0.min.js',
+	'https://d23cij6660kk94.cloudfront.net/ccmsusr/_js/jquery-validate-additional-methods-1.19.0.min.js',
+	'https://d23cij6660kk94.cloudfront.net/ccmstpl/_css/owl.carousel-2.3.4.min.css',
+	'https://d23cij6660kk94.cloudfront.net/ccmstpl/_js/owl.carousel.min.js',
+	'https://d23cij6660kk94.cloudfront.net/ccmstpl/_js/jquery.mobile.custom.min.js',
+	'https://d23cij6660kk94.cloudfront.net/ccmstpl/_js/modernizr-3.6.0-custom-min.js',
 	'/en/_css/style-ltr.css',
 	'/en/_js/main.js'
 ]
