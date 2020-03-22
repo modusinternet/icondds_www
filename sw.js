@@ -1,16 +1,17 @@
-const cacheName='v2020.03.21-02';
+const cacheName='v2020.03.21-03';
 
 //https://d23cij6660kk94.cloudfront.net
+//https://s3-us-west-1.amazonaws.com/icondds.com-www-01
 
 var cacheFiles=[
-	'https://d23cij6660kk94.cloudfront.net/ccmsusr/_css/animate.min.css',
-	'https://d23cij6660kk94.cloudfront.net/ccmsusr/_js/jquery-3.4.1.min.js',
-	'https://d23cij6660kk94.cloudfront.net/ccmsusr/_js/jquery-validate-1.19.0.min.js',
-	'https://d23cij6660kk94.cloudfront.net/ccmsusr/_js/jquery-validate-additional-methods-1.19.0.min.js',
-	'https://d23cij6660kk94.cloudfront.net/ccmstpl/_css/owl.carousel-2.3.4.min.css',
-	'https://d23cij6660kk94.cloudfront.net/ccmstpl/_js/owl.carousel.min.js',
-	'https://d23cij6660kk94.cloudfront.net/ccmstpl/_js/jquery.mobile.custom.min.js',
-	'https://d23cij6660kk94.cloudfront.net/ccmstpl/_js/modernizr-3.6.0-custom-min.js',
+	'https://s3-us-west-1.amazonaws.com/icondds.com-www-01/ccmsusr/_css/animate.min.css',
+	'https://s3-us-west-1.amazonaws.com/icondds.com-www-01/ccmsusr/_js/jquery-3.4.1.min.js',
+	'https://s3-us-west-1.amazonaws.com/icondds.com-www-01/ccmsusr/_js/jquery-validate-1.19.0.min.js',
+	'https://s3-us-west-1.amazonaws.com/icondds.com-www-01/ccmsusr/_js/jquery-validate-additional-methods-1.19.0.min.js',
+	'https://s3-us-west-1.amazonaws.com/icondds.com-www-01/ccmstpl/_css/owl.carousel-2.3.4.min.css',
+	'https://s3-us-west-1.amazonaws.com/icondds.com-www-01/ccmstpl/_js/owl.carousel.min.js',
+	'https://s3-us-west-1.amazonaws.com/icondds.com-www-01/ccmstpl/_js/jquery.mobile.custom.min.js',
+	'https://s3-us-west-1.amazonaws.com/icondds.com-www-01/ccmstpl/_js/modernizr-3.6.0-custom-min.js',
 	'/en/_css/style-ltr.css',
 	'/en/_js/main.js'
 ]
