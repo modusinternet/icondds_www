@@ -1,4 +1,4 @@
-const cacheName='v2020.03.22-01';
+const cacheName='v2020.03.22-02';
 
 /* In order to get the listed resources below to load properly once moved to Amazon's CloudFront servers you need to add this to your S3 bucket, under Permissions/CORS configuration:
 
