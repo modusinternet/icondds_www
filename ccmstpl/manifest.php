@@ -1,5 +1,5 @@
 <?
-header("Content-Type: application/json; charset=UTF-8");
+header("Content-Type: application/manifest+json; charset=UTF-8");
 header('Expires: ' . gmdate('D, d M Y H:i:s \G\M\T', time() + ($CFG["CACHE_EXPIRE"] * 60)));
 ?>{
 	"short_name": "ICONIC",
