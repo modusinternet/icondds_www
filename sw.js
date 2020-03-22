@@ -1,4 +1,4 @@
-const cacheName='v2020.03.21-05';
+const cacheName='v2020.03.22-01';
 
 /* In order to get the listed resources to load properly once moved to Amazon's CloudFront servers you need to add this to your S3 bucket, under Permissions/CORS configuration:
 
@@ -24,9 +24,8 @@ Add these to the right box under Whitelist Headers:
 
 
 Then click the 'Yes, Edit' button at the bottom and give it about 10 minutes to propagate through the system and test using Chrome.
-
-
 */
+
 //https://d23cij6660kk94.cloudfront.net
 //https://s3-us-west-1.amazonaws.com/icondds.com-www-01
 
