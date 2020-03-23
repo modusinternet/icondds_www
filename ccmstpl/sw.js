@@ -77,9 +77,9 @@ self.addEventListener('fetch',e=>{
 				return fetch(e.request);
 			} catch (err) {
 				/* If this was a navigation, show the offline page: */
-				if (e.request.mode === 'navigate') {
+				/*if (e.request.mode === 'navigate') {*/
 					return caches.match('/{CCMS_LIB:_default.php;FUNC:ccms_lng}/offline.html');
-				}
+				/*}*/
 				/* Otherwise throw */
 				throw err;
 			}
