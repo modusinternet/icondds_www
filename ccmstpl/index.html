@@ -565,6 +565,8 @@
 
 										loadFirst("{CCMS_LIB:site.php;FUNC:load_resource("OWL-JS")}",function(){
 
+											loadFirst("https://icondds.com/livezilla/script.php?id=8bd62230ad09ae891dea91f17581e2c2",function(){
+
 											var l=document.createElement("link");l.rel="stylesheet";
 											/*l.href="//cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css";*/
 											l.href = "{CCMS_LIB:site.php;FUNC:load_resource("OWL-CSS")}";
@@ -631,13 +633,12 @@
 
 											$(".owlDivContainer").attr("style","opacity:1");
 
-											loadFirst("https://icondds.com/livezilla/script.php?id=8bd62230ad09ae891dea91f17581e2c2",function(){},"8bd62230ad09ae891dea91f17581e2c2");
-
 											/*window.setTimeout(function(){document.getElementsByClassName("owlDivContainer")[0].style.opacity="1";},500);*/
 
 											/*window.performance.mark("mark_end_javascript");
 											console.log(window.performance.getEntriesByName("mark_beginning_javascript"));
 											console.log(window.performance.getEntriesByName("mark_end_javascript"));*/
+											},"8bd62230ad09ae891dea91f17581e2c2");
 										});
 									});
 								});
