@@ -1,4 +1,4 @@
-const cacheName='{CCMS_LIB:_default.php;FUNC:ccms_lng}-2020.03.23-02';
+const cacheName='{CCMS_LIB:_default.php;FUNC:ccms_lng}-2020.03.23-03';
 
 /* In order to get the listed resources below to load properly once moved to Amazon's CloudFront servers you need to add this to your S3 bucket, under Permissions/CORS configuration:
 
@@ -27,6 +27,7 @@ Then click the 'Yes, Edit' button at the bottom and give it about 10 minutes to 
 */
 
 var cacheFiles=[
+	/*
 	'{CCMS_LIB:site.php;FUNC:load_resource("ANIMATE")}',
 	'{CCMS_LIB:site.php;FUNC:load_resource("JQUERY")}',
 	'{CCMS_LIB:site.php;FUNC:load_resource("JQUERY-VALIDATE")}',
@@ -37,6 +38,7 @@ var cacheFiles=[
 	'{CCMS_LIB:site.php;FUNC:load_resource("MODERNIZER")}',
 	'{CCMS_LIB:site.php;FUNC:css_01}',
 	'{CCMS_LIB:site.php;FUNC:js_01}'
+	*/
 ]
 
 self.addEventListener('install',e=>{
