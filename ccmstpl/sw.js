@@ -1,4 +1,4 @@
-const cacheName='{CCMS_LIB:_default.php;FUNC:ccms_lng}-2020.03.23-01';
+const cacheName='{CCMS_LIB:_default.php;FUNC:ccms_lng}-2020.03.23-02';
 
 /* In order to get the listed resources below to load properly once moved to Amazon's CloudFront servers you need to add this to your S3 bucket, under Permissions/CORS configuration:
 
@@ -25,9 +25,6 @@ Add these to the right box under Whitelist Headers:
 
 Then click the 'Yes, Edit' button at the bottom and give it about 10 minutes to propagate through the system and test using Chrome.
 */
-
-//https://d23cij6660kk94.cloudfront.net
-//https://s3-us-west-1.amazonaws.com/icondds.com-www-01
 
 var cacheFiles=[
 	'{CCMS_LIB:site.php;FUNC:load_resource("ANIMATE")}',
@@ -62,20 +59,13 @@ self.addEventListener('activate',e=>{
 	);
 });
 
-// Check the cache first, if that fails look on the network. (Best for mostly static websites.)
+/* Check the cache first, if that fails look on the network. (Best for mostly static websites.) */
 self.addEventListener('fetch',e=>{
 	e.respondWith(
 		caches.match(e.request).then(response=>{
 			if(response) {
 				return response;
 			}
-
-			/*
-			const successfulRequest = new Request('https://cors-test.appspot.com/test', {
-				mode: 'cors'
-			});
-			*/
-
 			return fetch(e.request);
 		})
 	);
