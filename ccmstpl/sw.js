@@ -69,7 +69,7 @@ self.addEventListener('fetch',e=>{
 			if(response) {
 				return response;
 			}
-			//return fetch(e.request);
+			/*return fetch(e.request);*/
 
 
 			try {
