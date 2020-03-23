@@ -1,5 +1,3 @@
-const cacheName='{CCMS_LIB:_default.php;FUNC:ccms_lng}-2020.03.23-03';
-
 /* In order to get the listed resources below to load properly once moved to Amazon's CloudFront servers you need to add this to your S3 bucket, under Permissions/CORS configuration:
 
 <?xml version="1.0" encoding="UTF-8"?>
@@ -26,6 +24,8 @@ Add these to the right box under Whitelist Headers:
 Then click the 'Yes, Edit' button at the bottom and give it about 10 minutes to propagate through the system and test using Chrome.
 */
 
+const cacheName='{CCMS_LIB:_default.php;FUNC:ccms_lng}-2020.03.23-03';
+
 var cacheFiles=[
 	/*
 	'{CCMS_LIB:site.php;FUNC:load_resource("ANIMATE")}',
@@ -36,9 +36,10 @@ var cacheFiles=[
 	'{CCMS_LIB:site.php;FUNC:load_resource("OWL-JS")}',
 	'{CCMS_LIB:site.php;FUNC:load_resource("JQUERY-MOBILE-CUST")}',
 	'{CCMS_LIB:site.php;FUNC:load_resource("MODERNIZER")}',
-	'{CCMS_LIB:site.php;FUNC:css_01}',
-	'{CCMS_LIB:site.php;FUNC:js_01}'
 	*/
+	'{CCMS_LIB:site.php;FUNC:css_01}',
+	'{CCMS_LIB:site.php;FUNC:js_01}',
+	'/{CCMS_LIB:_default.php;FUNC:ccms_lng}/offline.html'
 ]
 
 self.addEventListener('install',e=>{
@@ -68,7 +69,25 @@ self.addEventListener('fetch',e=>{
 			if(response) {
 				return response;
 			}
-			return fetch(e.request);
+			//return fetch(e.request);
+
+
+			try {
+				// Otherwise, get from the network
+				return fetch(e.request);
+			} catch (err) {
+				// If this was a navigation, show the offline page:
+				if (e.request.mode === 'navigate') {
+					return caches.match('/{CCMS_LIB:_default.php;FUNC:ccms_lng}/offline.html');
+				}
+				// Otherwise throw
+				throw err;
+			}
+
+
+
+
+
 		})
 	);
 });
