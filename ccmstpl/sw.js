@@ -73,14 +73,14 @@ self.addEventListener('fetch',e=>{
 
 
 			try {
-				// Otherwise, get from the network
+				/* Otherwise, get from the network */
 				return fetch(e.request);
 			} catch (err) {
-				// If this was a navigation, show the offline page:
+				/* If this was a navigation, show the offline page: */
 				if (e.request.mode === 'navigate') {
 					return caches.match('/{CCMS_LIB:_default.php;FUNC:ccms_lng}/offline.html');
 				}
-				// Otherwise throw
+				/* Otherwise throw */
 				throw err;
 			}
 
