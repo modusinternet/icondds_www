@@ -1,4 +1,4 @@
-const cacheName='v2020.03.22-02';
+const cacheName='{CCMS_LIB:_default.php;FUNC:ccms_lng}-2020.03.23-01';
 
 /* In order to get the listed resources below to load properly once moved to Amazon's CloudFront servers you need to add this to your S3 bucket, under Permissions/CORS configuration:
 
@@ -30,16 +30,16 @@ Then click the 'Yes, Edit' button at the bottom and give it about 10 minutes to 
 //https://s3-us-west-1.amazonaws.com/icondds.com-www-01
 
 var cacheFiles=[
-	'https://s3-us-west-1.amazonaws.com/icondds.com-www-01/ccmsusr/_css/animate.min.css',
-	'https://s3-us-west-1.amazonaws.com/icondds.com-www-01/ccmsusr/_js/jquery-3.4.1.min.js',
-	'https://s3-us-west-1.amazonaws.com/icondds.com-www-01/ccmsusr/_js/jquery-validate-1.19.0.min.js',
-	'https://s3-us-west-1.amazonaws.com/icondds.com-www-01/ccmsusr/_js/jquery-validate-additional-methods-1.19.0.min.js',
-	'https://s3-us-west-1.amazonaws.com/icondds.com-www-01/ccmstpl/_css/owl.carousel-2.3.4.min.css',
-	'https://s3-us-west-1.amazonaws.com/icondds.com-www-01/ccmstpl/_js/owl.carousel.min.js',
-	'https://s3-us-west-1.amazonaws.com/icondds.com-www-01/ccmstpl/_js/jquery.mobile.custom.min.js',
-	'https://s3-us-west-1.amazonaws.com/icondds.com-www-01/ccmstpl/_js/modernizr-3.6.0-custom-min.js',
-	'/en/_css/style-ltr.css',
-	'/en/_js/main.js'
+	'{CCMS_LIB:site.php;FUNC:load_resource("ANIMATE")}',
+	'{CCMS_LIB:site.php;FUNC:load_resource("JQUERY")}',
+	'{CCMS_LIB:site.php;FUNC:load_resource("JQUERY-VALIDATE")}',
+	'{CCMS_LIB:site.php;FUNC:load_resource("JQUERY-VALIDATE-ADDITIONAL-METHODS")}',
+	'{CCMS_LIB:site.php;FUNC:load_resource("OWL-CSS")}',
+	'{CCMS_LIB:site.php;FUNC:load_resource("OWL-JS")}',
+	'{CCMS_LIB:site.php;FUNC:load_resource("JQUERY-MOBILE-CUST")}',
+	'{CCMS_LIB:site.php;FUNC:load_resource("MODERNIZER")}',
+	'{CCMS_LIB:site.php;FUNC:css_01}',
+	'{CCMS_LIB:site.php;FUNC:js_01}'
 ]
 
 self.addEventListener('install',e=>{

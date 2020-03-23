@@ -566,7 +566,6 @@
 										loadFirst("{CCMS_LIB:site.php;FUNC:load_resource("OWL-JS")}",function(){
 
 											var l=document.createElement("link");l.rel="stylesheet";
-											/*l.href="//cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css";*/
 											l.href = "{CCMS_LIB:site.php;FUNC:load_resource("OWL-CSS")}";
 											var h=document.getElementsByTagName("head")[0];h.parentNode.insertBefore(l,h);
 
