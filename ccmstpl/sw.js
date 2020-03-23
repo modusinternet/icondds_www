@@ -66,15 +66,13 @@ self.addEventListener('activate',e=>{
 self.addEventListener('fetch',e=>{
 	e.respondWith(
 		caches.match(e.request).then(response=>{
-			if(response) {
-				return response;
-			}
+			if(response) return response;
 			/*return fetch(e.request);*/
 
 
 			try {
 				/* Otherwise, get from the network */
-				return fetch(e.request);
+				return await fetch(e.request);
 			} catch (err) {
 				/* If this was a navigation, show the offline page: */
 				/*if (e.request.mode === 'navigate') {*/
