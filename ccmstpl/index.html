@@ -540,7 +540,7 @@
 		<script>
 			/*window.performance.mark("mark_beginning_javascript");*/
 {CCMS_TPL:footer-js.html}
-			function loadFirst(e,t,i){var a=document.createElement("script");a.async="true";a.readyState?a.onreadystatechange=function(){("loaded"==a.readyState||"complete"==a.readyState)&&(a.onreadystatechange=null,t())}:a.onload=function(){t()},a.id=i,a.src=e,document.body.appendChild(a)}
+			function loadFirst(e,t,i){var a=document.createElement("script");a.async="true";a.id=i;a.readyState?a.onreadystatechange=function(){("loaded"==a.readyState||"complete"==a.readyState)&&(a.onreadystatechange=null,t())}:a.onload=function(){t()},a.src=e,document.body.appendChild(a)}
 
 			var l=document.createElement("link");l.rel="stylesheet";
 			l.href = "{CCMS_LIB:site.php;FUNC:css_01}";
@@ -564,8 +564,6 @@
 									loadFirst("{CCMS_LIB:site.php;FUNC:js_01}",function(){
 
 										loadFirst("{CCMS_LIB:site.php;FUNC:load_resource("OWL-JS")}",function(){
-
-											loadFirst("https://icondds.com/livezilla/script.php?id=8bd62230ad09ae891dea91f17581e2c2",function(){
 
 											var l=document.createElement("link");l.rel="stylesheet";
 											/*l.href="//cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css";*/
@@ -633,12 +631,13 @@
 
 											$(".owlDivContainer").attr("style","opacity:1");
 
+											loadFirst("https://icondds.com/livezilla/script.php?id=8bd62230ad09ae891dea91f17581e2c2",function(){},"8bd62230ad09ae891dea91f17581e2c2");
+
 											/*window.setTimeout(function(){document.getElementsByClassName("owlDivContainer")[0].style.opacity="1";},500);*/
 
 											/*window.performance.mark("mark_end_javascript");
 											console.log(window.performance.getEntriesByName("mark_beginning_javascript"));
 											console.log(window.performance.getEntriesByName("mark_end_javascript"));*/
-											},"8bd62230ad09ae891dea91f17581e2c2");
 										});
 									});
 								});
