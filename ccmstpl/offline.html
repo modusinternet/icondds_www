@@ -1,1 +1,153 @@
-<!DOCTYPE html><html><body>Page not cached yet and your not online at the moment.</body></html>
+{CCMS_DB_PRELOAD:all,about-us}<!DOCTYPE html>
+<html dir="{CCMS_LIB:_default.php;FUNC:ccms_lng_dir}" lang="{CCMS_LIB:_default.php;FUNC:ccms_lng}" prefix="og: http://ogp.me/ns#">
+	<head>
+		<!-- Repeated content and can be placed once in your header head template. -->
+		{CCMS_TPL:header-head.html}
+
+		<!-- Should be representative of the page in reference. -->
+		<title dir="{CCMS_LIB:_default.php;FUNC:ccms_lng_dir}">{CCMS_DB:all,company-name} / {CCMS_DB:all,about-us}</title>
+		<meta name="description" content="{CCMS_DB:about-us,description}" />
+
+		<!-- Google / Search Engine Tags -->
+		<meta itemprop="name" content="{CCMS_DB:all,company-name} / {CCMS_DB:all,about-us}">
+		<meta itemprop="description" content="{CCMS_DB:about-us,description}">
+
+		<!-- Facebook Meta Tags -->
+		<meta property="og:url" content="https://{CCMS_LIB:_default.php;FUNC:ccms_cfgDomain}/{CCMS_LIB:_default.php;FUNC:ccms_lng}/about-us/">
+		<meta property="og:title" content="{CCMS_DB:all,company-name} / {CCMS_DB:all,about-us}">
+		<meta property="og:description" content="{CCMS_DB:about-us,description}">
+
+		<!-- Twitter Meta Tags -->
+		<meta name="twitter:title" content="{CCMS_DB:all,company-name} / {CCMS_DB:all,about-us}">
+		<meta name="twitter:description" content="{CCMS_DB:about-us,description}">
+
+		<script type="application/ld+json">
+			[{
+				"@context":"https://schema.org",
+				"@type":"WebSite",
+				"name":"{CCMS_DB:all,company-name}",
+				"url":"https://{CCMS_LIB:_default.php;FUNC:ccms_cfgDomain}/{CCMS_LIB:_default.php;FUNC:ccms_lng}/about-us/",
+				"alternateName":"{CCMS_DB:all,company-name} / {CCMS_DB:all,about-us}"
+			},{
+				"@context":"https://schema.org",
+				"@type":"Dentist",
+				"name":"{CCMS_DB:all,company-name}",
+				"description":"{CCMS_DB:about-us,description}",
+				"url":"https://{CCMS_LIB:_default.php;FUNC:ccms_cfgDomain}/{CCMS_LIB:_default.php;FUNC:ccms_lng}/about-us/",
+				"logo":{
+					"@type":"ImageObject",
+					"url":"https://{CCMS_LIB:_default.php;FUNC:ccms_cfgDomain}/ccmstpl/_img/logo1.3.png"
+				},
+				"telephone":"(714) 835-4441",
+				"email":"info@{CCMS_LIB:_default.php;FUNC:ccms_cfgDomain}",
+				"priceRange":"Call for pricing options",
+				"address":{
+					"@type":"PostalAddress",
+					"addressLocality":"Tustin",
+					"addressRegion":"CA",
+					"postalCode":"92780",
+					"streetAddress":"17501 Irvine Blvd Ste 101 Tustin",
+					"addressCountry":"US"
+				},
+				"sameAs":[
+					/*"https://twitter.com/mywebsite",*/
+					"https://www.instagram.com/iconic.dds/?hl=en",
+					/*"https://plus.google.com/+mywebsite",*/
+					"https://www.facebook.com/tustindentistry/"
+					/*"https://www.pinterest.com/mywebsite/",*/
+					/*"https://www.youtube.com/user/mywebsite"*/
+				],
+				"geo":{
+					"@type":"GeoCoordinates",
+					"latitude":33.748438,
+					"longitude":-117.82662
+				},
+				"openingHours":["Mon-Fri: 9am - 5pm", "Sat-Sun: Closed"],
+				"image":"https://{CCMS_LIB:_default.php;FUNC:ccms_cfgDomain}/ccmstpl/_img/business-card.png"
+			}]
+		</script>
+
+		<style>
+			{CCMS_TPL:/_css/header.html}
+
+			.webp .about-us_01{
+				background-image:url("/ccmstpl/_img/about-us_01.webp");
+			}
+
+			.no-webp .about-us_01{
+				background-image:url("/ccmstpl/_img/about-us_01-min.jpg");
+			}
+		</style>
+		<script>
+			var navActiveArray = ["nl-lng","lng-{CCMS_LIB:_default.php;FUNC:ccms_lng}"];
+			var navActiveFooterArray = [];
+		</script>
+	</head>
+	<body>
+		<div id="loading_svg"></div>
+		<main class="cd-main-content">
+			<div class="parallax about-us_01"></div>
+			<div style="padding-bottom:15px">
+				<div class="bcGrid" dir="{CCMS_LIB:_default.php;FUNC:ccms_lng_dir}">
+					<h1 class="c1">{CCMS_DB:all,about-us}</h1>
+					<i class="c2"></i>
+					<h4 class="c3" style="margin:8px 0 0">
+						<a dir="{CCMS_DB_DIR:all,homepage}" href="/{CCMS_LIB:_default.php;FUNC:ccms_lng}/">{CCMS_DB:all,homepage}</a> <span style="color:#888888">/</span> <span dir="{CCMS_DB_DIR:all,about-us}" style="color:var(--cl2)">{CCMS_DB:all,about-us}</span>
+					</h4>
+				</div>
+			</div>
+			<div class="contentType1">
+				<div>
+					<p>Page Offline:  This page has not been cached/viewed before and currently you do not appear to be connected to the Internet so unfortunatly we can not show it to you at this time.  Please reconnect to the Internet and you will be able to load this page properly.  In addition, once you have viewed it once it will be cached locally and available the next time you are offline, no problem.</p>
+					<ul>
+						<li><a href="/{CCMS_LIB:_default.php;FUNC:ccms_lng}/about-us/past-and-present.html">Past and Present</a></li>
+						<li><a href="/{CCMS_LIB:_default.php;FUNC:ccms_lng}/about-us/our-philosophy.html">Our Philosophy</a></li>
+						<li><a href="/{CCMS_LIB:_default.php;FUNC:ccms_lng}/about-us/holistic-and-integrative.html">Holistic and Integrative</a></li>
+						<li><a href="/{CCMS_LIB:_default.php;FUNC:ccms_lng}/about-us/meet-the-team.html">Meet the Team</a></li>
+					</ul>
+				</div>
+			</div>
+{CCMS_TPL:footer.html}
+		</main>
+{CCMS_TPL:header-body.html}
+{CCMS_TPL:msg-popup.html}
+{CCMS_TPL:a2hs-box.html}
+		<script>
+			/*window.performance.mark("mark_beginning_javascript");*/
+{CCMS_TPL:footer-js.html}
+			function loadFirst(e,t){var a=document.createElement("script");a.async="true";a.readyState?a.onreadystatechange=function(){("loaded"==a.readyState||"complete"==a.readyState)&&(a.onreadystatechange=null,t())}:a.onload=function(){t()},a.src=e,document.body.appendChild(a)}
+
+			var l=document.createElement("link");l.rel="stylesheet";
+			l.href = "{CCMS_LIB:site.php;FUNC:css_01}";
+			var h=document.getElementsByTagName("head")[0];h.parentNode.insertBefore(l,h);
+
+			function loadJSResources(){
+				loadFirst("{CCMS_LIB:site.php;FUNC:load_resource("MODERNIZER")}",function(){
+
+					loadFirst("{CCMS_LIB:site.php;FUNC:load_resource("JQUERY")}",function(){
+
+						loadFirst("{CCMS_LIB:site.php;FUNC:load_resource("JQUERY-MOBILE-CUST")}",function(){
+
+							loadFirst("{CCMS_LIB:site.php;FUNC:load_resource("JQUERY-VALIDATE")}",function(){
+
+								loadFirst("{CCMS_LIB:site.php;FUNC:load_resource("JQUERY-VALIDATE-ADDITIONAL-METHODS")}",function(){
+
+									loadFirst("{CCMS_LIB:site.php;FUNC:js_01}",function(){
+
+										/*window.performance.mark("mark_end_javascript");
+										console.log(window.performance.getEntriesByName("mark_beginning_javascript"));
+										console.log(window.performance.getEntriesByName("mark_end_javascript"));*/
+									});
+								});
+							});
+						});
+					});
+				});
+			}
+
+			if(window.addEventListener){window.addEventListener("load",loadJSResources,false)}
+			else if(window.attachEvent){window.attachEvent("onload",loadJSResources)}
+			else{window.onload=loadJSResources}
+		</script>
+	</body>
+</html>
