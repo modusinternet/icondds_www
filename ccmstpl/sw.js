@@ -24,7 +24,7 @@ Add these to the right box under Whitelist Headers:
 Then click the 'Yes, Edit' button at the bottom and give it about 10 minutes to propagate through the system and test using Chrome.
 */
 
-const cacheName='{CCMS_LIB:_default.php;FUNC:ccms_lng}-2020.03.23-07';
+const cacheName='{CCMS_LIB:_default.php;FUNC:ccms_lng}-2020.03.23-08';
 
 var cacheFiles=[
 	/*
@@ -62,28 +62,24 @@ self.addEventListener('activate',e=>{
 	);
 });
 
-
-
-
-addEventListener('fetch', (event) => {
-  const { request } = event;
-  // Always bypass for range requests, due to browser bugs
-  if (request.headers.has('range')) return;
-  event.respondWith(async function() {
-    // Try to get from the cache:
-    const cachedResponse = await caches.match(request);
-    if (cachedResponse) return cachedResponse;
-
-    try {
-      // Otherwise, get from the network
-      return await fetch(request);
-    } catch (err) {
-      // If this was a navigation, show the offline page:
-      if (request.mode === 'navigate') {
-        return caches.match('/{CCMS_LIB:_default.php;FUNC:ccms_lng}/offline.html');
-      }
-      // Otherwise throw
-      throw err;
-    }
-  }());
+addEventListener('fetch',e=>{
+	const {request}=e;
+	/* Always bypass for range requests, due to browser bugs. */
+	if(request.headers.has('range')) return;
+	e.respondWith(async function(){
+		/* Try to get from the cache. */
+		const cachedResponse=await caches.match(request);
+		if(cachedResponse) return cachedResponse;
+		/* Otherwise, get from the network. */
+		try{
+			return await fetch(request);
+		}catch(err){
+			/* If this was a navigation, show the offline page. */
+			if(request.mode==='navigate'){
+				return caches.match('/{CCMS_LIB:_default.php;FUNC:ccms_lng}/offline.html');
+			}
+			/* Otherwise throw. */
+			throw err;
+		}
+	}());
 });
