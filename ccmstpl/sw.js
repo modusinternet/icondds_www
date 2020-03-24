@@ -39,6 +39,8 @@ var cacheFiles=[
 	'{CCMS_LIB:site.php;FUNC:css_01}',
 	'{CCMS_LIB:site.php;FUNC:js_01}',
 	*/
+	'/ccmstpl/_img/offline_01.webp',
+	'/ccmstpl/_img/offline_01-min.jpg',
 	'/{CCMS_LIB:_default.php;FUNC:ccms_lng}/offline.html'
 ]
 
