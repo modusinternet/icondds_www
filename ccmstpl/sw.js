@@ -24,7 +24,7 @@ Add these to the right box under Whitelist Headers:
 Then click the 'Yes, Edit' button at the bottom and give it about 10 minutes to propagate through the system and test using Chrome.
 */
 
-const cacheName='{CCMS_LIB:_default.php;FUNC:ccms_lng}-2020.03.23-08';
+const cacheName='{CCMS_LIB:_default.php;FUNC:ccms_lng}-2020.03.24-01';
 
 var cacheFiles=[
 	/*
@@ -36,9 +36,9 @@ var cacheFiles=[
 	'{CCMS_LIB:site.php;FUNC:load_resource("OWL-JS")}',
 	'{CCMS_LIB:site.php;FUNC:load_resource("JQUERY-MOBILE-CUST")}',
 	'{CCMS_LIB:site.php;FUNC:load_resource("MODERNIZER")}',
-	*/
 	'{CCMS_LIB:site.php;FUNC:css_01}',
 	'{CCMS_LIB:site.php;FUNC:js_01}',
+	*/
 	'/{CCMS_LIB:_default.php;FUNC:ccms_lng}/offline.html'
 ]
 
