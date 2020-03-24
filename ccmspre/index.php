@@ -891,13 +891,16 @@ function CCMS_Main() {
 										$qry->execute(array(':url_md5' => $url_md5, ':url' => $url, ':exp' => time() + ($CFG["CACHE_EXPIRE"] * 60), ':content' => $buf));
 
 										echo $buf;
+										/*
 										echo "<!-- cache id: " . $CFG["DBH"]->lastInsertId() . " -->";
-
+										*/
 									} else {
 										// The cached template is NOT expried.  It should be used.
 
 										echo $row["content"];
+										/*
 										echo "<!-- cache id: " . $row["id"] . " -->";
+										*/
 									}
 								} else {
 									// A cached version of the page requested was NOT found.
@@ -911,7 +914,9 @@ function CCMS_Main() {
 									$qry->execute(array(':url_md5' => $url_md5, ':url' => $url, ':exp' => time() + ($CFG["CACHE_EXPIRE"] * 60), ':content' => $buf));
 
 									echo $buf;
+									/*
 									echo "<!-- cache id: " . $CFG["DBH"]->lastInsertId() . " -->";
+									*/
 								}
 							} else {
 								// Cache setting in /ccmspre/config.php is NOT enabled, $CFG["CACHE"] = 0;.
