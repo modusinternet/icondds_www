@@ -42,7 +42,7 @@ var cacheFiles=[
 	'/ccmstpl/_img/offline_01.webp',
 	'/ccmstpl/_img/offline_01-min.jpg',
 	'/{CCMS_LIB:_default.php;FUNC:ccms_lng}/offline.html'
-]
+];
 
 self.addEventListener('install',e=>{
 	e.waitUntil(
