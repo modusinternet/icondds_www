@@ -1,5 +1,5 @@
 <?
-header("Content-Type: text/html; charset=UTF-8");
+header("Content-Type: text/html; charset=utf-8");
 header("Cache-Control: public, must-revalidate, proxy-revalidate");
 ?>{CCMS_DB_PRELOAD:all,search}<!DOCTYPE html>
 <html dir="{CCMS_LIB:_default.php;FUNC:ccms_lng_dir}" lang="{CCMS_LIB:_default.php;FUNC:ccms_lng}" prefix="og: http://ogp.me/ns#">
