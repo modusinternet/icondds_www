@@ -80,7 +80,7 @@ AddOutputFilterByType DEFLATE application/x-javascript
 
 	# Don't allow any pages to be framed - Defends against CSRF
 	#------------------------------
-	Header set X-Frame-Options DENY
+	Header always append X-Frame-Options DENY
 
 	# X-XSS-Protection header can prevent some level of XSS (cross-site-scripting)
 	# attacks, and this is compatible with IE 8+, Chrome, Opera, Safari & Android.
@@ -97,6 +97,9 @@ AddOutputFilterByType DEFLATE application/x-javascript
 	BrowserMatch MSIE ie
 	Header set X-UA-Compatible "IE=edge"
 
+	# HSTS (HTTP Strict Transport Security) header to ensure all communication from a browser
+	# is sent over HTTPS (HTTP Secure).
+	#------------------------------
 	Header set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
 </IfModule>
 
