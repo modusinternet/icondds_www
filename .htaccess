@@ -80,9 +80,10 @@ AddOutputFilterByType DEFLATE application/x-javascript
 
 	# Don't allow any pages to be framed - Defends against CSRF
 	#------------------------------
-	#Header set X-Frame-Options DENY
+	Header set X-Frame-Options DENY
 
-	# Turn on IE8-IE9 XSS prevention tools
+	# X-XSS-Protection header can prevent some level of XSS (cross-site-scripting)
+	# attacks, and this is compatible with IE 8+, Chrome, Opera, Safari & Android.
 	#------------------------------
 	Header set X-XSS-Protection "1; mode=block"
 
