@@ -23,8 +23,8 @@ header('Expires: ' . gmdate('D, d M Y H:i:s \G\M\T', time() + ($CFG["CACHE_EXPIR
 		}
 	],
 	"start_url": "./",
-	"theme_color": "#ffffff",
-	"background_color": "#ffffff",
+	"theme_color": "#006058",
+	"background_color": "#006058",
 	"display": "standalone",
 	"scope": ".",
 	"lang": "{CCMS_LIB:_default.php;FUNC:ccms_lng}",
