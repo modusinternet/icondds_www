@@ -113,7 +113,16 @@ AddOutputFilterByType DEFLATE application/x-javascript
 	#------------------------------
 	Header set X-Permitted-Cross-Domain-Policies "none"
 
+	# Referrer policy.
+	#------------------------------
 	Header set Referrer-Policy "strict-origin-when-cross-origin"
+
+	# A new header still in experimental status is to instruct the browser to validate the connection
+	# with web servers for certificate transparency (CT). This project by Google aims to fix some of
+	# the flaws in the SSL/TLS certificate system..
+	#------------------------------
+	Header set Expect-CT 'enforce, max-age=43200, report-uri="https://%{HTTP_HOST}/report"'
+
 
 
 
