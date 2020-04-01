@@ -95,10 +95,6 @@ AddOutputFilterByType DEFLATE application/x-javascript
 	#------------------------------
 	BrowserMatch MSIE ie
 	Header set X-UA-Compatible "IE=edge"
-
-
-	
-
 </IfModule>
 
 <IfModule mod_rewrite.c>
