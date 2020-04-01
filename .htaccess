@@ -107,6 +107,11 @@ AddOutputFilterByType DEFLATE application/x-javascript
 	#------------------------------
 	#Header set Content-Security-Policy "default-src 'self';"
 
+	# By implementing this header, you restrict loading your site’s assets from other domains
+	# to avoid resource abuse.
+	#------------------------------
+	Header set X-Permitted-Cross-Domain-Policies "none"
+
 
 
 
