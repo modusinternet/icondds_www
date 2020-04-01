@@ -97,10 +97,7 @@ AddOutputFilterByType DEFLATE application/x-javascript
 	Header set X-UA-Compatible "IE=edge"
 
 
-	RewriteCond %{HTTPS} !=on
-	RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]
-	RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L,E=HTTPS:1]
-	Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload" env=HTTPS
+	
 
 </IfModule>
 
