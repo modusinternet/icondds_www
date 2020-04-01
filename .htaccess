@@ -102,11 +102,19 @@ AddOutputFilterByType DEFLATE application/x-javascript
 	#------------------------------
 	Header set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
 
-	# Prevent XSS, clickjacking, code injection attacks by implementing the Content Security
-	# Policy (CSP) header.
+	# Content Security Policy (CSP) is an added layer of security that helps to detect and mitigate certain types of
+	# attacks, including Cross Site Scripting (XSS) and data injection attacks.
+	# https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP
 	#------------------------------
-	#Header set Content-Security-Policy "default-src 'self';"
-	#default-src 'self'; script-src 'self' 'report-sample' disqus.com c.disquscdn.com platform.instagram.com cdnjs.cloudflare.com scotthelme.disqus.com a.disquscdn.com go.disqus.com platform.twitter.com cdn.syndication.twimg.com syndication.twitter.com gist.github.com/ScottHelme/ www.googletagmanager.com www.google-analytics.com; style-src 'self' 'report-sample' c.disquscdn.com a.disquscdn.com fonts.googleapis.com cdnjs.cloudflare.com platform.twitter.com assets-cdn.github.com github.githubassets.com; img-src 'self' data: www.gravatar.com links.services.disqus.com referrer.disqus.com a.disquscdn.com cdn.syndication.twimg.com syndication.twitter.com pbs.twimg.com platform.twitter.com abs.twimg.com www.google-analytics.com; child-src www.instagram.com twitter.com fusiontables.googleusercontent.com fusiontables.google.com www.google.com disqus.com www.youtube.com syndication.twitter.com platform.twitter.com www.youtube-nocookie.com; connect-src 'self' syndication.twitter.com links.services.disqus.com; font-src 'self' cdnjs.cloudflare.com fonts.gstatic.com fonts.googleapis.com; form-action 'self' syndication.twitter.com; frame-ancestors 'none'; upgrade-insecure-requests; report-uri https://scotthelme.report-uri.com/r/d/csp/enforce; report-to default
+	Header set Content-Security-Policy "default-src 'self';"
+
+
+
+
+
+
+
+
 
 	# By implementing this header, you restrict loading your site’s assets from other domains
 	# to avoid resource abuse.
@@ -129,13 +137,6 @@ AddOutputFilterByType DEFLATE application/x-javascript
 	# vibrate, microphone, payment, vr, etc. to enable or disable within a web application.
 	#------------------------------
 	Header always set Feature-Policy "none 'none'"
-
-	
-
-
-
-
-
 </IfModule>
 
 <IfModule mod_rewrite.c>
