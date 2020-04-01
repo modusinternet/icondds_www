@@ -123,6 +123,15 @@ AddOutputFilterByType DEFLATE application/x-javascript
 	#------------------------------
 	Header set Expect-CT 'enforce, max-age=43200'
 
+	# Feature-Policy
+	# https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Feature-Policy
+	# Control browser’s features such as geolocation, fullscreen, speaker, USB, autoplay, speaker,
+	# vibrate, microphone, payment, vr, etc. to enable or disable within a web application.
+	#------------------------------
+	Header always set Feature-Policy "none 'none'"
+
+	
+
 
 
 
