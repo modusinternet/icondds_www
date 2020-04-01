@@ -121,7 +121,7 @@ AddOutputFilterByType DEFLATE application/x-javascript
 	# with web servers for certificate transparency (CT). This project by Google aims to fix some of
 	# the flaws in the SSL/TLS certificate system..
 	#------------------------------
-	Header set Expect-CT 'enforce, max-age=43200, report-uri="https://somedomain.com/report"'
+	Header set Expect-CT 'enforce, max-age=43200'
 
 
 
