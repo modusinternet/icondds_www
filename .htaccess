@@ -82,9 +82,13 @@ AddOutputFilterByType DEFLATE application/x-javascript
 	# Content Security Policy (CSP) is an added layer of security that helps to detect and mitigate certain types of
 	# attacks, including Cross Site Scripting (XSS) and data injection attacks.
 	# https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP
+	# https://securityheaders.com/
+	# https://content-security-policy.com/
+	# https://geekflare.com/http-header-implementation/
+	# https://developers.google.com/tag-manager/web/csp
+	# http://qnimate.com/content-security-policy-in-nutshell/
 	#------------------------------
 	Header set Content-Security-Policy "default-src 'self' 'unsafe-inline' *.cloudfront.net www.googletagmanager.com www.google-analytics.com;script-src 'self' 'unsafe-inline' 'unsafe-eval' *.cloudfront.net www.googletagmanager.com www.google-analytics.com;style-src 'self' 'unsafe-inline' *.cloudfront.net www.googletagmanager.com www.google-analytics.com;img-src 'self' data: *.cloudfront.net www.google-analytics.com www.gravatar.com;font-src 'self' data: fonts.gstatic.com fonts.googleapis.com;"
-
 
 
 
