@@ -106,7 +106,7 @@ AddOutputFilterByType DEFLATE application/x-javascript
 	# attacks, including Cross Site Scripting (XSS) and data injection attacks.
 	# https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP
 	#------------------------------
-	#Header set Content-Security-Policy "default-src 'self' *.cloudfront.net www.googletagmanager.com; script-src 'self' *.cloudfront.net www.googletagmanager.com; style-src 'self' *.cloudfront.net www.googletagmanager.com; img-src 'self' *.cloudfront.net www.googletagmanager.com;"
+	Header set Content-Security-Policy "default-src 'self'; script-src 'self' *.cloudfront.net www.googletagmanager.com www.google-analytics.com; style-src 'self' *.cloudfront.net www.googletagmanager.com www.google-analytics.com; img-src 'self' *.cloudfront.net www.googletagmanager.com www.google-analytics.com;"
 
 
 
