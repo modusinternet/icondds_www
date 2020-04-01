@@ -105,7 +105,7 @@ AddOutputFilterByType DEFLATE application/x-javascript
 	# Prevent XSS, clickjacking, code injection attacks by implementing the Content Security
 	# Policy (CSP) header.
 	#------------------------------
-	Header set Content-Security-Policy "default-src 'self';"
+	#Header set Content-Security-Policy "default-src 'self';"
 
 
 
