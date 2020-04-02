@@ -39,7 +39,7 @@ header("Cache-Control: public, must-revalidate, proxy-revalidate");
 				"url":"https://{CCMS_LIB:_default.php;FUNC:ccms_cfgDomain}/{CCMS_LIB:_default.php;FUNC:ccms_lng}/",
 				"logo":{
 					"@type":"ImageObject",
-					"url":"https://{CCMS_LIB:_default.php;FUNC:ccms_cfgDomain}/ccmstpl/_img/logo1.3.png"
+					"url":"{CCMS_LIB:site.php;FUNC:load_resource("AWS")}/ccmstpl/_img/logo1.3.png"
 				},
 				"telephone":"(714) 835-4441",
 				"email":"info@{CCMS_LIB:_default.php;FUNC:ccms_cfgDomain}",
@@ -66,7 +66,7 @@ header("Cache-Control: public, must-revalidate, proxy-revalidate");
 					"longitude":-117.82662
 				},
 				"openingHours":["Mon-Fri: 9am - 5pm", "Sat-Sun: Closed"],
-				"image":"https://{CCMS_LIB:_default.php;FUNC:ccms_cfgDomain}/ccmstpl/_img/business-card.png"
+				"image":"{CCMS_LIB:site.php;FUNC:load_resource("AWS")}/ccmstpl/_img/business-card.png"
 			}]
 		</script>
 
@@ -74,11 +74,11 @@ header("Cache-Control: public, must-revalidate, proxy-revalidate");
 			{CCMS_TPL:/_css/header.html}
 
 			.webp .search_01{
-				background-image:url("/ccmstpl/_img/search_01.webp");
+				background-image:url("{CCMS_LIB:site.php;FUNC:load_resource("AWS")}/ccmstpl/_img/search_01.webp");
 			}
 
 			.no-webp .search_01{
-				background-image:url("/ccmstpl/_img/search_01-min.jpg");
+				background-image:url("{CCMS_LIB:site.php;FUNC:load_resource("AWS")}/ccmstpl/_img/search_01-min.jpg");
 			}
 
 			.gsc-adBlock{opacity:.3 !important}
@@ -197,15 +197,15 @@ header("Cache-Control: public, must-revalidate, proxy-revalidate");
 			var h=document.getElementsByTagName("head")[0];h.parentNode.insertBefore(l,h);
 
 			function loadJSResources(){
-				loadFirst("{CCMS_LIB:site.php;FUNC:load_resource("MODERNIZER")}",function(){
+				loadFirst("{CCMS_LIB:site.php;FUNC:load_resource("AWS")}{CCMS_LIB:site.php;FUNC:load_resource("MODERNIZER")}",function(){
 
-					loadFirst("{CCMS_LIB:site.php;FUNC:load_resource("JQUERY")}",function(){
+					loadFirst("{CCMS_LIB:site.php;FUNC:load_resource("AWS")}{CCMS_LIB:site.php;FUNC:load_resource("JQUERY")}",function(){
 
-						loadFirst("{CCMS_LIB:site.php;FUNC:load_resource("JQUERY-MOBILE-CUST")}",function(){
+						loadFirst("{CCMS_LIB:site.php;FUNC:load_resource("AWS")}{CCMS_LIB:site.php;FUNC:load_resource("JQUERY-MOBILE-CUST")}",function(){
 
-							loadFirst("{CCMS_LIB:site.php;FUNC:load_resource("JQUERY-VALIDATE")}",function(){
+							loadFirst("{CCMS_LIB:site.php;FUNC:load_resource("AWS")}{CCMS_LIB:site.php;FUNC:load_resource("JQUERY-VALIDATE")}",function(){
 
-								loadFirst("{CCMS_LIB:site.php;FUNC:load_resource("JQUERY-VALIDATE-ADDITIONAL-METHODS")}",function(){
+								loadFirst("{CCMS_LIB:site.php;FUNC:load_resource("AWS")}{CCMS_LIB:site.php;FUNC:load_resource("JQUERY-VALIDATE-ADDITIONAL-METHODS")}",function(){
 
 									loadFirst("{CCMS_LIB:site.php;FUNC:js_01}",function(){
 
