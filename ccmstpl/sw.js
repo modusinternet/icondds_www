@@ -24,7 +24,7 @@ Add these to the right box under Whitelist Headers:
 Then click the 'Yes, Edit' button at the bottom and give it about 10 minutes to propagate through the system and test using Chrome.
 */
 
-const cacheName='{CCMS_LIB:_default.php;FUNC:ccms_lng}-2020.04.01-01';
+const cacheName='{CCMS_LIB:_default.php;FUNC:ccms_lng}-2020.04.01-02';
 
 var cacheFiles=[
 	/*
@@ -41,7 +41,7 @@ var cacheFiles=[
 	*/
 	'{CCMS_LIB:site.php;FUNC:load_resource("AWS")}/ccmstpl/_img/offline_01.webp',
 	'{CCMS_LIB:site.php;FUNC:load_resource("AWS")}/ccmstpl/_img/offline_01-min.jpg',
-	'{CCMS_LIB:site.php;FUNC:load_resource("AWS")}/{CCMS_LIB:_default.php;FUNC:ccms_lng}/offline.html'
+	'/{CCMS_LIB:_default.php;FUNC:ccms_lng}/offline.html'
 ];
 
 self.addEventListener('install',e=>{
