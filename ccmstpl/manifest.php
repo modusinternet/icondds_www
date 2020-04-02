@@ -7,17 +7,17 @@ header('Expires: ' . gmdate('D, d M Y H:i:s \G\M\T', time() + ($CFG["CACHE_EXPIR
 	"description": "At ICONIC Dentistry we serve patients with the goal of achieving better oral and systemic health.",
 	"icons": [
 		{
-			"src": "https://d23cij6660kk94.cloudfront.net/ccmstpl/_img/ico/android-chrome-192x192.png",
+			"src": "{CCMS_LIB:site.php;FUNC:load_resource("AWS")}/ccmstpl/_img/ico/android-chrome-192x192.png",
 			"sizes": "192x192",
 			"type": "image/png"
 		},
 		{
-			"src": "https://d23cij6660kk94.cloudfront.net/ccmstpl/_img/ico/android-chrome-256x256.png",
+			"src": "{CCMS_LIB:site.php;FUNC:load_resource("AWS")}/ccmstpl/_img/ico/android-chrome-256x256.png",
 			"sizes": "256x256",
 			"type": "image/png"
 		},
 		{
-			"src": "https://d23cij6660kk94.cloudfront.net/ccmstpl/_img/ico/android-chrome-512x512.png",
+			"src": "{CCMS_LIB:site.php;FUNC:load_resource("AWS")}/ccmstpl/_img/ico/android-chrome-512x512.png",
 			"sizes": "512x512",
 			"type": "image/png"
 		}

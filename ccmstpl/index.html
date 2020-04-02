@@ -543,26 +543,26 @@
 			var h=document.getElementsByTagName("head")[0];h.parentNode.insertBefore(l,h);
 
 			var l=document.createElement("link");l.rel="stylesheet";
-			l.href="{CCMS_LIB:site.php;FUNC:load_resource("ANIMATE")}";
+			l.href="{CCMS_LIB:site.php;FUNC:load_resource("AWS")}{CCMS_LIB:site.php;FUNC:load_resource("ANIMATE")}";
 			var h=document.getElementsByTagName("head")[0];h.parentNode.insertBefore(l,h);
 
 			function loadJSResources(){
-				loadFirst("{CCMS_LIB:site.php;FUNC:load_resource("MODERNIZER")}",function(){
+				loadFirst("{CCMS_LIB:site.php;FUNC:load_resource("AWS")}{CCMS_LIB:site.php;FUNC:load_resource("MODERNIZER")}",function(){
 
-					loadFirst("{CCMS_LIB:site.php;FUNC:load_resource("JQUERY")}",function(){
+					loadFirst("{CCMS_LIB:site.php;FUNC:load_resource("AWS")}{CCMS_LIB:site.php;FUNC:load_resource("JQUERY")}",function(){
 
-						loadFirst("{CCMS_LIB:site.php;FUNC:load_resource("JQUERY-MOBILE-CUST")}",function(){
+						loadFirst("{CCMS_LIB:site.php;FUNC:load_resource("AWS")}{CCMS_LIB:site.php;FUNC:load_resource("JQUERY-MOBILE-CUST")}",function(){
 
-							loadFirst("{CCMS_LIB:site.php;FUNC:load_resource("JQUERY-VALIDATE")}",function(){
+							loadFirst("{CCMS_LIB:site.php;FUNC:load_resource("AWS")}{CCMS_LIB:site.php;FUNC:load_resource("JQUERY-VALIDATE")}",function(){
 
-								loadFirst("{CCMS_LIB:site.php;FUNC:load_resource("JQUERY-VALIDATE-ADDITIONAL-METHODS")}",function(){
+								loadFirst("{CCMS_LIB:site.php;FUNC:load_resource("AWS")}{CCMS_LIB:site.php;FUNC:load_resource("JQUERY-VALIDATE-ADDITIONAL-METHODS")}",function(){
 
-									loadFirst("{CCMS_LIB:site.php;FUNC:js_01}",function(){
+									loadFirst("{CCMS_LIB:site.php;FUNC:load_resource("AWS")}{CCMS_LIB:site.php;FUNC:js_01}",function(){
 
-										loadFirst("{CCMS_LIB:site.php;FUNC:load_resource("OWL-JS")}",function(){
+										loadFirst("{CCMS_LIB:site.php;FUNC:load_resource("AWS")}{CCMS_LIB:site.php;FUNC:load_resource("OWL-JS")}",function(){
 
 											var l=document.createElement("link");l.rel="stylesheet";
-											l.href = "{CCMS_LIB:site.php;FUNC:load_resource("OWL-CSS")}";
+											l.href = "{CCMS_LIB:site.php;FUNC:load_resource("AWS")}{CCMS_LIB:site.php;FUNC:load_resource("OWL-CSS")}";
 											var h=document.getElementsByTagName("head")[0];h.parentNode.insertBefore(l,h);
 
 											var owl = $('#carousel');
