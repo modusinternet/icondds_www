@@ -36,7 +36,7 @@
 				"url":"https://{CCMS_LIB:_default.php;FUNC:ccms_cfgDomain}/{CCMS_LIB:_default.php;FUNC:ccms_lng}/services/implant-dentistry.html",
 				"logo":{
 					"@type":"ImageObject",
-					"url":"https://{CCMS_LIB:_default.php;FUNC:ccms_cfgDomain}/ccmstpl/_img/logo1.3.png"
+					"url":"{CCMS_LIB:site.php;FUNC:load_resource("AWS")}/ccmstpl/_img/logo1.3.png"
 				},
 				"telephone":"(714) 835-4441",
 				"email":"info@{CCMS_LIB:_default.php;FUNC:ccms_cfgDomain}",
@@ -63,7 +63,7 @@
 					"longitude":-117.82662
 				},
 				"openingHours":["Mon-Fri: 9am - 5pm", "Sat-Sun: Closed"],
-				"image":"https://{CCMS_LIB:_default.php;FUNC:ccms_cfgDomain}/ccmstpl/_img/business-card.png"
+				"image":"{CCMS_LIB:site.php;FUNC:load_resource("AWS")}/ccmstpl/_img/business-card.png"
 			}]
 		</script>
 
@@ -71,35 +71,35 @@
 			{CCMS_TPL:/_css/header.html}
 
 			.webp .services_implant-dentistry_01{
-				background-image:url("/ccmstpl/_img/services_implant-dentistry_01.webp");
+				background-image:url("{CCMS_LIB:site.php;FUNC:load_resource("AWS")}/ccmstpl/_img/services_implant-dentistry_01.webp");
 			}
 
 			.no-webp .services_implant-dentistry_01{
-				background-image:url("/ccmstpl/_img/services_implant-dentistry_01-min.jpg");
+				background-image:url("{CCMS_LIB:site.php;FUNC:load_resource("AWS")}/ccmstpl/_img/services_implant-dentistry_01-min.jpg");
 			}
 
 			.webp .services_implant-dentistry_02{
-				background-image:url("/ccmstpl/_img/services_implant-dentistry_02.webp");
+				background-image:url("{CCMS_LIB:site.php;FUNC:load_resource("AWS")}/ccmstpl/_img/services_implant-dentistry_02.webp");
 			}
 
 			.no-webp .services_implant-dentistry_02{
-				background-image:url("/ccmstpl/_img/services_implant-dentistry_02-min.jpg");
+				background-image:url("{CCMS_LIB:site.php;FUNC:load_resource("AWS")}/ccmstpl/_img/services_implant-dentistry_02-min.jpg");
 			}
 
 			.webp .services_implant-dentistry_03{
-				background-image:url("/ccmstpl/_img/services_implant-dentistry_03.webp");
+				background-image:url("{CCMS_LIB:site.php;FUNC:load_resource("AWS")}/ccmstpl/_img/services_implant-dentistry_03.webp");
 			}
 
 			.no-webp .services_implant-dentistry_03{
-				background-image:url("/ccmstpl/_img/services_implant-dentistry_03-min.jpg");
+				background-image:url("{CCMS_LIB:site.php;FUNC:load_resource("AWS")}/ccmstpl/_img/services_implant-dentistry_03-min.jpg");
 			}
 
 			.webp .services_implant-dentistry_04{
-				background-image:url("/ccmstpl/_img/services_implant-dentistry_04.webp");
+				background-image:url("{CCMS_LIB:site.php;FUNC:load_resource("AWS")}/ccmstpl/_img/services_implant-dentistry_04.webp");
 			}
 
 			.no-webp .services_implant-dentistry_04{
-				background-image:url("/ccmstpl/_img/services_implant-dentistry_04-min.jpg");
+				background-image:url("{CCMS_LIB:site.php;FUNC:load_resource("AWS")}/ccmstpl/_img/services_implant-dentistry_04-min.jpg");
 			}
 		</style>
 		<script>
@@ -162,15 +162,15 @@
 			var h=document.getElementsByTagName("head")[0];h.parentNode.insertBefore(l,h);
 
 			function loadJSResources(){
-				loadFirst("{CCMS_LIB:site.php;FUNC:load_resource("MODERNIZER")}",function(){
+				loadFirst("{CCMS_LIB:site.php;FUNC:load_resource("AWS")}{CCMS_LIB:site.php;FUNC:load_resource("MODERNIZER")}",function(){
 
-					loadFirst("{CCMS_LIB:site.php;FUNC:load_resource("JQUERY")}",function(){
+					loadFirst("{CCMS_LIB:site.php;FUNC:load_resource("AWS")}{CCMS_LIB:site.php;FUNC:load_resource("JQUERY")}",function(){
 
-						loadFirst("{CCMS_LIB:site.php;FUNC:load_resource("JQUERY-MOBILE-CUST")}",function(){
+						loadFirst("{CCMS_LIB:site.php;FUNC:load_resource("AWS")}{CCMS_LIB:site.php;FUNC:load_resource("JQUERY-MOBILE-CUST")}",function(){
 
-							loadFirst("{CCMS_LIB:site.php;FUNC:load_resource("JQUERY-VALIDATE")}",function(){
+							loadFirst("{CCMS_LIB:site.php;FUNC:load_resource("AWS")}{CCMS_LIB:site.php;FUNC:load_resource("JQUERY-VALIDATE")}",function(){
 
-								loadFirst("{CCMS_LIB:site.php;FUNC:load_resource("JQUERY-VALIDATE-ADDITIONAL-METHODS")}",function(){
+								loadFirst("{CCMS_LIB:site.php;FUNC:load_resource("AWS")}{CCMS_LIB:site.php;FUNC:load_resource("JQUERY-VALIDATE-ADDITIONAL-METHODS")}",function(){
 
 									loadFirst("{CCMS_LIB:site.php;FUNC:js_01}",function(){
 
