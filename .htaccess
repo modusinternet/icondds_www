@@ -103,7 +103,7 @@ AddOutputFilterByType DEFLATE application/x-javascript
 
 	# Don't allow any pages to be framed - Defends against CSRF
 	#------------------------------
-	Header always append X-Frame-Options DENY
+	Header always append X-Frame-Options "SAMEORIGIN"
 
 	# X-XSS-Protection header can prevent some level of XSS (cross-site-scripting)
 	# attacks, and this is compatible with IE 8+, Chrome, Opera, Safari & Android.
@@ -138,7 +138,7 @@ AddOutputFilterByType DEFLATE application/x-javascript
 	# with web servers for certificate transparency (CT). This project by Google aims to fix some of
 	# the flaws in the SSL/TLS certificate system..
 	#------------------------------
-	Header set Expect-CT 'enforce, max-age=43200'
+	Header set Expect-CT "enforce, max-age=43200"
 </IfModule>
 
 <IfModule mod_rewrite.c>
