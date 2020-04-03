@@ -86,7 +86,7 @@ AddOutputFilterByType DEFLATE application/x-javascript
 	# https://developers.google.com/tag-manager/web/csp
 	# http://qnimate.com/content-security-policy-in-nutshell/
 	#------------------------------
-	Header set Content-Security-Policy "default-src 'self' 'unsafe-inline' *.cloudfront.net *.google.com *.googleapis.com *.googletagmanager.com *.google-analytics.com;script-src 'self' 'unsafe-inline' 'unsafe-eval' *.cloudfront.net *.googleapis.com *.google.com *.googletagmanager.com *.google-analytics.com *.gstatic.com;style-src 'self' 'unsafe-inline' *.cloudfront.net *.google.com *.googletagmanager.com *.google-analytics.com *.googleapis.com;img-src 'self' data: *.cloudfront.net *.gstatic.com *.google-analytics.com *.googleapis.com *.google.com *.gravatar.com;font-src 'self' data: *.gstatic.com *.googleapis.com;connect-src 'self' *.cloudfront.net *.google.com *.googleapis.com *.googletagmanager.com *.google-analytics.com *.gstatic.com;"
+	Header set Content-Security-Policy "default-src 'self' *.cloudfront.net *.google.com *.googleapis.com *.googletagmanager.com *.google-analytics.com;script-src 'self' 'unsafe-inline' 'unsafe-eval' *.cloudfront.net *.googleapis.com *.google.com *.googletagmanager.com *.google-analytics.com *.gstatic.com;style-src 'self' 'unsafe-inline' *.cloudfront.net *.google.com *.googletagmanager.com *.google-analytics.com *.googleapis.com;img-src 'self' data: *.cloudfront.net *.gstatic.com *.google-analytics.com *.googleapis.com *.google.com *.gravatar.com;font-src 'self' data: *.gstatic.com *.googleapis.com;connect-src 'self' *.cloudfront.net *.google.com *.googleapis.com *.googletagmanager.com *.google-analytics.com *.gstatic.com;"
 
 
 
