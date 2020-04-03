@@ -180,7 +180,7 @@ function CCMS_Set_LNG() {
 	// it does is in one of two different ways depending on your version of PHP.
 	if(PHP_VERSION_ID < 70300) {
 		/*setcookie("ccms_lng", $CLEAN["ccms_lng"], time() + ($CFG["COOKIE_SESSION_EXPIRE"] * 60), "/;samesite=strict", "", 0, 0);*/
-		setcookie("ccms_lng", $CLEAN["ccms_lng"], time() + ($CFG["COOKIE_SESSION_EXPIRE"] * 60), "/;httponly;samesite=strict;secure", "", 0, 0);
+		setcookie("ccms_lng", $CLEAN["ccms_lng"], time() + ($CFG["COOKIE_SESSION_EXPIRE"] * 60), "/;httponly=true;samesite=strict;secure=true", "", 0, 0);
 	} else {
 		setcookie("ccms_lng", $CLEAN["ccms_lng"], [
 			'expires' => time() + ($CFG["COOKIE_SESSION_EXPIRE"] * 60),
@@ -190,8 +190,8 @@ function CCMS_Set_LNG() {
 			'secure' => 0,
 			'httponly' => 0*/
 			'samesite' => "strict",
-			'secure' => "",
-			'httponly' => ""
+			'secure' => true,
+			'httponly' => true
 		]);
 	}
 }
@@ -257,7 +257,7 @@ function CCMS_cookie_SESSION() {
 				// it does is in one of two different ways depending on your version of PHP.
 				if(PHP_VERSION_ID < 70300) {
 					/*setcookie("ccms_session", $a, $c, "/; samesite=strict", "", 0, 0);*/
-					setcookie("ccms_session", $a, $c, "/;httponly;samesite=strict;secure", "", 0, 0);
+					setcookie("ccms_session", $a, $c, "/;httponly=true;samesite=strict;secure=true", "", 0, 0);
 				} else {
 					setcookie("ccms_session", $a, [
 						'expires' => $c,
@@ -267,8 +267,8 @@ function CCMS_cookie_SESSION() {
 						'secure' => 0,
 						'httponly' => 0*/
 						'samesite' => "strict",
-						'secure' => "",
-						'httponly' => ""
+						'secure' => true,
+						'httponly' => true
 					]);
 				}
 
@@ -294,7 +294,7 @@ function CCMS_cookie_SESSION() {
 				// it does is in one of two different ways depending on your version of PHP.
 				if(PHP_VERSION_ID < 70300) {
 					/*setcookie("ccms_session", $a, $c, "/; samesite=strict", "", 0, 0);*/
-					setcookie("ccms_session", $a, $c, "/;httponly;samesite=strict;secure", "", 0, 0);
+					setcookie("ccms_session", $a, $c, "/;httponly=true;samesite=strict;secure=true", "", 0, 0);
 				} else {
 					setcookie("ccms_session", $a, [
 						'expires' => $c,
@@ -304,8 +304,8 @@ function CCMS_cookie_SESSION() {
 						'secure' => 0,
 						'httponly' => 0*/
 						'samesite' => "strict",
-						'secure' => "",
-						'httponly' => ""
+						'secure' => true,
+						'httponly' => true
 					]);
 				}
 
@@ -338,7 +338,7 @@ function CCMS_cookie_SESSION() {
 			// it does is in one of two different ways depending on your version of PHP.
 			if(PHP_VERSION_ID < 70300) {
 				/*setcookie("ccms_session", $a, $c, "/; samesite=strict", "", 0, 0);*/
-				setcookie("ccms_session", $a, $c, "/;httponly;samesite=strict;secure", "", 0, 0);
+				setcookie("ccms_session", $a, $c, "/;httponly=true;samesite=strict;secure=true", "", 0, 0);
 			} else {
 				setcookie("ccms_session", $a, [
 					'expires' => $c,
@@ -348,8 +348,8 @@ function CCMS_cookie_SESSION() {
 					'secure' => 0,
 					'httponly' => 0*/
 					'samesite' => "strict",
-					'secure' => "",
-					'httponly' => ""
+					'secure' => true,
+					'httponly' => true
 				]);
 			}
 
@@ -382,7 +382,7 @@ function CCMS_cookie_SESSION() {
 		// it does is in one of two different ways depending on your version of PHP.
 		if(PHP_VERSION_ID < 70300) {
 			/*setcookie("ccms_session", $a, $c, "/; samesite=strict", "", 0, 0);*/
-			setcookie("ccms_session", $a, $c, "/;httponly;samesite=strict;secure", "", 0, 0);
+			setcookie("ccms_session", $a, $c, "/;httponly=true;samesite=strict;secure=true", "", 0, 0);
 		} else {
 			setcookie("ccms_session", $a, [
 				'expires' => $c,
@@ -392,8 +392,8 @@ function CCMS_cookie_SESSION() {
 				'secure' => 0,
 				'httponly' => 0*/
 				'samesite' => "strict",
-				'secure' => "",
-				'httponly' => ""
+				'secure' => true,
+				'httponly' => true
 			]);
 		}
 
