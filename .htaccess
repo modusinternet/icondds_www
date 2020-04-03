@@ -77,8 +77,6 @@ AddOutputFilterByType DEFLATE application/x-javascript
 
 
 
-
-
 	# Content Security Policy (CSP) is an added layer of security that helps to detect and mitigate certain types of
 	# attacks, including Cross Site Scripting (XSS) and data injection attacks.
 	# https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP
@@ -92,9 +90,12 @@ AddOutputFilterByType DEFLATE application/x-javascript
 
 
 
-
-Header set Feature-Policy "accelerometer 'none';ambient-light-sensor 'none';autoplay 'none';camera 'none';encrypted-media 'none';fullscreen 'self';geolocation 'self';gyroscope 'none';magnetometer 'none';microphone 'none';midi 'none';payment 'self';picture-in-picture 'none';speaker 'self';sync-xhr 'none';usb 'none';vibrate 'none';vr 'none'"
-
+	# Feature-Policy
+	# https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Feature-Policy
+	# Control browser’s features such as geolocation, fullscreen, speaker, USB, autoplay, speaker,
+	# vibrate, microphone, payment, vr, etc. to enable or disable within a web application.
+	#------------------------------
+	Header set Feature-Policy "accelerometer 'none';ambient-light-sensor 'none';autoplay 'none';camera 'none';encrypted-media 'none';fullscreen 'self';geolocation 'self';gyroscope 'none';magnetometer 'none';microphone 'none';midi 'none';payment 'self';picture-in-picture 'none';speaker 'self';sync-xhr 'none';usb 'none';vibrate 'none';vr 'none'"
 
 	# Disable your PHP version number from showing up in HTTP headers for added security.
 	#------------------------------
@@ -138,13 +139,6 @@ Header set Feature-Policy "accelerometer 'none';ambient-light-sensor 'none';auto
 	# the flaws in the SSL/TLS certificate system..
 	#------------------------------
 	Header set Expect-CT 'enforce, max-age=43200'
-
-	# Feature-Policy
-	# https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Feature-Policy
-	# Control browser’s features such as geolocation, fullscreen, speaker, USB, autoplay, speaker,
-	# vibrate, microphone, payment, vr, etc. to enable or disable within a web application.
-	#------------------------------
-	Header always set Feature-Policy "none 'none'"
 </IfModule>
 
 <IfModule mod_rewrite.c>
