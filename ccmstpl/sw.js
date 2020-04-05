@@ -24,7 +24,7 @@ Add these to the right box under Whitelist Headers:
 Then click the 'Yes, Edit' button at the bottom and give it about 10 minutes to propagate through the system and test using Chrome.
 */
 
-const cacheName='{CCMS_LIB:_default.php;FUNC:ccms_lng}-2020.04.01-02';
+const cacheName='{CCMS_LIB:_default.php;FUNC:ccms_lng}-2020.04.04-01';
 
 var cacheFiles=[
 	/*
