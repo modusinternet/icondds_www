@@ -44,6 +44,9 @@ var cacheFiles=[
 	'/{CCMS_LIB:_default.php;FUNC:ccms_lng}/offline.html'
 ];
 
+self.importScripts('/ccmstpl/_js/analytics-helper.js');
+
+
 self.addEventListener('install',e=>{
 	e.waitUntil(
 		caches.open(cacheName).then(cache=>{
