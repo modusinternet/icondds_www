@@ -24,7 +24,7 @@ Add these to the right box under Whitelist Headers:
 Then click the 'Yes, Edit' button at the bottom and give it about 10 minutes to propagate through the system and test using Chrome.
 */
 
-const cacheName='{CCMS_LIB:_default.php;FUNC:ccms_lng}-2020.04.04-01';
+const cacheName='{CCMS_LIB:_default.php;FUNC:ccms_lng}-2020.04.04-03';
 
 var cacheFiles=[
 	/*
@@ -44,6 +44,7 @@ var cacheFiles=[
 	'/{CCMS_LIB:_default.php;FUNC:ccms_lng}/offline.html'
 ];
 
+/* Analytics and Service Worker: https://developers.google.com/web/ilt/pwa/integrating-analytics#analytics_and_service_worker */
 self.importScripts('/ccmstpl/_js/analytics-helper.js');
 
 
