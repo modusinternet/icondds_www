@@ -1,4 +1,4 @@
-var CACHE = '{CCMS_LIB:_default.php;FUNC:ccms_lng}-2020.04.06-01';
+var CACHE = '{CCMS_LIB:_default.php;FUNC:ccms_lng}-2020.04.06-03';
 
 /* Analytics and Service Worker: https://developers.google.com/web/ilt/pwa/integrating-analytics#analytics_and_service_worker */
 self.importScripts('/ccmstpl/_js/analytics-helper.js');
