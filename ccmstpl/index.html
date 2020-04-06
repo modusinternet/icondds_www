@@ -533,15 +533,11 @@
 {CCMS_TPL:header-body.html}
 {CCMS_TPL:msg-popup.html}
 {CCMS_TPL:a2hs-box.html}
-		<script>
-			/*window.performance.mark("mark_beginning_javascript");*/
-{CCMS_TPL:footer-js.html}
 
 
 
 
-
-/*
+<!--
 # To be implemented: https://infosec.mozilla.org/guidelines/web_security#subresource-integrity
 
 # Load AngularJS 1.4.8 from their CDN
@@ -551,11 +547,13 @@
 $ curl -s https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js | \ openssl dgst -sha384 -binary | \ openssl base64 -A
 
 r1y8TJcloKTvouxnYsi4PJAx+nHNr90ibsEn3zznzDzWBN9X3o3kbHLSgcIPtzAp
-*/
+-->
 
 
 
-
+		<script>
+			/*window.performance.mark("mark_beginning_javascript");*/
+{CCMS_TPL:footer-js.html}
 			function loadFirst(e,t){var a=document.createElement("script");a.async="true";a.readyState?a.onreadystatechange=function(){("loaded"==a.readyState||"complete"==a.readyState)&&(a.onreadystatechange=null,t())}:a.onload=function(){t()},a.src=e,document.body.appendChild(a)}
 
 			var l=document.createElement("link");l.rel="stylesheet";
