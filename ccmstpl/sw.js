@@ -24,7 +24,7 @@ Add these to the right box under Whitelist Headers:
 Then click the 'Yes, Edit' button at the bottom and give it about 10 minutes to propagate through the system and test using Chrome.
 */
 
-const cacheName='{CCMS_LIB:_default.php;FUNC:ccms_lng}-2020.04.06-10';
+const cacheName='{CCMS_LIB:_default.php;FUNC:ccms_lng}-2020.04.06-11';
 
 var cacheFiles=[
 	/*
@@ -71,17 +71,17 @@ self.addEventListener('activate',e=>{
 addEventListener('fetch',e=>{
 	const {request}=e;
 	/* Always bypass for range requests, due to browser bugs. */
-	if(e.headers.has('range')) return;
+	if(request.headers.has('range')) return;
 	e.respondWith(async function(){
 		/* Try to get from the cache. */
-		const cachedResponse=await caches.match(e);
+		const cachedResponse=await caches.match(request);
 		if(cachedResponse) return cachedResponse;
 		/* Otherwise, get from the network. */
 		try{
-			return await fetch(e);
+			return await fetch(request);
 		}catch(err){
 			/* If this was a navigation, show the offline page. */
-			if(e.mode==='navigate'){
+			if(request.mode==='navigate'){
 				return caches.match('/{CCMS_LIB:_default.php;FUNC:ccms_lng}/offline.html');
 			}
 			/* Otherwise throw. */
