@@ -24,7 +24,7 @@ Add these to the right box under Whitelist Headers:
 Then click the 'Yes, Edit' button at the bottom and give it about 10 minutes to propagate through the system and test using Chrome.
 */
 
-const cacheName='{CCMS_LIB:_default.php;FUNC:ccms_lng}-2020.04.06-04';
+const cacheName='{CCMS_LIB:_default.php;FUNC:ccms_lng}-2020.04.06-05';
 
 var cacheFiles=[
 	/*
@@ -72,7 +72,7 @@ addEventListener('fetch',e=>{
 	const {request}=e;
 	/* Always bypass for range requests, due to browser bugs. */
 	if(request.headers.has('range')) return;
-	e.respondWith(async function(){
+	request.respondWith(async function(){
 		/* Try to get from the cache. */
 		const cachedResponse=await caches.match(request);
 
