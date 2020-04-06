@@ -1,7 +1,7 @@
 if(navigator.serviceWorker){
 	window.addEventListener('load',() => {
 		navigator.serviceWorker
-		.register('/{CCMS_LIB:_default.php;FUNC:ccms_lng}/sw2.js')
+		.register('/{CCMS_LIB:_default.php;FUNC:ccms_lng}/sw3.js')
 		.then(console.log('[ServiceWorker] Registered Successfully'))
 		.catch(err => console.log(`[ServiceWorker] Error: ${err}`));
 	});
