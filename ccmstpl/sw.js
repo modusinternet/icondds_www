@@ -71,17 +71,17 @@ self.addEventListener('activate',e=>{
 addEventListener('fetch',e=>{
 	const {request}=e;
 	/* Always bypass for range requests, due to browser bugs. */
-	if(e.request.headers.has('range')) return;
+	if(e.headers.has('range')) return;
 	e.respondWith(async function(){
 		/* Try to get from the cache. */
-		const cachedResponse=await caches.match(e.request);
+		const cachedResponse=await caches.match(e);
 		if(cachedResponse) return cachedResponse;
 		/* Otherwise, get from the network. */
 		try{
-			return await fetch(e.request);
+			return await fetch(e);
 		}catch(err){
 			/* If this was a navigation, show the offline page. */
-			if(e.request.mode==='navigate'){
+			if(e.mode==='navigate'){
 				return caches.match('/{CCMS_LIB:_default.php;FUNC:ccms_lng}/offline.html');
 			}
 			/* Otherwise throw. */
