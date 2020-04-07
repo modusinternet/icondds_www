@@ -24,7 +24,7 @@ Add these to the right box under Whitelist Headers:
 Then click the 'Yes, Edit' button at the bottom and give it about 10 minutes to propagate through the system and test using Chrome.
 */
 
-const cacheName='{CCMS_LIB:_default.php;FUNC:ccms_lng}-2020.04.06-13';
+const cacheName='{CCMS_LIB:_default.php;FUNC:ccms_lng}-2020.04.06-14';
 
 var cacheFiles=[
 	/*
@@ -35,6 +35,9 @@ var cacheFiles=[
 	'{  CCMS_LIB:site.php;FUNC:load_resource("OWL-CSS")}',
 	'{  CCMS_LIB:site.php;FUNC:load_resource("OWL-JS")}',
 	'{  CCMS_LIB:site.php;FUNC:load_resource("JQUERY-MOBILE-CUST")}',
+	'{  CCMS_LIB:site.php;FUNC:load_resource("MODERNIZER")}',
+	'{  CCMS_LIB:site.php;FUNC:css_01}',
+	'{  CCMS_LIB:site.php;FUNC:js_01}',
 	*/
 	'{CCMS_LIB:site.php;FUNC:load_resource("MODERNIZER")}',
 	'{CCMS_LIB:site.php;FUNC:css_01}',
@@ -48,7 +51,7 @@ var cacheFiles=[
 ];
 
 /* Analytics and Service Worker: https://developers.google.com/web/ilt/pwa/integrating-analytics#analytics_and_service_worker */
-self.importScripts('/ccmstpl/_js/analytics-helper.js');
+/*self.importScripts('/ccmstpl/_js/analytics-helper.js');*/
 
 
 self.addEventListener('install',e=>{
