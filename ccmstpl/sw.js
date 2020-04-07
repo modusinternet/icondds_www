@@ -24,7 +24,7 @@ Add these to the right box under Whitelist Headers:
 Then click the 'Yes, Edit' button at the bottom and give it about 10 minutes to propagate through the system and test using Chrome.
 */
 
-const cacheName='{CCMS_LIB:_default.php;FUNC:ccms_lng}-2020.04.06-17';
+const cacheName='{CCMS_LIB:_default.php;FUNC:ccms_lng}-2020.04.07-01';
 
 var cacheFiles=[
 	/*
@@ -32,10 +32,7 @@ var cacheFiles=[
 	'{  CCMS_LIB:site.php;FUNC:load_resource("JQUERY")}',
 	'{  CCMS_LIB:site.php;FUNC:load_resource("JQUERY-VALIDATE")}',
 	'{  CCMS_LIB:site.php;FUNC:load_resource("JQUERY-VALIDATE-ADDITIONAL-METHODS")}',
-	'{  CCMS_LIB:site.php;FUNC:load_resource("OWL-CSS")}',
-	'{  CCMS_LIB:site.php;FUNC:load_resource("OWL-JS")}',
 	'{  CCMS_LIB:site.php;FUNC:load_resource("JQUERY-MOBILE-CUST")}',
-	'{  CCMS_LIB:site.php;FUNC:load_resource("MODERNIZER")}',
 	'{  CCMS_LIB:site.php;FUNC:css_01}',
 	'{  CCMS_LIB:site.php;FUNC:js_01}',
 	*/
@@ -53,7 +50,6 @@ var cacheFiles=[
 /* Analytics and Service Worker: https://developers.google.com/web/ilt/pwa/integrating-analytics#analytics_and_service_worker */
 /*self.importScripts('/ccmstpl/_js/analytics-helper.js');*/
 
-
 self.addEventListener('install',e=>{
 	e.waitUntil(
 		caches.open(cacheName).then(cache=>{
@@ -62,6 +58,8 @@ self.addEventListener('install',e=>{
 	);
 });
 
+/* This event fires after the worker is up and running.  It looks for
+and removes old services workers and their cache based on version number. */
 self.addEventListener('activate',e=>{
 	e.waitUntil(
 		caches.keys().then(keyList=>{
@@ -74,6 +72,8 @@ self.addEventListener('activate',e=>{
 	);
 });
 
+/* Fetchs cached resources first, otherwise gets from the network.  If no
+network connection displays the offline page. */
 addEventListener('fetch',e=>{
 	const {request}=e;
 	/* Always bypass for range requests, due to browser bugs. */
@@ -82,11 +82,11 @@ addEventListener('fetch',e=>{
 		/* Try to get from the cache. */
 		const cachedResponse=await caches.match(request);
 		if(cachedResponse) return cachedResponse;
-		/* Otherwise, get from the network. */
+		/* Otherwise get from the network. */
 		try{
 			return await fetch(request);
 		}catch(err){
-			/* If this was a navigation, show the offline page. */
+			/* If this was a navigation, a page requested by the user via clicking on a link and not a .css or .js resource, show the offline page. */
 			if(request.mode==='navigate'){
 				return caches.match('/{CCMS_LIB:_default.php;FUNC:ccms_lng}/offline.html');
 			}
