@@ -10,6 +10,21 @@
 		<style>
 			{CCMS_TPL:/_css/header.html}
 
+			.reloadButton{
+				background:var(--cl2);
+				border:none;
+				border-radius:7px;
+				color:#fff;
+				cursor:pointer;
+				font-size:2.2rem;
+				line-height:4rem;
+				margin:2rem 0 3rem;
+				padding:10px 10%;
+				transition:all 0.25s
+			}
+
+			.reloadButton:hover{background:var(--cl2-tran)}
+
 			.webp .offline_01{
 				background-image:url("{CCMS_LIB:site.php;FUNC:load_resource("AWS")}/ccmstpl/_img/offline_01.webp");
 			}
@@ -68,7 +83,7 @@
 						<!-- Icons made by https://www.freepik.com/ from https://www.flaticon.com/ is licensed by http://creativecommons.org/licenses/by/3.0/ -->
 					</div>
 					<div class="c2">
-						<p>Page Offline:  This page has not been cached/viewed before and currently you do not appear to be connected to the Internet so unfortunatly we can not show it to you at this time.  Please reconnect to the Internet and you will be able to load this page properly.  In addition, once viewed it will be cached locally and available the next time you are offline.</p>
+						<p>Page Offline:  This page has not been viewed/cached before and currently you do not appear to be connected to the Internet.  Please reconnect to the Internet and try again.  In addition, once viewed it will be cached locally and available to you the next time you are offline. <button class="reloadButton" onclick="window.location.reload()" role="button">Reload</button></p>
 					</div>
 				</div>
 			</div>
