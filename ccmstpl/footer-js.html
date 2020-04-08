@@ -1,14 +1,3 @@
-if(navigator.serviceWorker){
-	window.addEventListener('load',() => {
-		navigator.serviceWorker
-		.register('/{CCMS_LIB:_default.php;FUNC:ccms_lng}/sw.js')
-		.then(console.log('[ServiceWorker] Registered Successfully'))
-		.catch(err => console.log(`[ServiceWorker] Error: ${err}`));
-	});
-} else {
-	console.log('Service Worker not supported.');
-}
-
 /* This feature helps clear out a cached cookies so that a new one can be written in place when changing your language.	You can choose to not use if you wish, it was just added to help make sure the example templates would do as we wished them to as written.	Your templates probably will not require such code, all links should contain the full language snippit in them to help drive the templates to the correct language content.
 ie: { CCMS_LIB:_default.php;FUNC:ccms_lng}
      ^-- remove this space.

@@ -342,74 +342,61 @@ $("#msgForm").validate({
 /* ---------- */
 
 
-/* ---------- */
-/* Add to Home screen (A2HS) Code Begin.
-https://developer.mozilla.org/en-US/docs/Web/Apps/Progressive/Add_to_home_screen#How_do_you_make_an_app_A2HS-ready */
-/* ---------- */
-function getCookie(cname){
-	var name = cname + "=";
-	var decodedCookie = decodeURIComponent(document.cookie);
-	var ca = decodedCookie.split(';');
-	for(var i = 0; i <ca.length; i++){
-		var c = ca[i];
-		while(c.charAt(0) == ' '){
-			c = c.substring(1);
-		}
-		if(c.indexOf(name) == 0){
-			return c.substring(name.length, c.length);
-		}
-	}
-	return "";
-}
-let a2Cookie;
-let deferredPrompt;
-const A2HSbox = document.getElementById("A2HS-box");
-const A2HSbox_no = document.getElementById("A2HS-box-no");
-const A2HSbox_yes = document.getElementById("A2HS-box-yes");
-window.addEventListener("beforeinstallprompt",e =>{
-//self.addEventListener("beforeinstallprompt",e =>{
-	a2Cookie = getCookie("A2HSbox");
-	/* Test for A2HSbox cookie. */
-	if(a2Cookie == ""){
-		/* A2HSbox cookie not found so run 'beforeinstallprompt' event detection code. */
-		console.log('A2HSbox cookie not found and "beforeinstallprompt" event detected, dropping A2HS box.');
-		/* Prevent Chrome 67 and earlier from automatically showing the prompt. */
-		e.preventDefault();
-		/* Stash the event so it can be triggered later. */
-		deferredPrompt = e;
-		/* Update UI to notify the user they can add to home screen. */
-		A2HSbox.classList.add("active");
+/* ----------
+Add to Home screen (A2HS) and ServiceWorker Code Begin.
+https://web.dev/customize-install/#criteria
+https://web.dev/codelab-make-installable/
+https://developer.mozilla.org/en-US/docs/Web/Apps/Progressive/Add_to_home_screen#How_do_you_make_an_app_A2HS-ready
+---------- */
+const divInstall = document.getElementById('installContainer');
+const butInstall = document.getElementById('butInstall');
 
-		A2HSbox_no.addEventListener('click',e =>{
-			console.log('User dismissed A2HS prompt #1.');
-			/* hide our user interface that shows our A2HS button. */
-			A2HSbox.classList.remove("active");
-			/* Set cookie to defer A2HS box apearence in the future.	(15768000 = 6 months) */
-			document.cookie = "A2HSbox=1; max-age=15768000; path=/";
-			deferredPrompt = null;
-		});
-
-		A2HSbox_yes.addEventListener('click',e =>{
-			console.log('User accepted A2HS prompt #1.');
-			/* hide our user interface that shows our A2HS button. */
-			A2HSbox.classList.remove("active");
-			/* Show the prompt. */
-			deferredPrompt.prompt();
-			/* Wait for the user to respond to the prompt. */
-			deferredPrompt.userChoice.then(choiceResult =>{
-				if (choiceResult.outcome === 'accepted') {
-					console.log('User accepted A2HS prompt #2.');
-				} else {
-					console.log('User dismissed A2HS prompt #2.');
-					/* Set cookie to defer A2HS box apearence in the future.	(15768000 = 6 months) */
-					document.cookie = "A2HSbox=1; max-age=15768000; path=/";
-				}
-				deferredPrompt = null;
-			});
-		});
-	}
+window.addEventListener('beforeinstallprompt', (event) => {
+	console.log('👍', 'beforeinstallprompt', event);
+	// Stash the event so it can be triggered later.
+	window.deferredPrompt = event;
+	// Remove the 'hidden' class from the install button container
+	divInstall.classList.toggle('hidden', false);
 });
-/* ---------- */
-/* Add to Home Screen (A2HS) Code End.
-https://developer.mozilla.org/en-US/docs/Web/Apps/Progressive/Add_to_home_screen#How_do_you_make_an_app_A2HS-ready */
-/* ---------- */
+
+butInstall.addEventListener('click', () => {
+	console.log('👍', 'butInstall-clicked');
+	const promptEvent = window.deferredPrompt;
+	if (!promptEvent) {
+		// The deferred prompt isn't available.
+		return;
+	}
+	// Show the install prompt.
+	promptEvent.prompt();
+	// Log the result
+	promptEvent.userChoice.then((result) => {
+		console.log('👍', 'userChoice', result);
+		// Reset the deferred prompt variable, since
+		// prompt() can only be called once.
+		window.deferredPrompt = null;
+		// Hide the install button.
+		divInstall.classList.toggle('hidden', true);
+	});
+});
+
+window.addEventListener('appinstalled', (event) => {
+	console.log('👍', 'appinstalled', event);
+});
+
+/* Only register a service worker if it's supported */
+if(navigator.serviceWorker){
+	window.addEventListener('load',() => {
+		navigator.serviceWorker
+		.register('/{CCMS_LIB:_default.php;FUNC:ccms_lng}/sw.js')
+		.then(console.log('[ServiceWorker] Registered Successfully'))
+		.catch(err => console.log(`[ServiceWorker] Error: ${err}`));
+	});
+} else {
+	console.log('Service Worker not supported.');
+}
+/* ----------
+Add to Home screen (A2HS) and ServiceWorker Code End.
+https://web.dev/customize-install/#criteria
+https://web.dev/codelab-make-installable/
+https://developer.mozilla.org/en-US/docs/Web/Apps/Progressive/Add_to_home_screen#How_do_you_make_an_app_A2HS-ready
+---------- */
