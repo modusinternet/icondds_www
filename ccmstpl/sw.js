@@ -24,7 +24,7 @@ Add these to the right box under Whitelist Headers:
 Then click the 'Yes, Edit' button at the bottom and give it about 10 minutes to propagate through the system and test using Chrome.
 */
 
-const cacheName='{CCMS_LIB:_default.php;FUNC:ccms_lng}-2020.04.07-02';
+const cacheName='{CCMS_LIB:_default.php;FUNC:ccms_lng}-2020.04.07-03';
 
 var cacheFiles=[
 	/*
@@ -74,7 +74,7 @@ self.addEventListener('activate',e=>{
 
 /* Fetchs cached resources first, otherwise gets from the network.  If no
 network connection displays the offline page. */
-addEventListener('fetch',e=>{
+self.addEventListener('fetch',e=>{
 	const {request}=e;
 	/* Always bypass for range requests, due to browser bugs. */
 	if(request.headers.has('range')) return;
