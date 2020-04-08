@@ -216,9 +216,11 @@ msgContainer.addEventListener('click',function(e){
 	msgContainer.classList.add("hide");
 });
 */
-document.addEventListener("click", function(a) {
+
+/*document.addEventListener("click", function(a) {
 	msgContainer === a.target || svgButton === a.target || msgContainer.contains(a.target) || (svgButton.classList.remove("hide"), msgContainer.classList.add("hide"))
-});
+});*/
+
 $.validator.addMethod(
 	"badCharRegex",
 	function(value,element,regexp){
