@@ -74,7 +74,7 @@ self.addEventListener('activate',e=>{
 
 /* Fetchs cached resources first, otherwise gets from the network.  If no
 network connection displays the offline page. */
-self.addEventListener('fetch',e=>{
+addEventListener('fetch',e=>{
 	const {request}=e;
 	/* Always bypass for range requests, due to browser bugs. */
 	if(request.headers.has('range')) return;
