@@ -364,7 +364,8 @@ let deferredPrompt;
 const A2HSbox = document.getElementById("A2HS-box");
 const A2HSbox_no = document.getElementById("A2HS-box-no");
 const A2HSbox_yes = document.getElementById("A2HS-box-yes");
-window.addEventListener("beforeinstallprompt",e =>{
+/*window.addEventListener("beforeinstallprompt",e =>{*/
+self.addEventListener("beforeinstallprompt",e =>{
 	a2Cookie = getCookie("A2HSbox");
 	/* Test for A2HSbox cookie. */
 	if(a2Cookie == ""){
