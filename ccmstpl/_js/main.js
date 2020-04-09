@@ -384,20 +384,6 @@ butInstall.addEventListener('click', (e) => {
 window.addEventListener('appinstalled', (event) => {
 	console.log('appinstalled', 'appinstalled', event);
 });
-
-/* Only register a service worker if it's supported */
-///*
-if(navigator.serviceWorker){
-	window.addEventListener('load',() => {
-		navigator.serviceWorker
-		.register('/sw.js')
-		.then(console.log('[ServiceWorker] Registered Successfully'))
-		.catch(err => console.log(`[ServiceWorker] Error: ${err}`));
-	});
-} else {
-	console.log('Service Worker not supported.');
-}
-//*/
 /* ----------
 Add to Home screen (A2HS) and ServiceWorker Code End.
 https://web.dev/customize-install/#criteria
