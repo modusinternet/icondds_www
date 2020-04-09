@@ -353,6 +353,8 @@ let deferredPrompt;
 const divInstall = document.getElementById('installContainer');
 const butInstall = document.getElementById('butInstall');
 
+console.log('beforeinstallprompt');
+
 window.addEventListener('beforeinstallprompt', (e) => {
 	console.log('beforeinstallprompt', 'beforeinstallprompt', e);
 	// Prevent Chrome 76 and later from showing the mini-infobar
