@@ -353,29 +353,29 @@ let deferredPrompt;
 const divInstall = document.getElementById('installContainer');
 const butInstall = document.getElementById('butInstall');
 
-console.log('befor beforeinstallprompt');
+console.log('before beforeinstallprompt');
 
-window.addEventListener('beforeinstallprompt', (e) => {
+window.addEventListener('beforeinstallprompt',(e) => {
 
 console.log('inside beforeinstallprompt');
 
-	console.log('beforeinstallprompt', 'beforeinstallprompt', e);
+	console.log('beforeinstallprompt','beforeinstallprompt', e);
 	// Prevent Chrome 76 and later from showing the mini-infobar
 	e.preventDefault();
 	// Stash the event so it can be triggered later.
 	//window.deferredPrompt = e;
 	deferredPrompt = e;
 	// Remove the 'hidden' class from the install button container
-	divInstall.classList.toggle('hidden', false);
+	divInstall.classList.toggle('hidden',false);
 
-	butInstall.addEventListener('click', (e) => {
+	butInstall.addEventListener('click',(e)=>{
 		// hide our user interface that shows our A2HS button
 		//btnAdd.style.display = 'none';
-		divInstall.classList.toggle('hidden', true);
+		divInstall.classList.toggle('hidden',true);
 		// Show the prompt
 		deferredPrompt.prompt();
 		// Wait for the user to respond to the prompt
-		deferredPrompt.userChoice.then((choiceResult) => {
+		deferredPrompt.userChoice.then((choiceResult)=>{
 			if (choiceResult.outcome === 'accepted') {
 				console.log('User accepted the A2HS prompt');
 			} else {
