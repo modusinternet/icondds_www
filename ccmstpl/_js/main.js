@@ -364,7 +364,7 @@ window.addEventListener('beforeinstallprompt', (e) => {
 	divInstall.classList.toggle('hidden', false);
 });
 
-btnAdd.addEventListener('click', (e) => {
+butInstall.addEventListener('click', (e) => {
 	// hide our user interface that shows our A2HS button
 	//btnAdd.style.display = 'none';
 	divInstall.classList.toggle('hidden', true);
