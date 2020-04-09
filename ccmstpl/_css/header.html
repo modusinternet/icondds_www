@@ -288,16 +288,19 @@ END of CSS found in the LiveZilla App
 
 #installContainer{
 	position:absolute;
-	bottom:1em;
+	top:1em;
 	display:flex;
 	justify-content:center;
-	width:100%
+	width:100%;
+	z-index:var(--z-index-A2HS-box)
 }
 
 #installContainer button{
-	background-color:inherit;
+	background-color:var(--cl2);
 	border:1px solid white;
 	color:white;
 	font-size:1em;
 	padding:0.75em
 }
+
+#installContainer button:hover{background-color:var(--cl2-tran)}
