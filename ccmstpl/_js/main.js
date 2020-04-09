@@ -390,7 +390,7 @@ window.addEventListener('appinstalled', (event) => {
 if(navigator.serviceWorker){
 	window.addEventListener('load',() => {
 		navigator.serviceWorker
-		.register('/{CCMS_LIB:_default.php;FUNC:ccms_lng}/sw.js', {scope: '/{CCMS_LIB:_default.php;FUNC:ccms_lng}/'})
+		.register('/sw.js')
 		.then(console.log('[ServiceWorker] Registered Successfully'))
 		.catch(err => console.log(`[ServiceWorker] Error: ${err}`));
 	});
