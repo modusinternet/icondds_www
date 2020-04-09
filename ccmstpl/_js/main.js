@@ -348,34 +348,36 @@ https://web.dev/customize-install/#criteria
 https://web.dev/codelab-make-installable/
 https://developer.mozilla.org/en-US/docs/Web/Apps/Progressive/Add_to_home_screen#How_do_you_make_an_app_A2HS-ready
 ---------- */
+let deferredPrompt;
+
 const divInstall = document.getElementById('installContainer');
 const butInstall = document.getElementById('butInstall');
 
-window.addEventListener('beforeinstallprompt', (event) => {
-	console.log('beforeinstallprompt', 'beforeinstallprompt', event);
+window.addEventListener('beforeinstallprompt', (e) => {
+	//console.log('beforeinstallprompt', 'beforeinstallprompt', e);
+	// Prevent Chrome 76 and later from showing the mini-infobar
+	e.preventDefault();
 	// Stash the event so it can be triggered later.
-	window.deferredPrompt = event;
+	//window.deferredPrompt = e;
+	deferredPrompt = e;
 	// Remove the 'hidden' class from the install button container
 	divInstall.classList.toggle('hidden', false);
 });
 
-butInstall.addEventListener('click', () => {
-	console.log('butInstall-clicked', 'butInstall-clicked');
-	const promptEvent = window.deferredPrompt;
-	if (!promptEvent) {
-		// The deferred prompt isn't available.
-		return;
-	}
-	// Show the install prompt.
-	promptEvent.prompt();
-	// Log the result
-	promptEvent.userChoice.then((result) => {
-		console.log('userChoice', 'userChoice', result);
-		// Reset the deferred prompt variable, since
-		// prompt() can only be called once.
-		window.deferredPrompt = null;
-		// Hide the install button.
-		divInstall.classList.toggle('hidden', true);
+btnAdd.addEventListener('click', (e) => {
+	// hide our user interface that shows our A2HS button
+	//btnAdd.style.display = 'none';
+	divInstall.classList.toggle('hidden', true);
+	// Show the prompt
+	deferredPrompt.prompt();
+	// Wait for the user to respond to the prompt
+	deferredPrompt.userChoice.then((choiceResult) => {
+		if (choiceResult.outcome === 'accepted') {
+			console.log('User accepted the A2HS prompt');
+		} else {
+			console.log('User dismissed the A2HS prompt');
+		}
+		deferredPrompt = null;
 	});
 });
 
@@ -384,7 +386,7 @@ window.addEventListener('appinstalled', (event) => {
 });
 
 /* Only register a service worker if it's supported */
-/*
+///*
 if(navigator.serviceWorker){
 	window.addEventListener('load',() => {
 		navigator.serviceWorker
@@ -395,7 +397,7 @@ if(navigator.serviceWorker){
 } else {
 	console.log('Service Worker not supported.');
 }
-*/
+//*/
 /* ----------
 Add to Home screen (A2HS) and ServiceWorker Code End.
 https://web.dev/customize-install/#criteria
