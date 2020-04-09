@@ -213,8 +213,8 @@ AddOutputFilterByType DEFLATE application/x-javascript
 	# Custodian CMS admin index template.  If you change the location of your CCMS admin directory in the
 	# config you will need to make the update here by hand.
 	#------------------------------
-	RewriteRule ^(([a-z]{2})(-[a-z]{2})?)/user(/.*)$ /ccmsusr/index.php?ccms_lng=$1&ccms_tpl=$4 [QSA,L,NC]
 	RewriteRule ^sw\.js$ /index.php?ccms_tpl=/ccmstpl/_js/sw.js [QSA,L,NC]
+	RewriteRule ^(([a-z]{2})(-[a-z]{2})?)/user(/.*)$ /ccmsusr/index.php?ccms_lng=$1&ccms_tpl=$4 [QSA,L,NC]
 	RewriteRule ^(([a-z]{2})(-[a-z]{2})?)(/([a-z0-9-_\./]*))?$ /index.php?ccms_lng=$1&ccms_tpl=$4 [QSA,L,NC]
 
 	# The following examples will FAIL and result in /ccmstpl/error.php page being called.
