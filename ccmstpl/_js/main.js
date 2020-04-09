@@ -378,7 +378,7 @@ window.addEventListener('beforeinstallprompt', (e) => {
 			}
 			deferredPrompt = null;
 		});
-	});`
+	});
 });
 
 window.addEventListener('appinstalled', (event) => {
