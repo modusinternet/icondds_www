@@ -340,18 +340,3 @@ $("#msgForm").validate({
 /* ---------- */
 /* MSG Popup Email Form End */
 /* ---------- */
-
-
-/* ----------
-Add to Home screen (A2HS) and ServiceWorker Code Begin.
-https://web.dev/customize-install/#criteria
-https://web.dev/codelab-make-installable/
-https://developer.mozilla.org/en-US/docs/Web/Apps/Progressive/Add_to_home_screen#How_do_you_make_an_app_A2HS-ready
----------- */
-
-/* ----------
-Add to Home screen (A2HS) and ServiceWorker Code End.
-https://web.dev/customize-install/#criteria
-https://web.dev/codelab-make-installable/
-https://developer.mozilla.org/en-US/docs/Web/Apps/Progressive/Add_to_home_screen#How_do_you_make_an_app_A2HS-ready
----------- */

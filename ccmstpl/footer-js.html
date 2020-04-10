@@ -1,4 +1,6 @@
-/* Register a service worker. */
+/* ----------
+ServiceWorker Code Begin.
+---------- */
 if(navigator.serviceWorker){
 	window.addEventListener('load',() => {
 		navigator.serviceWorker
@@ -9,8 +11,17 @@ if(navigator.serviceWorker){
 } else {
 	console.log('Service Worker not supported.');
 }
+/* ----------
+ServiceWorker Code End.
+---------- */
 
 
+/* ----------
+Add to Home screen (A2HS).
+https://web.dev/customize-install/#criteria
+https://web.dev/codelab-make-installable/
+https://developer.mozilla.org/en-US/docs/Web/Apps/Progressive/Add_to_home_screen#How_do_you_make_an_app_A2HS-ready
+---------- */
 let deferredPrompt;
 
 const divInstall = document.getElementById('installContainer');
@@ -52,6 +63,12 @@ console.log('inside beforeinstallprompt');
 window.addEventListener('appinstalled', (event) => {
 	console.log('appinstalled', 'appinstalled', event);
 });
+/* ----------
+Add to Home screen (A2HS).
+https://web.dev/customize-install/#criteria
+https://web.dev/codelab-make-installable/
+https://developer.mozilla.org/en-US/docs/Web/Apps/Progressive/Add_to_home_screen#How_do_you_make_an_app_A2HS-ready
+---------- */
 
 
 
