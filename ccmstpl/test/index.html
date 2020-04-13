@@ -86,13 +86,13 @@
       }
 
       .css-bg-example.lazy-bg-loaded {
-        background-image: url("/en/test/img/test-768w.jpg");
+        background-image: url("/ccmstpl/test/img/test-768w.jpg");
         background-size: 100% auto;
       }
 
       @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
         .css-bg-example.lazy-bg-loaded {
-          background-image: url("/en/test/img/test-1536w.jpg");
+          background-image: url("/ccmstpl/test/img/test-1536w.jpg");
           background-size: 100% auto;
         }
       }
@@ -144,61 +144,61 @@
   </head>
   <body>
     <h1>Above the fold image (<code>src</code>+<code>srcset</code>)</h1>
-    <img class="lazy" sizes="(min-width: 50rem) 48rem, 100vw" data-srcset="/en/test/img/test-768w.jpg 768w, /en/test/img/test-1024w.jpg 1024w, /en/test/img/test-1280w.jpg 1280w, /en/test/img/test-1536w.jpg 1536w" data-src="/en/test/img/test-768w.jpg" src="/en/test/img/placeholder.jpg" alt="Lazy loading &lt;img&gt; with srcset" width="768" height="576">
+    <img class="lazy" sizes="(min-width: 50rem) 48rem, 100vw" data-srcset="/ccmstpl/test/img/test-768w.jpg 768w, /ccmstpl/test/img/test-1024w.jpg 1024w, /ccmstpl/test/img/test-1280w.jpg 1280w, /ccmstpl/test/img/test-1536w.jpg 1536w" data-src="/ccmstpl/test/img/test-768w.jpg" src="/ccmstpl/test/img/placeholder.jpg" alt="Lazy loading &lt;img&gt; with srcset" width="768" height="576">
     <noscript>
-      <img srcset="/en/test/img/test-768w.jpg 768w, /en/test/img/test-1024w.jpg 1024w, /en/test/img/test-1280w.jpg 1280w, /en/test/img/test-1536w.jpg 1536w" src="/en/test/img/test-768w.jpg" alt="&lt;noscript&gt; fallback for &lt;img&gt; with srcset" width="768" height="576">
+      <img srcset="/ccmstpl/test/img/test-768w.jpg 768w, /ccmstpl/test/img/test-1024w.jpg 1024w, /ccmstpl/test/img/test-1280w.jpg 1280w, /ccmstpl/test/img/test-1536w.jpg 1536w" src="/ccmstpl/test/img/test-768w.jpg" alt="&lt;noscript&gt; fallback for &lt;img&gt; with srcset" width="768" height="576">
     </noscript>
     <h1>Scroll down...</h1>
     <button id="add-markup">Add New Markup</button>
     <div id="dynamic-markup-container"></div>
     <div id="server-markup">
       <h2>Lazy loading <code>&lt;img&gt;</code> using <code>src</code></h2>
-      <img class="lazy" data-src="/en/test/img/test-768w.jpg" src="/en/test/img/placeholder.jpg" alt="Lazy loading &lt;img&gt; with src" width="768" height="576">
+      <img class="lazy" data-src="/ccmstpl/test/img/test-768w.jpg" src="/ccmstpl/test/img/placeholder.jpg" alt="Lazy loading &lt;img&gt; with src" width="768" height="576">
       <noscript>
-        <img src="/en/test/img/test-768w.jpg" alt="&lt;noscript&gt; fallback for &lt;img&gt; with src" width="768" height="576">
+        <img src="/ccmstpl/test/img/test-768w.jpg" alt="&lt;noscript&gt; fallback for &lt;img&gt; with src" width="768" height="576">
       </noscript>
       <h2>Lazy loading <code>&lt;img&gt;</code> using <code>srcset</code></h2>
-      <img class="lazy" sizes="(min-width: 50rem) 48rem, 100vw" data-srcset="/en/test/img/test-768w.jpg 768w, /en/test/img/test-1024w.jpg 1024w, /en/test/img/test-1280w.jpg 1280w, /en/test/img/test-1536w.jpg 1536w" data-src="/en/test/img/test-768w.jpg" src="/en/test/img/placeholder.jpg" alt="Lazy loading &lt;img&gt; with srcset" width="768" height="576">
+      <img class="lazy" sizes="(min-width: 50rem) 48rem, 100vw" data-srcset="/ccmstpl/test/img/test-768w.jpg 768w, /ccmstpl/test/img/test-1024w.jpg 1024w, /ccmstpl/test/img/test-1280w.jpg 1280w, /ccmstpl/test/img/test-1536w.jpg 1536w" data-src="/ccmstpl/test/img/test-768w.jpg" src="/ccmstpl/test/img/placeholder.jpg" alt="Lazy loading &lt;img&gt; with srcset" width="768" height="576">
       <noscript>
-        <img srcset="/en/test/img/test-768w.jpg 768w, /en/test/img/test-1024w.jpg 1024w, /en/test/img/test-1280w.jpg 1280w, /en/test/img/test-1536w.jpg 1536w" src="/en/test/img/test-768w.jpg" alt="&lt;noscript&gt; fallback for &lt;img&gt; with srcset" width="768" height="576">
+        <img srcset="/ccmstpl/test/img/test-768w.jpg 768w, /ccmstpl/test/img/test-1024w.jpg 1024w, /ccmstpl/test/img/test-1280w.jpg 1280w, /ccmstpl/test/img/test-1536w.jpg 1536w" src="/ccmstpl/test/img/test-768w.jpg" alt="&lt;noscript&gt; fallback for &lt;img&gt; with srcset" width="768" height="576">
       </noscript>
       <h2>Lazy loading <code>&lt;picture&gt;</code></h2>
       <picture>
-        <source sizes="(min-width: 50rem) 48rem, 100vw" data-srcset="/en/test/img/test-768w.webp 768w, /en/test/img/test-1024w.webp 1024w, /en/test/img/test-1280w.webp 1280w, /en/test/img/test-1536w.webp 1536w" srcset="/en/test/img/placeholder.webp" type="image/webp">
-        <source sizes="(min-width: 50rem) 48rem, 100vw"  data-srcset="/en/test/img/test-768w.jpg 768w, /en/test/img/test-1024w.jpg 1024w, /en/test/img/test-1280w.jpg 1280w, /en/test/img/test-1536w.jpg 1536w" srcset="/en/test/img/placeholder.jpg" type="image/jpeg">
-        <img class="lazy" sizes="(min-width: 50rem) 48rem, 100vw" data-src="/en/test/img/test-768w.jpg" src="/en/test/img/placeholder.jpg" alt="Lazy loading &lt;img&gt; with src" width="768" height="576">
+        <source sizes="(min-width: 50rem) 48rem, 100vw" data-srcset="/ccmstpl/test/img/test-768w.webp 768w, /ccmstpl/test/img/test-1024w.webp 1024w, /ccmstpl/test/img/test-1280w.webp 1280w, /ccmstpl/test/img/test-1536w.webp 1536w" srcset="/ccmstpl/test/img/placeholder.webp" type="image/webp">
+        <source sizes="(min-width: 50rem) 48rem, 100vw"  data-srcset="/ccmstpl/test/img/test-768w.jpg 768w, /ccmstpl/test/img/test-1024w.jpg 1024w, /ccmstpl/test/img/test-1280w.jpg 1280w, /ccmstpl/test/img/test-1536w.jpg 1536w" srcset="/ccmstpl/test/img/placeholder.jpg" type="image/jpeg">
+        <img class="lazy" sizes="(min-width: 50rem) 48rem, 100vw" data-src="/ccmstpl/test/img/test-768w.jpg" src="/ccmstpl/test/img/placeholder.jpg" alt="Lazy loading &lt;img&gt; with src" width="768" height="576">
       </picture>
       <noscript>
         <picture>
-          <source srcset="/en/test/img/test-768w.webp 768w, /en/test/img/test-1024w.webp 1024w, /en/test/img/test-1280w.webp 1280w, /en/test/img/test-1536w.webp 1536w" type="image/webp">
-          <source srcset="/en/test/img/test-768w.jpg 768w, /en/test/img/test-1024w.jpg 1024w, /en/test/img/test-1280w.jpg 1280w, /en/test/img/test-1536w.jpg 1536w" type="image/jpeg">
-          <img src="/en/test/img/test-768w.jpg" alt="&lt;noscript&gt; fallback for &lt;img&gt; with src" width="768" height="576">
+          <source srcset="/ccmstpl/test/img/test-768w.webp 768w, /ccmstpl/test/img/test-1024w.webp 1024w, /ccmstpl/test/img/test-1280w.webp 1280w, /ccmstpl/test/img/test-1536w.webp 1536w" type="image/webp">
+          <source srcset="/ccmstpl/test/img/test-768w.jpg 768w, /ccmstpl/test/img/test-1024w.jpg 1024w, /ccmstpl/test/img/test-1280w.jpg 1280w, /ccmstpl/test/img/test-1536w.jpg 1536w" type="image/jpeg">
+          <img src="/ccmstpl/test/img/test-768w.jpg" alt="&lt;noscript&gt; fallback for &lt;img&gt; with src" width="768" height="576">
         </picture>
       </noscript>
       <h2>An image that doesn't exist</h2>
-      <img class="lazy" data-src="/en/test/img/BLARP.jpg" src="/en/test/img/placeholder.jpg" alt="An image that doesn't exist" width="768" height="576">
+      <img class="lazy" data-src="/ccmstpl/test/img/BLARP.jpg" src="/ccmstpl/test/img/placeholder.jpg" alt="An image that doesn't exist" width="768" height="576">
       <div class="message error">Oh no, the image didn't load :(</div>
       <h2>Lazy loading <code>&lt;video&gt;</code> (<code>autoplay</code>/GIF-like behavior)</h2>
-      <video class="lazy" width="500" height="213" poster="/en/test/img/video-placeholder.jpg" autoplay loop muted playsinline inline preload="none">
-        <source data-src="/en/test/video/test.webm" type="/en/test/video/webm">
-        <source data-src="/en/test/video/test.mp4" type="/en/test/video/mp4">
+      <video class="lazy" width="500" height="213" poster="/ccmstpl/test/img/video-placeholder.jpg" autoplay loop muted playsinline inline preload="none">
+        <source data-src="/ccmstpl/test/video/test.webm" type="/ccmstpl/test/video/webm">
+        <source data-src="/ccmstpl/test/video/test.mp4" type="/ccmstpl/test/video/mp4">
       </video>
       <div class="message notice">The video autoplayed. :)</div>
       <noscript>
         <video width="500" height="213" autoplay loop muted playsinline inline preload="none">
-          <source src="/en/test/video/test.webm" type="/en/test/video/webm">
-          <source src="/en/test/video/test.mp4" type="/en/test/video/mp4">
+          <source src="/ccmstpl/test/video/test.webm" type="/ccmstpl/test/video/webm">
+          <source src="/ccmstpl/test/video/test.mp4" type="/ccmstpl/test/video/mp4">
         </video>
       </noscript>
       <h2>Lazy loading <code>&lt;video&gt;</code> (No <code>autoplay</code>, lazy load <code>poster</code> image)</h2>
-      <video class="lazy" width="500" height="257" data-poster="/en/test/img/video-2-placeholder.jpg" loop muted controls preload="none">
-        <source src="/en/test/video/test-2.webm" type="/en/test/video/webm">
-        <source src="/en/test/video/test-2.mp4" type="/en/test/video/mp4">
+      <video class="lazy" width="500" height="257" data-poster="/ccmstpl/test/img/video-2-placeholder.jpg" loop muted controls preload="none">
+        <source src="/ccmstpl/test/video/test-2.webm" type="/ccmstpl/test/video/webm">
+        <source src="/ccmstpl/test/video/test-2.mp4" type="/ccmstpl/test/video/mp4">
       </video>
       <noscript>
-        <video class="lazy" width="500" height="257" poster="/en/test/img/video-2-placeholder.jpg" loop muted controls preload="none">
-          <source src="/en/test/video/test-2.webm" type="/en/test/video/webm">
-          <source src="/en/test/video/test-2.mp4" type="/en/test/video/mp4">
+        <video class="lazy" width="500" height="257" poster="/ccmstpl/test/img/video-2-placeholder.jpg" loop muted controls preload="none">
+          <source src="/ccmstpl/test/video/test-2.webm" type="/ccmstpl/test/video/webm">
+          <source src="/ccmstpl/test/video/test-2.mp4" type="/ccmstpl/test/video/mp4">
         </video>
       </noscript>
       <h2>Lazy loading <code>&lt;iframe&gt;</code></h2>
@@ -212,7 +212,7 @@
       </div>
     </div>
     <script src="https://polyfill.io/v2/polyfill.min.js?features=IntersectionObserver"></script>
-    <script src="/en/test/js/yall.min.js"></script>
+    <script src="/ccmstpl/test/js/yall.min.js"></script>
     <script>
       document.addEventListener("DOMContentLoaded", function() {
         yall({
