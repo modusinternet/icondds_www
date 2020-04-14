@@ -1729,3 +1729,6 @@ input[type="search"]::-webkit-search-results-decoration{display:none}
 	Navigation End
 	==========*/
 }
+
+/* 1300px or larger. */
+@media only screen and (min-width:1300px){#logo1>img{width:300px}}
