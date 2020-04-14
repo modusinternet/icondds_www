@@ -398,7 +398,7 @@ body.modal-active #wrapper:after {
 	-webkit-transition: top 0.75s ease-in-out, opacity 0.35s ease-out, visibility 0.35s;
 	-ms-transition: top 0.75s ease-in-out, opacity 0.35s ease-out, visibility 0.35s;
 	transition: top 0.75s ease-in-out, opacity 0.35s ease-out, visibility 0.35s;
-	background-image: url("images/spinner.svg");
+	background-image: url("/ccmstpl/test/images/spinner.svg");
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: contain;
@@ -836,7 +836,7 @@ body.loading #main .thumb {
 	display: block;
 	min-height: 12rem;
 	min-width: 240px;
-	
+
 	background-size: contain;
 	background-repeat: no-repeat;
 	background-position: 50% 50%;
