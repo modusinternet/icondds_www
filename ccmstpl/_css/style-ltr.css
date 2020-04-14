@@ -489,16 +489,6 @@ input[type="search"]::-webkit-search-results-decoration{display:none}
 
 .cd-header-buttons li{display:inline-block}
 
-/*
-.cd-logo{
-	position:absolute;
-	top:12px;
-	left:5%
-}
-
-.cd-logo img{display:block}
-*/
-
 .cd-main-content{
 	/*background:#e2e3df;*/
 	min-height:100vh;
@@ -1077,13 +1067,6 @@ input[type="search"]::-webkit-search-results-decoration{display:none}
 
 .nav-is-fixed .cd-search{position:fixed}
 
-/*
-.nav-on-left .cd-logo{
-	left:auto;
-	right:5%
-}
-*/
-
 .nav-on-left .cd-header-buttons{
 	right:auto;
 	left:5%
@@ -1140,6 +1123,8 @@ input[type="search"]::-webkit-search-results-decoration{display:none}
 	position:absolute;
 	top:18px
 }
+
+#logo1>img{width:150px}
 
 #logo2{
 	left:10px;
