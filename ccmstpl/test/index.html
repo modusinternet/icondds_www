@@ -225,8 +225,8 @@ Change a device pixel ratio with devtools and check the console to see which ima
 	</div>
 
 	<!-- Toastr resources for Notifications -->
-	<script src="/ccmstpl/test/assets/js/jquery.min.js"></script>
-	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+	<!--script src="/ccmstpl/test/assets/js/jquery.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script -->
 	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
 	<!-- Toastr resources -->
 	<!-- IntersectionObserver Polyfill -->
@@ -234,18 +234,22 @@ Change a device pixel ratio with devtools and check the console to see which ima
 	<!-- IntersectionObserver Polyfill -->
 	<script src="/ccmstpl/test/assets/js/lozad.min.js"></script>
 	<script type="text/javascript">
-	toastr.options = {
+	/*
+   toastr.options = {
 		"progressBar": true,
 		"timeOut": "1500"
 	}
+   */
 	// Initialize library to lazy load images
 	var observer = lozad('.lozad', {
 		threshold: 0.1,
 		load: function(el) {
-			el.src = el.getAttribute("data-src");
+         /*
+         el.src = el.getAttribute("data-src");
 			el.onload = function() {
 				toastr["success"](el.localName.toUpperCase() + " " + el.getAttribute("data-index") + " lazy loaded.")
 			}
+         */
 		}
 	})
 
