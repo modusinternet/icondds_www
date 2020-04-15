@@ -226,49 +226,35 @@ Change a device pixel ratio with devtools and check the console to see which ima
 
 	<!-- Toastr resources for Notifications -->
 	<!--script src="/ccmstpl/test/assets/js/jquery.min.js"></script>
-	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script -->
-	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" -->
 	<!-- Toastr resources -->
 	<!-- IntersectionObserver Polyfill -->
 	<script src="https://rawgit.com/w3c/IntersectionObserver/master/polyfill/intersection-observer.js"></script>
 	<!-- IntersectionObserver Polyfill -->
 	<script src="/ccmstpl/test/assets/js/lozad.min.js"></script>
 	<script type="text/javascript">
-	/*
-   toastr.options = {
-		"progressBar": true,
-		"timeOut": "1500"
-	}
-   */
-	// Initialize library to lazy load images
-	var observer = lozad('.lozad', {
-		threshold: 0.1,
-		load: function(el) {
-         el.src = el.getAttribute("data-src");
-         /*
-         el.onload = function() {
-				toastr["success"](el.localName.toUpperCase() + " " + el.getAttribute("data-index") + " lazy loaded.")
-			}
-         */
-		}
-	})
+		// Initialize library to lazy load images
+		var observer = lozad('.lozad', {
+			threshold: 0.1,
+			load: function(el) {el.src = el.getAttribute("data-src");}
+		})
 
-	// Picture observer
-	// with default `load` method
-	var pictureObserver = lozad('.lozad-picture', {
-		threshold: 0.1
-	})
+		// Picture observer
+		// with default `load` method
+		var pictureObserver = lozad('.lozad-picture', {
+			threshold: 0.1
+		})
 
-	// Background observer
-	// with default `load` method
-	var backgroundObserver = lozad('.lozad-background', {
-		threshold: 0.1
-	})
+		// Background observer
+		// with default `load` method
+		var backgroundObserver = lozad('.lozad-background', {
+			threshold: 0.1
+		})
 
-	observer.observe()
-	pictureObserver.observe()
-	backgroundObserver.observe()
-
+		observer.observe()
+		pictureObserver.observe()
+		backgroundObserver.observe()
 	</script>
 
 </body>
