@@ -166,13 +166,11 @@ cssgrid-events.ev3{grid-area:ev3}
 	max-width:unset
 }
 
-.webp .footerBG{
-	background-image:url("{CCMS_LIB:site.php;FUNC:load_resource("AWS")}/ccmstpl/_img/footerBG.webp");
-}
+.webp .footerBG{background-image:url("{CCMS_LIB:site.php;FUNC:load_resource("AWS")}/ccmstpl/_img/footerBG.webp")}
 
-.no-webp .footerBG{
-	background-image:url("{CCMS_LIB:site.php;FUNC:load_resource("AWS")}/ccmstpl/_img/footerBG.png");
-}
+.no-webp .footerBG{background-image:url("{CCMS_LIB:site.php;FUNC:load_resource("AWS")}/ccmstpl/_img/footerBG.png")}
+
+.footerBG.lazy{background-image:none}
 
 .footerQuickSiteNav{
 	margin-left:25px;
