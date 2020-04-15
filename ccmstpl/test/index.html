@@ -207,37 +207,30 @@ Change a device pixel ratio with devtools and check the console to see which ima
 	</div>
 	<!-- <video> example -->
 	<div class="sub-main">
-	  <article class="main-heading">
+		<article class="main-heading">
 		<h1>&lt;video> example</h1>
 		<p>video courtesy of Big Buck Bunny.</p>
-	  </article>
+		</article>
 	</div>
 	<div id="video">
-	  <article class="frame">
-		  <div class="video-example video-example-2">
+		<article class="frame">
+			<div class="video-example video-example-2">
 			<video width="560" height="315" controls loop muted class="lozad-picture">
-			  <source data-src="/ccmstpl/test/video/mov_bbb.mp4" type="video/mp4">
-			  <source data-src="/ccmstpl/test/video/mov_bbb.ogg" type="video/ogg">
+				<source data-src="/ccmstpl/test/video/mov_bbb.mp4" type="video/mp4">
+				<source data-src="/ccmstpl/test/video/mov_bbb.ogg" type="video/ogg">
 			</video>
 			<pre>normal video example</pre>
-		  </div>
-	  </article>
+			</div>
+		</article>
 	</div>
-
-	<!-- Toastr resources for Notifications -->
-	<!--script src="/ccmstpl/test/assets/js/jquery.min.js"></script>
-	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
-	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" -->
-	<!-- Toastr resources -->
-	<!-- IntersectionObserver Polyfill -->
-	<!-- script src="https://rawgit.com/w3c/IntersectionObserver/master/polyfill/intersection-observer.js"></script -->
-	<!-- IntersectionObserver Polyfill -->
 	<script src="/ccmstpl/test/assets/js/lozad.min.js"></script>
 	<script type="text/javascript">
 		// Initialize library to lazy load images
 		var observer = lozad('.lozad', {
 			threshold: 0.1,
-			load: function(el) {el.src = el.getAttribute("data-src");}
+			load: function(el) {
+				el.src = el.getAttribute("data-src");
+			}
 		})
 
 		// Picture observer

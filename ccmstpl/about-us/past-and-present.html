@@ -84,6 +84,10 @@
 				background-image:url("{CCMS_LIB:site.php;FUNC:load_resource("AWS")}/ccmstpl/_img/about-us_past-and-present_01-min.jpg");
 			}
 
+
+			.about-us_past-and-present_02.lazy{background-image:none}
+
+
 			.webp .about-us_past-and-present_02{
 				background-image:url("{CCMS_LIB:site.php;FUNC:load_resource("AWS")}/ccmstpl/_img/about-us_past-and-present_02.webp");
 			}
@@ -123,7 +127,7 @@
 					<p>ICONIC Dentistry is a new name for an already-existing group practice that has been passed down from different owner dentists but kept in continuous operation in multiple locations in Orange County since the 1970s. The doctors at ICONIC have all known each other and worked collaboratively in the past. As part of a combined effort to modernize and to embrace practicing dentistry in the 21<sup>st</sup> Century, these doctors combined resources and built a brand new dental office in Tustin and relocated here in 2017.</p>
 				</div>
 			</div>
-			<div class="parallax about-us_past-and-present_02"></div>
+			<div class="parallax about-us_past-and-present_02 lazy"></div>
 			<div class="contentType1">
 				<div>
 					<p>Together, the <em style="text-decoration:underline">current team of doctors</em> has over 50 years of combined experience in research and clinical practice. Our in-house periodontal specialist, Dr. Sheldon Lu, has served with the United States Army both in active duty and the reserve component, as well as a member of the California Army National Guard. In these positions, Dr. Lu has provided quality care to men and women in uniform for almost 15 years before coming to private practice.</p>
@@ -176,6 +180,61 @@
 								loadFirst("{CCMS_LIB:site.php;FUNC:load_resource("AWS")}{CCMS_LIB:site.php;FUNC:load_resource("JQUERY-VALIDATE-ADDITIONAL-METHODS")}",function(){
 
 									loadFirst("{CCMS_LIB:site.php;FUNC:js_01}",function(){
+
+
+
+
+document.addEventListener("DOMContentLoaded", function() {
+  var lazyloadImages;
+
+  if ("IntersectionObserver" in window) {
+    lazyloadImages = document.querySelectorAll(".lazy");
+    var imageObserver = new IntersectionObserver(function(entries, observer) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          var image = entry.target;
+          image.classList.remove("lazy");
+          imageObserver.unobserve(image);
+        }
+      });
+    });
+
+    lazyloadImages.forEach(function(image) {
+      imageObserver.observe(image);
+    });
+  } else {
+    var lazyloadThrottleTimeout;
+    lazyloadImages = document.querySelectorAll(".lazy");
+
+    function lazyload () {
+      if(lazyloadThrottleTimeout) {
+        clearTimeout(lazyloadThrottleTimeout);
+      }
+
+      lazyloadThrottleTimeout = setTimeout(function() {
+        var scrollTop = window.pageYOffset;
+        lazyloadImages.forEach(function(img) {
+            if(img.offsetTop < (window.innerHeight + scrollTop)) {
+              img.src = img.dataset.src;
+              img.classList.remove('lazy');
+            }
+        });
+        if(lazyloadImages.length == 0) {
+          document.removeEventListener("scroll", lazyload);
+          window.removeEventListener("resize", lazyload);
+          window.removeEventListener("orientationChange", lazyload);
+        }
+      }, 20);
+    }
+
+    document.addEventListener("scroll", lazyload);
+    window.addEventListener("resize", lazyload);
+    window.addEventListener("orientationChange", lazyload);
+  }
+})
+
+
+
 
 										/*window.performance.mark("mark_end_javascript");
 										console.log(window.performance.getEntriesByName("mark_beginning_javascript"));
