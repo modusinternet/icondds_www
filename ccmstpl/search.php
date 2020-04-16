@@ -73,13 +73,9 @@ header("Cache-Control: public, must-revalidate, proxy-revalidate");
 		<style>
 			{CCMS_TPL:/_css/header.html}
 
-			.webp .search_01{
-				background-image:url("{CCMS_LIB:site.php;FUNC:load_resource("AWS")}/ccmstpl/_img/search_01.webp");
-			}
+			.webp .search_01{background-image:url("{CCMS_LIB:site.php;FUNC:load_resource("AWS")}/ccmstpl/_img/search_01.webp")}
 
-			.no-webp .search_01{
-				background-image:url("{CCMS_LIB:site.php;FUNC:load_resource("AWS")}/ccmstpl/_img/search_01-min.jpg");
-			}
+			.no-webp .search_01{background-image:url("{CCMS_LIB:site.php;FUNC:load_resource("AWS")}/ccmstpl/_img/search_01-min.jpg")}
 
 			.gsc-adBlock{opacity:.3 !important}
 

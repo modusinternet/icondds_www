@@ -70,29 +70,21 @@
 		<style>
 			{CCMS_TPL:/_css/header.html}
 
-			.webp .privacy-policy_01{
-				background-image:url("{CCMS_LIB:site.php;FUNC:load_resource("AWS")}/ccmstpl/_img/privacy-policy_01.webp");
-			}
+			.webp .privacy-policy_01{background-image:url("{CCMS_LIB:site.php;FUNC:load_resource("AWS")}/ccmstpl/_img/privacy-policy_01.webp")}
 
-			.no-webp .privacy-policy_01{
-				background-image:url("{CCMS_LIB:site.php;FUNC:load_resource("AWS")}/ccmstpl/_img/privacy-policy_01-min.jpg");
-			}
+			.no-webp .privacy-policy_01{background-image:url("{CCMS_LIB:site.php;FUNC:load_resource("AWS")}/ccmstpl/_img/privacy-policy_01-min.jpg")}
 
-			.webp .privacy-policy_02{
-				background-image:url("{CCMS_LIB:site.php;FUNC:load_resource("AWS")}/ccmstpl/_img/privacy-policy_02.webp");
-			}
+			.webp .privacy-policy_02{background-image:url("{CCMS_LIB:site.php;FUNC:load_resource("AWS")}/ccmstpl/_img/privacy-policy_02.webp")}
 
-			.no-webp .privacy-policy_02{
-				background-image:url("{CCMS_LIB:site.php;FUNC:load_resource("AWS")}/ccmstpl/_img/privacy-policy_02-min.jpg");
-			}
+			.no-webp .privacy-policy_02{background-image:url("{CCMS_LIB:site.php;FUNC:load_resource("AWS")}/ccmstpl/_img/privacy-policy_02-min.jpg")}
 
-			.webp .privacy-policy_03{
-				background-image:url("{CCMS_LIB:site.php;FUNC:load_resource("AWS")}/ccmstpl/_img/privacy-policy_03.webp");
-			}
+			.privacy-policy_02.lazy{background-image:none}
 
-			.no-webp .privacy-policy_03{
-				background-image:url("{CCMS_LIB:site.php;FUNC:load_resource("AWS")}/ccmstpl/_img/privacy-policy_03-min.jpg");
-			}
+			.webp .privacy-policy_03{background-image:url("{CCMS_LIB:site.php;FUNC:load_resource("AWS")}/ccmstpl/_img/privacy-policy_03.webp")}
+
+			.no-webp .privacy-policy_03{background-image:url("{CCMS_LIB:site.php;FUNC:load_resource("AWS")}/ccmstpl/_img/privacy-policy_03-min.jpg")}
+
+			.privacy-policy_03.lazy{background-image:none}
 		</style>
 		<script>
 			var navActiveArray = ["nl-lng","lng-{CCMS_LIB:_default.php;FUNC:ccms_lng}"];
@@ -153,7 +145,7 @@
 					</ol>
 				</div>
 			</div>
-			<div class="parallax privacy-policy_02"></div>
+			<div class="parallax privacy-policy_02 lazy"></div>
 			<div class="contentType1">
 				<div>
 					<h2>The Personal Information Protection and Electronic Documents Act (PIPEDA) of Canadian</h2>
@@ -186,7 +178,7 @@
 					<p>We do not include or offer third-party products or services on our website.</p>
 				</div>
 			</div>
-			<div class="parallax privacy-policy_03"></div>
+			<div class="parallax privacy-policy_03 lazy"></div>
 			<div class="contentType1">
 				<div>
 					<h2>Google</h2>
