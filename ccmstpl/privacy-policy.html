@@ -242,7 +242,7 @@
 		<script>
 			/*window.performance.mark("mark_beginning_javascript");*/
 {CCMS_TPL:footer-js.html}
-			function loadFirst(e,t,i){var a=document.createElement("script");a.async="true";a.readyState?a.onreadystatechange=function(){("loaded"==a.readyState||"complete"==a.readyState)&&(a.onreadystatechange=null,t())}:a.onload=function(){t()},a.src=e,a.integrity=i+" crossorigin=\"anonymous\"",document.body.appendChild(a)}
+			function loadFirst(e,t,i,c){var a=document.createElement("script");a.async="true";a.readyState?a.onreadystatechange=function(){("loaded"==a.readyState||"complete"==a.readyState)&&(a.onreadystatechange=null,t())}:a.onload=function(){t()},a.src=e,a.integrity=i,a.crossorigin=c,document.body.appendChild(a)}
 
 			var l=document.createElement("link");l.rel="stylesheet";
 			l.href = "{CCMS_LIB:site.php;FUNC:css_01}";
@@ -264,12 +264,12 @@
 										/*window.performance.mark("mark_end_javascript");
 										console.log(window.performance.getEntriesByName("mark_beginning_javascript"));
 										console.log(window.performance.getEntriesByName("mark_end_javascript"));*/
-									},"");
-								},"");
-							},"");
-						},"");
-					},"");
-				},"sha384-3jZumyHIPjQHI+zEWyWy9eHEnJlYd8p0LnB5RAPwGE9Sw93/jiKi8WtnbQMdIp+");
+									},"","");
+								},"","");
+							},"","");
+						},"","");
+					},"","");
+				},"sha384-3jZumyHIPjQHI+zEWyWy9eHEnJlYd8p0LnB5RAPwGE9Sw93/jiKi8WtnbQMdIp+z","anonymous");
 			}
 
 			/*
