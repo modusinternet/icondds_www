@@ -14,11 +14,12 @@ header("Pragma: no-cache");
 	<body>
 
 
-<?php if($_SERVER["REQUEST_URI"] == "/en/sri.html?flag=1") {
-	$host	= $CFG["DB_HOST"];
+<?php
+if($_SERVER["REQUEST_URI"] == "/en/sri.html?flag=1") {
+	$host		= $CFG["DB_HOST"];
 	$dbname	= $CFG["DB_NAME"];
-	$user	= $CFG["DB_USERNAME"];
-	$pass	= $CFG["DB_PASSWORD"];
+	$user		= $CFG["DB_USERNAME"];
+	$pass		= $CFG["DB_PASSWORD"];
 	try {
 		$CFG["DBH"] = @new PDO("mysql:host=$host;dbname=$dbname", $user, $pass, array(PDO::ATTR_PERSISTENT => true));
 		$CFG["DBH"]->exec("set names utf8mb4");
@@ -39,6 +40,7 @@ header("Pragma: no-cache");
 		$CFG["pass"] = 0;
 		$msg = $e->getCode() . ' ' . $e->getMessage();
 	}
+}
 ?>
 
 	<form action="/en/sri.html?flag=1" method="post">
