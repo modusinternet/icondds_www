@@ -44,7 +44,7 @@ if($_SERVER["REQUEST_URI"] == "/en/sri.html?flag=1") {
 ?>
 
 	<form action="/en/sri.html?flag=1" method="post">
-		<button type="submit">Submit</button>
+		Rebuild Subresource Integrity (SRI) codes: <button type="submit">Start</button>
 	</form>
 
 	</body>
