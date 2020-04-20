@@ -22,7 +22,7 @@ if($_SERVER["REQUEST_URI"] == "/en/sri.html?flag=1") {
 		$CFG["DBH"]->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 		try {
-			$CFG["DBH"]->query("TRUNCATE `iconicde_www`.`sri`");
+			$CFG["DBH"]->query("TRUNCATE `sri`");
 			echo "SRI table truncated.<br><br>\n";
 		} catch(PDOException $e) {
 			echo $e->getCode() . " " . $e->getMessage() . "<br><br>\n";
