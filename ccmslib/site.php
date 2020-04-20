@@ -84,7 +84,7 @@ function load_resource($argv){
 	echo $CFG[$argv];
 }
 
-function sri($aws_flag = null,$url){
+function sri($aws_flag = null, $url){
 	// {CCMS_LIB:site.php;FUNC:sri(NULL,"js_01")}
 	global $CFG, $CLEAN;
 
