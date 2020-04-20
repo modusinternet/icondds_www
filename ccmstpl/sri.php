@@ -16,7 +16,7 @@ header("Pragma: no-cache");
 
 <?php if($_SERVER["REQUEST_URI"] == "/en/sri.html?flag=1") {
 	try {
-		$CFG["DBH"] = @new PDO("mysql:host=$CFG["DB_HOST"];dbname=$CFG["DB_NAME"]", $CFG["DB_USERNAME"], $CFG["DB_PASSWORD"], array(PDO::ATTR_PERSISTENT => true));
+		$CFG["DBH"] = @new PDO("mysql:host=$CFG['DB_HOST'];dbname=$CFG['DB_NAME']", $CFG["DB_USERNAME"], $CFG["DB_PASSWORD"], array(PDO::ATTR_PERSISTENT => true));
 		$CFG["DBH"]->exec("set names utf8mb4");
 		$CFG["DBH"]->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
