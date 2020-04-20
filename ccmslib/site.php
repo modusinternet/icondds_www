@@ -86,19 +86,21 @@ function load_resource($argv){
 
 function sri($aws_flag = null, $url){
 	// {CCMS_LIB:site.php;FUNC:sri(NULL,"js_01")}
-	global $CFG, $CLEAN;
+	global $CFG;
 
-	if($aws_flag){
-		$tmp = $CFG["AWS"] . $cdn_file;
-	}else{
-		$tmp = $cdn_file;
-	}
+	if($CFG["SRI"][$url]){
+		if($aws_flag){
+			$tmp = $CFG["AWS"] . $CFG["SRI"][$url];
+		}else{
+			$tmp = $CFG["SRI"][$url];
+		}
 
-	$qry = $CFG["DBH"]->prepare("SELECT * FROM `sri` WHERE `url` = :url LIMIT 1;");
-	$qry->execute(array(':url' => $tmp));
+		$qry = $CFG["DBH"]->prepare("SELECT * FROM `sri` WHERE `url` = :url LIMIT 1;");
+		$qry->execute(array(':url' => $tmp));
 
-	$row = $qry->fetch(PDO::FETCH_ASSOC);
-	if($row) {
-		echo $row["sri-code"];
+		$row = $qry->fetch(PDO::FETCH_ASSOC);
+		if($row) {
+			echo $row["sri-code"];
+		}
 	}
 }
