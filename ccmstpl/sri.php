@@ -32,25 +32,18 @@ if($_SERVER["REQUEST_URI"] == "/en/sri.html?flag=1") {
 		try {
 			$CFG["DBH"]->query("TRUNCATE `sri`");
 			echo "SRI table truncated.<br><br>\n";
-
 			foreach ($array as $i => $value) {
 				unset($data);
 				unset($result);
 				$data = file_get_contents($value);
 				$result = base64_encode(hash("sha384", $data, true));
-				echo "Retrieved " . $value . ".  sha384 string = " . $result . "<br>\n";
-
-
-
+				echo "Retrieved: " . $value . ".<br>\n";
+				echo "sha384 string: " . $result . "<br>\n";
 				$qry = $CFG["DBH"]->prepare("INSERT INTO `sri` (`id`, `url`, `sri-code`) VALUES (NULL, :value, :result);");
 				$qry->execute(array(':value' => $value, ':result' => $result));
 				echo "Added to database.<br><br>\n";
-
-
-
-
-
 			}
+			echo "Done.<br><br>\n";
 		} catch(PDOException $e) {
 			echo $e->getCode() . " " . $e->getMessage() . "<br><br>\n";
 		}
