@@ -27,9 +27,9 @@ if($_SERVER["REQUEST_URI"] == "/en/sri.html?flag=1") {
 
 		try {
 			$CFG["DBH"]->query("TRUNCATE `iconicde_www`.`sri`");
-			echo "\nsri table truncated<br>\n";
+			echo "SRI table truncated.<br><br>\n";
 		} catch(PDOException $e) {
-			echo "\n" . $e->getCode() . " " . $e->getMessage() . "<br>\n";
+			echo $e->getCode() . " " . $e->getMessage() . "<br><br>\n";
 		}
 
 
@@ -38,7 +38,7 @@ if($_SERVER["REQUEST_URI"] == "/en/sri.html?flag=1") {
 
 	} catch(PDOException $e) {
 		$CFG["pass"] = 0;
-		$msg = $e->getCode() . ' ' . $e->getMessage();
+		echo $e->getCode() . " " . $e->getMessage() . "<br><br>\n";
 	}
 }
 ?>
