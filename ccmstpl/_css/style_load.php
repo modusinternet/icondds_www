@@ -10,7 +10,7 @@ echo $a;
 
 l.integrity="<?php
 
-$b = sri("",$a);
+$b = sri_ret("",$a);
 echo $b;
 ?>";
 l.crossOrigin="anonymous";
