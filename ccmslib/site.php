@@ -90,7 +90,7 @@ function sri($aws_flag = null, $url){
 
 	if($CFG["SRI"][$url]){
 		if($aws_flag){
-			$tmp = $CFG["AWS"] . $CFG["SRI"][$url];
+			$tmp = $CFG["SRI"]["AWS"] . $CFG["SRI"][$url];
 		}else{
 			$tmp = $CFG["SRI"][$url];
 		}
@@ -100,7 +100,7 @@ function sri($aws_flag = null, $url){
 
 		$row = $qry->fetch(PDO::FETCH_ASSOC);
 		if($row) {
-			echo "sha384-" . $row["sri-code"];
+			echo "sha256-" . $row["sri-code"];
 		}
 	}
 }
