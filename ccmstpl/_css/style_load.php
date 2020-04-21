@@ -4,14 +4,9 @@ l.href="<?php
 $a = "/" . ccms_lng_ret() . "/_css/style-" . ccms_lng_dir_ret() . ".css";
 echo $a;
 ?>";
-
-/*<?php echo "a=[".$a."]";?>*/
-
-
 l.integrity="<?php
-
-$b = sri_ret("",$a);
-echo $b;
+$a = sri_ret("","CSS-01");
+echo $a;
 ?>";
 l.crossOrigin="anonymous";
 var h=document.getElementsByTagName("head")[0];
