@@ -109,7 +109,7 @@ function sri_ret($aws_flag = null, $url){
 	// {CCMS_LIB:site.php;FUNC:sri(NULL,"js_01")}
 	global $CFG;
 
-	echo "xxxxxx";
+	//echo "xxxxxx";
 
 	if($CFG["SRI"][$url]){
 		if($aws_flag){
