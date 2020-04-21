@@ -5,7 +5,7 @@ $a = "/" . ccms_lng_ret() . "/_css/style-" . ccms_lng_dir_ret() . ".css";
 echo $a;
 ?>";
 l.integrity="<?php
-$a = sri_ret("","CSS-01");
+$a = sri("","CSS-01");
 echo $a;
 ?>";
 l.crossOrigin="anonymous";
