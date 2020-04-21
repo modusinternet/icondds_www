@@ -100,7 +100,7 @@ function sri($aws_flag = null, $url){
 
 		$row = $qry->fetch(PDO::FETCH_ASSOC);
 		if($row) {
-			echo "sha256-" . $row["sri-code"];
+			echo "sha384-" . $row["sri-code"];
 		}
 	}
 }
