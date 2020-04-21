@@ -4,7 +4,12 @@ l.href="<?php
 $a = "/" . ccms_lng_ret() . "/_css/style-" . ccms_lng_dir_ret() . ".css";
 echo $a;
 ?>";
+
+/*<?php echo "a=[".$a."]";?>*/
+
+
 l.integrity="<?php
+
 $b = sri("",$a);
 echo $b;
 ?>";
