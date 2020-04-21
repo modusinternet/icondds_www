@@ -1,5 +1,3 @@
-<?php
-include $_SERVER["DOCUMENT_ROOT"] . "/" . $CFG["LIBDIR"] . "/site.php"; ?>
 var l=document.createElement("link");
 l.rel="stylesheet";
 l.href="<?php
