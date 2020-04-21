@@ -1,7 +1,7 @@
 var l=document.createElement("link");
 l.rel="stylesheet";
 l.href="<?php
-$a = "/" . ccms_lng() . "/_css/style-" . ccms_lng_dir() . ".css";
+$a = "/" . ccms_lng_ret() . "/_css/style-" . ccms_lng_dir_ret() . ".css";
 echo $a;
 ?>";
 l.integrity="<?php
