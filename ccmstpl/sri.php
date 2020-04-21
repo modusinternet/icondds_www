@@ -22,7 +22,9 @@ $array = array(
 	"https://d23cij6660kk94.cloudfront.net/ccmstpl/_js/modernizr-3.6.0-custom-min.js",
 	"https://d23cij6660kk94.cloudfront.net/ccmstpl/_css/owl.carousel-2.3.4.min.css",
 	"https://d23cij6660kk94.cloudfront.net/ccmstpl/_js/owl.carousel.min.js",
-	"/en/_css/style-ltr.css"
+	"/en/_css/style-ltr.css",
+	"https://www.google-analytics.com/analytics.js",
+	"https://www.googletagmanager.com/gtag/js?id=UA-162341556-1"
 );
 
 if($_SERVER["REQUEST_URI"] == "/en/sri.html?flag=1") {
