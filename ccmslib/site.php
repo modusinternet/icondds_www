@@ -85,7 +85,6 @@ function load_resource($argv){
 }
 
 function sri($aws_flag = null, $url){
-	// {CCMS_LIB:site.php;FUNC:sri(NULL,"js_01")}
 	global $CFG;
 
 	if($CFG["SRI"][$url]){
@@ -103,4 +102,55 @@ function sri($aws_flag = null, $url){
 			echo "sha384-" . $row["sri-code"];
 		}
 	}
+}
+
+
+
+
+/*
+$aws_flag = if not null append AWS link
+$lng_flag = if not null append language code to link
+$path = partial pathway information to the style sheet, not including and details about AWS, language code, or language direction)
+$dir_flag = if not null append language direction to link
+*/
+function build_css_link($aws_flag = null, $lng_flag = null, $path, $dir_flag = null){
+	global $CFG;
+
+	$buff = 'var l=document.createElement("link");l.rel="stylesheet";l.href="';
+
+	if($aws_flag){
+		$url = $CFG["AWS"];
+	}
+
+	if($lng_flag){
+		$url =. "/" . ccms_lng_ret();
+	}
+
+	$url =. $path;
+
+	if($dir_flag){
+		$url =. "-" . ccms_lng_dir_ret();
+	}
+
+	$url =. '.css';
+
+	$buff =. $url . '";';
+
+	if($aws_flag){
+		$qry = $CFG["DBH"]->prepare("SELECT * FROM `sri` WHERE `url` = :url LIMIT 1;");
+		$qry->execute(array(':url' => $url));
+
+		$row = $qry->fetch(PDO::FETCH_ASSOC);
+		if($row){
+			$buff =. 'l.integrity="sha384-' . $row["sri-code"] . '";';
+		}else{
+			$tmp = file_get_contents($url);
+			$result = base64_encode(hash("sha384", $tmp, true));
+			$qry = $CFG["DBH"]->prepare("INSERT INTO `sri` (`id`, `url`, `sri-code`) VALUES (NULL, :url, :result);");
+			$qry->execute(array(':url' => $url, ':result' => $result));
+			$buff =. 'l.integrity="sha384-' . $result . '";';
+		}
+		$buff =. 'l.crossOrigin="anonymous";';
+	}
+	echo $buff =. 'var h=document.getElementsByTagName("head")[0];h.parentNode.insertBefore(l,h);';
 }
