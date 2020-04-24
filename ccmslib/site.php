@@ -125,7 +125,11 @@ function build_css_link($aws_flag = null, $lng_flag = null, $path, $dir_flag = n
 	}
 
 	if($lng_flag){
-		$url .= "/" . ccms_lng_ret();
+		if($aws_flag){
+			$url .= "";
+		}else{
+			$url .= "/" . ccms_lng_ret();
+		}
 	}
 
 	$url .= $path;
