@@ -123,18 +123,18 @@ function build_css_link($aws_flag = null, $lng_flag = null, $path, $dir_flag = n
 	}
 
 	if($lng_flag){
-		$url =. "/" . ccms_lng_ret();
+		$url .= "/" . ccms_lng_ret();
 	}
 
-	$url =. $path;
+	$url .= $path;
 
 	if($dir_flag){
-		$url =. "-" . ccms_lng_dir_ret();
+		$url .= "-" . ccms_lng_dir_ret();
 	}
 
-	$url =. '.css';
+	$url .= '.css';
 
-	$buff =. $url . '";';
+	$buff .= $url . '";';
 
 	if($aws_flag){
 		$qry = $CFG["DBH"]->prepare("SELECT * FROM `sri` WHERE `url` = :url LIMIT 1;");
@@ -142,15 +142,15 @@ function build_css_link($aws_flag = null, $lng_flag = null, $path, $dir_flag = n
 
 		$row = $qry->fetch(PDO::FETCH_ASSOC);
 		if($row){
-			$buff =. 'l.integrity="sha384-' . $row["sri-code"] . '";';
+			$buff .= 'l.integrity="sha384-' . $row["sri-code"] . '";';
 		}else{
 			$tmp = file_get_contents($url);
 			$result = base64_encode(hash("sha384", $tmp, true));
 			$qry = $CFG["DBH"]->prepare("INSERT INTO `sri` (`id`, `url`, `sri-code`) VALUES (NULL, :url, :result);");
 			$qry->execute(array(':url' => $url, ':result' => $result));
-			$buff =. 'l.integrity="sha384-' . $result . '";';
+			$buff .= 'l.integrity="sha384-' . $result . '";';
 		}
-		$buff =. 'l.crossOrigin="anonymous";';
+		$buff .= 'l.crossOrigin="anonymous";';
 	}
-	echo $buff =. 'var h=document.getElementsByTagName("head")[0];h.parentNode.insertBefore(l,h);';
+	echo $buff .= 'var h=document.getElementsByTagName("head")[0];h.parentNode.insertBefore(l,h);';
 }
