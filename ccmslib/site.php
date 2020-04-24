@@ -110,18 +110,20 @@ function sri($aws_flag = null, $url){
 /*
 $aws_flag = if not null append AWS link
 $lng_flag = if not null append language code to link
-$path = partial pathway information to the style sheet, not including and details about AWS, language code, or language direction)
+arg3 = a variable found in the config file that represents a partial pathway to the style sheet, not including and details about AWS, language code, or language direction)
 $dir_flag = if not null append language direction to link
 */
 function build_css_link($aws_flag = null, $lng_flag = null, $path, $dir_flag = null){
 	global $CFG;
+
+	if(!isset($CFG["RES"][$path])) return;
 
 	$buff = 'var l=document.createElement("link");l.rel="stylesheet";l.href="';
 
 	$url = "";
 
 	if($aws_flag){
-		$url .= $CFG["AWS"];
+		$url .= $CFG["RES"]["AWS"];
 	}
 
 	if($lng_flag){
@@ -131,6 +133,10 @@ function build_css_link($aws_flag = null, $lng_flag = null, $path, $dir_flag = n
 			$url .= "/" . ccms_lng_ret();
 		}
 	}
+
+
+$CFG["RES"][$path]
+
 
 	$url .= $path;
 
