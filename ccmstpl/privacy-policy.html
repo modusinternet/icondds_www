@@ -254,7 +254,7 @@
 			arg3 = partial pathway information to the style sheet, not including and details about AWS, language code, or language direction)
 			arg4 = (1 = append language direction to link), (empty = do not append language direction to link)
 			*/
-			{CCMS_LIB:site.php;FUNC:build_css_link("","","/_css/style","1")}
+			{CCMS_LIB:site.php;FUNC:build_css_link("","1","/_css/style","1")}
 
 			function loadJSResources(){
 				loadFirst("{CCMS_LIB:site.php;FUNC:load_resource("AWS")}{CCMS_LIB:site.php;FUNC:load_resource("MODERNIZER")}",function(){
