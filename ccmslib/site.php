@@ -121,7 +121,7 @@ function build_css_link($aws_flag = null, $lng_flag = null, $path, $dir_flag = n
 	$url = "";
 
 	if($aws_flag){
-		$url .= $CFG["AWS"];
+		$url .= $CFG["AWS"] . "/ccmstpl";
 	}
 
 	if($lng_flag){
