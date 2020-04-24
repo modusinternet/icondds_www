@@ -253,7 +253,7 @@
 			{CCMS_LIB:site.php;FUNC:build_css_link("","1","CSS-01","1")}
 
 			function loadJSResources(){
-				loadFirst("{CCMS_LIB:site.php;FUNC:load_resource("AWS")}{CCMS_LIB:site.php;FUNC:load_resource("MODERNIZER")}",function(){
+				loadFirst("{CCMS_LIB:site.php;FUNC:build_js_link("1","","MODERNIZER")}",function(){
 
 					loadFirst("{CCMS_LIB:site.php;FUNC:load_resource("AWS")}{CCMS_LIB:site.php;FUNC:load_resource("JQUERY")}",function(){
 
