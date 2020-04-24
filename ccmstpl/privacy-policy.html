@@ -269,23 +269,12 @@
 										console.log(window.performance.getEntriesByName("mark_beginning_javascript"));
 										console.log(window.performance.getEntriesByName("mark_end_javascript"));*/
 									});
-								}{CCMS_LIB:site.php;FUNC:build_js_sri("JQUERY-VALIDATE-ADDITIONAL-METHODS")}); /* JQUERY-VALIDATE-ADDITIONAL-METHODS */
-							},'{CCMS_LIB:site.php;FUNC:sri("1","JQUERY-VALIDATE")}','anonymous'); /* JQUERY-VALIDATE */
-						},'{CCMS_LIB:site.php;FUNC:sri("1","JQUERY-MOBILE-CUST")}','anonymous'); /* JQUERY-MOBILE-CUST */
-					},'{CCMS_LIB:site.php;FUNC:sri("1","JQUERY")}','anonymous'); /* JQUERY */
-				},'{CCMS_LIB:site.php;FUNC:sri("1","MODERNIZER")}','anonymous'); /* MODERNIZER */
+								}{CCMS_LIB:site.php;FUNC:build_js_sri("JQUERY-VALIDATE-ADDITIONAL-METHODS")});
+							}{CCMS_LIB:site.php;FUNC:build_js_sri("JQUERY-VALIDATE")});
+						}{CCMS_LIB:site.php;FUNC:build_js_sri("JQUERY-MOBILE-CUST")});
+					}{CCMS_LIB:site.php;FUNC:build_js_sri("JQUERY")});
+				}{CCMS_LIB:site.php;FUNC:build_js_sri("MODERNIZER")});
 			}
-
-			/*
-			To generate your own asdf codes us the folling PHP:
-			$data = file_get_contents("https://code.jquery.com/jquery-3.4.1.min.js");
-			echo base64_encode(hash("sha256", $data, true));
-			CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=
-			write your output like
-			sha384-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=
-
-			or use https://zinoui.com/tools/sri-generator
-			*/
 
 			if(window.addEventListener){window.addEventListener("load",loadJSResources,false)}
 			else if(window.attachEvent){window.attachEvent("onload",loadJSResources)}
