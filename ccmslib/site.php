@@ -134,11 +134,7 @@ function build_css_link($aws_flag = null, $lng_flag = null, $path, $dir_flag = n
 		}
 	}
 
-
-$CFG["RES"][$path]
-
-
-	$url .= $path;
+	$url .= $CFG["RES"][$path];
 
 	if($dir_flag){
 		$url .= "-" . ccms_lng_dir_ret();
