@@ -118,8 +118,10 @@ function build_css_link($aws_flag = null, $lng_flag = null, $path, $dir_flag = n
 
 	$buff = 'var l=document.createElement("link");l.rel="stylesheet";l.href="';
 
+	$url = ""
+
 	if($aws_flag){
-		$url = $CFG["AWS"];
+		$url .= $CFG["AWS"];
 	}
 
 	if($lng_flag){
