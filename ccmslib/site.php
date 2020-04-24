@@ -69,6 +69,11 @@ function shadow_direction() {
 	}
 }
 
+
+
+
+
+
 function css_01(){
 	global $CFG;
 	echo "/" . ccms_lng_ret() . "/_css/" . $CFG["CSS-01"]  . "-" . ccms_lng_dir_ret() . ".css";
@@ -110,13 +115,13 @@ function sri($aws_flag = null, $url){
 /*
 $aws_flag = if not null append AWS link
 $lng_flag = if not null append language code to link
-arg3 = a variable found in the config file that represents a partial pathway to the style sheet, not including and details about AWS, language code, or language direction)
+$path = a variable found in the config file that represents a partial pathway to the style sheet, not including and details about AWS, language code, or language direction)
 $dir_flag = if not null append language direction to link
 */
 function build_css_link($aws_flag = null, $lng_flag = null, $path, $dir_flag = null){
 	global $CFG;
 
-	/* If $path is not found in the config.php file then do nothing.  */
+	/* If $path is not found in the config.php file then do nothing. */
 	if(!isset($CFG["RES"][$path])) return;
 
 	$buff = 'var l=document.createElement("link");l.rel="stylesheet";l.href="';
@@ -171,12 +176,12 @@ function build_css_link($aws_flag = null, $lng_flag = null, $path, $dir_flag = n
 /*
 $aws_flag = if not null append AWS link
 $lng_flag = if not null append language code to link
-arg3 = a variable found in the config file that represents a partial pathway to the style sheet, not including and details about AWS, language code, or language direction)
+$path = a variable found in the config file that represents a partial pathway to the style sheet, not including and details about AWS, language code, or language direction)
 */
 function build_js_link($aws_flag = null, $lng_flag = null, $path){
 	global $CFG;
 
-	/* If $path is not found in the config.php file then do nothing.  */
+	/* If $path is not found in the config.php file then do nothing. */
 	if(!isset($CFG["RES"][$path])) return;
 
 	$url = "";
@@ -195,4 +200,36 @@ function build_js_link($aws_flag = null, $lng_flag = null, $path){
 	}
 
 	echo $url .= $CFG["RES"][$path];
+}
+
+
+
+
+
+/*
+$path = a variable found in the config file that represents a partial pathway to the style sheet, not including and details about AWS, language code, or language direction)
+*/
+function build_js_sri($path){
+	global $CFG;
+
+	/* If $path is not found in the config.php file then do nothing. */
+	if(!isset($CFG["RES"][$path])) return;
+
+	$buff = ",'";
+
+	$url = $CFG["RES"]["AWS"] . $CFG["RES"][$path];
+
+	$qry = $CFG["DBH"]->prepare("SELECT * FROM `sri` WHERE `url` = :url LIMIT 1;");
+	$qry->execute(array(':url' => $url));
+
+	$row = $qry->fetch(PDO::FETCH_ASSOC);
+	if($row) {
+		echo $buff .= "sha384-" . $row["sri-code"] . "','anonymous'";
+	}else{
+		$tmp = file_get_contents($url);
+		$result = base64_encode(hash("sha384", $tmp, true));
+		$qry = $CFG["DBH"]->prepare("INSERT INTO `sri` (`id`, `url`, `sri-code`) VALUES (NULL, :url, :result);");
+		$qry->execute(array(':url' => $url, ':result' => $result));
+		echo $buff .= "sha384-" . $result . "','anonymous'";
+	}
 }
