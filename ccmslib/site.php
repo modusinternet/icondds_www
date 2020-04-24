@@ -81,7 +81,7 @@ function js_01(){
 
 function load_resource($argv){
 	global $CFG;
-	echo $CFG[$argv];
+	echo $CFG["RES"][$argv];
 }
 
 function sri($aws_flag = null, $url){
