@@ -539,49 +539,33 @@
 {CCMS_TPL:header-body.html}
 {CCMS_TPL:msg-popup.html}
 {CCMS_TPL:a2hs-box.html}
-
-
-
-
-<!--
-# To be implemented: https://infosec.mozilla.org/guidelines/web_security#subresource-integrity
-
-# Load AngularJS 1.4.8 from their CDN
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js" integrity="sha384-r1y8TJcloKTvouxnYsi4PJAx+nHNr90ibsEn3zznzDzWBN9X3o3kbHLSgcIPtzAp" crossorigin="anonymous"></script>
-
-# Generate the hash myself
-$ curl -s https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js | \ openssl dgst -sha384 -binary | \ openssl base64 -A
-
-r1y8TJcloKTvouxnYsi4PJAx+nHNr90ibsEn3zznzDzWBN9X3o3kbHLSgcIPtzAp
--->
-
-
-
 		<script>
 			/*window.performance.mark("mark_beginning_javascript");*/
 {CCMS_TPL:footer-js.html}
-			function loadFirst(e,t,i,c){var a=document.createElement("script");a.async="true";a.integrity=i;a.crossOrigin=c;a.readyState?a.onreadystatechange=function(){("loaded"==a.readyState||"complete"==a.readyState)&&(a.onreadystatechange=null,t())}:a.onload=function(){t()},a.src=e,document.body.appendChild(a)}
+			function loadFirst(e,t,i,c){var a=document.createElement("script");a.async="true";if(i){a.integrity=i;a.crossOrigin=c;}a.readyState?a.onreadystatechange=function(){("loaded"==a.readyState||"complete"==a.readyState)&&(a.onreadystatechange=null,t())}:a.onload=function(){t()},a.src=e,document.body.appendChild(a)}
 
-			var l=document.createElement("link");l.rel="stylesheet";
-			l.href = "{CCMS_LIB:site.php;FUNC:css_01}";
-			var h=document.getElementsByTagName("head")[0];h.parentNode.insertBefore(l,h);
+			/*
+			arg1 = (1 = append AWS link), (empty = do not append AWS link)
+			arg2 = (1 = append language code to link), (empty = do not append language code to link)
+			arg3 = a variable found in the config file that represents a partial pathway to the style sheet, not including and details about AWS, language code, or language direction)
+			arg4 = (1 = append language direction to link), (empty = do not append language direction to link)
+			*/
+			{CCMS_LIB:site.php;FUNC:build_css_link("","1","CSS-01","1")}
 
-			var l=document.createElement("link");l.rel="stylesheet";
-			l.href="{CCMS_LIB:site.php;FUNC:load_resource("AWS")}{CCMS_LIB:site.php;FUNC:load_resource("ANIMATE")}";
-			var h=document.getElementsByTagName("head")[0];h.parentNode.insertBefore(l,h);
+			{CCMS_LIB:site.php;FUNC:build_css_link("1","","ANIMATE","")}
 
 			function loadJSResources(){
-				loadFirst("{CCMS_LIB:site.php;FUNC:load_resource("AWS")}{CCMS_LIB:site.php;FUNC:load_resource("MODERNIZER")}",function(){
+				loadFirst("{CCMS_LIB:site.php;FUNC:build_js_link("1","","MODERNIZER")}",function(){
 
-					loadFirst("{CCMS_LIB:site.php;FUNC:load_resource("AWS")}{CCMS_LIB:site.php;FUNC:load_resource("JQUERY")}",function(){
+					loadFirst("{CCMS_LIB:site.php;FUNC:build_js_link("1","","JQUERY")}",function(){
 
-						loadFirst("{CCMS_LIB:site.php;FUNC:load_resource("AWS")}{CCMS_LIB:site.php;FUNC:load_resource("JQUERY-MOBILE-CUST")}",function(){
+						loadFirst("{CCMS_LIB:site.php;FUNC:build_js_link("1","","JQUERY-MOBILE-CUST")}",function(){
 
-							loadFirst("{CCMS_LIB:site.php;FUNC:load_resource("AWS")}{CCMS_LIB:site.php;FUNC:load_resource("JQUERY-VALIDATE")}",function(){
+							loadFirst("{CCMS_LIB:site.php;FUNC:build_js_link("1","","JQUERY-VALIDATE")}",function(){
 
-								loadFirst("{CCMS_LIB:site.php;FUNC:load_resource("AWS")}{CCMS_LIB:site.php;FUNC:load_resource("JQUERY-VALIDATE-ADDITIONAL-METHODS")}",function(){
+								loadFirst("{CCMS_LIB:site.php;FUNC:build_js_link("1","","JQUERY-VALIDATE-ADDITIONAL-METHODS")}",function(){
 
-									loadFirst("{CCMS_LIB:site.php;FUNC:js_01}",function(){
+									loadFirst("{CCMS_LIB:site.php;FUNC:build_js_link("","1","JS-01")}",function(){
 
 										loadFirst("{CCMS_LIB:site.php;FUNC:load_resource("AWS")}{CCMS_LIB:site.php;FUNC:load_resource("OWL-JS")}",function(){
 
@@ -655,13 +639,13 @@ r1y8TJcloKTvouxnYsi4PJAx+nHNr90ibsEn3zznzDzWBN9X3o3kbHLSgcIPtzAp
 											/*window.performance.mark("mark_end_javascript");
 											console.log(window.performance.getEntriesByName("mark_beginning_javascript"));
 											console.log(window.performance.getEntriesByName("mark_end_javascript"));*/
-										},"sha384-ei+rSEDF/8RUkoOlFOGjb477YRAFbvBuKrFPnPtX0T8pSLyb2Z+YD89FXW/DBC+T","anonymous"); /* OWL-JS */
+										}{CCMS_LIB:site.php;FUNC:build_js_sri("OWL-JS")});
 									},"","");
-								},"sha384-Dbe9Z56WHxzJ4bXLXc3H1wJeDaHdFFjklYuLe8RZFb2MUV6LddQfQ4NDHpej4E3q","anonymous"); /* JQUERY-VALIDATE-ADDITIONAL-METHODS */
-							},"sha384-zIjZlmPajwPHITvJOavW75leRj67RF5apw49LYNEUcXEuMxqbzSnpeqGfhHSq//u","anonymous"); /* JQUERY-VALIDATE */
-						},"sha384-oj5xfEdhLJVLPcaH3xjb9ZJVHqWGPieQELeSF44kD8F/wcJ4P2w7LgZf9UlqlJdw","anonymous"); /* JQUERY-MOBILE-CUST */
-					},"sha384-K5PE7vslc1v8x816FiQ4Fy7FeC13biD40h9rg1Ipj5sOUG62eS2xqR/ty3j4ZXB8","anonymous"); /* JQUERY */
-				},"sha384-3jZumyHIPjQHI+zEWyWy9eHEnJlYd8p0LnB5RAPwGE9Sw93/jiKi8WtnbQMdIp+z","anonymous"); /* MODERNIZER */
+								}{CCMS_LIB:site.php;FUNC:build_js_sri("JQUERY-VALIDATE-ADDITIONAL-METHODS")});
+							}{CCMS_LIB:site.php;FUNC:build_js_sri("JQUERY-VALIDATE")});
+						}{CCMS_LIB:site.php;FUNC:build_js_sri("JQUERY-MOBILE-CUST")});
+					}{CCMS_LIB:site.php;FUNC:build_js_sri("JQUERY")});
+				}{CCMS_LIB:site.php;FUNC:build_js_sri("MODERNIZER")});
 			}
 
 			if(window.addEventListener){window.addEventListener("load",loadJSResources,false)}
