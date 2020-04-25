@@ -69,49 +69,6 @@ function shadow_direction() {
 	}
 }
 
-
-
-
-
-
-function css_01(){
-	global $CFG;
-	echo "/" . ccms_lng_ret() . "/_css/" . $CFG["CSS-01"]  . "-" . ccms_lng_dir_ret() . ".css";
-}
-
-function js_01(){
-	global $CFG;
-	echo "/" . ccms_lng_ret() . "/_js/" . $CFG["JS-01"] . ".js";
-}
-
-function load_resource($argv){
-	global $CFG;
-	echo $CFG[$argv];
-}
-
-function sri($aws_flag = null, $url){
-	global $CFG;
-
-	if($CFG["SRI"][$url]){
-		if($aws_flag){
-			$tmp = $CFG["SRI"]["AWS"] . $CFG["SRI"][$url];
-		}else{
-			$tmp = $CFG["SRI"][$url];
-		}
-
-		$qry = $CFG["DBH"]->prepare("SELECT * FROM `sri` WHERE `url` = :url LIMIT 1;");
-		$qry->execute(array(':url' => $tmp));
-
-		$row = $qry->fetch(PDO::FETCH_ASSOC);
-		if($row) {
-			echo "sha384-" . $row["sri-code"];
-		}
-	}
-}
-
-
-
-
 /*
 $aws_flag = if not null append AWS link
 $lng_flag = if not null append language code to link
@@ -170,9 +127,6 @@ function build_css_link($aws_flag = null, $lng_flag = null, $path, $dir_flag = n
 	echo $buff .= 'var h=document.getElementsByTagName("head")[0];h.parentNode.insertBefore(l,h);';
 }
 
-
-
-
 /*
 $aws_flag = if not null append AWS link
 $lng_flag = if not null append language code to link
@@ -201,10 +155,6 @@ function build_js_link($aws_flag = null, $lng_flag = null, $path){
 
 	echo $url .= $CFG["RES"][$path];
 }
-
-
-
-
 
 /*
 $path = a variable found in the config file that represents a partial pathway to the style sheet, not including and details about AWS, language code, or language direction)
