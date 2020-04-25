@@ -567,10 +567,10 @@
 
 									loadFirst("{CCMS_LIB:site.php;FUNC:build_js_link("","1","JS-01")}",function(){
 
-										loadFirst("{CCMS_LIB:site.php;FUNC:load_resource("AWS")}{CCMS_LIB:site.php;FUNC:load_resource("OWL-JS")}",function(){
+										loadFirst("{CCMS_LIB:site.php;FUNC:build_js_link("1","","OWL-JS")}",function(){
 
 											var l=document.createElement("link");l.rel="stylesheet";
-											l.href = "{CCMS_LIB:site.php;FUNC:load_resource("AWS")}{CCMS_LIB:site.php;FUNC:load_resource("OWL-CSS")}";
+											l.href = "https://d23cij6660kk94.cloudfront.net/ccmstpl/_css/owl.carousel-2.3.4.min.css";
 											var h=document.getElementsByTagName("head")[0];h.parentNode.insertBefore(l,h);
 
 											var owl = $('#carousel');
