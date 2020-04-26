@@ -109,9 +109,9 @@ function build_css_link($aws_flag = null, $lng_flag = null, $path, $dir_flag = n
 		$url .= "-" . ccms_lng_dir_ret();
 	}
 
-	$url .= '.css';
+	$buff .= $url . '.css';
 
-	$buff .= $url . '";';
+	$buff .= '";';
 
 	if($aws_flag){
 		$qry = $CFG["DBH"]->prepare("SELECT * FROM `sri` WHERE `url` = :url LIMIT 1;");
