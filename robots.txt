@@ -1,2 +1,2 @@
 User-agent: *
-Sitemap: https://dev.icondds.com/sitemap.xml
+Sitemap: https://icondds.com/sitemap.xml
