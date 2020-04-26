@@ -12,17 +12,17 @@ header("Cache-Control: public, must-revalidate, proxy-revalidate");
 		<meta name="description" content="{CCMS_DB:search,description}" />
 
 		<!-- Google / Search Engine Tags -->
-		<meta itemprop="name" content="{CCMS_DB:all,company-name} / {CCMS_DB:all,search}">
-		<meta itemprop="description" content="{CCMS_DB:search,description}">
+		<meta itemprop="name" content="{CCMS_DB:all,company-name} / {CCMS_DB:all,search}" />
+		<meta itemprop="description" content="{CCMS_DB:search,description}" />
 
 		<!-- Facebook Meta Tags -->
-		<meta property="og:url" content="https://{CCMS_LIB:_default.php;FUNC:ccms_cfgDomain}/{CCMS_LIB:_default.php;FUNC:ccms_lng}/">
+		<meta property="og:url" content="https://{CCMS_LIB:_default.php;FUNC:ccms_cfgDomain}/{CCMS_LIB:_default.php;FUNC:ccms_lng}/" />
 		<meta property="og:title" content="{CCMS_DB:all,company-name} / {CCMS_DB:all,search}">
-		<meta property="og:description" content="{CCMS_DB:search,description}">
+		<meta property="og:description" content="{CCMS_DB:search,description}" />
 
 		<!-- Twitter Meta Tags -->
-		<meta name="twitter:title" content="{CCMS_DB:all,company-name} / {CCMS_DB:all,search}">
-		<meta name="twitter:description" content="{CCMS_DB:search,description}">
+		<meta name="twitter:title" content="{CCMS_DB:all,company-name} / {CCMS_DB:all,search}" />
+		<meta name="twitter:description" content="{CCMS_DB:search,description}" />
 
 		<script type="application/ld+json">
 			[{
