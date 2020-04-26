@@ -149,9 +149,7 @@ function build_js_link($aws_flag = null, $lng_flag = null, $path){
 
 	/* We do this for safety to help just incase the script calling this function requests the AWS code and the language code by accident.  We never ask for language code ones things are located on AWS. */
 	if($lng_flag){
-		if($aws_flag){
-			$url .= "";
-		}else{
+		if(!$aws_flag){
 			$url .= "/" . ccms_lng_ret();
 		}
 	}
