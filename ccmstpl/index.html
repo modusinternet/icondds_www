@@ -554,6 +554,8 @@
 
 			{CCMS_LIB:site.php;FUNC:build_css_link("1","","ANIMATE","")}
 
+			{CCMS_LIB:site.php;FUNC:build_css_link("1","","OWL-CSS","")}
+
 			function loadJSResources(){
 				loadFirst("{CCMS_LIB:site.php;FUNC:build_js_link("1","","MODERNIZER")}",function(){
 
@@ -569,9 +571,9 @@
 
 										loadFirst("{CCMS_LIB:site.php;FUNC:build_js_link("1","","OWL-JS")}",function(){
 
-											var l=document.createElement("link");l.rel="stylesheet";
+											/*var l=document.createElement("link");l.rel="stylesheet";
 											l.href = "https://d23cij6660kk94.cloudfront.net/ccmstpl/_css/owl.carousel-2.3.4.min.css";
-											var h=document.getElementsByTagName("head")[0];h.parentNode.insertBefore(l,h);
+											var h=document.getElementsByTagName("head")[0];h.parentNode.insertBefore(l,h);*/
 
 											var owl = $('#carousel');
 
