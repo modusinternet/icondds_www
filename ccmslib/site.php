@@ -96,9 +96,7 @@ function build_css_link($aws_flag = null, $lng_flag = null, $path, $dir_flag = n
 
 	/* We do this for safety to help just incase the script calling this function requests the AWS code and the language code by accident.  We never ask for language code ones things are located on AWS. */
 	if($lng_flag){
-		if($aws_flag){
-			$url .= "";
-		}else{
+		if(!$aws_flag){
 			$url .= "/" . ccms_lng_ret();
 		}
 	}
@@ -109,9 +107,9 @@ function build_css_link($aws_flag = null, $lng_flag = null, $path, $dir_flag = n
 		$url .= "-" . ccms_lng_dir_ret();
 	}
 
-	$buff .= $url . '.css';
+	$url .= '.css';
 
-	$buff .= '";';
+	$buff .= $url . '";';
 
 	if($aws_flag){
 		$qry = $CFG["DBH"]->prepare("SELECT * FROM `sri` WHERE `url` = :url LIMIT 1;");
