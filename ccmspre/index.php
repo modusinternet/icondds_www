@@ -950,6 +950,8 @@ function CCMS_Main() {
 									$qry = $CFG["DBH"]->prepare("INSERT INTO `ccms_cache` (url_md5, url, date, exp, content) VALUES (:url_md5, :url, :date, :exp, :content);");
 									$qry->execute(array(':url_md5' => $url_md5, ':url' => $url, ':date' => $date, ':exp' => $date + ($CFG["CACHE_EXPIRE"] * 60), ':content' => $buf));
 
+									header('Last-Modified: ' . gmdate('D, d M Y H:i:s T', $date));
+
 									echo $buf;
 									/*
 									echo "<!-- cache id: " . $CFG["DBH"]->lastInsertId() . " -->";
