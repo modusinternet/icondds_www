@@ -888,7 +888,7 @@ function CCMS_Main() {
 
 							// Check for a cache version, that's not expired and if necessary, cache a new copy.
 							$url = "/" . $CLEAN["ccms_lng"] . "/" . $ccms_dir . $file;
-							$url_md5 = md5($url);
+							/*$url_md5 = md5($url);*/
 
 							if($CFG["CACHE"] == 1) {
 								// Cache setting in /ccmspre/config.php is enabled, $CFG["CACHE"] = 1;.
@@ -915,8 +915,10 @@ function CCMS_Main() {
 										$buf = ob_get_contents();
 										ob_end_clean();
 										$date = time();
-										$qry = $CFG["DBH"]->prepare("INSERT INTO `ccms_cache` (url_md5, url, date, exp, content) VALUES (:url_md5, :url, :date, :exp, :content);");
-										$qry->execute(array(':url_md5' => $url_md5, ':url' => $url, ':date' => $date, ':exp' => $date + ($CFG["CACHE_EXPIRE"] * 60), ':content' => $buf));
+										/*$qry = $CFG["DBH"]->prepare("INSERT INTO `ccms_cache` (url_md5, url, date, exp, content) VALUES (:url_md5, :url, :date, :exp, :content);");
+										$qry->execute(array(':url_md5' => $url_md5, ':url' => $url, ':date' => $date, ':exp' => $date + ($CFG["CACHE_EXPIRE"] * 60), ':content' => $buf));*/
+										$qry = $CFG["DBH"]->prepare("INSERT INTO `ccms_cache` (url, date, exp, content) VALUES (:url, :date, :exp, :content);");
+										$qry->execute(array(':url' => $url, ':date' => $date, ':exp' => $date + ($CFG["CACHE_EXPIRE"] * 60), ':content' => $buf));
 
 										header('Last-Modified: ' . gmdate('D, d M Y H:i:s T', $date));
 
@@ -947,8 +949,11 @@ function CCMS_Main() {
 									$buf = ob_get_contents();
 									ob_end_clean();
 									$date = time();
-									$qry = $CFG["DBH"]->prepare("INSERT INTO `ccms_cache` (url_md5, url, date, exp, content) VALUES (:url_md5, :url, :date, :exp, :content);");
-									$qry->execute(array(':url_md5' => $url_md5, ':url' => $url, ':date' => $date, ':exp' => $date + ($CFG["CACHE_EXPIRE"] * 60), ':content' => $buf));
+									/*$qry = $CFG["DBH"]->prepare("INSERT INTO `ccms_cache` (url_md5, url, date, exp, content) VALUES (:url_md5, :url, :date, :exp, :content);");
+									$qry->execute(array(':url_md5' => $url_md5, ':url' => $url, ':date' => $date, ':exp' => $date + ($CFG["CACHE_EXPIRE"] * 60), ':content' => $buf));*/
+
+									$qry = $CFG["DBH"]->prepare("INSERT INTO `ccms_cache` (url, date, exp, content) VALUES (:url, :date, :exp, :content);");
+									$qry->execute(array(':url' => $url, ':date' => $date, ':exp' => $date + ($CFG["CACHE_EXPIRE"] * 60), ':content' => $buf));
 
 									header('Last-Modified: ' . gmdate('D, d M Y H:i:s T', $date));
 
