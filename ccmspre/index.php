@@ -892,8 +892,12 @@ function CCMS_Main() {
 
 							if($CFG["CACHE"] == 1) {
 								// Cache setting in /ccmspre/config.php is enabled, $CFG["CACHE"] = 1;.
+								/*
 								$qry = $CFG["DBH"]->prepare("SELECT * FROM `ccms_cache` WHERE `url_md5` = :url_md5 LIMIT 1;");
 								$qry->execute(array(':url_md5' => $url_md5));
+								*/
+								$qry = $CFG["DBH"]->prepare("SELECT * FROM `ccms_cache` WHERE `url` = :url LIMIT 1;");
+								$qry->execute(array(':url' => $url));
 								$row = $qry->fetch(PDO::FETCH_ASSOC);
 
 								if($row) {
@@ -913,6 +917,14 @@ function CCMS_Main() {
 										$date = time();
 										$qry = $CFG["DBH"]->prepare("INSERT INTO `ccms_cache` (url_md5, url, date, exp, content) VALUES (:url_md5, :url, :date, :exp, :content);");
 										$qry->execute(array(':url_md5' => $url_md5, ':url' => $url, ':date' => $date, ':exp' => $date + ($CFG["CACHE_EXPIRE"] * 60), ':content' => $buf));
+
+										header('Last-Modified: ' . gmdate('D, d M Y H:i:s T', $date));
+
+
+
+
+
+
 
 										echo $buf;
 										/*
@@ -934,10 +946,6 @@ function CCMS_Main() {
 									CCMS_TPL_Parser($html);
 									$buf = ob_get_contents();
 									ob_end_clean();
-									/*
-									$qry = $CFG["DBH"]->prepare("INSERT INTO `ccms_cache` (url_md5, url, exp, content) VALUES (:url_md5, :url, :exp, :content);");
-									$qry->execute(array(':url_md5' => $url_md5, ':url' => $url, ':exp' => time() + ($CFG["CACHE_EXPIRE"] * 60), ':content' => $buf));
-									*/
 									$date = time();
 									$qry = $CFG["DBH"]->prepare("INSERT INTO `ccms_cache` (url_md5, url, date, exp, content) VALUES (:url_md5, :url, :date, :exp, :content);");
 									$qry->execute(array(':url_md5' => $url_md5, ':url' => $url, ':date' => $date, ':exp' => $date + ($CFG["CACHE_EXPIRE"] * 60), ':content' => $buf));
