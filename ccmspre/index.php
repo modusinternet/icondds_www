@@ -891,6 +891,7 @@ function CCMS_Main() {
 
 							if($CFG["CACHE"] == 1) {
 								// Cache setting in /ccmspre/config.php is enabled, $CFG["CACHE"] = 1;.
+								
 								$qry = $CFG["DBH"]->prepare("SELECT * FROM `ccms_cache` WHERE `url` = :url LIMIT 1;");
 								$qry->execute(array(':url' => $url));
 								$row = $qry->fetch(PDO::FETCH_ASSOC);
@@ -900,6 +901,7 @@ function CCMS_Main() {
 
 									if(time() >= $row["exp"]) {
 										// The cached template is expried.  It should be removed, rebuild and recached.
+
 										$qry = $CFG["DBH"]->prepare("DELETE FROM `ccms_cache` WHERE `id` = :id LIMIT 1;");
 										$qry->execute(array(':id' => $row["id"]));
 
@@ -930,6 +932,7 @@ function CCMS_Main() {
 								} else {
 									// A cached version of the page requested was NOT found.
 									// It should be built and cached.
+
 									ob_start();
 									$html = file_get_contents($_SERVER["DOCUMENT_ROOT"] . "/" . $CFG["TPLDIR"] . "/" . $ccms_dir . $file);
 									CCMS_TPL_Parser($html);
@@ -949,6 +952,7 @@ function CCMS_Main() {
 							} else {
 								// Cache setting in /ccmspre/config.php is NOT enabled, $CFG["CACHE"] = 0;.
 								// Just do a normal template pars.
+
 								$html = file_get_contents($_SERVER["DOCUMENT_ROOT"] . "/" . $CFG["TPLDIR"] . "/" . $ccms_dir . $file);
 								CCMS_TPL_Parser($html);
 							}
