@@ -934,8 +934,13 @@ function CCMS_Main() {
 									CCMS_TPL_Parser($html);
 									$buf = ob_get_contents();
 									ob_end_clean();
+									/*
 									$qry = $CFG["DBH"]->prepare("INSERT INTO `ccms_cache` (url_md5, url, exp, content) VALUES (:url_md5, :url, :exp, :content);");
 									$qry->execute(array(':url_md5' => $url_md5, ':url' => $url, ':exp' => time() + ($CFG["CACHE_EXPIRE"] * 60), ':content' => $buf));
+									*/
+									$date = time();
+									$qry = $CFG["DBH"]->prepare("INSERT INTO `ccms_cache` (url_md5, url, date, exp, content) VALUES (:url_md5, :url, :date, :exp, :content);");
+									$qry->execute(array(':url_md5' => $url_md5, ':url' => $url, ':date' => $date, ':exp' => $date + ($CFG["CACHE_EXPIRE"] * 60), ':content' => $buf));
 
 									echo $buf;
 									/*
