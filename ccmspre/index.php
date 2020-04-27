@@ -920,6 +920,8 @@ function CCMS_Main() {
 										*/
 									} else {
 										// The cached template is NOT expried.  It should be used.
+
+										header('Last-Modified: ' . gmdate('D, d M Y H:i:s T', $row["date"]));
 										echo $row["content"];
 										/*
 										echo "<!-- cache id: " . $row["id"] . " -->";
