@@ -872,7 +872,7 @@ function CCMS_Main() {
 						$found = true;
 						break;
 					} elseif ($file == $ccms_file[0] . ".css" || $file == $ccms_file[0] . ".html" || $file == $ccms_file[0] . ".js") {
-						if ($CLEAN["SESSION"]["user_id"] == null) {
+						if($CLEAN["SESSION"]["user_id"] == null) {
 							// If this is a normal session and the user is not logged in then cache this page in the visitors browers.
 							if($file == $ccms_file[0] . ".css"){
 								header("Content-Type: text/css; charset=utf-8");
@@ -922,6 +922,10 @@ function CCMS_Main() {
 										$qry->execute(array(':url' => $url, ':date' => $date, ':exp' => $date + ($CFG["CACHE_EXPIRE"] * 60), ':content' => $buf));
 
 										header('Last-Modified: ' . gmdate('D, d M Y H:i:s T', $date));
+
+										$etag = '"' . md5($url) . '.' . $date . '"';
+										header('ETag: ' . $etag);
+
 										echo $buf;
 										/*
 										echo "<!-- cache id: " . $CFG["DBH"]->lastInsertId() . " -->";
@@ -933,6 +937,10 @@ function CCMS_Main() {
 											header('HTTP/1.0 304 Not Modified');
 										} else {
 											header('Last-Modified: ' . gmdate('D, d M Y H:i:s T', $row["date"]));
+
+											$etag = '"' . md5($url) . '.' . $row["date"] . '"';
+											header('ETag: ' . $etag);
+
 											echo $row["content"];
 										}
 
@@ -956,6 +964,10 @@ function CCMS_Main() {
 									$qry->execute(array(':url' => $url, ':date' => $date, ':exp' => $date + ($CFG["CACHE_EXPIRE"] * 60), ':content' => $buf));
 
 									header('Last-Modified: ' . gmdate('D, d M Y H:i:s T', $date));
+
+									$etag = '"' . md5($url) . '.' . $date . '"';
+									header('ETag: ' . $etag);
+
 									echo $buf;
 									/*
 									echo "<!-- cache id: " . $CFG["DBH"]->lastInsertId() . " -->";
