@@ -888,7 +888,7 @@ function CCMS_Main() {
 
 							// Expires in
 							/*header('Expires: ' . gmdate('D, d M Y H:i:s T', time() + ($CFG["CACHE_EXPIRE"] * 60)));*/
-							header('Expires: ' . gmdate('D, d M Y H:i:s T', $expDay));
+							/*header('Expires: ' . gmdate('D, d M Y H:i:s T', $expDay));*/
 
 							header('Cache-Control: max-age=' . $expDay);
 
