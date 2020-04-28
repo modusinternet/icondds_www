@@ -883,10 +883,14 @@ function CCMS_Main() {
 							} else {
 								header("Content-Type: text/html; charset=utf-8");
 							}
-							// Expires in
-							header('Expires: ' . gmdate('D, d M Y H:i:s T', time() + ($CFG["CACHE_EXPIRE"] * 60)));
 
-							header('Cache-Control: max-age=' . time() + ($CFG["CACHE_EXPIRE"] * 60));
+							$expDay = time() + ($CFG["CACHE_EXPIRE"] * 60);
+
+							// Expires in
+							/*header('Expires: ' . gmdate('D, d M Y H:i:s T', time() + ($CFG["CACHE_EXPIRE"] * 60)));*/
+							header('Expires: ' . gmdate('D, d M Y H:i:s T', $expDay));
+
+							header('Cache-Control: max-age=' . $expDay);
 
 							// Check for a cache version, that's not expired and if necessary, cache a new copy.
 							$url = "/" . $CLEAN["ccms_lng"] . "/" . $ccms_dir . $file;
