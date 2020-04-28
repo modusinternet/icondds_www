@@ -933,16 +933,25 @@ function CCMS_Main() {
 									} else {
 										// The cached template is NOT expried.  It should be used.
 
-										if(isset($_SERVER['HTTP_IF_MODIFIED_SINCE']) && strtotime($_SERVER['HTTP_IF_MODIFIED_SINCE']) >= $row["date"]) {
+										/*if(isset($_SERVER['HTTP_IF_MODIFIED_SINCE']) && strtotime($_SERVER['HTTP_IF_MODIFIED_SINCE']) >= $row["date"]) {
 											header('HTTP/1.0 304 Not Modified');
 										} else {
 											header('Last-Modified: ' . gmdate('D, d M Y H:i:s T', $row["date"]));
 
-											$etag = '"' . md5($url) . '.' . $row["date"] . '"';
+											echo $row["content"];
+										}*/
+
+										$etag = '"' . md5($url) . '.' . $row["date"] . '"';
+
+										if(isset($_SERVER['HTTP_IF_NONE_MATCH']) == $etag) {
+											header('HTTP/1.0 304 Not Modified');
+										} else {
 											header('ETag: ' . $etag);
 
 											echo $row["content"];
 										}
+
+
 
 
 										/*
