@@ -884,7 +884,9 @@ function CCMS_Main() {
 								header("Content-Type: text/html; charset=utf-8");
 							}
 							// Expires in
-							header('Expires: ' . gmdate('D, d M Y H:i:s \G\M\T', time() + ($CFG["CACHE_EXPIRE"] * 60)));
+							header('Expires: ' . gmdate('D, d M Y H:i:s T', time() + ($CFG["CACHE_EXPIRE"] * 60)));
+
+							header('Cache-Control: max-age=' . time() + ($CFG["CACHE_EXPIRE"] * 60));
 
 							// Check for a cache version, that's not expired and if necessary, cache a new copy.
 							$url = "/" . $CLEAN["ccms_lng"] . "/" . $ccms_dir . $file;
@@ -966,8 +968,9 @@ function CCMS_Main() {
 							$found = true;
 							break;
 						} else {
-							// If this is a verified session asigned of an active user then disable cache.
+							// If this is a verified session assigned of an active user then disable cache.
 							// .html template, admin/translator template request, logged in.  Do not check or save cached version.
+
 							if($file == $ccms_file[0] . ".css"){
 								header("Content-Type: text/css; charset=utf-8");
 							} elseif ($file == $ccms_file[0] . ".html") {
