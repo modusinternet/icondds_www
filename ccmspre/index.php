@@ -921,7 +921,7 @@ function CCMS_Main() {
 										$qry = $CFG["DBH"]->prepare("INSERT INTO `ccms_cache` (url, date, exp, content) VALUES (:url, :date, :exp, :content);");
 										$qry->execute(array(':url' => $url, ':date' => $date, ':exp' => $date + ($CFG["CACHE_EXPIRE"] * 60), ':content' => $buf));
 
-										header('Last-Modified: ' . gmdate('D, d M Y H:i:s T', $date));
+										/*header('Last-Modified: ' . gmdate('D, d M Y H:i:s T', $date));*/
 
 										$etag = '"' . md5($url) . '.' . $date . '"';
 										header('ETag: ' . $etag);
@@ -972,7 +972,7 @@ function CCMS_Main() {
 									$qry = $CFG["DBH"]->prepare("INSERT INTO `ccms_cache` (url, date, exp, content) VALUES (:url, :date, :exp, :content);");
 									$qry->execute(array(':url' => $url, ':date' => $date, ':exp' => $date + ($CFG["CACHE_EXPIRE"] * 60), ':content' => $buf));
 
-									header('Last-Modified: ' . gmdate('D, d M Y H:i:s T', $date));
+									/*header('Last-Modified: ' . gmdate('D, d M Y H:i:s T', $date));*/
 
 									$etag = '"' . md5($url) . '.' . $date . '"';
 									header('ETag: ' . $etag);
