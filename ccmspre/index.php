@@ -884,14 +884,6 @@ function CCMS_Main() {
 								header("Content-Type: text/html; charset=utf-8");
 							}
 
-							/*$expDay = time() + ($CFG["CACHE_EXPIRE"] * 60);*/
-
-							// Expires in
-							/*header('Expires: ' . gmdate('D, d M Y H:i:s T', time() + ($CFG["CACHE_EXPIRE"] * 60)));*/
-							/*header('Expires: ' . gmdate('D, d M Y H:i:s T', $expDay));*/
-
-
-
 							// Check for a cache version, that's not expired and if necessary, cache a new copy.
 							$url = "/" . $CLEAN["ccms_lng"] . "/" . $ccms_dir . $file;
 
@@ -968,7 +960,7 @@ function CCMS_Main() {
 
 											header("Cache-Control: max-age=" . $row["exp"]);
 											header("ETag: " . $etag);
-											
+
 											echo $row["content"];
 										}
 
