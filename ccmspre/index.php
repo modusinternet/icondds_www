@@ -963,6 +963,12 @@ function CCMS_Main() {
 												echo $row["content"];
 											}
 										} else {
+											header("Expires: " . gmdate('D, d M Y H:i:s T', $row["exp"]));
+											header('Last-Modified: ' . gmdate('D, d M Y H:i:s T', $row["date"]));
+
+											header("Cache-Control: max-age=" . $row["exp"]);
+											header("ETag: " . $etag);
+											
 											echo $row["content"];
 										}
 
