@@ -884,13 +884,13 @@ function CCMS_Main() {
 								header("Content-Type: text/html; charset=utf-8");
 							}
 
-							$expDay = time() + ($CFG["CACHE_EXPIRE"] * 60);
+							/*$expDay = time() + ($CFG["CACHE_EXPIRE"] * 60);*/
 
 							// Expires in
 							/*header('Expires: ' . gmdate('D, d M Y H:i:s T', time() + ($CFG["CACHE_EXPIRE"] * 60)));*/
 							/*header('Expires: ' . gmdate('D, d M Y H:i:s T', $expDay));*/
 
-							header('Cache-Control: max-age=' . $expDay);
+
 
 							// Check for a cache version, that's not expired and if necessary, cache a new copy.
 							$url = "/" . $CLEAN["ccms_lng"] . "/" . $ccms_dir . $file;
@@ -921,10 +921,12 @@ function CCMS_Main() {
 										$qry = $CFG["DBH"]->prepare("INSERT INTO `ccms_cache` (url, date, exp, content) VALUES (:url, :date, :exp, :content);");
 										$qry->execute(array(':url' => $url, ':date' => $date, ':exp' => $date + ($CFG["CACHE_EXPIRE"] * 60), ':content' => $buf));
 
-										/*header('Last-Modified: ' . gmdate('D, d M Y H:i:s T', $date));*/
+										header("Expires: " . gmdate('D, d M Y H:i:s T', $date + ($CFG["CACHE_EXPIRE"] * 60)));
+										header("Last-Modified: " . gmdate('D, d M Y H:i:s T', $date));
 
-										$etag = '"' . md5($url) . '.' . $date . '"';
-										header('ETag: ' . $etag);
+										header("Cache-Control: max-age=" . $date + ($CFG["CACHE_EXPIRE"] * 60));
+										$etag = md5($url) . "." . $date;
+										header("ETag: " . $etag);
 
 										echo $buf;
 										/*
@@ -933,26 +935,35 @@ function CCMS_Main() {
 									} else {
 										// The cached template is NOT expried.  It should be used.
 
-										/*if(isset($_SERVER['HTTP_IF_MODIFIED_SINCE']) && strtotime($_SERVER['HTTP_IF_MODIFIED_SINCE']) >= $row["date"]) {
-											header('HTTP/1.0 304 Not Modified');
+										$etag = md5($url) . "." . $row["date"];
+
+										if(isset($_SERVER['HTTP_IF_MODIFIED_SINCE'])) {
+											if(strtotime($_SERVER['HTTP_IF_MODIFIED_SINCE']) >= $row["date"]) {
+												header('HTTP/1.0 304 Not Modified');
+											} else {
+												header("Expires: " . gmdate('D, d M Y H:i:s T', $row["exp"]));
+												header('Last-Modified: ' . gmdate('D, d M Y H:i:s T', $row["date"]));
+
+												header("Cache-Control: max-age=" . $row["exp"]);
+												header("ETag: " . $etag);
+
+												echo $row["content"];
+											}
+										} elseif(isset($_SERVER['HTTP_IF_NONE_MATCH'])) {
+											if($_SERVER['HTTP_IF_NONE_MATCH'] == $etag) {
+												header('HTTP/1.0 304 Not Modified');
+											} else {
+												header("Expires: " . gmdate('D, d M Y H:i:s T', $row["exp"]));
+												header('Last-Modified: ' . gmdate('D, d M Y H:i:s T', $row["date"]));
+
+												header("Cache-Control: max-age=" . $row["exp"]);
+												header("ETag: " . $etag);
+
+												echo $row["content"];
+											}
 										} else {
-											header('Last-Modified: ' . gmdate('D, d M Y H:i:s T', $row["date"]));
-
-											echo $row["content"];
-										}*/
-
-										$etag = '"' . md5($url) . '.' . $row["date"] . '"';
-
-										if(isset($_SERVER['HTTP_IF_NONE_MATCH']) == $etag) {
-											header('HTTP/1.0 304 Not Modified');
-										} else {
-											header('ETag: ' . $etag);
-
 											echo $row["content"];
 										}
-
-
-
 
 										/*
 										echo "<!-- cache id: " . $row["id"] . " -->";
@@ -972,10 +983,12 @@ function CCMS_Main() {
 									$qry = $CFG["DBH"]->prepare("INSERT INTO `ccms_cache` (url, date, exp, content) VALUES (:url, :date, :exp, :content);");
 									$qry->execute(array(':url' => $url, ':date' => $date, ':exp' => $date + ($CFG["CACHE_EXPIRE"] * 60), ':content' => $buf));
 
-									/*header('Last-Modified: ' . gmdate('D, d M Y H:i:s T', $date));*/
+									header("Expires: " . gmdate('D, d M Y H:i:s T', $date + ($CFG["CACHE_EXPIRE"] * 60)));
+									header("Last-Modified: " . gmdate('D, d M Y H:i:s T', $date));
 
-									$etag = '"' . md5($url) . '.' . $date . '"';
-									header('ETag: ' . $etag);
+									header("Cache-Control: max-age=" . $date + ($CFG["CACHE_EXPIRE"] * 60));
+									$etag = md5($url) . "." . $date;
+									header("ETag: " . $etag);
 
 									echo $buf;
 									/*
