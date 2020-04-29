@@ -986,7 +986,8 @@ function CCMS_Main() {
 									header("Expires: " . gmdate('D, d M Y H:i:s T', $date + ($CFG["CACHE_EXPIRE"] * 60)));
 									header("Last-Modified: " . gmdate('D, d M Y H:i:s T', $date));
 
-									header("Cache-Control: max-age=" . $date + ($CFG["CACHE_EXPIRE"] * 60));
+									$tmp = $date + ($CFG["CACHE_EXPIRE"] * 60);
+									header("Cache-Control: max-age=" . $tmp);
 									$etag = md5($url) . "." . $date;
 									header("ETag: " . $etag);
 
