@@ -9,16 +9,16 @@
 		<meta name="description" content="{CCMS_DB:index,description}" />
 
 		<!-- Google / Search Engine Tags -->
-		<meta itemprop="name" content="{CCMS_DB:all,company-name} / {CCMS_DB:all,homepage}" />
+		<meta itemprop="name" content="{CCMS_DB:all,company-name} / {CCMS_DB:all,homepage} / {CCMS_DB:index,welcome}" />
 		<meta itemprop="description" content="{CCMS_DB:index,description}" />
 
 		<!-- Facebook Meta Tags -->
 		<meta property="og:url" content="https://{CCMS_LIB:_default.php;FUNC:ccms_cfgDomain}/{CCMS_LIB:_default.php;FUNC:ccms_lng}/" />
-		<meta property="og:title" content="{CCMS_DB:all,company-name} / {CCMS_DB:all,homepage}" />
+		<meta property="og:title" content="{CCMS_DB:all,company-name} / {CCMS_DB:all,homepage} / {CCMS_DB:index,welcome}" />
 		<meta property="og:description" content="{CCMS_DB:index,description}" />
 
 		<!-- Twitter Meta Tags -->
-		<meta name="twitter:title" content="{CCMS_DB:all,company-name} / {CCMS_DB:all,homepage}" />
+		<meta name="twitter:title" content="{CCMS_DB:all,company-name} / {CCMS_DB:all,homepage} / {CCMS_DB:index,welcome}" />
 		<meta name="twitter:description" content="{CCMS_DB:index,description}" />
 
 		<script type="application/ld+json">
@@ -570,10 +570,6 @@
 									loadFirst("{CCMS_LIB:site.php;FUNC:build_js_link("","1","JS-01")}",function(){
 
 										loadFirst("{CCMS_LIB:site.php;FUNC:build_js_link("1","","OWL-JS")}",function(){
-
-											/*var l=document.createElement("link");l.rel="stylesheet";
-											l.href = "https://d23cij6660kk94.cloudfront.net/ccmstpl/_css/owl.carousel-2.3.4.min.css";
-											var h=document.getElementsByTagName("head")[0];h.parentNode.insertBefore(l,h);*/
 
 											var owl = $('#carousel');
 
