@@ -190,7 +190,8 @@ function csp_header() {
 	global $CFG;
 
 	//$report_uri = "https://".$CFG["DOMAIN"]."/".ccms_lng_ret()."/violationReportForCSP.php";
-	$lang = ccms_lng_ret();
+	$lang = "";
+	$lang .= ccms_lng_ret();
 
 	$buffer = "Content-Security-Policy: ".
 
