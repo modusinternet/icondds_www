@@ -216,7 +216,7 @@ function csp_header() {
 		//"frame-src 'self' *.google.com *.youtube.com;".
 
 		// Defines valid sources of images.
-		"img-src 'self' data: *.cloudfront.net *.gstatic.com *.google-analytics.com *.googleapis.com *.googleusercontent.com *.googletagmanager.com *.google.com *.gravatar.com; ".
+		//"img-src 'self' data: *.cloudfront.net *.gstatic.com *.google-analytics.com *.googleapis.com *.googleusercontent.com *.googletagmanager.com *.google.com *.gravatar.com; ".
 
 		// Restricts the URLs that application manifests can be loaded.
 		//"manifest-src 'self'; ".
@@ -233,7 +233,7 @@ function csp_header() {
 
 		// Defines valid sources of JavaScript.
 		//"script-src 'nonce-SraTe14t6sjq2m4' 'strict-dynamic' 'unsafe-inline' https:; ".
-		"script-src 'nonce-SraTe14t6sjq2m4' 'strict-dynamic' 'unsafe-eval';";
+		"script-src 'nonce-SraTe14t6sjq2m4' 'strict-dynamic' 'unsafe-inline';";
 
 		// Defines valid sources of stylesheets or CSS.
 		//"style-src 'self' 'unsafe-inline' *.cloudfront.net *.google.com *.googletagmanager.com *.google-analytics.com *.googleapis.com; ".
