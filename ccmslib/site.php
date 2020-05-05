@@ -190,6 +190,7 @@ function csp_header() {
 	global $CFG;
 
 	//$report_uri = "https://".$CFG["DOMAIN"]."/".ccms_lng_ret()."/violationReportForCSP.php";
+	$lang = ccms_lng_ret();
 
 	$buffer = "Content-Security-Policy: ".
 
@@ -227,7 +228,7 @@ function csp_header() {
 		"object-src 'none'; ".
 
 		// Instructs the browser to POST a reports of policy failures to this URI. You can also use Content-Security-Policy-Report-Only as the HTTP header name to instruct the browser to only send reports (does not block anything). This directive is deprecated in CSP Level 3 in favor of the report-to directive.
-		"report-uri https://".$CFG["DOMAIN"]."/".ccms_lng_ret()."/cspViolationReport.php; ".
+		"report-uri https://".$CFG["DOMAIN"]."/".$lang."/cspViolationReport.php; ".
 
 		// Defines valid sources of JavaScript.
 		"script-src 'nonce-SraTe14t6sjq2m4''strict-dynamic''unsafe-inline' https:; ".
