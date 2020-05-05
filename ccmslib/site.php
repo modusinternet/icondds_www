@@ -184,3 +184,63 @@ function build_js_sri($path){
 		echo $buff .= "sha384-" . $result . "','anonymous'";
 	}
 }
+
+function csp_header() {
+	// Content Security Policy (CSP) only work in modern browsers Chrome 25+, Firefox 23+, Safari 7+.
+	global $CFG;
+
+	//$report_uri = "https://".$CFG["DOMAIN"]."/".ccms_lng_ret()."/violationReportForCSP.php";
+
+	$buffer = "Content-Security-Policy: ".
+
+		// Defines a set of allowed URLs which can be used in the src attribute of a HTML base tag.
+		"base-uri 'none'; ".
+
+		// Applies to XMLHttpRequest (AJAX), WebSocket, fetch(), <a ping> or EventSource. If not allowed the browser emulates a 400 HTTP status code.
+		"connect-src 'self' *.cloudfront.net *.google.com *.googleapis.com *.googletagmanager.com *.google-analytics.com *.gstatic.com; ".
+
+		// The default-src directive defines the default policy for fetching resources such as JavaScript, Images, CSS, Fonts, AJAX requests, Frames, HTML5 Media. Not all directives fallback to default-src. See the Source List Reference for possible values. (https://content-security-policy.com/#source_list)
+		"default-src 'none'; ".
+
+		// Defines valid sources of font resources (loaded via @font-face).
+		"font-src 'self' data: *.gstatic.com *.googleapis.com; ".
+
+		// Defines valid sources that can be used as an HTML <form> action.
+		"form-action 'self'; ".
+
+		// Defines valid sources for embedding the resource using <frame> <iframe> <object> <embed> <applet>. Setting this directive to 'none' should be roughly equivalent to X-Frame-Options: DENY
+		"frame-ancestors 'self'; ".
+
+		// Defines valid sources for loading frames. In CSP Level 2 frame-src was deprecated in favor of the child-src directive. CSP Level 3, has undeprecated frame-src and it will continue to defer to child-src if not present.
+		"frame-src 'self' *.google.com *.youtube.com;".
+
+		// Defines valid sources of images.
+		"img-src 'self' data: *.cloudfront.net *.gstatic.com *.google-analytics.com *.googleapis.com *.googleusercontent.com *.googletagmanager.com *.google.com *.gravatar.com; ".
+
+		// Restricts the URLs that application manifests can be loaded.
+		"manifest-src 'self'; ".
+
+		// Defines valid sources of audio and video, eg HTML5 <audio>, <video> elements.
+		"media-src 'self' *.cloudfront.net; ".
+
+		// Defines valid sources of plugins, eg <object>, <embed> or <applet>.
+		"object-src 'none'; ".
+
+		// Instructs the browser to POST a reports of policy failures to this URI. You can also use Content-Security-Policy-Report-Only as the HTTP header name to instruct the browser to only send reports (does not block anything). This directive is deprecated in CSP Level 3 in favor of the report-to directive.
+		"report-uri https://".$CFG["DOMAIN"]."/".ccms_lng_ret()."/cspViolationReport.php; ".
+
+		// Defines valid sources of JavaScript.
+		"script-src 'nonce-SraTe14t6sjq2m4''strict-dynamic''unsafe-inline' https:; ".
+
+		// Defines valid sources of stylesheets or CSS.
+		"style-src 'self''unsafe-inline' *.cloudfront.net *.google.com *.googletagmanager.com *.google-analytics.com *.googleapis.com; ".
+
+		// Restricts the URLs which may be loaded as a Worker, SharedWorker or ServiceWorker.
+		"worker-src 'self';";
+
+	header($buffer);
+
+	// X-Frame-Options is not a standard (note the X- which stands for extension not a standard).
+	// This was never officially created but is supported by a lot of the current browsers in use in 2015 and will block iframing of your website.
+	header("X-Frame-Options: SAMEORIGIN");
+}
