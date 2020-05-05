@@ -249,6 +249,6 @@ function csp_header() {
 function csp_nounce() {
 	global $CFG;
 
-	//echo $CFG["nonce"];
-	echo "asdfasdfasdfsad";
+	echo $CFG["nonce"];
+	//echo "asdfasdfasdfsad";
 }
