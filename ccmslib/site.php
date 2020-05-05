@@ -86,7 +86,7 @@ function build_css_link($aws_flag = null, $lng_flag = null, $path, $dir_flag = n
 	/* If $path is not found in the config.php file then do nothing. */
 	if(!isset($CFG["RES"][$path])) return;
 
-	$buff = 'var l=document.createElement("link");l.rel="stylesheet";l.href="';
+	$buff = 'var l=document.createElement("link");l.rel="stylesheet";l.nonce="' . csp_nounce_ret() . '";l.href="';
 
 	$url = "";
 
@@ -239,7 +239,7 @@ function csp_header() {
 
 		// Defines valid sources of stylesheets or CSS.
 		//"style-src 'self' 'unsafe-inline' *.cloudfront.net *.google.com *.googletagmanager.com *.google-analytics.com *.googleapis.com; ".
-		"style-src 'self' 'unsafe-inline' *.cloudfront.net; ";
+		"style-src 'nonce-" . $CFG["nonce"] . "' 'strict-dynamic'; ";
 
 		// Restricts the URLs which may be loaded as a Worker, SharedWorker or ServiceWorker.
 		//"worker-src 'self';";
@@ -251,4 +251,10 @@ function csp_nounce() {
 	global $CFG;
 
 	echo $CFG["nonce"];
+}
+
+function csp_nounce_ret() {
+	global $CFG;
+
+	return $CFG["nonce"];
 }
