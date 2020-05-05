@@ -192,6 +192,8 @@ function csp_header() {
 	//$report_uri = "https://".$CFG["DOMAIN"]."/".ccms_lng_ret()."/violationReportForCSP.php";
 	//$lang = ccms_lng_ret();
 
+	$nonce = csp_nounce_ret();
+
 	$buffer = "Content-Security-Policy: ".
 
 		// Defines a set of allowed URLs which can be used in the src attribute of a HTML base tag.
@@ -233,7 +235,7 @@ function csp_header() {
 
 		// Defines valid sources of JavaScript.
 		//"script-src 'nonce-SraTe14t6sjq2m4' 'strict-dynamic' 'unsafe-inline' https:; ".
-		"script-src 'nonce-SraTe14t6sjq2m4' 'strict-dynamic' 'unsafe-eval' www.googletagmanager.com;";
+		"script-src 'nonce-" . $nonce . "' 'strict-dynamic' 'unsafe-eval' www.googletagmanager.com;";
 
 		// Defines valid sources of stylesheets or CSS.
 		//"style-src 'self' 'unsafe-inline' *.cloudfront.net *.google.com *.googletagmanager.com *.google-analytics.com *.googleapis.com; ".
@@ -246,4 +248,19 @@ function csp_header() {
 	// X-Frame-Options is not a standard (note the X- which stands for extension not a standard).
 	// This was never officially created but is supported by a lot of the current browsers in use in 2015 and will block iframing of your website.
 	header("X-Frame-Options: SAMEORIGIN");
+}
+
+function csp_nounce(){
+	global $CFG;
+
+	echo $CFG["nonce"];
+}
+
+function csp_nounce_ret(){
+	global $CFG;
+
+	if(!isset($CFG["nonce"])){
+		$CFG["nonce"] = hash("sha256", rand());
+	}
+	return $CFG["nonce"];
 }
