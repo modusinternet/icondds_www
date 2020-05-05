@@ -195,34 +195,34 @@ function csp_header() {
 	$buffer = "Content-Security-Policy: ".
 
 		// Defines a set of allowed URLs which can be used in the src attribute of a HTML base tag.
-		"base-uri 'none'; ".
+		//"base-uri 'none'; ".
 
 		// Applies to XMLHttpRequest (AJAX), WebSocket, fetch(), <a ping> or EventSource. If not allowed the browser emulates a 400 HTTP status code.
-		"connect-src 'self' *.cloudfront.net *.google.com *.googleapis.com *.googletagmanager.com *.google-analytics.com *.gstatic.com; ".
+		//"connect-src 'self' *.cloudfront.net *.google.com *.googleapis.com *.googletagmanager.com *.google-analytics.com *.gstatic.com; ".
 
 		// The default-src directive defines the default policy for fetching resources such as JavaScript, Images, CSS, Fonts, AJAX requests, Frames, HTML5 Media. Not all directives fallback to default-src. See the Source List Reference for possible values. (https://content-security-policy.com/#source_list)
-		"default-src 'none'; ".
+		//"default-src 'none'; ".
 
 		// Defines valid sources of font resources (loaded via @font-face).
-		"font-src 'self' data: *.gstatic.com *.googleapis.com; ".
+		//"font-src 'self' data: *.gstatic.com *.googleapis.com; ".
 
 		// Defines valid sources that can be used as an HTML <form> action.
-		"form-action 'self'; ".
+		//"form-action 'self'; ".
 
 		// Defines valid sources for embedding the resource using <frame> <iframe> <object> <embed> <applet>. Setting this directive to 'none' should be roughly equivalent to X-Frame-Options: DENY
-		"frame-ancestors 'self'; ".
+		//"frame-ancestors 'self'; ".
 
 		// Defines valid sources for loading frames. In CSP Level 2 frame-src was deprecated in favor of the child-src directive. CSP Level 3, has undeprecated frame-src and it will continue to defer to child-src if not present.
-		"frame-src 'self' *.google.com *.youtube.com;".
+		//"frame-src 'self' *.google.com *.youtube.com;".
 
 		// Defines valid sources of images.
-		"img-src 'self' data: *.cloudfront.net *.gstatic.com *.google-analytics.com *.googleapis.com *.googleusercontent.com *.googletagmanager.com *.google.com *.gravatar.com; ".
+		//"img-src 'self' data: *.cloudfront.net *.gstatic.com *.google-analytics.com *.googleapis.com *.googleusercontent.com *.googletagmanager.com *.google.com *.gravatar.com; ".
 
 		// Restricts the URLs that application manifests can be loaded.
-		"manifest-src 'self'; ".
+		//"manifest-src 'self'; ".
 
 		// Defines valid sources of audio and video, eg HTML5 <audio>, <video> elements.
-		"media-src 'self' *.cloudfront.net; ".
+		//"media-src 'self' *.cloudfront.net; ".
 
 		// Defines valid sources of plugins, eg <object>, <embed> or <applet>.
 		"object-src 'none'; ".
@@ -232,13 +232,14 @@ function csp_header() {
 		//"report-uri https://".$CFG["DOMAIN"]."/en/cspViolationReport.php; ".
 
 		// Defines valid sources of JavaScript.
-		"script-src 'nonce-SraTe14t6sjq2m4''strict-dynamic''unsafe-inline' https:; ".
+		//"script-src 'nonce-SraTe14t6sjq2m4' 'strict-dynamic' 'unsafe-inline' https:; ".
+		"script-src 'nonce-SraTe14t6sjq2m4' 'strict-dynamic' 'unsafe-eval';";
 
 		// Defines valid sources of stylesheets or CSS.
-		"style-src 'self''unsafe-inline' *.cloudfront.net *.google.com *.googletagmanager.com *.google-analytics.com *.googleapis.com; ".
+		//"style-src 'self' 'unsafe-inline' *.cloudfront.net *.google.com *.googletagmanager.com *.google-analytics.com *.googleapis.com; ".
 
 		// Restricts the URLs which may be loaded as a Worker, SharedWorker or ServiceWorker.
-		"worker-src 'self';";
+		//"worker-src 'self';";
 
 	header($buffer);
 
