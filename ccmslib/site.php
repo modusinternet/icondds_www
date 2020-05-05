@@ -239,7 +239,7 @@ function csp_header() {
 
 		// Defines valid sources of stylesheets or CSS.
 		//"style-src 'self' 'unsafe-inline' *.cloudfront.net *.google.com *.googletagmanager.com *.google-analytics.com *.googleapis.com; ".
-		"style-src 'nonce-" . $CFG["nonce"] . "' 'strict-dynamic'; ";
+		"style-src 'nonce-" . $CFG["nonce"] . "' 'strict-dynamic' www.googletagmanager.com; ";
 
 		// Restricts the URLs which may be loaded as a Worker, SharedWorker or ServiceWorker.
 		//"worker-src 'self';";
