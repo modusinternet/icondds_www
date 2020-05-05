@@ -244,14 +244,11 @@ function csp_header() {
 		//"worker-src 'self';";
 
 	header($buffer);
-
-	// X-Frame-Options is not a standard (note the X- which stands for extension not a standard).
-	// This was never officially created but is supported by a lot of the current browsers in use in 2015 and will block iframing of your website.
-	header("X-Frame-Options: SAMEORIGIN");
 }
 
 function csp_nounce() {
 	global $CFG;
 
-	echo $CFG["nonce"];
+	//echo $CFG["nonce"];
+	echo "asdfasdfasdfsad";
 }
