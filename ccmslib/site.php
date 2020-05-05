@@ -250,12 +250,6 @@ function csp_header() {
 	header("X-Frame-Options: SAMEORIGIN");
 }
 
-function csp_nounce(){
-	global $CFG;
-
-	echo $CFG["nonce"];
-}
-
 function csp_nounce_ret(){
 	global $CFG;
 
@@ -263,4 +257,10 @@ function csp_nounce_ret(){
 		$CFG["nonce"] = hash("sha256", rand());
 	}
 	return $CFG["nonce"];
+}
+
+function csp_nounce(){
+	global $CFG;
+
+	echo $CFG["nonce"];
 }
