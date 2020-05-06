@@ -204,13 +204,13 @@ function csp_header() {
 	$buffer = "Content-Security-Policy: ".
 
 		// Defines a set of allowed URLs which can be used in the src attribute of a HTML base tag.
-		//"base-uri 'none'; ".
+		"base-uri 'none'; ".
 
 		// Applies to XMLHttpRequest (AJAX), WebSocket, fetch(), <a ping> or EventSource. If not allowed the browser emulates a 400 HTTP status code.
 		//"connect-src 'self' *.cloudfront.net *.google.com *.googleapis.com *.googletagmanager.com *.google-analytics.com *.gstatic.com; ".
 
 		// The default-src directive defines the default policy for fetching resources such as JavaScript, Images, CSS, Fonts, AJAX requests, Frames, HTML5 Media. Not all directives fallback to default-src. See the Source List Reference for possible values. (https://content-security-policy.com/#source_list)
-		//"default-src 'none'; ".
+		"default-src 'none'; ".
 
 		// Defines valid sources of font resources (loaded via @font-face).
 		//"font-src 'self' data: *.gstatic.com *.googleapis.com; ".
