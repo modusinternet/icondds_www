@@ -201,7 +201,7 @@ function csp_header() {
 
 	$CFG["nonce"] = hash("sha256", rand());
 
-	$buffer = "Content-Security-Policy: ".
+	$CFG["csp"] = "Content-Security-Policy: ".
 
 		// Defines a set of allowed URLs which can be used in the src attribute of a HTML base tag.
 		"base-uri 'none'; ".
@@ -253,7 +253,7 @@ function csp_header() {
 
 		"";
 
-	header($buffer);
+	header($CFG["csp"]);
 }
 
 function csp_nounce() {
