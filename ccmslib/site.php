@@ -237,7 +237,8 @@ function csp_header() {
 		"object-src 'none'; ".
 
 		// Instructs the browser to POST a reports of policy failures to this URI. You can also use Content-Security-Policy-Report-Only as the HTTP header name to instruct the browser to only send reports (does not block anything). This directive is deprecated in CSP Level 3 in favor of the report-to directive.
-		"report-uri https://".$CFG["DOMAIN"]."/".$CLEAN["ccms_lng"]."/cspViolationReport.html; ".
+		// HAD TO COMMENT THIS OUT BECAUSE FIREFOX WAS COMPAINING ABOUT NOTHING TOO MUCH
+		//"report-uri https://".$CFG["DOMAIN"]."/".$CLEAN["ccms_lng"]."/cspViolationReport.html; ".
 
 		// Defines valid sources of JavaScript.
 		//"script-src 'nonce-SraTe14t6sjq2m4' 'strict-dynamic' 'unsafe-inline' https:; ".
