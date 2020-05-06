@@ -60,8 +60,8 @@ window.addEventListener("beforeinstallprompt",e =>{
 			console.log('User dismissed A2HS prompt #1.');
 			/* hide our user interface that shows our A2HS button. */
 			A2HSbox.classList.remove("active");
-			/* Set cookie to defer A2HS box apearence in the future.	(15768000 = 6 months) */
-			document.cookie = "A2HSbox=1;max-age=15768000;path=/;httponly;samesite=lax;secure";
+			/* Set cookie to defer A2HS box apearence in the future.	(5256000 = 2 months) */
+			document.cookie = "A2HSbox=1; max-age=5256000; path=/; samesite=lax; secure";
 			deferredPrompt = null;
 		});
 
@@ -77,8 +77,8 @@ window.addEventListener("beforeinstallprompt",e =>{
 					console.log('User accepted A2HS prompt #2.');
 				} else {
 					console.log('User dismissed A2HS prompt #2.');
-					/* Set cookie to defer A2HS box apearence in the future.	(15768000 = 6 months) */
-					document.cookie = "A2HSbox=1; max-age=15768000; path=/";
+					/* Set cookie to defer A2HS box apearence in the future.	(5256000 = 6 months) */
+					document.cookie = "A2HSbox=1; max-age=5256000; path=/; samesite=lax; secure";
 				}
 				deferredPrompt = null;
 			});
