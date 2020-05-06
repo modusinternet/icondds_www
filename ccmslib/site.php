@@ -210,7 +210,7 @@ function csp_header() {
 		//"connect-src 'self' *.cloudfront.net *.google.com *.googleapis.com *.googletagmanager.com *.google-analytics.com *.gstatic.com; ".
 
 		// The default-src directive defines the default policy for fetching resources such as JavaScript, Images, CSS, Fonts, AJAX requests, Frames, HTML5 Media. Not all directives fallback to default-src. See the Source List Reference for possible values. (https://content-security-policy.com/#source_list)
-		"default-src 'none'; ".
+		//"default-src 'none'; ".
 
 		// Defines valid sources of font resources (loaded via @font-face).
 		//"font-src 'self' data: *.gstatic.com *.googleapis.com; ".
@@ -225,7 +225,7 @@ function csp_header() {
 		//"frame-src 'self' *.google.com *.youtube.com;".
 
 		// Defines valid sources of images.
-		"img-src 'self' data: *.cloudfront.net *.gstatic.com *.google-analytics.com *.googleapis.com *.googleusercontent.com *.googletagmanager.com *.google.com *.gravatar.com; ".
+		//"img-src 'self' data: *.cloudfront.net *.gstatic.com *.google-analytics.com *.googleapis.com *.googleusercontent.com *.googletagmanager.com *.google.com *.gravatar.com; ".
 
 		// Restricts the URLs that application manifests can be loaded.
 		//"manifest-src 'self'; ".
