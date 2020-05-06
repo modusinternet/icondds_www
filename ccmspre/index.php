@@ -181,9 +181,6 @@ function CCMS_Set_LNG() {
 	if(PHP_VERSION_ID < 70300) {
 		/*setcookie("ccms_lng", $CLEAN["ccms_lng"], time() + ($CFG["COOKIE_SESSION_EXPIRE"] * 60), "/;samesite=strict", "", 0, 0);*/
 		setcookie("ccms_lng", $CLEAN["ccms_lng"], time() + ($CFG["COOKIE_SESSION_EXPIRE"] * 60), "/;httponly;samesite=lax;secure", "", 0, 0);
-
-		/* __Secure- */
-
 	} else {
 		setcookie("ccms_lng", $CLEAN["ccms_lng"], [
 			'expires' => time() + ($CFG["COOKIE_SESSION_EXPIRE"] * 60),
