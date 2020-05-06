@@ -194,7 +194,7 @@ function build_js_sri($path){
 
 function csp_header() {
 	// Content Security Policy (CSP) only work in modern browsers Chrome 25+, Firefox 23+, Safari 7+.
-	global $CFG;
+	global $CFG, $CLEAN;
 
 	//$report_uri = "https://".$CFG["DOMAIN"]."/".ccms_lng_ret()."/violationReportForCSP.php";
 	//$lang = ccms_lng_ret();
@@ -237,7 +237,7 @@ function csp_header() {
 		"object-src 'none'; ".
 
 		// Instructs the browser to POST a reports of policy failures to this URI. You can also use Content-Security-Policy-Report-Only as the HTTP header name to instruct the browser to only send reports (does not block anything). This directive is deprecated in CSP Level 3 in favor of the report-to directive.
-		//"report-uri https://".$CFG["DOMAIN"]."/".$lang."/cspViolationReport.php; ".
+		"report-uri https://".$CFG["DOMAIN"]."/".$CLEAN["ccms_lng"]."/cspViolationReport.php; ".
 		//"report-uri https://".$CFG["DOMAIN"]."/en/cspViolationReport.php; ".
 
 		// Defines valid sources of JavaScript.
