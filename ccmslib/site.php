@@ -219,7 +219,7 @@ function csp_header() {
 		//"form-action 'self'; ".
 
 		// Defines valid sources for embedding the resource using <frame> <iframe> <object> <embed> <applet>. Setting this directive to 'none' should be roughly equivalent to X-Frame-Options: DENY
-		//"frame-ancestors 'self'; ".
+		"frame-ancestors 'self'; ".
 
 		// Defines valid sources for loading frames. In CSP Level 2 frame-src was deprecated in favor of the child-src directive. CSP Level 3, has undeprecated frame-src and it will continue to defer to child-src if not present.
 		//"frame-src 'self' *.google.com *.youtube.com;".
