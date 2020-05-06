@@ -61,7 +61,7 @@ window.addEventListener("beforeinstallprompt",e =>{
 			/* hide our user interface that shows our A2HS button. */
 			A2HSbox.classList.remove("active");
 			/* Set cookie to defer A2HS box apearence in the future.	(15768000 = 6 months) */
-			document.cookie = "A2HSbox=1; max-age=15768000; path=/";
+			document.cookie = "A2HSbox=1;max-age=15768000;path=/;httponly;samesite=lax;secure";
 			deferredPrompt = null;
 		});
 
