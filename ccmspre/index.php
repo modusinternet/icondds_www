@@ -907,12 +907,12 @@ function CCMS_Main() {
 										ob_end_clean();
 										$date = time();
 
-										if(isset($CFG["csp"])){
+										if(!empty($CFG["csp"])){
 											$qry = $CFG["DBH"]->prepare("INSERT INTO `ccms_cache` (url, date, exp, csp, content) VALUES (:url, :date, :exp, :csp, :content);");
 											$qry->execute(array(':url' => $url, ':date' => $date, ':exp' => $date + ($CFG["CACHE_EXPIRE"] * 60), ':csp' => $CFG["csp"], ':content' => $buf));
 										} else {
-											$qry = $CFG["DBH"]->prepare("INSERT INTO `ccms_cache` (url, date, exp, content) VALUES (:url, :date, :exp, :content);");
-											$qry->execute(array(':url' => $url, ':date' => $date, ':exp' => $date + ($CFG["CACHE_EXPIRE"] * 60), ':content' => $buf));
+											$qry = $CFG["DBH"]->prepare("INSERT INTO `ccms_cache` (url, date, exp, csp, content) VALUES (:url, :date, :exp, :csp, :content);");
+											$qry->execute(array(':url' => $url, ':date' => $date, ':exp' => $date + ($CFG["CACHE_EXPIRE"] * 60), ':csp' => "", ':content' => $buf));
 										}
 
 										header("Expires: " . gmdate('D, d M Y H:i:s T', $date + ($CFG["CACHE_EXPIRE"] * 60)));
@@ -988,12 +988,12 @@ function CCMS_Main() {
 
 
 
-									if(isset($CFG["csp"])){
+									if(!empty($CFG["csp"])){
 										$qry = $CFG["DBH"]->prepare("INSERT INTO `ccms_cache` (url, date, exp, csp, content) VALUES (:url, :date, :exp, :csp, :content);");
 										$qry->execute(array(':url' => $url, ':date' => $date, ':exp' => $date + ($CFG["CACHE_EXPIRE"] * 60), ':csp' => $CFG["csp"], ':content' => $buf));
 									} else {
-										$qry = $CFG["DBH"]->prepare("INSERT INTO `ccms_cache` (url, date, exp, content) VALUES (:url, :date, :exp, :content);");
-										$qry->execute(array(':url' => $url, ':date' => $date, ':exp' => $date + ($CFG["CACHE_EXPIRE"] * 60), ':content' => $buf));
+										$qry = $CFG["DBH"]->prepare("INSERT INTO `ccms_cache` (url, date, exp, csp, content) VALUES (:url, :date, :exp, :csp, :content);");
+										$qry->execute(array(':url' => $url, ':date' => $date, ':exp' => $date + ($CFG["CACHE_EXPIRE"] * 60), ':csp' => "", ':content' => $buf));
 									}
 
 
