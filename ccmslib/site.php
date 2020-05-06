@@ -86,8 +86,8 @@ function build_css_link($aws_flag = null, $lng_flag = null, $path, $dir_flag = n
 	/* If $path is not found in the config.php file then do nothing. */
 	if(!isset($CFG["RES"][$path])) return;
 
-	//$buff = 'var l=document.createElement("link");l.rel="stylesheet";l.nonce="' . csp_nounce_ret() . '";l.href="';
-	$buff = 'var l=document.createElement("link");l.rel="stylesheet";l.setAttribute("nonce", "' . csp_nounce_ret() . '");l.href="';
+	$buff = 'var l=document.createElement("link");l.rel="stylesheet";l.nonce="' . csp_nounce_ret() . '";l.href="';
+	//$buff = 'var l=document.createElement("link");l.rel="stylesheet";l.setAttribute("nonce", "' . csp_nounce_ret() . '");l.href="';
 
 
 
