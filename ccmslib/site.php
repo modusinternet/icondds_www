@@ -216,7 +216,7 @@ function csp_header() {
 		//"font-src 'self' data: *.gstatic.com *.googleapis.com; ".
 
 		// Defines valid sources that can be used as an HTML <form> action.
-		//"form-action 'self'; ".
+		"form-action 'self'; ".
 
 		// Defines valid sources for embedding the resource using <frame> <iframe> <object> <embed> <applet>. Setting this directive to 'none' should be roughly equivalent to X-Frame-Options: DENY
 		"frame-ancestors 'self'; ".
