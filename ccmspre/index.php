@@ -908,6 +908,7 @@ function CCMS_Main() {
 										$date = time();
 
 										if(empty($CFG["csp"])) {
+											/* This feature only works on sites that build up their Content-Security-Policy features and want to cache them along with the cached template in the database for extration later. eg: icondds.com. */
 											$CFG["csp"] = "";
 										}
 
@@ -941,6 +942,11 @@ function CCMS_Main() {
 												header("Cache-Control: max-age=" . $row["exp"]);
 												header("ETag: " . $etag);
 
+												if(!empty($row["csp"])) {
+													/* This feature only works on sites that build up their Content-Security-Policy features and want to cache them along with the cached template in the database for extration later. eg: icondds.com. */
+													header($row["csp"]);
+												}
+
 												echo $row["content"];
 											}
 										} elseif(isset($_SERVER['HTTP_IF_NONE_MATCH'])) {
@@ -953,6 +959,11 @@ function CCMS_Main() {
 												header("Cache-Control: max-age=" . $row["exp"]);
 												header("ETag: " . $etag);
 
+												if(!empty($row["csp"])) {
+													/* This feature only works on sites that build up their Content-Security-Policy features and want to cache them along with the cached template in the database for extration later. eg: icondds.com. */
+													header($row["csp"]);
+												}
+
 												echo $row["content"];
 											}
 										} else {
@@ -961,6 +972,11 @@ function CCMS_Main() {
 
 											header("Cache-Control: max-age=" . $row["exp"]);
 											header("ETag: " . $etag);
+
+											if(!empty($row["csp"])) {
+												/* This feature only works on sites that build up their Content-Security-Policy features and want to cache them along with the cached template in the database for extration later. eg: icondds.com. */
+												header($row["csp"]);
+											}
 
 											echo $row["content"];
 										}
@@ -980,23 +996,13 @@ function CCMS_Main() {
 									ob_end_clean();
 									$date = time();
 
-									/*
-									$qry = $CFG["DBH"]->prepare("INSERT INTO `ccms_cache` (url, date, exp, content) VALUES (:url, :date, :exp, :content);");
-									$qry->execute(array(':url' => $url, ':date' => $date, ':exp' => $date + ($CFG["CACHE_EXPIRE"] * 60), ':content' => $buf));
-									*/
-
-
-
 									if(empty($CFG["csp"])) {
+										/* This feature only works on sites that build up their Content-Security-Policy features and want to cache them along with the cached template in the database for extration later. eg: icondds.com. */
 										$CFG["csp"] = "";
 									}
 
 									$qry = $CFG["DBH"]->prepare("INSERT INTO `ccms_cache` (url, date, exp, csp, content) VALUES (:url, :date, :exp, :csp, :content);");
 									$qry->execute(array(':url' => $url, ':date' => $date, ':exp' => $date + ($CFG["CACHE_EXPIRE"] * 60), ':csp' => $CFG["csp"], ':content' => $buf));
-
-									
-
-
 
 									header("Expires: " . gmdate('D, d M Y H:i:s T', $date + ($CFG["CACHE_EXPIRE"] * 60)));
 									header("Last-Modified: " . gmdate('D, d M Y H:i:s T', $date));
