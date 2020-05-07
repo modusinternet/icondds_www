@@ -65,7 +65,7 @@ $ccms_whitelist = array(
 	"ccms_tpl"					=> array("type" => "TPL",								"maxlength"     => 256),
 	"ccms_session"				=> array("type" => "SESSION_ID",						"maxlength"     => 64),
 	"ccms_cid"					=> array("type" => "SESSION_ID",						"maxlength"     => 64),
-	"ccms_lng"					=> array("type" => "LNG",								"maxlength"     => 5),
+	"__Host-ccms_lng"			=> array("type" => "LNG",								"maxlength"     => 5),
 	"ccms_token"				=> array("type" => "UTF8_STRING_DIGIT_WHITE",	"maxlength"     => 64),
 	"HTTP_ACCEPT_LANGUAGE"	=> array("type" => "HTTP_ACCEPT_LANGUAGE",		"maxlength"     => 256),
 	"HTTP_COOKIE"				=> array("type" => "HTTP_COOKIE",					"maxlength"     => 512),
@@ -79,6 +79,8 @@ function CCMS_Set_LNG() {
 
 	$CFG["lngCodeFoundFlag"] = false;
 	$CFG["lngCodeActiveFlag"] = false;
+
+	$CLEAN["ccms_lng"] = $CLEAN["__Host-ccms_lng"];
 
 	if($CLEAN["ccms_lng"] != "" && $CLEAN["ccms_lng"] != "MAXLEN" && $CLEAN["ccms_lng"] != "INVAL") {
 		foreach ($CFG["CCMS_LNG_CHARSET"] as $key => $value) {
