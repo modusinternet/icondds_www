@@ -80,7 +80,9 @@ function CCMS_Set_LNG() {
 	$CFG["lngCodeFoundFlag"] = false;
 	$CFG["lngCodeActiveFlag"] = false;
 
-	$CLEAN["ccms_lng"] = $CLEAN["__Host-ccms_lng"];
+	if(isset($CLEAN["__Host-ccms_lng"])){
+		$CLEAN["ccms_lng"] = $CLEAN["__Host-ccms_lng"];
+	}
 
 	if($CLEAN["ccms_lng"] != "" && $CLEAN["ccms_lng"] != "MAXLEN" && $CLEAN["ccms_lng"] != "INVAL") {
 		foreach ($CFG["CCMS_LNG_CHARSET"] as $key => $value) {
@@ -117,7 +119,7 @@ function CCMS_Set_LNG() {
 		$cookieLng = explode("; ", $CLEAN["HTTP_COOKIE"]);
 		foreach($cookieLng as $cookieLng2) {
 			$cookieLng3 = explode("=", $cookieLng2);
-			if($cookieLng3[0] == "ccms_lng") {
+			if($cookieLng3[0] == "__Host-ccms_lng") {
 				if(preg_match('/^[a-z]{2}(\-[a-z]{2})?\z/i', $cookieLng3[1], $match)) {
 					foreach($CFG["CCMS_LNG_CHARSET"] as $key => $value) {
 						if(strcasecmp($key, $match[0]) == 0) {
