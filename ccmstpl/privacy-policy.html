@@ -1,4 +1,4 @@
-{CCMS_DB_PRELOAD:all,privacy-policy}<!DOCTYPE html>
+{CCMS_DB_PRELOAD:all,privacy-policy}{CCMS_LIB:site.php;FUNC:csp_header}<!DOCTYPE html>
 <html dir="{CCMS_LIB:_default.php;FUNC:ccms_lng_dir}" lang="{CCMS_LIB:_default.php;FUNC:ccms_lng}" prefix="og: http://ogp.me/ns#">
 	<head>
 		<!-- Repeated content and can be placed once in your header head template. -->
@@ -26,14 +26,14 @@
 				"@context":"https://schema.org",
 				"@type":"WebSite",
 				"name":"{CCMS_DB:all,company-name}",
-				"url":"https://{CCMS_LIB:_default.php;FUNC:ccms_cfgDomain}/{CCMS_LIB:_default.php;FUNC:ccms_lng}/",
+				"url":"https://{CCMS_LIB:_default.php;FUNC:ccms_cfgDomain}/{CCMS_LIB:_default.php;FUNC:ccms_lng}/privacy-policy.html",
 				"alternateName":"{CCMS_DB:all,company-name} / {CCMS_DB:all,privacy-policy}"
 			},{
 				"@context":"https://schema.org",
 				"@type":"Dentist",
 				"name":"{CCMS_DB:all,company-name}",
 				"description":"{CCMS_DB:privacy-policy,description}",
-				"url":"https://{CCMS_LIB:_default.php;FUNC:ccms_cfgDomain}/{CCMS_LIB:_default.php;FUNC:ccms_lng}/",
+				"url":"https://{CCMS_LIB:_default.php;FUNC:ccms_cfgDomain}/{CCMS_LIB:_default.php;FUNC:ccms_lng}/privacy-policy.html",
 				"logo":{
 					"@type":"ImageObject",
 					"url":"{CCMS_LIB:site.php;FUNC:load_resource("AWS")}/ccmstpl/_img/logo1.3.png"
@@ -67,7 +67,7 @@
 			}]
 		</script>
 
-		<style>
+		<style nonce="{CCMS_LIB:site.php;FUNC:csp_nounce}">
 			{CCMS_TPL:/_css/header.html}
 
 			.webp .privacy-policy_01{background-image:url("{CCMS_LIB:site.php;FUNC:load_resource("AWS")}/ccmstpl/_img/privacy-policy_01.webp")}
@@ -86,7 +86,7 @@
 
 			.privacy-policy_03.lazy{background-image:none}
 		</style>
-		<script>
+		<script nonce="{CCMS_LIB:site.php;FUNC:csp_nounce}">
 			var navActiveArray = ["nl-lng","lng-{CCMS_LIB:_default.php;FUNC:ccms_lng}"];
 			var navActiveFooterArray = ["fl-privacy-policy"];
 		</script>
@@ -239,7 +239,7 @@
 {CCMS_TPL:header-body.html}
 {CCMS_TPL:msg-popup.html}
 {CCMS_TPL:a2hs-box.html}
-		<script>
+		<script nonce="{CCMS_LIB:site.php;FUNC:csp_nounce}">
 			/*window.performance.mark("mark_beginning_javascript");*/
 {CCMS_TPL:footer-js.html}
 			function loadFirst(e,t,i,c){var a=document.createElement("script");a.async="true";if(i){a.integrity=i;a.crossOrigin=c;}a.readyState?a.onreadystatechange=function(){("loaded"==a.readyState||"complete"==a.readyState)&&(a.onreadystatechange=null,t())}:a.onload=function(){t()},a.src=e,document.body.appendChild(a)}

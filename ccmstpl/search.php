@@ -1,7 +1,7 @@
 <?
 header("Content-Type: text/html; charset=utf-8");
 header("Cache-Control: public, must-revalidate, proxy-revalidate");
-?>{CCMS_DB_PRELOAD:all,search}<!DOCTYPE html>
+?>{CCMS_DB_PRELOAD:all,search}{CCMS_LIB:site.php;FUNC:csp_header}<!DOCTYPE html>
 <html dir="{CCMS_LIB:_default.php;FUNC:ccms_lng_dir}" lang="{CCMS_LIB:_default.php;FUNC:ccms_lng}" prefix="og: http://ogp.me/ns#">
 	<head>
 		<!-- Repeated content and can be placed once in your header head template. -->
@@ -29,14 +29,14 @@ header("Cache-Control: public, must-revalidate, proxy-revalidate");
 				"@context":"https://schema.org",
 				"@type":"WebSite",
 				"name":"{CCMS_DB:all,company-name}",
-				"url":"https://{CCMS_LIB:_default.php;FUNC:ccms_cfgDomain}/{CCMS_LIB:_default.php;FUNC:ccms_lng}/",
+				"url":"https://{CCMS_LIB:_default.php;FUNC:ccms_cfgDomain}/{CCMS_LIB:_default.php;FUNC:ccms_lng}/search.html",
 				"alternateName":"{CCMS_DB:all,company-name} / {CCMS_DB:all,search}"
 			},{
 				"@context":"https://schema.org",
 				"@type":"Dentist",
 				"name":"{CCMS_DB:all,company-name}",
 				"description":"{CCMS_DB:search,description}",
-				"url":"https://{CCMS_LIB:_default.php;FUNC:ccms_cfgDomain}/{CCMS_LIB:_default.php;FUNC:ccms_lng}/",
+				"url":"https://{CCMS_LIB:_default.php;FUNC:ccms_cfgDomain}/{CCMS_LIB:_default.php;FUNC:ccms_lng}/search.html",
 				"logo":{
 					"@type":"ImageObject",
 					"url":"{CCMS_LIB:site.php;FUNC:load_resource("AWS")}/ccmstpl/_img/logo1.3.png"
@@ -70,7 +70,7 @@ header("Cache-Control: public, must-revalidate, proxy-revalidate");
 			}]
 		</script>
 
-		<style>
+		<style nonce="{CCMS_LIB:site.php;FUNC:csp_nounce}">
 			{CCMS_TPL:/_css/header.html}
 
 			.webp .search_01{background-image:url("{CCMS_LIB:site.php;FUNC:load_resource("AWS")}/ccmstpl/_img/search_01.webp")}
@@ -125,7 +125,7 @@ header("Cache-Control: public, must-revalidate, proxy-revalidate");
 
 			.gsib_a{padding:0 0 0 10px !important}
 		</style>
-		<script>
+		<script nonce="{CCMS_LIB:site.php;FUNC:csp_nounce}">
 			var navActiveArray = ["nl-search","nl-search-1","nl-lng","lng-{CCMS_LIB:_default.php;FUNC:ccms_lng}"];
 			var navActiveFooterArray = ["fl-search"];
 		</script>
@@ -146,7 +146,7 @@ header("Cache-Control: public, must-revalidate, proxy-revalidate");
 			<div class="contentType1">
 				<div>
 <? if($CFG["GOOGLE_CUSTOM_SEARCH_ENGINE_CODE"] != ""): ?>
-					<script>
+					<script nonce="{CCMS_LIB:site.php;FUNC:csp_nounce}">
 						var gcsForm = function() {
 							var element = google.search.cse.element.getElement('gcsForm');
 							element.execute('<?=htmlspecialchars($_REQUEST["search"]);?>');
@@ -183,7 +183,7 @@ header("Cache-Control: public, must-revalidate, proxy-revalidate");
 {CCMS_TPL:header-body.html}
 {CCMS_TPL:msg-popup.html}
 {CCMS_TPL:a2hs-box.html}
-		<script>
+		<script nonce="{CCMS_LIB:site.php;FUNC:csp_nounce}">
 			/*window.performance.mark("mark_beginning_javascript");*/
 {CCMS_TPL:footer-js.html}
 			function loadFirst(e,t,i,c){var a=document.createElement("script");a.async="true";if(i){a.integrity=i;a.crossOrigin=c;}a.readyState?a.onreadystatechange=function(){("loaded"==a.readyState||"complete"==a.readyState)&&(a.onreadystatechange=null,t())}:a.onload=function(){t()},a.src=e,document.body.appendChild(a)}
