@@ -198,6 +198,11 @@ function CCMS_cookie_SESSION() {
 	global $CFG, $CLEAN;
 
 	$CLEAN["SESSION"]["user_agent"] = $CLEAN["HTTP_USER_AGENT"];
+
+	if(isset($CLEAN["__Host-ccms_session"])){
+		$CLEAN["ccms_session"] = $CLEAN["__Host-ccms_session"];
+	}
+
 	if(isset($CLEAN["ccms_session"]) && $CLEAN["ccms_session"] != "MAXLEN" && $CLEAN["ccms_session"] != "INVAL") {
 		// A value was found, so we'll try testing it against the database.
 		//break;
@@ -207,7 +212,7 @@ function CCMS_cookie_SESSION() {
 		$cookieSess = explode("; ", $CLEAN["HTTP_COOKIE"]);
 		foreach($cookieSess as $cookieSess2) {
 			$cookieSess3 = explode("=", $cookieSess2);
-			if($cookieSess3[0] == "ccms_session") {
+			if($cookieSess3[0] == "__Host-ccms_session") {
 				$cookieSess3[1] = @trim($cookieSess3[1]);
 				// utf8_decode() converts unknown ISO-8859-1 chars to '?' for the purpose of counting.
 				$length = strlen(utf8_decode($cookieSess3[1]));
