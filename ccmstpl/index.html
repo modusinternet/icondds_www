@@ -226,7 +226,7 @@
 			BEGINNING of video settings used in the carousel
 			========== */
 			/* Default to hide the video on all devices */
-			#vid{
+			.vid_01{
 				display:none;
 				height:auto;
 				left:0px;
@@ -238,7 +238,7 @@
 
 
 			@media (min-aspect-ratio:16/9){
-				#vid{
+				.vid_01{
 					height:100%;
 					top:-100%
 				}
@@ -246,7 +246,7 @@
 
 
 			@media (max-aspect-ratio:16/9){
-				#vid{
+				.vid_01{
 					width:100%;
 					left:-100%
 				}
@@ -255,7 +255,7 @@
 
 			/*if there is 1024 pixels or more, then display the video but hide the image*/
 			@media only screen and (min-width:1024px){
-				#vid{display:block}
+				.vid_01{display:block}
 
 				.owlDivContainer.videoText{bottom:65%}
 			}
@@ -389,7 +389,7 @@
 				</div>
 				<div class="item carousel-02 lazy">
 					<div>
-						<video autoplay loop muted playsinline id="vid">
+						<video autoplay loop muted playsinline class="vid_01">
 							<source src="{CCMS_LIB:site.php;FUNC:load_resource("AWS")}/ccmstpl/_img/index-carousel-02.mp4" type="video/mp4">
 							<source src="{CCMS_LIB:site.php;FUNC:load_resource("AWS")}/ccmstpl/_img/index-carousel-02.webm" type="video/webm">
 							Your browser does not support HTML5 video.
