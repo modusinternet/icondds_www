@@ -230,7 +230,7 @@ function csp_header() {
 
 		// Defines valid sources of JavaScript.
 		//"script-src 'nonce-SraTe14t6sjq2m4' 'strict-dynamic' 'unsafe-inline' https:; ".
-		"script-src 'nonce-" . $CFG["nonce"] . "' 'strict-dynamic' 'unsafe-inline' *.googletagmanager.com; ".
+		"script-src 'nonce-" . $CFG["nonce"] . "' 'strict-dynamic' 'unsafe-inline' *.google.com *.googletagmanager.com; ".
 
 		// Defines valid sources of stylesheets or CSS.
 		//"style-src 'self' 'unsafe-inline' *.cloudfront.net *.google.com *.googletagmanager.com *.google-analytics.com *.googleapis.com; ".
