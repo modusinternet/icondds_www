@@ -12,7 +12,6 @@ function navLngdir() {
 function navLngList() {
 	global $CFG, $CLEAN;
 	// this line of code produces the wrong output on GoDaddy servers.
-	//$tpl = htmlspecialchars(preg_replace('/^\/([\pL\pN\-]*)\/?(.*)\z/i', '${2}', $_SERVER['REDIRECT_URL']));
 	$tpl = htmlspecialchars(preg_replace('/^\/([\pL\pN\-]*)\/?(.*)\z/i', '${2}', $_SERVER['REQUEST_URI']));
 	$qry = $CFG["DBH"]->prepare("SELECT * FROM `ccms_lng_charset` WHERE `status` = 1 ORDER BY lngDesc ASC;");
 	if($qry->execute()) {
@@ -29,7 +28,6 @@ function navLngList() {
 function lngList() {
 	global $CFG, $CLEAN;
 	// this line of code produces the wrong output on GoDaddy servers.
-	//$tpl = htmlspecialchars(preg_replace('/^\/([\pL\pN\-]*)\/?(.*)\z/i', '${2}', $_SERVER['REDIRECT_URL']));
 	$tpl = htmlspecialchars(preg_replace('/^\/([\pL\pN\-]*)\/?(.*)\z/i', '${2}', $_SERVER['REQUEST_URI']));
 	$qry = $CFG["DBH"]->prepare("SELECT * FROM `ccms_lng_charset` WHERE `status` = 1 ORDER BY lngDesc ASC;");
 	if($qry->execute()) {
@@ -87,13 +85,6 @@ function build_css_link($aws_flag = null, $lng_flag = null, $path, $dir_flag = n
 	if(!isset($CFG["RES"][$path])) return;
 
 	$buff = 'var l=document.createElement("link");l.rel="stylesheet";l.nonce="' . csp_nounce_ret() . '";l.href="';
-	//$buff = 'var l=document.createElement("link");l.rel="stylesheet";l.setAttribute("nonce", "' . csp_nounce_ret() . '");l.href="';
-
-
-
-
-
-
 
 	$url = "";
 
@@ -195,9 +186,6 @@ function build_js_sri($path){
 function csp_header() {
 	// Content Security Policy (CSP) only work in modern browsers Chrome 25+, Firefox 23+, Safari 7+.
 	global $CFG, $CLEAN;
-
-	//$report_uri = "https://".$CFG["DOMAIN"]."/".ccms_lng_ret()."/violationReportForCSP.php";
-	//$lang = ccms_lng_ret();
 
 	$CFG["nonce"] = hash("sha256", rand());
 
