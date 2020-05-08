@@ -181,7 +181,7 @@ header("Cache-Control: public, must-revalidate, proxy-revalidate");
 {CCMS_TPL:footer.html}
 		</main>
 {CCMS_TPL:header-body.html}
-{CCMS_TPL:msg-popup.html}
+<!-- {  CCMS_TPL:msg-popup.html} -->
 {CCMS_TPL:a2hs-box.html}
 		<script nonce="{CCMS_LIB:site.php;FUNC:csp_nounce}">
 			/*window.performance.mark("mark_beginning_javascript");*/
