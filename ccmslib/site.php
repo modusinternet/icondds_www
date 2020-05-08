@@ -229,8 +229,9 @@ function csp_header() {
 		//"report-uri https://".$CFG["DOMAIN"]."/".$CLEAN["ccms_lng"]."/cspViolationReport.html; ".
 
 		// Defines valid sources of JavaScript.
-		//"script-src 'nonce-SraTe14t6sjq2m4' 'strict-dynamic' 'unsafe-inline' https:; ".
-		"script-src 'nonce-" . $CFG["nonce"] . "' 'strict-dynamic' 'unsafe-inline' 'unsafe-eval' *.google.com *.googletagmanager.com; ".
+		// 'unsafe-eval' is undesirable according to https://observatory.mozilla.org, but it's required by Google Custom Search Engine which doesn't properly support nonce yet. (May 7, 2020)
+		// 'unsafe-inline' is undesirable according to https://observatory.mozilla.org.
+		"script-src 'nonce-" . $CFG["nonce"] . "' 'strict-dynamic' 'unsafe-eval' *.google.com *.googletagmanager.com; ".
 
 		// Defines valid sources of stylesheets or CSS.
 		//"style-src 'self' 'unsafe-inline' *.cloudfront.net *.google.com *.googletagmanager.com *.google-analytics.com *.googleapis.com; ".
