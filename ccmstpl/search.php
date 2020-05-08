@@ -186,7 +186,7 @@ header("Cache-Control: public, must-revalidate, proxy-revalidate");
 		<script nonce="{CCMS_LIB:site.php;FUNC:csp_nounce}">
 			/*window.performance.mark("mark_beginning_javascript");*/
 {CCMS_TPL:footer-js.html}
-			function loadFirst(e,t,i,c){var a=document.createElement("script");a.async="true";if(i){a.integrity=i;a.crossOrigin=c;}a.readyState?a.onreadystatechange=function(){("loaded"==a.readyState||"complete"==a.readyState)&&(a.onreadystatechange=null,t())}:a.onload=function(){t()},a.src=e,document.body.appendChild(a)}
+			function loadFirst(e,t,i,c){var a=document.createElement("script");a.async="true";a.setAttribute("nonce", "{CCMS_LIB:site.php;FUNC:csp_nounce}");if(i){a.integrity=i;a.crossOrigin=c;}a.readyState?a.onreadystatechange=function(){("loaded"==a.readyState||"complete"==a.readyState)&&(a.onreadystatechange=null,t())}:a.onload=function(){t()},a.src=e,document.body.appendChild(a)}
 
 			/*
 			arg1 = (1 = append AWS link), (empty = do not append AWS link)

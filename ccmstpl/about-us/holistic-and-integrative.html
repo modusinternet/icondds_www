@@ -1,4 +1,4 @@
-{CCMS_DB_PRELOAD:all,holistic-and-integrative}<!DOCTYPE html>
+{CCMS_DB_PRELOAD:all,holistic-and-integrative}{CCMS_LIB:site.php;FUNC:csp_header}<!DOCTYPE html>
 <html dir="{CCMS_LIB:_default.php;FUNC:ccms_lng_dir}" lang="{CCMS_LIB:_default.php;FUNC:ccms_lng}" prefix="og: http://ogp.me/ns#">
 	<head>
 		<!-- Repeated content and can be placed once in your header head template. -->
@@ -67,7 +67,7 @@
 			}]
 		</script>
 
-		<style>
+		<style nonce="{CCMS_LIB:site.php;FUNC:csp_nounce}">
 			{CCMS_TPL:/_css/header.html}
 
 			.webp .about-us_holistic-and-integrative_01{background-image:url("{CCMS_LIB:site.php;FUNC:load_resource("AWS")}/ccmstpl/_img/about-us_holistic-and-integrative_01.webp")}
@@ -86,7 +86,7 @@
 
 			.about-us_holistic-and-integrative_03.lazy{background-image:none}
 		</style>
-		<script>
+		<script nonce="{CCMS_LIB:site.php;FUNC:csp_nounce}">
 			var navActiveArray = ["nl-about-us","nl-about-us_holistic-and-integrative","nl-lng","lng-{CCMS_LIB:_default.php;FUNC:ccms_lng}"];
 			var navActiveFooterArray = ["fl-about-us"];
 		</script>
@@ -136,12 +136,12 @@
 {CCMS_TPL:footer.html}
 		</main>
 {CCMS_TPL:header-body.html}
-{CCMS_TPL:msg-popup.html}
+<!-- {  CCMS_TPL:msg-popup.html} -->
 {CCMS_TPL:a2hs-box.html}
-		<script>
+		<script nonce="{CCMS_LIB:site.php;FUNC:csp_nounce}">
 			/*window.performance.mark("mark_beginning_javascript");*/
 {CCMS_TPL:footer-js.html}
-			function loadFirst(e,t,i,c){var a=document.createElement("script");a.async="true";if(i){a.integrity=i;a.crossOrigin=c;}a.readyState?a.onreadystatechange=function(){("loaded"==a.readyState||"complete"==a.readyState)&&(a.onreadystatechange=null,t())}:a.onload=function(){t()},a.src=e,document.body.appendChild(a)}
+			function loadFirst(e,t,i,c){var a=document.createElement("script");a.async="true";a.setAttribute("nonce", "{CCMS_LIB:site.php;FUNC:csp_nounce}");if(i){a.integrity=i;a.crossOrigin=c;}a.readyState?a.onreadystatechange=function(){("loaded"==a.readyState||"complete"==a.readyState)&&(a.onreadystatechange=null,t())}:a.onload=function(){t()},a.src=e,document.body.appendChild(a)}
 
 			/*
 			arg1 = (1 = append AWS link), (empty = do not append AWS link)

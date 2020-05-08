@@ -26,14 +26,14 @@
 				"@context":"https://schema.org",
 				"@type":"WebSite",
 				"name":"{CCMS_DB:all,company-name}",
-				"url":"https://{CCMS_LIB:_default.php;FUNC:ccms_cfgDomain}/{CCMS_LIB:_default.php;FUNC:ccms_lng}/",
+				"url":"https://{CCMS_LIB:_default.php;FUNC:ccms_cfgDomain}/{CCMS_LIB:_default.php;FUNC:ccms_lng}/contact-us.html",
 				"alternateName":"{CCMS_DB:all,company-name} / {CCMS_DB:all,contact-us}"
 			},{
 				"@context":"https://schema.org",
 				"@type":"Dentist",
 				"name":"{CCMS_DB:all,company-name}",
 				"description":"{CCMS_DB:contact-us,description}",
-				"url":"https://{CCMS_LIB:_default.php;FUNC:ccms_cfgDomain}/{CCMS_LIB:_default.php;FUNC:ccms_lng}/",
+				"url":"https://{CCMS_LIB:_default.php;FUNC:ccms_cfgDomain}/{CCMS_LIB:_default.php;FUNC:ccms_lng}/contact-us.html",
 				"logo":{
 					"@type":"ImageObject",
 					"url":"{CCMS_LIB:site.php;FUNC:load_resource("AWS")}/ccmstpl/_img/logo1.3.png"
@@ -162,7 +162,7 @@
 				}
 			}
 		</style>
-		
+
 		<script nonce="{CCMS_LIB:site.php;FUNC:csp_nounce}">
 			var navActiveArray = ["nl-contact-us","nl-lng","lng-{CCMS_LIB:_default.php;FUNC:ccms_lng}"];
 			var navActiveFooterArray = ["fl-contact-us"];
@@ -240,7 +240,7 @@
 		<script nonce="{CCMS_LIB:site.php;FUNC:csp_nounce}">
 			/*window.performance.mark("mark_beginning_javascript");*/
 {CCMS_TPL:footer-js.html}
-			function loadFirst(e,t,i,c){var a=document.createElement("script");a.async="true";if(i){a.integrity=i;a.crossOrigin=c;}a.readyState?a.onreadystatechange=function(){("loaded"==a.readyState||"complete"==a.readyState)&&(a.onreadystatechange=null,t())}:a.onload=function(){t()},a.src=e,document.body.appendChild(a)}
+			function loadFirst(e,t,i,c){var a=document.createElement("script");a.async="true";a.setAttribute("nonce", "{CCMS_LIB:site.php;FUNC:csp_nounce}");if(i){a.integrity=i;a.crossOrigin=c;}a.readyState?a.onreadystatechange=function(){("loaded"==a.readyState||"complete"==a.readyState)&&(a.onreadystatechange=null,t())}:a.onload=function(){t()},a.src=e,document.body.appendChild(a)}
 
 			/*
 			arg1 = (1 = append AWS link), (empty = do not append AWS link)
