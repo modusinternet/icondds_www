@@ -194,6 +194,87 @@ function CCMS_Set_LNG() {
 }
 
 
+
+
+
+
+function CCMS_Set_SESSION() {
+	global $CFG, $CLEAN;
+
+	ini_set('session.use_only_cookies', 1);
+	ini_set('session.cookie_lifetime', $CFG["COOKIE_SESSION_EXPIRE"]);
+	ini_set('session.cookie_httponly', 1);
+	ini_set('session.cookie_secure', 1);
+	ini_set('session.cookie_samesite', "Lax");
+
+	session_name("__Host-ccms_session");
+
+	// Check to see if a session has already been started.
+	if(PHP_VERSION_ID >= 50400) { // PHP version 5.4.0 or higher
+		if(session_status() == PHP_SESSION_NONE) {
+			session_start();
+		}
+	} else { // PHP version 5.3.9 or lower
+		if(session_id() == '') {
+			session_start();
+		}
+	}
+
+	// Check if the timeout field exists.
+	if(isset($_SESSION['startTime'])) {
+		// See if the number of seconds since the last visit is larger than the timeout period.
+		$duration = time() - (int)$_SESSION['startTime'];
+		if($duration > $CFG["COOKIE_SESSION_EXPIRE"]) {
+			// Destroy the session and restart it but direct logged in users to relogin.
+			if(isset($_SESSION['USER_ID'])) { // true
+				session_destroy();
+				header("Location: /" . $CFG["DEFAULT_SITE_CHAR_SET"] . "/user/");
+				// Optional: Add code to save information about this destroyed session here now for later analysis.
+				exit;
+			} else { // false
+				session_destroy();
+				session_start();
+				$_SESSION['startTime'] = time();
+			}
+		} else {
+			$_SESSION['startTime'] = time();
+		}
+	} else {
+		$_SESSION['startTime'] = time();
+	}
+
+	// Confirm the users browser agent hasn't changed to help strengthen login sessions.
+	if(isset($_SESSION['HTTP_USER_AGENT'])) {
+		if($_SESSION['HTTP_USER_AGENT'] != md5($_SERVER['HTTP_USER_AGENT'])) {
+			// Possible session highjacking attempt, destroy the session and restart it but direct logged in users to relogin.
+			if(isset($_SESSION['USER_ID'])) { // true
+				session_destroy();
+				header("Location: /" . $CFG["DEFAULT_SITE_CHAR_SET"] . "/user/");
+				// Optional: Add code to save information about this destroyed session here now for later analysis.
+				exit;
+			} else { // false
+				session_destroy();
+				session_start();
+				$_SESSION['HTTP_USER_AGENT'] = md5($_SERVER['HTTP_USER_AGENT']);
+				$_SESSION['startTime'] = time();
+			}
+		}
+	} else {
+		$_SESSION['HTTP_USER_AGENT'] = md5($_SERVER['HTTP_USER_AGENT']);
+	}
+
+	session_regenerate_id();
+
+	$CLEAN["ccms_session"] = session_id();
+}
+
+
+
+
+
+
+
+/*
 function CCMS_cookie_SESSION() {
 	global $CFG, $CLEAN;
 
@@ -262,7 +343,7 @@ function CCMS_cookie_SESSION() {
 					setcookie("__Host-ccms_session", $a, [
 						'expires' => $c,
 						'path' => "/",
-						/*'domain' => $CFG["DOMAIN"],*/
+						//'domain' => $CFG["DOMAIN"],
 						'samesite' => "lax",
 						'secure' => true,
 						'httponly' => true
@@ -294,7 +375,7 @@ function CCMS_cookie_SESSION() {
 					setcookie("__Host-ccms_session", $a, [
 						'expires' => $c,
 						'path' => "/",
-						/*'domain' => $CFG["DOMAIN"],*/
+						//'domain' => $CFG["DOMAIN"],
 						'samesite' => "lax",
 						'secure' => true,
 						'httponly' => true
@@ -333,7 +414,7 @@ function CCMS_cookie_SESSION() {
 				setcookie("__Host-ccms_session", $a, [
 					'expires' => $c,
 					'path' => "/",
-					/*'domain' => $CFG["DOMAIN"],*/
+					//'domain' => $CFG["DOMAIN"],
 					'samesite' => "lax",
 					'secure' => true,
 					'httponly' => true
@@ -372,7 +453,7 @@ function CCMS_cookie_SESSION() {
 			setcookie("__Host-ccms_session", $a, [
 				'expires' => $c,
 				'path' => "/",
-				/*'domain' => $CFG["DOMAIN"],*/
+				//'domain' => $CFG["DOMAIN"],
 				'samesite' => "lax",
 				'secure' => true,
 				'httponly' => true
@@ -391,6 +472,24 @@ function CCMS_cookie_SESSION() {
 		$qry->execute(array(':code' => $a, ':first' => $b, ':last' => $b, ':exp' => $c, ':ip' => $_SERVER["REMOTE_ADDR"], ':user_agent' => $CLEAN["SESSION"]["user_agent"]));
 	}
 }
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 function CCMS_DB_First_Connect() {
@@ -772,9 +871,10 @@ function CCMS_TPL_Parser($a = null) {
 function CCMS_Main() {
 	global $CFG, $CLEAN;
 
-	if(!preg_match('/^\/(([a-z]{2})(-[a-z]{2})?)\/user\/(.*)\z/ui', $_SERVER["REQUEST_URI"])) {
-		CCMS_cookie_SESSION();
-	}
+	//if(!preg_match('/^\/(([a-z]{2})(-[a-z]{2})?)\/user\/(.*)\z/ui', $_SERVER["REQUEST_URI"])) {
+		//CCMS_cookie_SESSION();
+		CCMS_Set_SESSION();
+	//}
 
 	CCMS_Set_LNG();
 
