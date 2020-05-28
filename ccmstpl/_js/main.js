@@ -203,7 +203,7 @@ function GetCookie(name) {
 }
 function testFirstCookie(){
 	var offset = new Date().getTimezoneOffset();
-	if((offset >= -180) && (offset <= 450)) { /* (offset >= -180) && (offset <= 0) = European Union */
+	if((offset >= -180) && (offset <= 0)) { /* (offset >= -180) && (offset <= 0) = European Union */
 		var visit=GetCookie("cookieCompliancyAccepted");
 		if(visit==null){
 			$("#myCookieConsent").fadeIn(400);
