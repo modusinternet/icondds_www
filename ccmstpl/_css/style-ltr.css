@@ -72,28 +72,6 @@ sup{
 	overflow:hidden
 }
 
-/*
-cssgrid-events.ev1{grid-area:ev1}
-cssgrid-events.ev2{grid-area:ev2}
-cssgrid-events.ev3{grid-area:ev3}
-
-.cssgrid-events{
-	display:grid;
-	grid-gap:10px;
-	grid-template-areas:
-		"ev1"
-		"ev2"
-		"ev3"
-}
-
-.cssgrid-events .box{
-	background-color:#fff;
-	border-radius:7px;
-	padding:20px;
-	overflow:hidden
-}
-*/
-
 .cssgrid-footer>.c1,.cssgrid-footer>.c2,.cssgrid-footer>.c3{text-align:center}
 
 .cssgrid-footer>.c1{grid-area:c1}
@@ -301,6 +279,52 @@ BEGINNING of Add to Home Screen (A2HS) Box
 /*==========
 END of Add to Home Screen (A2HS) Box
 ==========*/
+
+
+/*==========
+BEGINNING of GDPR Cookie banner.
+==========*/
+#myCookieConsent{
+	z-index:999;
+	min-height:20px;
+	padding:10px 20px;
+	background:rgba(0,0,0,0.6);
+	overflow:hidden;
+	position:fixed;
+	color:#FFF;
+	bottom:0px;
+	right:10px;
+	display:none;
+	left:0;
+	font-size:15px;
+	font-weight:bold;
+}
+#myCookieConsent div{padding:5px 0 0}
+#myCookieConsent a{
+	color:#ffba55;
+	display:inline-block;
+	padding:0 10px;
+}
+#myCookieConsent a:hover{color:#fda016}
+#myCookieConsent a#cookieButton {
+	display:inline-block;
+	color:#000000;
+	font-size:1.1em;
+	background:#ffba55;
+	text-decoration:none;
+	cursor:pointer;
+	padding:2px 20px;
+	float:right;
+	border-radius:20px;
+}
+#myCookieConsent a#cookieButton:hover{
+	background:#fda016;
+	color:#000;
+}
+/*==========
+END of GDPR Cookie banner
+==========*/
+
 
 /*==========
 BEGINNING of MSG popup

@@ -183,6 +183,47 @@ window.setTimeout(function(){document.getElementsByClassName("cd-primary-nav")[0
 /* ---------- */
 
 
+/* ----------
+BEGINNING of GDPR Cookie banner.
+---------- */
+/* Display Cookie Compliancy warnings to website visitors in the European Union based on time zone. */
+function GetCookie(name) {
+	var arg=name+"=";
+	var alen=arg.length;
+	var clen=document.cookie.length;
+	var i=0;
+	while(i<clen) {
+		var j=i+alen;
+		if(document.cookie.substring(i,j)==arg)
+			return "here";
+		i=document.cookie.indexOf(" ",i)+1;
+		if(i==0) break;
+	}
+	return null;
+}
+function testFirstCookie(){
+	var offset = new Date().getTimezoneOffset();
+	if((offset >= -180) && (offset <= 450)) { /* (offset >= -180) && (offset <= 0) = European Union */
+		var visit=GetCookie("cookieCompliancyAccepted");
+		if(visit==null){
+			$("#myCookieConsent").fadeIn(400);
+		}
+	}
+}
+$("#cookieButton").click(function(){
+	console.log('Understood');
+	var expire=new Date();
+	expire=new Date(expire.getTime()+7776000000); /* 7776000000 miliseconds (90 days) */
+	document.cookie="cookieCompliancyAccepted=here; expires="+expire+";path=/";
+	$("#myCookieConsent").hide(400);
+});
+
+testFirstCookie();
+/* ----------
+END of GDPR Cookie banner
+---------- */
+
+
 /* ---------- */
 /* MSG Popup Email Form Begin */
 /* ---------- */
