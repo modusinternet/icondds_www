@@ -60,17 +60,17 @@ define('UTF8_STRING_DIGIT_PUNC_WHITE', '/^[\pL\pM*+\pN\pP\s]*\z/u');
 // /u Pattern strings are treated as UTF-8
 
 $ccms_whitelist = array(
-	"ccms_lngSelect"			=> array("type" => "LNG",								"maxlength"     => 5),
-	"ccms_parms"				=> array("type" => "PARMS",							"maxlength"     => 128),
-	"ccms_tpl"					=> array("type" => "TPL",								"maxlength"     => 256),
-	"ccms_session"				=> array("type" => "SESSION_ID",						"maxlength"     => 64),
-	"ccms_cid"					=> array("type" => "SESSION_ID",						"maxlength"     => 64),
-	"ccms_lng"					=> array("type" => "LNG",								"maxlength"     => 5),
-	"ccms_token"				=> array("type" => "UTF8_STRING_DIGIT_WHITE",	"maxlength"     => 64),
-	"HTTP_ACCEPT_LANGUAGE"	=> array("type" => "HTTP_ACCEPT_LANGUAGE",		"maxlength"     => 256),
-	"HTTP_COOKIE"				=> array("type" => "HTTP_COOKIE",					"maxlength"     => 512),
-	"HTTP_USER_AGENT"			=> array("type" => "HTTP_USER_AGENT",				"maxlength"     => 512),
-	"QUERY_STRING"				=> array("type" => "QUERY_STRING",					"maxlength"     => 1024)
+	"ccms_lngSelect"			=> array("type" => "LNG",								"maxlength"	  => 5),
+	"ccms_parms"				=> array("type" => "PARMS",							"maxlength"	  => 128),
+	"ccms_tpl"					=> array("type" => "TPL",								"maxlength"	  => 256),
+	"ccms_session"				=> array("type" => "SESSION_ID",						"maxlength"	  => 64),
+	"ccms_cid"					=> array("type" => "SESSION_ID",						"maxlength"	  => 64),
+	"ccms_lng"					=> array("type" => "LNG",								"maxlength"	  => 5),
+	"ccms_token"				=> array("type" => "UTF8_STRING_DIGIT_WHITE",	"maxlength"	  => 64),
+	"HTTP_ACCEPT_LANGUAGE"	=> array("type" => "HTTP_ACCEPT_LANGUAGE",		"maxlength"	  => 256),
+	"HTTP_COOKIE"				=> array("type" => "HTTP_COOKIE",					"maxlength"	  => 512),
+	"HTTP_USER_AGENT"			=> array("type" => "HTTP_USER_AGENT",				"maxlength"	  => 512),
+	"QUERY_STRING"				=> array("type" => "QUERY_STRING",					"maxlength"	  => 1024)
 );
 
 
@@ -183,10 +183,11 @@ function CCMS_Set_SESSION() {
 		$duration = time() - (int)$_SESSION['startTime'];
 		if($duration > $CFG["COOKIE_SESSION_EXPIRE"]) {
 			// Destroy the session and restart it but direct logged in users to relogin.
-			if(isset($_SESSION['USER_ID'])) { // true
+			if(isset($_SESSION["USER_ID"])) { // true
 				session_destroy();
 				header("Location: /" . $CFG["DEFAULT_SITE_CHAR_SET"] . "/user/");
-				// Optional: Add code to save information about this destroyed session here now for later analysis.
+				$qry = $CFG["DBH"]->prepare("INSERT INTO `ccms_log` (date, ip, url, log) VALUES (:date, :ip, :url, :log);");
+				$qry->execute(array(':date' => time(), ':ip' => $_SERVER["REMOTE_ADDR"], ':url' => $_SERVER["REQUEST_URI"], ':log' => "User session expired, redirected to login page.\n\n".$_SERVER["HTTP_USER_AGENT"]."\n\n".$_SERVER["argv"]));
 				exit;
 			} else { // false
 				session_destroy();
@@ -204,10 +205,11 @@ function CCMS_Set_SESSION() {
 	if(isset($_SESSION['HTTP_USER_AGENT'])) {
 		if($_SESSION['HTTP_USER_AGENT'] != md5($_SERVER['HTTP_USER_AGENT'])) {
 			// Possible session highjacking attempt, destroy the session and restart it but direct logged in users to relogin.
-			if(isset($_SESSION['USER_ID'])) { // true
+			if(isset($_SESSION["USER_ID"])) { // true
 				session_destroy();
 				header("Location: /" . $CFG["DEFAULT_SITE_CHAR_SET"] . "/user/");
-				// Optional: Add code to save information about this destroyed session here now for later analysis.
+				$qry = $CFG["DBH"]->prepare("INSERT INTO `ccms_log` (date, ip, url, log) VALUES (:date, :ip, :url, :log);");
+				$qry->execute(array(':date' => time(), ':ip' => $_SERVER["REMOTE_ADDR"], ':url' => $_SERVER["REQUEST_URI"], ':log' => "Possible session highjacking attempt.  Session deleted and user redirected to login page.\n\n".$_SERVER["HTTP_USER_AGENT"]."\n\n".$_SERVER["argv"]));
 				exit;
 			} else { // false
 				session_destroy();
@@ -222,231 +224,8 @@ function CCMS_Set_SESSION() {
 
 	session_regenerate_id();
 
-	$CLEAN["ccms_session"] = session_id();
+	//$CLEAN["ccms_session"] = session_id();
 }
-
-
-
-
-
-
-
-/*
-function CCMS_cookie_SESSION() {
-	global $CFG, $CLEAN;
-
-	$CLEAN["SESSION"]["user_agent"] = $CLEAN["HTTP_USER_AGENT"];
-
-	if(isset($CLEAN["__Host-ccms_session"])){
-		$CLEAN["ccms_session"] = $CLEAN["__Host-ccms_session"];
-	}
-
-	if(isset($CLEAN["ccms_session"]) && $CLEAN["ccms_session"] != "MAXLEN" && $CLEAN["ccms_session"] != "INVAL") {
-		// A value was found, so we'll try testing it against the database.
-		//break;
-	} elseif($CLEAN["HTTP_COOKIE"] != "" && $CLEAN["HTTP_COOKIE"] != "MAXLEN" && $CLEAN["HTTP_COOKIE"] != "INVAL") {
-		// A value was found in $CLEAN["HTTP_COOKIE"] variable.  We'll try extracting the session value and validate it
-		// here first.  If it passes then we'll try testing it against the database.
-		$cookieSess = explode("; ", $CLEAN["HTTP_COOKIE"]);
-		foreach($cookieSess as $cookieSess2) {
-			$cookieSess3 = explode("=", $cookieSess2);
-			if($cookieSess3[0] == "__Host-ccms_session") {
-				$cookieSess3[1] = @trim($cookieSess3[1]);
-				// utf8_decode() converts unknown ISO-8859-1 chars to '?' for the purpose of counting.
-				$length = strlen(utf8_decode($cookieSess3[1]));
-				$buf = NULL;
-				if($length > 64) {
-					$CLEAN["ccms_session"] = "MAXLEN";
-				} else {
-					$CLEAN["ccms_session"] = (preg_match('/^[a-z\pN]{1,}\z/i', $cookieSess3[1])) ? $cookieSess3[1] : "INVAL";
-				}
-				//$CLEAN["ccms_session"] = $buf;
-				break;
-			}
-		}
-	}
-	if(isset($CLEAN["ccms_session"]) && $CLEAN["ccms_session"] != "MAXLEN" && $CLEAN["ccms_session"] != "INVAL") {
-		// The user appears to already have a session code so now we test it.  Check the 'ccms_session' table for matches.
-		$qry = $CFG["DBH"]->prepare("SELECT * FROM `ccms_session` WHERE `code` = :ccms_session AND `ip` = :ip AND `user_agent` = :user_agent AND `prf` IS NULL LIMIT 1;");
-		$qry->execute(array(':ccms_session' => $CLEAN["ccms_session"], ':ip' => $_SERVER["REMOTE_ADDR"], ':user_agent' => $CLEAN["SESSION"]["user_agent"]));
-		$row = $qry->fetch(PDO::FETCH_ASSOC);
-
-		if($row) {
-			// Session match found
-			$a = time();
-
-			if($a > $row["exp"]) {
-				// Session expired
-
-				if(isset($CLEAN["ccms_token"])) {
-					// If the session belonged to an administrator or translator we should redirect them to the login page instead.
-					header("Location: /" . $CFG["DEFAULT_SITE_CHAR_SET"] . "/user/");
-					die();
-				}
-
-				$qry = $CFG["DBH"]->prepare("DELETE FROM `ccms_session` WHERE `id` = :id LIMIT 1;");
-				$qry->execute(array(':id' => $row["id"]));
-
-				$a = time();
-				$b = $a;
-				$a = md5($a);
-				$c = $b + ($CFG["COOKIE_SESSION_EXPIRE"] * 60);
-
-				// This fix adds the 'samesite=strict' attribute to cookies to protect it from cross site scripting button
-				// it does is in one of two different ways depending on your version of PHP.
-				if(PHP_VERSION_ID < 70300) {
-					setcookie("__Host-ccms_session", $a, $c, "/;httponly;samesite=lax;secure", "", 0, 0);
-				} else {
-					setcookie("__Host-ccms_session", $a, [
-						'expires' => $c,
-						'path' => "/",
-						//'domain' => $CFG["DOMAIN"],
-						'samesite' => "lax",
-						'secure' => true,
-						'httponly' => true
-					]);
-				}
-
-				$CLEAN["SESSION"]["code"] = $a;
-				$CLEAN["SESSION"]["first"] = $b;
-				$CLEAN["SESSION"]["last"] = $b;
-				$CLEAN["SESSION"]["exp"] = $c;
-				$CLEAN["SESSION"]["ip"] = $_SERVER["REMOTE_ADDR"];
-				$CLEAN["SESSION"]["user_id"] = null;
-				$CLEAN["SESSION"]["fail"] = "0";
-
-				$qry = $CFG["DBH"]->prepare("INSERT INTO `ccms_session` (code, first, last, exp, ip, user_agent) VALUES (:code, :first, :last, :exp, :ip, :user_agent);");
-				$qry->execute(array(':code' => $a, ':first' => $b, ':last' => $b, ':exp' => $c, ':ip' => $_SERVER["REMOTE_ADDR"], ':user_agent' => $CLEAN["SESSION"]["user_agent"]));
-			} else {
-				// Session not expired
-				$a = time();
-				$b = $a;
-				$a = md5($a);
-				$c = $b + ($CFG["COOKIE_SESSION_EXPIRE"] * 60);
-
-				// This fix adds the 'samesite=strict' attribute to cookies to protect it from cross site scripting button
-				// it does is in one of two different ways depending on your version of PHP.
-				if(PHP_VERSION_ID < 70300) {
-					setcookie("__Host-ccms_session", $a, $c, "/;httponly;samesite=lax;secure", "", 0, 0);
-				} else {
-					setcookie("__Host-ccms_session", $a, [
-						'expires' => $c,
-						'path' => "/",
-						//'domain' => $CFG["DOMAIN"],
-						'samesite' => "lax",
-						'secure' => true,
-						'httponly' => true
-					]);
-				}
-
-				$CLEAN["SESSION"]["code"] = $a;
-				$CLEAN["SESSION"]["first"] = $row["first"];
-				$CLEAN["SESSION"]["last"] = $b;
-				$CLEAN["SESSION"]["exp"] = $c;
-				$CLEAN["SESSION"]["ip"] = $row["ip"];
-				$CLEAN["SESSION"]["user_id"] = $row["user_id"];
-				$CLEAN["SESSION"]["fail"] = $row["fail"];
-
-				$qry = $CFG["DBH"]->prepare("UPDATE `ccms_session` SET `code` = :code, `last` = :last, `exp` = :exp WHERE `id` = :id LIMIT 1;");
-				$qry->execute(array(':code' => $a, ':last' => $b, ':exp' => $c, ':id' => $row["id"]));
-			}
-		} else {
-			// Session not found
-			if(isset($CLEAN["ccms_token"])) {
-				// If the URI contains a ccms_token administrator or translator token we should redirect them to the login page instead.
-				header("Location: /" . $CFG["DEFAULT_SITE_CHAR_SET"] . "/user/");
-				die();
-			}
-
-			$a = time();
-			$b = $a;
-			$a = md5($a);
-			$c = $b + ($CFG["COOKIE_SESSION_EXPIRE"] * 60);
-
-			// This fix adds the 'samesite=strict' attribute to cookies to protect it from cross site scripting button
-			// it does is in one of two different ways depending on your version of PHP.
-			if(PHP_VERSION_ID < 70300) {
-				setcookie("__Host-ccms_session", $a, $c, "/;httponly;samesite=lax;secure", "", 0, 0);
-			} else {
-				setcookie("__Host-ccms_session", $a, [
-					'expires' => $c,
-					'path' => "/",
-					//'domain' => $CFG["DOMAIN"],
-					'samesite' => "lax",
-					'secure' => true,
-					'httponly' => true
-				]);
-			}
-
-			$CLEAN["SESSION"]["code"] = $a;
-			$CLEAN["SESSION"]["first"] = $b;
-			$CLEAN["SESSION"]["last"] = $b;
-			$CLEAN["SESSION"]["exp"] = $c;
-			$CLEAN["SESSION"]["ip"] = $_SERVER["REMOTE_ADDR"];
-			$CLEAN["SESSION"]["user_id"] = null;
-			$CLEAN["SESSION"]["fail"] = "0";
-
-			$qry = $CFG["DBH"]->prepare("INSERT INTO `ccms_session` (code, first, last, exp, ip, user_agent) VALUES (:code, :first, :last, :exp, :ip, :user_agent);");
-			$qry->execute(array(':code' => $a, ':first' => $b, ':last' => $b, ':exp' => $c, ':ip' => $_SERVER["REMOTE_ADDR"], ':user_agent' => $CLEAN["SESSION"]["user_agent"]));
-		}
-	} else {
-		// Session not found
-		if(isset($CLEAN["ccms_token"])) {
-			// If the URI contins a ccms_token administrator or translator token we should redirect them to the login page instead.
-			header("Location: /" . $CFG["DEFAULT_SITE_CHAR_SET"] . "/user/");
-			die();
-		}
-
-		$a = time();
-		$b = $a;
-		$a = md5($a);
-		$c = $b + ($CFG["COOKIE_SESSION_EXPIRE"] * 60);
-
-		// This fix adds the 'samesite=strict' attribute to cookies to protect it from cross site scripting button
-		// it does is in one of two different ways depending on your version of PHP.
-		if(PHP_VERSION_ID < 70300) {
-			setcookie("__Host-ccms_session", $a, $c, "/;httponly;samesite=lax;secure", "", 0, 0);
-		} else {
-			setcookie("__Host-ccms_session", $a, [
-				'expires' => $c,
-				'path' => "/",
-				//'domain' => $CFG["DOMAIN"],
-				'samesite' => "lax",
-				'secure' => true,
-				'httponly' => true
-			]);
-		}
-
-		$CLEAN["SESSION"]["code"] = $a;
-		$CLEAN["SESSION"]["first"] = $b;
-		$CLEAN["SESSION"]["last"] = $b;
-		$CLEAN["SESSION"]["exp"] = $c;
-		$CLEAN["SESSION"]["ip"] = $_SERVER["REMOTE_ADDR"];
-		$CLEAN["SESSION"]["user_id"] = null;
-		$CLEAN["SESSION"]["fail"] = "0";
-
-		$qry = $CFG["DBH"]->prepare("INSERT INTO `ccms_session` (code, first, last, exp, ip, user_agent) VALUES (:code, :first, :last, :exp, :ip, :user_agent);");
-		$qry->execute(array(':code' => $a, ':first' => $b, ':last' => $b, ':exp' => $c, ':ip' => $_SERVER["REMOTE_ADDR"], ':user_agent' => $CLEAN["SESSION"]["user_agent"]));
-	}
-}
-*/
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 function CCMS_DB_First_Connect() {
@@ -828,7 +607,7 @@ function CCMS_TPL_Parser($a = null) {
 function CCMS_Main() {
 	global $CFG, $CLEAN;
 
-	//if(!preg_match('/^\/(([a-z]{2})(-[a-z]{2})?)\/user\/(.*)\z/ui', $_SERVER["REQUEST_URI"])) {
+	//if(!preg_match("/^\/(([a-z]{2})(-[a-z]{2})?)\/user\/(.*)\z/ui", $_SERVER["REQUEST_URI"])) {
 		//CCMS_cookie_SESSION();
 		CCMS_Set_SESSION();
 	//}
@@ -855,7 +634,7 @@ function CCMS_Main() {
 	// /fruit/index
 	// /fruit/orange/index
 	// /fruit/orange/vitamin/index
-	if (preg_match('/[\/]\z/', $CLEAN["ccms_tpl"])) {
+	if (preg_match("/[\/]\z/", $CLEAN["ccms_tpl"])) {
 		$CLEAN["ccms_tpl"] .= "index";
 	}
 
@@ -873,7 +652,7 @@ function CCMS_Main() {
 	$CLEAN["ccms_tpl"] = preg_replace('/^(\/)(.*?)(\.css?)?(\.html?)?(\.js?)?\z/i', '$2', $CLEAN["ccms_tpl"]);
 
 	// Copys the end of the string found inside $CLEAN["ccms_tpl"] after the last /.
-	preg_match('/([^\/]*)\z/', $CLEAN["ccms_tpl"], $ccms_file);
+	preg_match("/([^\/]*)\z/", $CLEAN["ccms_tpl"], $ccms_file);
 
 	// Copys the first part of the string inside $CLEAN["ccms_tpl"] before the last /.
 	$ccms_dir = @strstr($CLEAN["ccms_tpl"], $ccms_file[0], true);
@@ -892,7 +671,7 @@ function CCMS_Main() {
 	// the new file extension all together.
 	$found = false;
 
-	if ($CFG["lngCodeFoundFlag"] && $CFG["lngCodeActiveFlag"]) {
+	if($CFG["lngCodeFoundFlag"] && $CFG["lngCodeActiveFlag"]) {
 		// Test to make sure the visitor is not requesting a language which is either non existant or status not live.  If so they should be sent to the error.php template regardless.
 		if (is_dir($_SERVER["DOCUMENT_ROOT"] . "/" . $CFG["TPLDIR"] . "/" . $ccms_dir)) {
 			$odhandle = @opendir($_SERVER["DOCUMENT_ROOT"] . "/" . $CFG["TPLDIR"] . "/" . $ccms_dir);
