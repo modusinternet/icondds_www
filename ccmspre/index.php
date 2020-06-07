@@ -224,7 +224,7 @@ function CCMS_Set_SESSION() {
 
 	session_regenerate_id();
 
-	//$CLEAN["ccms_session"] = session_id();
+	$CLEAN["ccms_session"] = session_id();
 }
 
 
