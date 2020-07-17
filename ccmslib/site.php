@@ -115,13 +115,13 @@ function build_css_link($aws_flag = null, $lng_flag = null, $path, $dir_flag = n
 
 		$row = $qry->fetch(PDO::FETCH_ASSOC);
 		if($row){
-			$buff .= 'l.integrity="sha384-' . $row["sri-code"] . '";';
+			$buff .= 'l.integrity="sha256-' . $row["sri-code"] . '";';
 		}else{
 			$tmp = file_get_contents($url);
-			$result = base64_encode(hash("sha384", $tmp, true));
+			$result = base64_encode(hash("sha256", $tmp, true));
 			$qry = $CFG["DBH"]->prepare("INSERT INTO `sri` (`id`, `url`, `sri-code`) VALUES (NULL, :url, :result);");
 			$qry->execute(array(':url' => $url, ':result' => $result));
-			$buff .= 'l.integrity="sha384-' . $result . '";';
+			$buff .= 'l.integrity="sha256-' . $result . '";';
 		}
 		$buff .= 'l.crossOrigin="anonymous";';
 	}
@@ -166,20 +166,24 @@ function build_js_sri($path){
 
 	$buff = ",'";
 
-	$url = $CFG["RES"]["AWS"] . $CFG["RES"][$path];
+	if($CFG["RES"]["AWS"]){
+		$url = $CFG["RES"]["AWS"] . $CFG["RES"][$path];
+	} else {
+		$url = "." . $CFG["RES"][$path];
+	}
 
 	$qry = $CFG["DBH"]->prepare("SELECT * FROM `sri` WHERE `url` = :url LIMIT 1;");
 	$qry->execute(array(':url' => $url));
 
 	$row = $qry->fetch(PDO::FETCH_ASSOC);
 	if($row) {
-		echo $buff .= "sha384-" . $row["sri-code"] . "','anonymous'";
+		echo $buff .= "sha256-" . $row["sri-code"] . "','anonymous'";
 	}else{
 		$tmp = file_get_contents($url);
-		$result = base64_encode(hash("sha384", $tmp, true));
+		$result = base64_encode(hash("sha256", $tmp, true));
 		$qry = $CFG["DBH"]->prepare("INSERT INTO `sri` (`id`, `url`, `sri-code`) VALUES (NULL, :url, :result);");
 		$qry->execute(array(':url' => $url, ':result' => $result));
-		echo $buff .= "sha384-" . $result . "','anonymous'";
+		echo $buff .= "sha256-" . $result . "','anonymous'";
 	}
 }
 
