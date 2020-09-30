@@ -1,6 +1,5 @@
 {CCMS_DB_PRELOAD:all,index}{CCMS_LIB:site.php;FUNC:csp_header}<!DOCTYPE html>
 <html dir="{CCMS_LIB:_default.php;FUNC:ccms_lng_dir}" lang="{CCMS_LIB:_default.php;FUNC:ccms_lng}" prefix="og: http://ogp.me/ns#">
-	<link nonce="{CCMS_LIB:site.php;FUNC:csp_nounce}" rel="stylesheet" href="/en/_css/style-ltr.css">
 	<head>
 		<!-- Repeated content and can be placed once in your header head template. -->
 		{CCMS_TPL:header-head.html}
@@ -551,7 +550,7 @@
 			arg3 = a variable found in the config file that represents a partial pathway to the style sheet. (not including and details about AWS, language code, or language direction)
 			arg4 = (1 = append language direction to link), (empty = do not append language direction to link)
 			*/
-			/*{CCMS_LIB:site.php;FUNC:build_css_link("","1","CSS-01","1")}*/
+			{CCMS_LIB:site.php;FUNC:build_css_link("","1","CSS-01","1")}
 
 			{CCMS_LIB:site.php;FUNC:build_css_link("1","","ANIMATE","")}
 
