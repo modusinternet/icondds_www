@@ -203,7 +203,7 @@ function csp_header() {
 		"connect-src 'self' https: *.cloudfront.net *.google.com *.googleapis.com *.googletagmanager.com *.google-analytics.com *.gstatic.com; ".
 
 		// The default-src directive defines the default policy for fetching resources such as JavaScript, Images, CSS, Fonts, AJAX requests, Frames, HTML5 Media. Not all directives fallback to default-src. See the Source List Reference for possible values. (https://content-security-policy.com/#source_list)
-		"default-src 'none'; ".
+		"default-src 'self'; ".
 
 		// Defines valid sources of font resources (loaded via @font-face).
 		//"font-src 'self' data: *.gstatic.com *.googleapis.com; ".
