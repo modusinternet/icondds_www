@@ -199,7 +199,7 @@ function csp_header() {
 		"base-uri 'none'; ".
 
 		// Applies to XMLHttpRequest (AJAX), WebSocket, fetch(), <a ping> or EventSource. If not allowed the browser emulates a 400 HTTP status code.
-		"connect-src 'self' http: https: *.cloudfront.net *.google.com *.googleapis.com *.googletagmanager.com *.google-analytics.com *.gstatic.com; ".
+		"connect-src 'self' https: *.cloudfront.net *.google.com *.googleapis.com *.googletagmanager.com *.google-analytics.com *.gstatic.com; ".
 
 		// The default-src directive defines the default policy for fetching resources such as JavaScript, Images, CSS, Fonts, AJAX requests, Frames, HTML5 Media. Not all directives fallback to default-src. See the Source List Reference for possible values. (https://content-security-policy.com/#source_list)
 		//"default-src 'none'; ".
@@ -217,7 +217,7 @@ function csp_header() {
 		//"frame-src 'self' *.google.com *.youtube.com;".
 
 		// Defines valid sources of images.
-		"img-src 'self' data: http: https: *.cloudfront.net *doubleclick.net *.gstatic.com *.google-analytics.com *.googleapis.com *.googleusercontent.com *.googletagmanager.com *.google.com *.gravatar.com; ".
+		"img-src 'self' data: https: *.cloudfront.net *doubleclick.net *.gstatic.com *.google-analytics.com *.googleapis.com *.googleusercontent.com *.googletagmanager.com *.google.com *.gravatar.com; ".
 
 		// Restricts the URLs that application manifests can be loaded.
 		//"manifest-src 'self'; ".
