@@ -236,7 +236,7 @@ function csp_header() {
 		// 'unsafe-eval' is undesirable according to https://observatory.mozilla.org, but it's required by Google Custom Search Engine which doesn't properly support nonce yet. (May 7, 2020)
 		// 'unsafe-inline' is undesirable according to https://observatory.mozilla.org.
 		//"script-src 'nonce-" . $CFG["nonce"] . "' 'strict-dynamic' 'unsafe-eval' *.google.com *.googletagmanager.com; ".
-		"script-src 'strict-dynamic' 'nonce-" . $CFG["nonce"] . "' 'unsafe-inline' http: https:; ".
+		"script-src 'strict-dynamic' 'nonce-" . $CFG["nonce"] . "' http: https:; ".
 
 		// Defines valid sources of stylesheets or CSS.
 		//"style-src 'self' 'unsafe-inline' *.cloudfront.net *.google.com *.googletagmanager.com *.google-analytics.com *.googleapis.com; ".
