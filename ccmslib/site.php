@@ -199,7 +199,7 @@ function csp_header() {
 		"base-uri 'none'; ".
 
 		// Applies to XMLHttpRequest (AJAX), WebSocket, fetch(), <a ping> or EventSource. If not allowed the browser emulates a 400 HTTP status code.
-		"connect-src 'self' *.cloudfront.net *.google.com *.googleapis.com *.googletagmanager.com *.google-analytics.com *.gstatic.com; ".
+		"connect-src 'self' http: https: *.cloudfront.net *.google.com *.googleapis.com *.googletagmanager.com *.google-analytics.com *.gstatic.com; ".
 
 		// The default-src directive defines the default policy for fetching resources such as JavaScript, Images, CSS, Fonts, AJAX requests, Frames, HTML5 Media. Not all directives fallback to default-src. See the Source List Reference for possible values. (https://content-security-policy.com/#source_list)
 		//"default-src 'none'; ".
@@ -236,7 +236,7 @@ function csp_header() {
 		// 'unsafe-eval' is undesirable according to https://observatory.mozilla.org, but it's required by Google Custom Search Engine which doesn't properly support nonce yet. (May 7, 2020)
 		// 'unsafe-inline' is undesirable according to https://observatory.mozilla.org.
 		//"script-src 'nonce-" . $CFG["nonce"] . "' 'strict-dynamic' 'unsafe-eval' *.google.com *.googletagmanager.com; ".
-		"script-src 'strict-dynamic' 'nonce-" . $CFG["nonce"] . "' http: https:; ".
+		"script-src 'strict-dynamic' 'nonce-" . $CFG["nonce"] . "'; ".
 
 		// Defines valid sources of stylesheets or CSS.
 		//"style-src 'self' 'unsafe-inline' *.cloudfront.net *.google.com *.googletagmanager.com *.google-analytics.com *.googleapis.com; ".
