@@ -245,7 +245,7 @@ function csp_header() {
 		//"style-src 'self' 'nonce-" . $CFG["nonce"] . "' *.cloudfront.net *.icondds.com; ".
 
 		// Restricts the URLs which may be loaded as a Worker, SharedWorker or ServiceWorker.
-		//"worker-src 'self'; ".
+		"worker-src 'self'; ".
 
 		"";
 
