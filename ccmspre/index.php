@@ -699,14 +699,12 @@ function CCMS_Main() {
 								header("Content-Type: text/html; charset=utf-8");
 							}
 
+
+
+
+
 							// Check for a cache version, that's not expired and if necessary, cache a new copy.
-							$url = "/" . $CLEAN["ccms_lng"] . "/" . $ccms_dir . $file;
-
-
-
-
-
-
+							//$url = "/" . $CLEAN["ccms_lng"] . "/" . $ccms_dir . $file;
 
 							if($_SERVER['SCRIPT_URL'] === "/"){
 								// if the visitor is looking at the root of the website WITHOUT the language dir.
