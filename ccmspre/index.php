@@ -702,6 +702,34 @@ function CCMS_Main() {
 							// Check for a cache version, that's not expired and if necessary, cache a new copy.
 							$url = "/" . $CLEAN["ccms_lng"] . "/" . $ccms_dir . $file;
 
+
+
+
+
+
+
+							if($_SERVER['SCRIPT_URL'] === "/"){
+								// if the visitor is looking at the root of the website WITHOUT the language dir.
+								// ie: https://yourdomain.com
+
+								$url = "/";
+							} else {
+								// if the visitor is looking at the root of the website WITH the language dir.
+								// ie: https://yourdomain.com/en/
+
+								$url = "/" . $CLEAN["ccms_lng"] . "/" . $ccms_dir . $file;
+							}
+
+
+
+
+
+
+
+
+
+
+
 							if($CFG["CACHE"] == 1) {
 								// Cache setting in /ccmspre/config.php is enabled, $CFG["CACHE"] = 1;.
 
