@@ -90,7 +90,9 @@ function build_css_link($aws_flag = null, $lng_flag = null, $path, $dir_flag = n
 	$url = "";
 
 	if($aws_flag){
-		$url .= $CFG["RES"]["AWS"];
+		if($CFG["RES"]["AWS"]){
+			$url .= $CFG["RES"]["AWS"];
+		}
 	}
 
 	/* We do this for safety to help just incase the script calling this function requests the AWS code and the language code by accident.  We never ask for language code ones things are located on AWS. */
@@ -129,9 +131,9 @@ function build_css_link($aws_flag = null, $lng_flag = null, $path, $dir_flag = n
 }
 
 /*
-$aws_flag = if not null append AWS link
-$lng_flag = if not null append language code to link
-$path = a variable found in the config file that represents a partial pathway to the style sheet, not including and details about AWS, language code, or language direction)
+$aws_flag = if not null append AWS link.
+$lng_flag = if not null append language code to link.
+$path = a variable found in the config file that represents a partial pathway to the style sheet. (Not including details about AWS, language code, or language direction.)
 */
 function build_js_link($aws_flag = null, $lng_flag = null, $path){
 	global $CFG;
@@ -142,7 +144,9 @@ function build_js_link($aws_flag = null, $lng_flag = null, $path){
 	$url = "";
 
 	if($aws_flag){
-		$url .= $CFG["RES"]["AWS"];
+		if($CFG["RES"]["AWS"]){
+			$url .= $CFG["RES"]["AWS"];
+		}
 	}
 
 	/* We do this for safety to help just incase the script calling this function requests the AWS code and the language code by accident.  We never ask for language code ones things are located on AWS. */
@@ -154,6 +158,7 @@ function build_js_link($aws_flag = null, $lng_flag = null, $path){
 
 	echo $url .= $CFG["RES"][$path];
 }
+
 
 /*
 $path = a variable found in the config file that represents a partial pathway to the style sheet, not including and details about AWS, language code, or language direction)
@@ -217,7 +222,7 @@ function csp_header() {
 		//"frame-src 'self' *.google.com *.youtube.com;".
 
 		// Defines valid sources of images.
-		"img-src 'self' data: https: *.cloudfront.net *doubleclick.net *.gstatic.com *.google-analytics.com *.googleapis.com *.googleusercontent.com *.googletagmanager.com *.google.com *.gravatar.com; ".
+		"img-src 'self' data: https: *.cloudfront.net *.doubleclick.net *.gstatic.com *.google-analytics.com *.googleapis.com *.googleusercontent.com *.googletagmanager.com *.google.com *.gravatar.com; ".
 
 		// Restricts the URLs that application manifests can be loaded.
 		//"manifest-src 'self'; ".
