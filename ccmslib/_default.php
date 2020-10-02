@@ -61,6 +61,41 @@ function ccms_hrefLang_list() {
 	}
 }
 
+function ccms_canonical() {
+	global $CFG, $CLEAN;
+
+	// Only use this feature on the homepage to help prevent dupicate indexing attempts
+	// by search engines when dealing with language dir.
+	// ie:
+	// https://yourdomain.com
+	// vs
+	// https://yourdomain.com/en/
+	//
+	// Both would contain the same content so we want Google to not index the normal domain, an index the one containing the /en/ dir instead.
+	// The reason for this is, depending on what language page your currently viewing a site in, (eg: /en/, /fr/, /sp/). the root page
+	// content will look exactly the same, when using CustodianCMS, as the one found in the language specific sub dir.
+	// ie:
+	// https://somedomain.com and https://somedomain.com/cx/
+	//
+	// We need to tell search engines not to index the content on the https://somedomain.com but go ahead and index the content on the
+	// https://somedomain.com/cx/ page.
+
+	//if($_SERVER['REMOTE_ADDR'] === "70.68.94.199"){
+		if($_SERVER['SCRIPT_URL'] === "/"){
+			// if the visitor is looking at the root of the website WITHOUT the language dir.
+			// ie: https://yourdomain.com
+
+			echo '<meta name="robots" content="noindex" />'."\n";
+			echo "\t\t".'<link rel="canonical" href="' . $_SERVER['SCRIPT_URI'] . $CLEAN["ccms_lng"] . '/" />';
+		} else {
+			// if the visitor is looking at the root of the website WITH the language dir.
+			// ie: https://yourdomain.com/en/
+
+			echo '<link rel="canonical" href="' . $_SERVER['SCRIPT_URI'] . '" />';
+		}
+	//}
+}
+
 function ccms_user_admin_slider() {
 	global $CFG, $CLEAN;
 	$qry = $CFG["DBH"]->prepare("SELECT b.alias, b.priv FROM `ccms_session` AS a INNER JOIN `ccms_user` AS b On b.id = a.user_id WHERE a.code = :code AND a.ip = :ip AND b.status = '1' LIMIT 1;");

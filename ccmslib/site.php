@@ -67,9 +67,9 @@ function shadow_direction() {
 	}
 }
 
-function load_resource($argv){
+function load_resource($arg){
 	global $CFG;
-	echo $CFG["RES"][$argv];
+	echo $CFG["RES"][$arg[0]];
 }
 
 /*
@@ -113,7 +113,6 @@ function build_css_link($aws_flag = null, $lng_flag = null, $path, $dir_flag = n
 	if($aws_flag){
 		$qry = $CFG["DBH"]->prepare("SELECT * FROM `sri` WHERE `url` = :url LIMIT 1;");
 		$qry->execute(array(':url' => $url));
-
 		$row = $qry->fetch(PDO::FETCH_ASSOC);
 		if($row){
 			$buff .= 'l.integrity="sha256-' . $row["sri-code"] . '";';
