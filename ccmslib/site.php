@@ -9,6 +9,7 @@ function navLngdir() {
 	}
 }
 
+
 function navLngList() {
 	global $CFG, $CLEAN;
 	// this line of code produces the wrong output on GoDaddy servers.
@@ -24,6 +25,7 @@ function navLngList() {
 		}
 	}
 }
+
 
 function lngList() {
 	global $CFG, $CLEAN;
@@ -41,6 +43,7 @@ function lngList() {
 	}
 }
 
+
 function lng_dir_left_go_right_right_go_left() {
 	global $CFG;
 	if($CFG["CCMS_LNG_DIR"] == "ltr") {
@@ -49,6 +52,7 @@ function lng_dir_left_go_right_right_go_left() {
 		echo "left";
 	}
 }
+
 
 function lng_dir_right_go_left_left_go_right() {
 	global $CFG;
@@ -59,6 +63,7 @@ function lng_dir_right_go_left_left_go_right() {
 	}
 }
 
+
 function shadow_direction() {
 	global $CFG;
 	/* Used to help direct the horizontal (x) direction of shadows generated in CSS when changing languages. */
@@ -67,10 +72,12 @@ function shadow_direction() {
 	}
 }
 
+
 function load_resource($arg){
 	global $CFG;
 	echo $CFG["RES"][$arg[0]];
 }
+
 
 /*
 $aws_flag = if not null append AWS link
@@ -129,6 +136,7 @@ function build_css_link($aws_flag = null, $lng_flag = null, $path, $dir_flag = n
 	}
 	echo $buff .= 'var h=document.getElementsByTagName("head")[0];h.parentNode.insertBefore(l,h);';
 }
+
 
 /*
 $aws_flag = if not null append AWS link.
@@ -191,6 +199,7 @@ function build_js_sri($path){
 		echo $buff .= "sha256-" . $result . "','anonymous'";
 	}
 }
+
 
 function csp_header() {
 	// Content Security Policy (CSP) only work in modern browsers Chrome 25+, Firefox 23+, Safari 7+.
@@ -256,11 +265,13 @@ function csp_header() {
 	header($CFG["csp"]);
 }
 
+
 function csp_nounce() {
 	global $CFG;
 
 	echo $CFG["nonce"];
 }
+
 
 function csp_nounce_ret() {
 	global $CFG;
