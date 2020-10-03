@@ -158,11 +158,17 @@
 			function loadFirst(e,t,i,c){var a=document.createElement("script");a.async="true";a.setAttribute("nonce", "{CCMS_LIB:site.php;FUNC:csp_nounce}");if(i){a.integrity=i;a.crossOrigin=c;}a.readyState?a.onreadystatechange=function(){("loaded"==a.readyState||"complete"==a.readyState)&&(a.onreadystatechange=null,t())}:a.onload=function(){t()},a.src=e,document.body.appendChild(a)}
 
 			/*
+			Argument details for build_css_link2() and build_js_link() function calls:
 			arg1 = (1 = append AWS link), (empty = do not append AWS link)
-			arg2 = (1 = append language code to link), (empty = do not append language code to link)
+			arg2 = (1 = append language code to link), (empty = do not append language code to link)	In other words, send it through the parser first like a normal template.
 			arg3 = a variable found in the config file that represents a partial pathway to the style sheet, not including and details about AWS, language code, or language direction)
 			arg4 = (1 = append language direction to link), (empty = do not append language direction to link)
+
+			Argument details for build_js_sri() function calls:
+			arg1 = 1 = build sri code based on version stored on AWS.  empty = build sri code based on version stored on our own server.
+			arg2 = a variable found in the config file that represents a partial pathway to the style sheet. (Not including details about AWS, language code, or language direction)
 			*/
+
 			{CCMS_LIB:site.php;FUNC:build_css_link("","1","CSS-01","1")}
 
 			function loadJSResources(){
@@ -182,11 +188,11 @@
 										console.log(window.performance.getEntriesByName("mark_beginning_javascript"));
 										console.log(window.performance.getEntriesByName("mark_end_javascript"));*/
 									});
-								}{CCMS_LIB:site.php;FUNC:build_js_sri("JQUERY-VALIDATE-ADDITIONAL-METHODS")});
-							}{CCMS_LIB:site.php;FUNC:build_js_sri("JQUERY-VALIDATE")});
-						}{CCMS_LIB:site.php;FUNC:build_js_sri("JQUERY-MOBILE-CUST")});
-					}{CCMS_LIB:site.php;FUNC:build_js_sri("JQUERY")});
-				}{CCMS_LIB:site.php;FUNC:build_js_sri("MODERNIZER")});
+								}{CCMS_LIB:site.php;FUNC:build_js_sri("1","JQUERY-VALIDATE-ADDITIONAL-METHODS")});
+							}{CCMS_LIB:site.php;FUNC:build_js_sri("1","JQUERY-VALIDATE")});
+						}{CCMS_LIB:site.php;FUNC:build_js_sri("1","JQUERY-MOBILE-CUST")});
+					}{CCMS_LIB:site.php;FUNC:build_js_sri("1","JQUERY")});
+				}{CCMS_LIB:site.php;FUNC:build_js_sri("1","MODERNIZER")});
 			}
 
 			if(window.addEventListener){window.addEventListener("load",loadJSResources,false)}
