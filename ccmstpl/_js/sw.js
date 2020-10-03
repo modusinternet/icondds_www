@@ -26,6 +26,13 @@ Then click the 'Yes, Edit' button at the bottom and give it about 10 minutes to 
 
 const cacheName='{CCMS_LIB:_default.php;FUNC:ccms_lng}-2020.10.03-01';
 
+/*
+Argument details for build_css_link2() and build_js_link() function calls:
+arg1 = (1 = append AWS link), (empty = do not append AWS link)
+arg2 = (1 = append language code to link), (empty = do not append language code to link)	In other words, send it through the parser first like a normal template.
+arg3 = a variable found in the config file that represents a partial pathway to the style sheet, not including and details about AWS, language code, or language direction)
+arg4 = (1 = append language direction to link), (empty = do not append language direction to link)
+*/
 var cacheFiles=[
 	/*
 	'{  CCMS_LIB:site.php;FUNC:load_resource("AWS")}/ccmstpl/_img/logo1.3.webp',
@@ -40,7 +47,7 @@ var cacheFiles=[
 	'/{CCMS_LIB:_default.php;FUNC:ccms_lng}/manifest.html',
 	'{CCMS_LIB:site.php;FUNC:load_resource("AWS")}/ccmstpl/_img/offline_01.webp',
 	'{CCMS_LIB:site.php;FUNC:load_resource("AWS")}/ccmstpl/_img/offline_01-min.jpg',
-	'{CCMS_LIB:site.php;FUNC:build_css_link("","1","CSS-01","1")}',
+	'{CCMS_LIB:site.php;FUNC:build_css_link2("","1","CSS-01","1")}',
 	'{CCMS_LIB:site.php;FUNC:load_resource("MODERNIZER")}',
 	'{CCMS_LIB:site.php;FUNC:load_resource("JQUERY")}',
 	'{CCMS_LIB:site.php;FUNC:load_resource("JQUERY-MOBILE-CUST")}',
