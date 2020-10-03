@@ -40,7 +40,7 @@ var cacheFiles=[
 	'/{CCMS_LIB:_default.php;FUNC:ccms_lng}/manifest.html',
 	'{CCMS_LIB:site.php;FUNC:load_resource("AWS")}/ccmstpl/_img/offline_01.webp',
 	'{CCMS_LIB:site.php;FUNC:load_resource("AWS")}/ccmstpl/_img/offline_01-min.jpg',
-	'{CCMS_LIB:site.php;FUNC:build_css_link("","1","CSS-01","1")',
+	'{CCMS_LIB:site.php;FUNC:build_css_link("","1","CSS-01","1")}',
 	'{CCMS_LIB:site.php;FUNC:load_resource("MODERNIZER")}',
 	'{CCMS_LIB:site.php;FUNC:load_resource("JQUERY")}',
 	'{CCMS_LIB:site.php;FUNC:load_resource("JQUERY-MOBILE-CUST")}',
