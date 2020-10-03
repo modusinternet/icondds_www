@@ -166,7 +166,7 @@ header("Cache-Control: public, must-revalidate, proxy-revalidate");
 							var gcse = document.createElement('script');
 							gcse.type = 'text/javascript';
 							gcse.async = true;
-							gcse.setAttribute("nonce", "{CCMS_LIB:site.php;FUNC:csp_nounce}";
+							gcse.setAttribute("nonce", "{CCMS_LIB:site.php;FUNC:csp_nounce}");
 							gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//cse.google.com/cse.js?cx=' + cx + '&language=<?=$CLEAN["ccms_lng"];?>';
 							var s = document.getElementsByTagName('script')[0];
 							s.parentNode.insertBefore(gcse, s);
