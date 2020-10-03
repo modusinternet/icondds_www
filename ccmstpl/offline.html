@@ -1,4 +1,4 @@
-{CCMS_DB_PRELOAD:all,offline}<!DOCTYPE html>
+{CCMS_DB_PRELOAD:all,offline}{CCMS_LIB:site.php;FUNC:csp_header}<!DOCTYPE html>
 <html dir="{CCMS_LIB:_default.php;FUNC:ccms_lng_dir}" lang="{CCMS_LIB:_default.php;FUNC:ccms_lng}" prefix="og: http://ogp.me/ns#">
 	<head>
 		<!-- Repeated content and can be placed once in your header head template. -->
@@ -7,7 +7,7 @@
 		<!-- Should be representative of the page in reference. -->
 		<title dir="{CCMS_LIB:_default.php;FUNC:ccms_lng_dir}">{CCMS_DB:all,company-name} / {CCMS_DB:all,offline}</title>
 
-		<style>
+		<style nonce="{CCMS_LIB:site.php;FUNC:csp_nounce}">
 			{CCMS_TPL:/_css/header.html}
 
 			.reloadButton{
@@ -58,7 +58,7 @@
 				}
 			}
 		</style>
-		<script>
+		<script nonce="{CCMS_LIB:site.php;FUNC:csp_nounce}">
 			var navActiveArray = ["nl-lng","lng-{CCMS_LIB:_default.php;FUNC:ccms_lng}"];
 			var navActiveFooterArray = [];
 		</script>
@@ -90,7 +90,7 @@
 {CCMS_TPL:footer.html}
 		</main>
 {CCMS_TPL:header-body.html}
-		<script>
+		<script nonce="{CCMS_LIB:site.php;FUNC:csp_nounce}">
 			/*window.performance.mark("mark_beginning_javascript");*/
 {CCMS_TPL:footer-js.html}
 			function loadFirst(e,t,i,c){var a=document.createElement("script");a.async="true";if(i){a.integrity=i;a.crossOrigin=c;}a.readyState?a.onreadystatechange=function(){("loaded"==a.readyState||"complete"==a.readyState)&&(a.onreadystatechange=null,t())}:a.onload=function(){t()},a.src=e,document.body.appendChild(a)}
@@ -106,7 +106,7 @@
 			arg1 = 1 = build sri code based on version stored on AWS.  empty = build sri code based on version stored on our own server.
 			arg2 = a variable found in the config file that represents a partial pathway to the style sheet. (Not including details about AWS, language code, or language direction)
 			*/
-			
+
 			{CCMS_LIB:site.php;FUNC:build_css_link("","1","CSS-01","1")}
 
 			function loadJSResources(){
