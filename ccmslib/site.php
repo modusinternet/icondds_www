@@ -169,20 +169,26 @@ function build_js_link($aws_flag = null, $lng_flag = null, $path){
 
 
 /*
-$path = a variable found in the config file that represents a partial pathway to the style sheet, not including and details about AWS, language code, or language direction)
+$aws_flag = if not null append AWS link.
+$path = a variable found in the config file that represents a partial pathway to the style sheet. (Not including details about AWS, language code, or language direction.)
 */
-function build_js_sri($path){
+function build_js_sri($aws_flag, $path){
 	global $CFG;
 
 	/* If $path is not found in the config.php file then do nothing. */
 	if(!isset($CFG["RES"][$path])) return;
 
 	$buff = ",'";
+	$url = "";
 
-	if($CFG["RES"]["AWS"]){
-		$url = $CFG["RES"]["AWS"] . $CFG["RES"][$path];
+	if(isset($aws_flag)){
+		if($CFG["RES"]["AWS"]){
+			$url .= $CFG["RES"]["AWS"] . $CFG["RES"][$path];
+		} else {
+			$url .= "." . $CFG["RES"][$path];
+		}
 	} else {
-		$url = "." . $CFG["RES"][$path];
+		$url .= "." . $CFG["RES"][$path];
 	}
 
 	$qry = $CFG["DBH"]->prepare("SELECT * FROM `sri` WHERE `url` = :url LIMIT 1;");
