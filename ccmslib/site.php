@@ -253,12 +253,6 @@ function csp_header() {
 		// HAD TO COMMENT THIS OUT BECAUSE FIREFOX WAS COMPAINING ABOUT NOTHING TOO MUCH
 		//"report-uri https://".$CFG["DOMAIN"]."/".$CLEAN["ccms_lng"]."/cspViolationReport.html; ".
 
-		// Defines valid sources of JavaScript.
-		// 'unsafe-eval' is undesirable according to https://observatory.mozilla.org, but it's required by Google Custom Search Engine which doesn't properly support nonce yet. (May 7, 2020)
-		// 'unsafe-inline' is undesirable according to https://observatory.mozilla.org.
-		//"script-src 'nonce-" . $CFG["nonce"] . "' 'strict-dynamic' 'unsafe-eval' *.google.com *.googletagmanager.com; ".
-		//"script-src 'strict-dynamic' 'nonce-" . $CFG["nonce"] . "'; ".
-
 		// Defines valid sources of stylesheets or CSS.
 		//"style-src 'self' 'unsafe-inline' *.cloudfront.net *.google.com *.googletagmanager.com *.google-analytics.com *.googleapis.com; ".
 		//"style-src 'self' 'unsafe-inline' 'nonce-" . $CFG["nonce"] . "' *.googletagmanager.com *.google-analytics.com; ".
@@ -274,6 +268,7 @@ function csp_header() {
 	// 'unsafe-inline' is undesirable according to https://observatory.mozilla.org.
 	//"script-src 'nonce-" . $CFG["nonce"] . "' 'strict-dynamic' 'unsafe-eval' *.google.com *.googletagmanager.com; ".
 	if($CLEAN["ccms_tpl"] === "search"){
+		// this helps make sure Google's Custom Search Engine (CSE) will work properly on the search template.
 		$CFG["csp"] .= "script-src 'strict-dynamic' 'unsafe-eval' 'nonce-" . $CFG["nonce"] . "';";
 	} else {
 		$CFG["csp"] .= "script-src 'strict-dynamic' 'nonce-" . $CFG["nonce"] . "';";
