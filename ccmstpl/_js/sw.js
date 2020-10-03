@@ -34,10 +34,6 @@ arg3 = a variable found in the config file that represents a partial pathway to 
 arg4 = (1 = append language direction to link), (empty = do not append language direction to link)
 */
 var cacheFiles=[
-	/*
-	'{  CCMS_LIB:site.php;FUNC:load_resource("AWS")}/ccmstpl/_img/logo1.3.webp',
-	'{  CCMS_LIB:site.php;FUNC:load_resource("AWS")}/ccmstpl/_img/logo2.png',
-	*/
 	'/{CCMS_LIB:_default.php;FUNC:ccms_lng}/offline.html',
 	'{CCMS_LIB:site.php;FUNC:load_resource("AWS")}/ccmstpl/_img/ico/apple-touch-icon.png',
 	'{CCMS_LIB:site.php;FUNC:load_resource("AWS")}/ccmstpl/_img/ico/safari-pinned-tab.svg',
@@ -45,6 +41,8 @@ var cacheFiles=[
 	'{CCMS_LIB:site.php;FUNC:load_resource("AWS")}/ccmstpl/_img/ico/favicon-32x32.png',
 	'{CCMS_LIB:site.php;FUNC:load_resource("AWS")}/ccmstpl/_img/ico/favicon-16x16.png',
 	'/{CCMS_LIB:_default.php;FUNC:ccms_lng}/manifest.html',
+	'{CCMS_LIB:site.php;FUNC:load_resource("AWS")}/ccmstpl/_img/logo1.3.webp',
+	'{CCMS_LIB:site.php;FUNC:load_resource("AWS")}/ccmstpl/_img/logo1.3.png',
 	'{CCMS_LIB:site.php;FUNC:load_resource("AWS")}/ccmstpl/_img/offline_01.webp',
 	'{CCMS_LIB:site.php;FUNC:load_resource("AWS")}/ccmstpl/_img/offline_01-min.jpg',
 	'{CCMS_LIB:site.php;FUNC:build_css_link2("","1","CSS-01","1")}',
