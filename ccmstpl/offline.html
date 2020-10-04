@@ -151,6 +151,12 @@
 
 			{CCMS_LIB:site.php;FUNC:build_css_link("","1","CSS-01","1")}
 
+			document.addEventListener('DOMContentLoaded', function () {
+				document.getElementById('reloadButton').addEventListener('click', function(){
+					window.location.reload();
+				});
+			});
+
 			function loadJSResources(){
 				loadFirst("{CCMS_LIB:site.php;FUNC:build_js_link("1","","MODERNIZER")}",function(){
 
@@ -165,11 +171,7 @@
 									loadFirst("{CCMS_LIB:site.php;FUNC:build_js_link("","1","JS-01")}",function(){
 
 
-										document.addEventListener('DOMContentLoaded', function () {
-											document.getElementById('reloadButton').addEventListener('click', function(){
-												window.location.reload();
-											});
-										});
+
 
 										/*window.performance.mark("mark_end_javascript");
 										console.log(window.performance.getEntriesByName("mark_beginning_javascript"));
