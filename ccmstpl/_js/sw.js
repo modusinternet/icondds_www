@@ -43,6 +43,7 @@ var cacheFiles=[
 	'/{CCMS_LIB:_default.php;FUNC:ccms_lng}/manifest.html',
 	'{CCMS_LIB:site.php;FUNC:load_resource("AWS")}/ccmstpl/_img/logo1.3.webp',
 	'{CCMS_LIB:site.php;FUNC:load_resource("AWS")}/ccmstpl/_img/logo1.3.png',
+	'{CCMS_LIB:site.php;FUNC:load_resource("AWS")}/ccmstpl/_img/logo2.png',
 	'{CCMS_LIB:site.php;FUNC:load_resource("AWS")}/ccmstpl/_img/offline_01.webp',
 	'{CCMS_LIB:site.php;FUNC:load_resource("AWS")}/ccmstpl/_img/offline_01-min.jpg',
 	'{CCMS_LIB:site.php;FUNC:build_css_link2("","1","CSS-01","1")}',
