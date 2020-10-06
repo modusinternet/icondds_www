@@ -108,15 +108,22 @@ self.addEventListener('fetch',e=>{
 
 self.addEventListener('fetch', e => {
 	//const {request}=e;
+	console.log("1");
 
 	/* Always bypass for range requests, due to browser bugs. */
 	if(e.request.headers.has('range')) return;
+	console.log("2");
 
 	e.respondWith(async function(){
+		console.log("3");
+
 		/* Try to get from the cache. */
 
 		const cachedResponse = await caches.match(e.request);
+		console.log("4");
+
 		if(cachedResponse) return cachedResponse;
+		console.log("5");
 
 		/* Otherwise get from the network. */
 		try{
