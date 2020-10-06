@@ -58,7 +58,7 @@ var cacheFiles=[
 /* Analytics and Service Worker: https://developers.google.com/web/ilt/pwa/integrating-analytics#analytics_and_service_worker */
 /*self.importScripts('/ccmstpl/_js/analytics-helper.js');*/
 
-self.addEventListener('install',e=>{
+addEventListener('install',e=>{
 	e.waitUntil(
 		caches.open(cacheName).then(cache=>{
 			return cache.addAll(cacheFiles);
@@ -68,7 +68,7 @@ self.addEventListener('install',e=>{
 
 /* This event fires after the worker is up and running.  It looks for
 and removes old services workers and their cache based on version number. */
-self.addEventListener('activate',e=>{
+addEventListener('activate',e=>{
 	e.waitUntil(
 		caches.keys().then(keyList=>{
 			return Promise.all(keyList.map(key=>{
@@ -82,8 +82,8 @@ self.addEventListener('activate',e=>{
 
 /* Fetchs cached resources first, otherwise gets from the network.  If no
 network connection displays the offline page. */
-/*
-self.addEventListener('fetch',e=>{
+///*
+addEventListener('fetch',e=>{
 	const {request}=e;
 
 	if(request.headers.has('range')) return;
@@ -104,7 +104,7 @@ self.addEventListener('fetch',e=>{
 		}
 	}());
 });
-*/
+//*/
 
 /*
 self.addEventListener('fetch', e => {
@@ -173,8 +173,8 @@ self.addEventListener('fetch', (event) => {
 */
 
 
-///*
-self.addEventListener('fetch', (event) => {
+/*
+addEventListener('fetch', (event) => {
   event.respondWith(async function() {
 
     const cache = await caches.open(cacheName);
@@ -186,30 +186,10 @@ self.addEventListener('fetch', (event) => {
       await cache.put(event.request, networkResponse.clone());
     }());
 
-
-
-
-
-    /*
-		// Returned the cached response if we have one, otherwise return the network response.
-    //return cachedResponse || networkResponsePromise;
-		if(cachedResponse || networkResponsePromise){
-			return cachedResponse || networkResponsePromise;
-		} else {
-			// If this was a navigation, a page requested by the user via clicking on a link and not a .css or .js resource, show the offline page.
-			if(event.request.mode === 'navigate') {
-				return cache.match('/{CCMS_LIB:_default.php;FUNC:ccms_lng}/offline.html');
-			}
-		}
-		*/
-
-
-
 		try {
 			return cachedResponse || networkResponsePromise;
 		} catch(err) {
 			console.log("7");
-
 
 			if(e.request.mode === 'navigate') {
 				// If this was a navigation, a page requested by the user via clicking on a link and not a .css or .js resource, show the offline page.
@@ -219,10 +199,6 @@ self.addEventListener('fetch', (event) => {
 			// Otherwise throw.
 			throw err;
 		}
-
-
-
-
   }());
 });
-//*/
+*/
