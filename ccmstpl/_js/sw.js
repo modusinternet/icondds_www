@@ -153,7 +153,7 @@ self.addEventListener('fetch', e => {
 
 
 
-///*
+/*
 self.addEventListener('fetch', (event) => {
   event.respondWith(async function() {
 
@@ -168,6 +168,34 @@ self.addEventListener('fetch', (event) => {
 
     // Returned the cached response if we have one, otherwise return the network response.
     return cachedResponse || networkResponsePromise;
+  }());
+});
+*/
+
+
+///*
+self.addEventListener('fetch', (event) => {
+  event.respondWith(async function() {
+
+    const cache = await caches.open('cacheName');
+    const cachedResponse = await cache.match(event.request);
+    const networkResponsePromise = fetch(event.request);
+
+    event.waitUntil(async function() {
+      const networkResponse = await networkResponsePromise;
+      await cache.put(event.request, networkResponse.clone());
+    }());
+
+    // Returned the cached response if we have one, otherwise return the network response.
+    //return cachedResponse || networkResponsePromise;
+		if(cachedResponse || networkResponsePromise){
+			return cachedResponse || networkResponsePromise;
+		} else {
+			// If this was a navigation, a page requested by the user via clicking on a link and not a .css or .js resource, show the offline page.
+			if(event.request.mode === 'navigate') {
+				return cache.match('/{CCMS_LIB:_default.php;FUNC:ccms_lng}/offline.html');
+			}
+		}
   }());
 });
 //*/
