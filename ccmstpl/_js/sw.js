@@ -110,22 +110,22 @@ self.addEventListener('fetch', e => {
 	//const {request}=e;
 	console.log("1");
 
-	/* Always bypass for range requests, due to browser bugs. */
+	// Always bypass for range requests, due to browser bugs.
 	if(e.request.headers.has('range')) return;
 	console.log("2");
 
 	e.respondWith(async function() {
 		console.log("3");
 
-		/* Try to get from the cache. */
+		// Try to get from the cache.
 
-		const cachedResponse = await cache.match(e.request);
+		const cachedResponse = await caches.match(e.request);
 		console.log("4");
 
 		if(cachedResponse) return cachedResponse;
 		console.log("5");
 
-		/* Otherwise get from the network. */
+		// Otherwise get from the network.
 		try {
 			console.log("6");
 
@@ -133,16 +133,16 @@ self.addEventListener('fetch', e => {
 		} catch(err) {
 			console.log("7");
 
-			/* If this was a navigation, a page requested by the user via clicking on a link and not a .css or .js resource, show the offline page. */
+			// If this was a navigation, a page requested by the user via clicking on a link and not a .css or .js resource, show the offline page.
 
 			if(e.request.mode === 'navigate') {
 				console.log("8");
 
-				return cache.match('/{CCMS_LIB:_default.php;FUNC:ccms_lng}/offline.html');
+				return caches.match('/{CCMS_LIB:_default.php;FUNC:ccms_lng}/offline.html');
 			}
 			console.log("9");
 
-			/* Otherwise throw. */
+			// Otherwise throw.
 			throw err;
 		}
 	}());
