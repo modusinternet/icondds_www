@@ -110,7 +110,7 @@ self.addEventListener('fetch', e => {
 	//const {request}=e;
 
 	/* Always bypass for range requests, due to browser bugs. */
-	if(e.headers.has('range')) return;
+	if(e.request.headers.has('range')) return;
 
 	e.respondWith(async function(){
 		/* Try to get from the cache. */
