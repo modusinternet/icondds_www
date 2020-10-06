@@ -186,7 +186,12 @@ self.addEventListener('fetch', (event) => {
       await cache.put(event.request, networkResponse.clone());
     }());
 
-    // Returned the cached response if we have one, otherwise return the network response.
+
+
+
+
+    /*
+		// Returned the cached response if we have one, otherwise return the network response.
     //return cachedResponse || networkResponsePromise;
 		if(cachedResponse || networkResponsePromise){
 			return cachedResponse || networkResponsePromise;
@@ -196,6 +201,28 @@ self.addEventListener('fetch', (event) => {
 				return cache.match('/{CCMS_LIB:_default.php;FUNC:ccms_lng}/offline.html');
 			}
 		}
+		*/
+
+
+
+		try {
+			return cachedResponse || networkResponsePromise;
+		} catch(err) {
+			console.log("7");
+
+
+			if(e.request.mode === 'navigate') {
+				// If this was a navigation, a page requested by the user via clicking on a link and not a .css or .js resource, show the offline page.
+				return cache.match('/{CCMS_LIB:_default.php;FUNC:ccms_lng}/offline.html');
+			}
+
+			// Otherwise throw.
+			throw err;
+		}
+
+
+
+
   }());
 });
 //*/
