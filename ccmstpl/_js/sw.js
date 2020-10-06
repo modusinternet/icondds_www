@@ -157,13 +157,13 @@ self.addEventListener('fetch', e => {
 self.addEventListener('fetch', (event) => {
   event.respondWith(async function() {
 
-    //const cache = await caches.open('cacheName');
-    const cachedResponse = await caches.match(event.request);
+    const cache = await caches.open('cacheName');
+    const cachedResponse = await cache.match(event.request);
     const networkResponsePromise = fetch(event.request);
 
     event.waitUntil(async function() {
       const networkResponse = await networkResponsePromise;
-      await caches.put(event.request, networkResponse.clone());
+      await cache.put(event.request, networkResponse.clone());
     }());
 
     // Returned the cached response if we have one, otherwise return the network response.
