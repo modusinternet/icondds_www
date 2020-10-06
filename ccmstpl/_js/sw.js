@@ -177,7 +177,7 @@ self.addEventListener('fetch', (event) => {
 self.addEventListener('fetch', (event) => {
   event.respondWith(async function() {
 
-    const cache = await caches.open('cacheName');
+    const cache = await caches.open(cacheName);
     const cachedResponse = await cache.match(event.request);
     const networkResponsePromise = fetch(event.request);
 
