@@ -106,6 +106,7 @@ self.addEventListener('fetch',e=>{
 });
 */
 
+/*
 self.addEventListener('fetch', e => {
 	//const {request}=e;
 	console.log("1");
@@ -147,16 +148,16 @@ self.addEventListener('fetch', e => {
 		}
 	}());
 });
+*/
 
 
 
 
-
-/*
+///*
 self.addEventListener('fetch', (event) => {
   event.respondWith(async function() {
 
-    const cache = await caches.open('cacheName');
+    //const cache = await caches.open('cacheName');
     const cachedResponse = await cache.match(event.request);
     const networkResponsePromise = fetch(event.request);
 
@@ -169,4 +170,4 @@ self.addEventListener('fetch', (event) => {
     return cachedResponse || networkResponsePromise;
   }());
 });
-*/
+//*/
