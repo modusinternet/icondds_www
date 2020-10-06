@@ -153,7 +153,7 @@ self.addEventListener('fetch', e => {
 
 
 
-/*
+///*
 self.addEventListener('fetch', (event) => {
   event.respondWith(async function() {
 
@@ -170,7 +170,7 @@ self.addEventListener('fetch', (event) => {
     return cachedResponse || networkResponsePromise;
   }());
 });
-*/
+//*/
 
 
 /*
@@ -203,7 +203,7 @@ addEventListener('fetch', (event) => {
 });
 */
 
-
+/*
 self.addEventListener('fetch', (event) => {
   // We only want to call event.respondWith() if this is a navigation request
   // for an HTML page.
@@ -237,3 +237,4 @@ self.addEventListener('fetch', (event) => {
   // event.respondWith(), the request will be handled by the browser as if there
   // were no service worker involvement.
 });
+*/
