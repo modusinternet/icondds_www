@@ -114,7 +114,7 @@ self.addEventListener('fetch', e => {
 	if(e.request.headers.has('range')) return;
 	console.log("2");
 
-	e.respondWith(async function(){
+	e.respondWith(async function() {
 		console.log("3");
 
 		/* Try to get from the cache. */
@@ -126,16 +126,16 @@ self.addEventListener('fetch', e => {
 		console.log("5");
 
 		/* Otherwise get from the network. */
-		try{
+		try {
 			console.log("6");
 
 			return await fetch(e.request);
-		}catch(err){
+		} catch(err) {
 			console.log("7");
 
 			/* If this was a navigation, a page requested by the user via clicking on a link and not a .css or .js resource, show the offline page. */
 
-			if(e.request.mode === 'navigate'){
+			if(e.request.mode === 'navigate') {
 				console.log("8");
 
 				return caches.match('/{CCMS_LIB:_default.php;FUNC:ccms_lng}/offline.html');
