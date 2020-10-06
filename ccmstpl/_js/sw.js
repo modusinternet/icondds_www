@@ -127,13 +127,20 @@ self.addEventListener('fetch', e => {
 
 		/* Otherwise get from the network. */
 		try{
+			console.log("6");
+
 			return await fetch(e.request);
 		}catch(err){
+			console.log("7");
+
 			/* If this was a navigation, a page requested by the user via clicking on a link and not a .css or .js resource, show the offline page. */
 
-			if(e.mode === 'navigate'){
+			if(e.request.mode === 'navigate'){
+				console.log("8");
+
 				return caches.match('/{CCMS_LIB:_default.php;FUNC:ccms_lng}/offline.html');
 			}
+			console.log("9");
 
 			/* Otherwise throw. */
 			throw err;
