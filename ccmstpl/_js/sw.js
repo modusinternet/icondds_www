@@ -119,7 +119,7 @@ self.addEventListener('fetch', e => {
 
 		/* Try to get from the cache. */
 
-		const cachedResponse = await caches.match(e.request);
+		const cachedResponse = await cache.match(e.request);
 		console.log("4");
 
 		if(cachedResponse) return cachedResponse;
@@ -138,7 +138,7 @@ self.addEventListener('fetch', e => {
 			if(e.request.mode === 'navigate') {
 				console.log("8");
 
-				return caches.match('/{CCMS_LIB:_default.php;FUNC:ccms_lng}/offline.html');
+				return cache.match('/{CCMS_LIB:_default.php;FUNC:ccms_lng}/offline.html');
 			}
 			console.log("9");
 
