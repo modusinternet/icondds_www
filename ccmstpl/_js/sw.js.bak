@@ -82,77 +82,24 @@ self.addEventListener('activate',e=>{
 
 /* Fetchs cached resources first, otherwise gets from the network.  If no
 network connection displays the offline page. */
-/*
 self.addEventListener('fetch',e=>{
 	const {request}=e;
-
+	/* Always bypass for range requests, due to browser bugs. */
 	if(request.headers.has('range')) return;
-
 	e.respondWith(async function(){
-
+		/* Try to get from the cache. */
 		const cachedResponse=await caches.match(request);
 		if(cachedResponse) return cachedResponse;
-
+		/* Otherwise get from the network. */
 		try{
 			return await fetch(request);
 		}catch(err){
+			/* If this was a navigation, a page requested by the user via clicking on a link and not a .css or .js resource, show the offline page. */
 			if(request.mode==='navigate'){
 				return caches.match('/{CCMS_LIB:_default.php;FUNC:ccms_lng}/offline.html');
 			}
-
-			throw err;
-		}
-	}());
-});
-*/
-
-self.addEventListener('fetch', e => {
-	//const {request}=e;
-
-	/* Always bypass for range requests, due to browser bugs. */
-	if(e.headers.has('range')) return;
-
-	e.respondWith(async function(){
-		/* Try to get from the cache. */
-
-		const cachedResponse = await caches.match(e.request);
-		if(cachedResponse) return cachedResponse;
-
-		/* Otherwise get from the network. */
-		try{
-			return await fetch(e.request);
-		}catch(err){
-			/* If this was a navigation, a page requested by the user via clicking on a link and not a .css or .js resource, show the offline page. */
-
-			if(e.mode === 'navigate'){
-				return caches.match('/{CCMS_LIB:_default.php;FUNC:ccms_lng}/offline.html');
-			}
-
 			/* Otherwise throw. */
 			throw err;
 		}
 	}());
 });
-
-
-
-
-
-/*
-self.addEventListener('fetch', (event) => {
-  event.respondWith(async function() {
-
-    const cache = await caches.open('cacheName');
-    const cachedResponse = await cache.match(event.request);
-    const networkResponsePromise = fetch(event.request);
-
-    event.waitUntil(async function() {
-      const networkResponse = await networkResponsePromise;
-      await cache.put(event.request, networkResponse.clone());
-    }());
-
-    // Returned the cached response if we have one, otherwise return the network response.
-    return cachedResponse || networkResponsePromise;
-  }());
-});
-*/
