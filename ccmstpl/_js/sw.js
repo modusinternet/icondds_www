@@ -153,7 +153,7 @@ self.addEventListener('fetch', e => {
 
 
 
-///*
+/*
 self.addEventListener('fetch', (event) => {
   event.respondWith(async function() {
 
@@ -170,7 +170,7 @@ self.addEventListener('fetch', (event) => {
     return cachedResponse || networkResponsePromise;
   }());
 });
-//*/
+*/
 
 
 /*
@@ -238,3 +238,35 @@ self.addEventListener('fetch', (event) => {
   // were no service worker involvement.
 });
 */
+
+
+///*
+self.addEventListener('fetch', (event) => {
+  event.respondWith(async function() {
+
+    try {
+			const cache = await caches.open(cacheName);
+	    const cachedResponse = await cache.match(event.request);
+	    const networkResponsePromise = fetch(event.request);
+
+	    event.waitUntil(async function() {
+	      const networkResponse = await networkResponsePromise;
+	      await cache.put(event.request, networkResponse.clone());
+	    }());
+
+	    // Returned the cached response if we have one, otherwise return the network response.
+	    return cachedResponse || networkResponsePromise;
+		} catch (error) {
+			// catch is only triggered if an exception is thrown, which is likely
+			// due to a network error.
+			// If fetch() returns a valid HTTP response with a response code in
+			// the 4xx or 5xx range, the catch() will NOT be called.
+			console.log('Fetch failed; returning offline page instead.', error);
+
+			const cache = await caches.open(cacheName);
+			const cachedResponse = await cache.match('/{CCMS_LIB:_default.php;FUNC:ccms_lng}/offline.html');
+			return cachedResponse;
+		}
+  }());
+});
+//*/
