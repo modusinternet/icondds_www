@@ -273,10 +273,10 @@ addEventListener('fetch', (event) => {
 */
 
 addEventListener('fetch', e => {
-	//console.log('Fetching: ' + e.request);
+	console.log('Fetching: ', request);
 
   e.respondWith(
-		console.log('Fetching: ', e.request);
+		//console.log('Fetching: ', e.request);
 
 		// If there is no internet
 		fetch(e.request).catch((error) =>
