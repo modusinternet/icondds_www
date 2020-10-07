@@ -286,12 +286,12 @@ addEventListener('fetch', e => {
 */
 
 addEventListener('fetch', e => {
-	e.respondWith(async function() {
+	e.respondWith((async () => {
 		console.log('Fetching: ', e.request.url);
 
 		// If there is no internet
 		fetch(e.request).catch((error) =>
 			caches.match('/{CCMS_LIB:_default.php;FUNC:ccms_lng}/offline.html')
 		)
-	}());
+	})());
 });
