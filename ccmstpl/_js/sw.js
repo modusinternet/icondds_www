@@ -274,9 +274,9 @@ addEventListener('fetch', (event) => {
 
 ///*
 addEventListener('fetch', e => {
-	e.respondWith(
-		console.log('Fetching: ', e.request.url);
+	console.log('Fetching: ', e.request.url);
 
+	e.respondWith(
 		// If there is no internet
 		fetch(e.request).catch((error) =>
 			caches.match('/{CCMS_LIB:_default.php;FUNC:ccms_lng}/offline.html')
