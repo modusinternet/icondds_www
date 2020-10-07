@@ -273,7 +273,7 @@ addEventListener('fetch', (event) => {
 */
 
 addEventListener('fetch', e => {
-	console.log('Fetching: ', request);
+	console.log('Fetching: ', e.request);
 
   e.respondWith(
 		//console.log('Fetching: ', e.request);
