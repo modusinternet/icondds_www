@@ -240,8 +240,9 @@ self.addEventListener('fetch', (event) => {
 */
 
 
-///*
-self.addEventListener('fetch', (event) => {
+/*
+//self.addEventListener('fetch', (event) => {
+addEventListener('fetch', (event) => {
   event.respondWith(async function() {
 
     try {
@@ -269,4 +270,14 @@ self.addEventListener('fetch', (event) => {
 		}
   }());
 });
-//*/
+*/
+
+addEventListener('fetch', e => {
+    console.log('Service Worker: Fetching');
+    e.respondWith(
+        // If there is no internet
+        fetch(e.request).catch((error) =>
+            caches.match('/{CCMS_LIB:_default.php;FUNC:ccms_lng}/offline.html')
+        )
+    );
+});
