@@ -59,6 +59,12 @@ var cacheFiles=[
 /*self.importScripts('/ccmstpl/_js/analytics-helper.js');*/
 
 /*
+Important resources used in the assembly of this services code:
+- https://googlechrome.github.io/samples/service-worker/custom-offline-page/
+- https://developers.google.com/web/updates/2017/02/navigation-preload
+*/
+
+/*
 addEventListener('install',e=>{
 	e.waitUntil(
 		caches.open(cacheName).then(cache=>{
@@ -68,7 +74,7 @@ addEventListener('install',e=>{
 });
 */
 self.addEventListener('install', (event) => {
-  event.waitUntil((async () => {
+  event.waitUntil((async() => {
 		const cache = await caches.open(cacheName).then(cache => {
 			return cache.addAll(cacheFiles);
 		})
@@ -91,10 +97,10 @@ self.addEventListener('activate',e=>{
 });
 */
 self.addEventListener('activate', (event) => {
-  event.waitUntil((async () => {
+  event.waitUntil((async() => {
     // Enable navigation preload if it's supported.
     // See https://developers.google.com/web/updates/2017/02/navigation-preload
-    if ('navigationPreload' in self.registration) {
+    if('navigationPreload' in self.registration) {
       await self.registration.navigationPreload.enable();
     }
   })());
