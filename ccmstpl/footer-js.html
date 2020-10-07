@@ -1,6 +1,7 @@
 /* ----------
 ServiceWorker Code Begin.
 ---------- */
+/*
 if(navigator.serviceWorker){
 	window.addEventListener('load',() => {
 		navigator.serviceWorker
@@ -11,6 +12,17 @@ if(navigator.serviceWorker){
 } else {
 	console.log('Service Worker not supported.');
 }
+*/
+
+
+if('serviceWorker' in navigator) {
+  navigator.serviceWorker
+		.register('/sw.js')
+		.then(console.log('[ServiceWorker] Registered Successfully'))
+		.catch(err => console.log(`[ServiceWorker] Error: ${err}`));
+}
+
+
 /* ----------
 ServiceWorker Code End.
 ---------- */

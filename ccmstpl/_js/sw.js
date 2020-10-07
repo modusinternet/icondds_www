@@ -69,18 +69,15 @@ addEventListener('install',e=>{
 */
 self.addEventListener('install', (event) => {
   event.waitUntil((async () => {
-    //const cache = await caches.open(cacheName);
-    // Setting {cache: 'reload'} in the new request will ensure that the response
-    // isn't fulfilled from the HTTP cache; i.e., it will be from the network.
-    //await cache.add(new Request(OFFLINE_URL, {cache: 'reload'}));
 		const cache = await caches.open(cacheName).then(cache => {
 			return cache.addAll(cacheFiles);
 		})
   })());
 });
 
-/* This event fires after the worker is up and running.  It looks for
-and removes old services workers and their cache based on version number. */
+
+/*
+// This event fires after the worker is up and running.  It looks for and removes old services workers and their cache based on version number.
 self.addEventListener('activate',e=>{
 	e.waitUntil(
 		caches.keys().then(keyList=>{
@@ -92,14 +89,7 @@ self.addEventListener('activate',e=>{
 		})
 	);
 });
-
-
-
-
-
-
-
-/*
+*/
 self.addEventListener('activate', (event) => {
   event.waitUntil((async () => {
     // Enable navigation preload if it's supported.
@@ -112,6 +102,13 @@ self.addEventListener('activate', (event) => {
   // Tell the active service worker to take control of the page immediately.
   self.clients.claim();
 });
+
+
+
+
+
+/*
+
 
 self.addEventListener('fetch', (event) => {
   // We only want to call event.respondWith() if this is a navigation request
