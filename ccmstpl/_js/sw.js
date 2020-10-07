@@ -272,7 +272,7 @@ addEventListener('fetch', (event) => {
 });
 */
 
-/*
+///*
 addEventListener('fetch', e => {
 	e.respondWith(
 		console.log('Fetching: ', e.request.url);
@@ -283,8 +283,9 @@ addEventListener('fetch', e => {
 		)
 	);
 });
-*/
+//*/
 
+/*
 addEventListener("fetch", e => {
 	e.respondWith(
 		console.log("Fetching: ", e.request.url);
@@ -295,3 +296,4 @@ addEventListener("fetch", e => {
 		)
 	);
 });
+*/
