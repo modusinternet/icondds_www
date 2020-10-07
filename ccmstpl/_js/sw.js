@@ -58,6 +58,7 @@ var cacheFiles=[
 /* Analytics and Service Worker: https://developers.google.com/web/ilt/pwa/integrating-analytics#analytics_and_service_worker */
 /*self.importScripts('/ccmstpl/_js/analytics-helper.js');*/
 
+/*
 addEventListener('install',e=>{
 	e.waitUntil(
 		caches.open(cacheName).then(cache=>{
@@ -65,10 +66,22 @@ addEventListener('install',e=>{
 		})
 	);
 });
+*/
+self.addEventListener('install', (event) => {
+  event.waitUntil((async () => {
+    //const cache = await caches.open(cacheName);
+    // Setting {cache: 'reload'} in the new request will ensure that the response
+    // isn't fulfilled from the HTTP cache; i.e., it will be from the network.
+    //await cache.add(new Request(OFFLINE_URL, {cache: 'reload'}));
+		const cache = await caches.open(cacheName).then(cache => {
+			return cache.addAll(cacheFiles);
+		})
+  })());
+});
 
 /* This event fires after the worker is up and running.  It looks for
 and removes old services workers and their cache based on version number. */
-addEventListener('activate',e=>{
+self.addEventListener('activate',e=>{
 	e.waitUntil(
 		caches.keys().then(keyList=>{
 			return Promise.all(keyList.map(key=>{
@@ -79,6 +92,68 @@ addEventListener('activate',e=>{
 		})
 	);
 });
+
+
+
+
+
+
+
+/*
+self.addEventListener('activate', (event) => {
+  event.waitUntil((async () => {
+    // Enable navigation preload if it's supported.
+    // See https://developers.google.com/web/updates/2017/02/navigation-preload
+    if ('navigationPreload' in self.registration) {
+      await self.registration.navigationPreload.enable();
+    }
+  })());
+
+  // Tell the active service worker to take control of the page immediately.
+  self.clients.claim();
+});
+
+self.addEventListener('fetch', (event) => {
+  // We only want to call event.respondWith() if this is a navigation request
+  // for an HTML page.
+  if (event.request.mode === 'navigate') {
+    event.respondWith((async () => {
+      try {
+        // First, try to use the navigation preload response if it's supported.
+        const preloadResponse = await event.preloadResponse;
+        if (preloadResponse) {
+          return preloadResponse;
+        }
+
+        const networkResponse = await fetch(event.request);
+        return networkResponse;
+      } catch (error) {
+        // catch is only triggered if an exception is thrown, which is likely
+        // due to a network error.
+        // If fetch() returns a valid HTTP response with a response code in
+        // the 4xx or 5xx range, the catch() will NOT be called.
+        console.log('Fetch failed; returning offline page instead.', error);
+
+        const cache = await caches.open(CACHE_NAME);
+        const cachedResponse = await cache.match(OFFLINE_URL);
+        return cachedResponse;
+      }
+    })());
+  }
+
+  // If our if() condition is false, then this fetch handler won't intercept the
+  // request. If there are any other fetch handlers registered, they will get a
+  // chance to call event.respondWith(). If no fetch handlers call
+  // event.respondWith(), the request will be handled by the browser as if there
+  // were no service worker involvement.
+});
+*/
+
+
+
+
+
+
 
 /* Fetchs cached resources first, otherwise gets from the network.  If no
 network connection displays the offline page. */
