@@ -110,24 +110,18 @@ self.addEventListener('activate', (event) => {
 });
 
 
-
-
-
 /*
-
-
 self.addEventListener('fetch', (event) => {
   // We only want to call event.respondWith() if this is a navigation request
   // for an HTML page.
-  if (event.request.mode === 'navigate') {
-    event.respondWith((async () => {
+  if(event.request.mode === 'navigate') {
+    event.respondWith((async() => {
       try {
         // First, try to use the navigation preload response if it's supported.
         const preloadResponse = await event.preloadResponse;
-        if (preloadResponse) {
-          return preloadResponse;
-        }
+        if(preloadResponse) return preloadResponse;
 
+				// If navigation preload is not supported then fall back to fetch.
         const networkResponse = await fetch(event.request);
         return networkResponse;
       } catch (error) {
@@ -151,6 +145,21 @@ self.addEventListener('fetch', (event) => {
   // were no service worker involvement.
 });
 */
+self.addEventListener('fetch', event => {
+  event.respondWith(async function() {
+    // Respond from the cache if we can
+    const cachedResponse = await caches.match(event.request);
+    if(cachedResponse) return cachedResponse;
+
+    // Else, use the preloaded response, if it's there
+    const response = await event.preloadResponse;
+    if(response) return response;
+
+    // Else try the network.
+    return fetch(event.request);
+  }());
+});
+
 
 
 
@@ -350,7 +359,7 @@ addEventListener('fetch', (event) => {
 });
 */
 
-///*
+/*
 addEventListener('fetch', e => {
 	console.log('Fetching: ', e.request.url);
 
@@ -361,7 +370,7 @@ addEventListener('fetch', e => {
 		)
 	);
 });
-//*/
+*/
 
 /*
 addEventListener("fetch", e => {
