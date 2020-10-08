@@ -101,7 +101,10 @@ self.addEventListener('activate', (event) => {
     // Enable navigation preload if it's supported.
     // See https://developers.google.com/web/updates/2017/02/navigation-preload
     if('navigationPreload' in self.registration) {
-      await self.registration.navigationPreload.enable();
+      console.log('Navigation Preload enabled.');
+			await self.registration.navigationPreload.enable();
+    } else {
+			console.log('Navigation Preload NOT enabled.');
     }
   })());
 
