@@ -150,7 +150,7 @@ self.addEventListener('fetch', event => {
     // Respond from the cache if we can
     const cachedResponse = await caches.match(event.request);
     if(cachedResponse) {
-			console.log('caches.match: ', event.request.url);
+			console.log('caches.match: ', event.request);
 			return cachedResponse;
 		}
 
