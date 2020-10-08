@@ -150,19 +150,23 @@ self.addEventListener('fetch', event => {
     // Respond from the cache if we can
     const cachedResponse = await caches.match(event.request);
     if(cachedResponse) {
-			console.log('caches.match: ', event.request.url);
+			console.log('cachedResponse: ', event.request.url);
 			return cachedResponse;
 		}
 
     // Else, use the preloaded response, if it's there
-    const response = await event.preloadResponse;
-    if(response) {
+    const preloadResponse = await event.preloadResponse;
+    if(preloadResponse) {
 			console.log('preloadResponse: ', event.request.url);
-			return response;
+			return preloadResponse;
 		}
 
     // Else try the network.
-    return fetch(event.request);
+		const fetchResponse = await fetch(event.request);
+		if(fetchResponse) {
+			console.log('fetchResponse: ', event.request.url);
+			return fetchResponse;
+		}
   }());
 });
 
