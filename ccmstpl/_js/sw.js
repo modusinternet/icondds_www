@@ -156,7 +156,10 @@ self.addEventListener('fetch', event => {
 
     // Else, use the preloaded response, if it's there
     const response = await event.preloadResponse;
-    if(response) return response;
+    if(response) {
+			console.log('preloadResponse: ', event.request.url);
+			return response;
+		}
 
     // Else try the network.
     return fetch(event.request);
