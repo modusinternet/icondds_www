@@ -149,7 +149,10 @@ self.addEventListener('fetch', event => {
   event.respondWith(async function() {
     // Respond from the cache if we can
     const cachedResponse = await caches.match(event.request);
-    if(cachedResponse) return cachedResponse;
+    if(cachedResponse) {
+			console.log('caches.match: ', e.request.url);
+			return cachedResponse;
+		}
 
     // Else, use the preloaded response, if it's there
     const response = await event.preloadResponse;
