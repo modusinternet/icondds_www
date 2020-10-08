@@ -150,26 +150,40 @@ self.addEventListener('fetch', (event) => {
 */
 self.addEventListener('fetch', event => {
   event.respondWith(async function() {
-    // Respond from the cache if we can
-    const cachedResponse = await caches.match(event.request);
-    if(cachedResponse) {
-			console.log('cachedResponse: ', event.request.url);
+		try {
+			// Respond from the cache if we can
+	    const cachedResponse = await caches.match(event.request);
+	    if(cachedResponse) {
+				console.log('cachedResponse: ', event.request.url);
+				return cachedResponse;
+			}
+
+	    // Else, use the preloaded response, if it's there
+	    const preloadResponse = await event.preloadResponse;
+	    if(preloadResponse) {
+				console.log('preloadResponse: ', event.request.url);
+				return preloadResponse;
+			}
+
+	    // Else try the network.
+			const fetchResponse = await fetch(event.request);
+			if(fetchResponse) {
+				console.log('fetchResponse: ', event.request.url);
+				return fetchResponse;
+			}
+		}	catch (error) {
+ 			// catch is only triggered if an exception is thrown, which is likely
+ 			// due to a network error.
+ 			// If fetch() returns a valid HTTP response with a response code in
+ 			// the 4xx or 5xx range, the catch() will NOT be called.
+ 			console.log('Fetch failed; returning offline page instead.', error);
+
+			const cache = await caches.open(cacheName);
+			const cachedResponse = await cache.match('/{CCMS_LIB:_default.php;FUNC:ccms_lng}/offline.html');
 			return cachedResponse;
-		}
+ 		}
 
-    // Else, use the preloaded response, if it's there
-    const preloadResponse = await event.preloadResponse;
-    if(preloadResponse) {
-			console.log('preloadResponse: ', event.request.url);
-			return preloadResponse;
-		}
 
-    // Else try the network.
-		const fetchResponse = await fetch(event.request);
-		if(fetchResponse) {
-			console.log('fetchResponse: ', event.request.url);
-			return fetchResponse;
-		}
   }());
 });
 
