@@ -167,6 +167,12 @@ self.addEventListener('fetch', event => {
 
 	    // Else try the network.
 			const fetchResponse = await fetch(event.request);
+
+			event.waitUntil(async function() {
+				const fetchResponseArg = await fetchResponse;
+				await cache.put(event.request, fetchResponseArg.clone());
+			}());
+
 			if(fetchResponse) {
 				console.log('fetchResponse: ', event.request.url);
 				return fetchResponse;
