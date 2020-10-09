@@ -150,9 +150,12 @@ self.addEventListener('fetch', (event) => {
 */
 self.addEventListener('fetch', event => {
   event.respondWith(async function() {
+
+		const cache = await caches.open(cacheName);
+
 		try {
 			// Respond from the cache if we can
-	    const cachedResponse = await caches.match(event.request);
+	    const cachedResponse = await cache.match(event.request);
 	    if(cachedResponse) {
 				console.log('cachedResponse: ', event.request.url);
 				return cachedResponse;
@@ -170,13 +173,14 @@ self.addEventListener('fetch', event => {
 
 			event.waitUntil(async function() {
 				const fetchResponseArg = await fetchResponse;
-				await caches.put(event.request, fetchResponseArg.clone());
+				await cache.put(event.request, fetchResponseArg.clone());
 			}());
 
 			if(fetchResponse) {
 				console.log('fetchResponse: ', event.request.url);
 				return fetchResponse;
 			}
+
 		}	catch (error) {
  			// catch is only triggered if an exception is thrown, which is likely
  			// due to a network error.
