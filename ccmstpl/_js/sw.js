@@ -170,7 +170,7 @@ self.addEventListener('fetch', event => {
 
 			event.waitUntil(async function() {
 				const fetchResponseArg = await fetchResponse;
-				await cache.put(event.request, fetchResponseArg.clone());
+				await caches.put(event.request, fetchResponseArg.clone());
 			}());
 
 			if(fetchResponse) {
