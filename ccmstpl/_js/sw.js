@@ -154,14 +154,16 @@ self.addEventListener('fetch', event => {
 		const cache = await caches.open(cacheName);
 
 		try {
-			// Respond from the cache if we can
+
+			// Respond from the cache, if we already have a copy.
 	    const cachedResponse = await cache.match(event.request);
 	    if(cachedResponse) {
 				console.log('cachedResponse: ', event.request.url);
 				return cachedResponse;
 			}
 
-	    // Else, use the preloaded response, if it's there
+	    // Else, use the preloaded response, if its supported on this browser and then from
+			// the cache, if we already have a copy.
 	    const preloadResponse = await event.preloadResponse;
 	    if(preloadResponse) {
 				console.log('preloadResponse: ', event.request.url);
@@ -171,6 +173,8 @@ self.addEventListener('fetch', event => {
 	    // Else try the network.
 			const fetchResponse = await fetch(event.request);
 
+			// Save anything we get from fetchResponse to Cache Storage in the browser so we don't
+			// have to check the nextwork for that item nexttime.
 			event.waitUntil(async function() {
 				const fetchResponseArg = await fetchResponse;
 				await cache.put(event.request, fetchResponseArg.clone());
@@ -182,12 +186,10 @@ self.addEventListener('fetch', event => {
 			}
 
 		}	catch (error) {
- 			// catch is only triggered if an exception is thrown, which is likely
- 			// due to a network error.
- 			// If fetch() returns a valid HTTP response with a response code in
- 			// the 4xx or 5xx range, the catch() will NOT be called.
+ 			// catch() is only triggered if an exception is thrown, either because the resource requested
+			// returned an error or due to a network problem so display the previoutly downloaded
+			// offline template instead.
  			console.log('Fetch failed; returning offline page instead.', error);
-
 			const cache = await caches.open(cacheName);
 			const cachedResponse = await cache.match('/{CCMS_LIB:_default.php;FUNC:ccms_lng}/offline.html');
 			return cachedResponse;
