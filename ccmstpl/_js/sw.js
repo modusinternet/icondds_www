@@ -175,13 +175,16 @@ self.addEventListener('fetch', event => {
 
 			// Save anything we get from fetchResponse to Cache Storage in the browser so we don't
 			// have to check the nextwork for that item nexttime.
+			/*
 			event.waitUntil(async function() {
 				const fetchResponseArg = await fetchResponse;
 				await cache.put(event.request, fetchResponseArg.clone());
 			}());
+			*/
 
 			if(fetchResponse) {
 				console.log('fetchResponse: ', event.request.url);
+				await cache.put(event.request, fetchResponse.clone());
 				return fetchResponse;
 			}
 
