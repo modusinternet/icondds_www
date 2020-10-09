@@ -164,11 +164,13 @@ self.addEventListener('fetch', event => {
 
 	    // Else, use the preloaded response, if its supported on this browser and then from
 			// the cache, if we already have a copy.
-	    const preloadResponse = await event.preloadResponse;
+	    /*
+			const preloadResponse = await event.preloadResponse;
 	    if(preloadResponse) {
 				console.log('preloadResponse: ', event.request.url);
 				return preloadResponse;
 			}
+			*/
 
 	    // Else try the network.
 			const fetchResponse = await fetch(event.request);
@@ -184,7 +186,7 @@ self.addEventListener('fetch', event => {
 
 			if(fetchResponse) {
 				console.log('fetchResponse: ', event.request.url);
-				await cache.put(event.request, fetchResponse.clone());
+				//await cache.put(event.request, fetchResponse.clone());
 				return fetchResponse;
 			}
 
