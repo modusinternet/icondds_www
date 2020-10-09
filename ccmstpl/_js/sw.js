@@ -188,8 +188,6 @@ self.addEventListener('fetch', event => {
 			const cachedResponse = await cache.match('/{CCMS_LIB:_default.php;FUNC:ccms_lng}/offline.html');
 			return cachedResponse;
  		}
-
-
   }());
 });
 
