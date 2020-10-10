@@ -84,11 +84,11 @@ self.addEventListener('install', (event) => {
 
 /*
 // This event fires after the worker is up and running.  It looks for and removes old services workers and their cache based on version number.
-self.addEventListener('activate',e=>{
+self.addEventListener('activate', e => {
 	e.waitUntil(
-		caches.keys().then(keyList=>{
-			return Promise.all(keyList.map(key=>{
-				if(key!==cacheName) {
+		caches.keys().then(keyList => {
+			return Promise.all(keyList.map(key => {
+				if(key !== cacheName) {
 					return caches.delete(key);
 				}
 			}));
@@ -96,6 +96,7 @@ self.addEventListener('activate',e=>{
 	);
 });
 */
+/*
 self.addEventListener('activate', (event) => {
   event.waitUntil((async() => {
     // Enable navigation preload if it's supported.
@@ -107,11 +108,19 @@ self.addEventListener('activate', (event) => {
 			console.log('Navigation Preload NOT enabled.');
     }
   })());
-
   // Tell the active service worker to take control of the page immediately.
   //self.clients.claim();
 });
-
+*/
+self.addEventListener('activate', (event) => {
+  event.waitUntil((async() => {
+		caches.keys().then(keyList => {
+			return Promise.all(keyList.map(key => {
+				if(key !== cacheName) return caches.delete(key);
+			}));
+		})
+	})());
+});
 
 /*
 self.addEventListener('fetch', (event) => {
