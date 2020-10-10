@@ -201,7 +201,7 @@ self.addEventListener('fetch', event => {
 
 		}	catch (error) {
  			// catch() is only triggered if an exception is thrown, either because the resource requested
-			// returned an error or due to a network problem so display the previoutly downloaded
+			// returned an error or due to a network problem so display the previously downloaded
 			// offline template instead.
  			console.log('Fetch failed; returning offline page instead.', error);
 			const cache = await caches.open(cacheName);
