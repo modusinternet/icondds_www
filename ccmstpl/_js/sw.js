@@ -195,7 +195,7 @@ self.addEventListener('fetch', event => {
 
 			if(fetchResponse) {
 				console.log('fetchResponse: ', event.request.url);
-				//await cache.put(event.request, fetchResponse.clone());
+				await cache.put(event.request, fetchResponse.clone());
 				return fetchResponse;
 			}
 
