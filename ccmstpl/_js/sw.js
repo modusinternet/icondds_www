@@ -55,8 +55,11 @@ var cacheFiles=[
 	'{CCMS_LIB:site.php;FUNC:build_js_link("","1","JS-01")}'
 ];
 
-/* Analytics and Service Worker: https://developers.google.com/web/ilt/pwa/integrating-analytics#analytics_and_service_worker */
-/*self.importScripts('/ccmstpl/_js/analytics-helper.js');*/
+/*
+Analytics and Service Worker:
+https://developers.google.com/web/ilt/pwa/integrating-analytics#analytics_and_service_worker
+self.importScripts('/ccmstpl/_js/analytics-helper.js');
+*/
 
 /*
 Important resources used in the assembly of this services code:
@@ -82,36 +85,33 @@ self.addEventListener('activate', (event) => {
 	})());
 });
 
-self.addEventListener('fetch', event => {
-  event.respondWith(async function() {
+self.addEventListener('fetch', (event) => {
+  event.respondWith((async() => {
 
 		const cache = await caches.open(cacheName);
 
 		try {
-			// Respond from the cache, if we already have a copy.
+			/* Respond from the cache, if we already have a copy. */
 	    const cachedResponse = await cache.match(event.request);
 	    if(cachedResponse) {
 				console.log('cachedResponse: ', event.request.url);
 				return cachedResponse;
 			}
 
-	    // Else try the network.
+	    /* Else try the network. */
 			const fetchResponse = await fetch(event.request);
 			if(fetchResponse) {
 				console.log('fetchResponse: ', event.request.url);
-				// Save anything we get from fetchResponse to Cache Storage in the browser so we don't
-				// have to check the nextwork for that item nexttime.
+				/* Save anything we get from fetchResponse to Cache Storage in the browser so we don't have to check the nextwork for that item nexttime. */
 				await cache.put(event.request, fetchResponse.clone());
 				return fetchResponse;
 			}
 		}	catch (error) {
- 			// catch() is only triggered if an exception is thrown, either because the resource requested
-			// returned an error or due to a network problem so display the previously downloaded
-			// offline template instead.
+ 			/* catch() is only triggered if an exception is thrown, either because the resource requested returned an error or due to a network problem so display the previously downloaded offline template instead. */
  			console.log('Fetch failed; returning offline page instead.', error);
 			const cache = await caches.open(cacheName);
 			const cachedResponse = await cache.match('/{CCMS_LIB:_default.php;FUNC:ccms_lng}/offline.html');
 			return cachedResponse;
  		}
-  }());
+  })());
 });
