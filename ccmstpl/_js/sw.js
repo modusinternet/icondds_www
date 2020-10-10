@@ -24,7 +24,7 @@ Add these to the right box under Whitelist Headers:
 Then click the 'Yes, Edit' button at the bottom and give it about 10 minutes to propagate through the system and test using Chrome.
 */
 
-const cacheName='{CCMS_LIB:_default.php;FUNC:ccms_lng}-2020.10.09-01';
+const cacheName='{CCMS_LIB:_default.php;FUNC:ccms_lng}-2020.10.10-01';
 
 /*
 Argument details for build_css_link2() and build_js_link() function calls:
@@ -64,15 +64,6 @@ Important resources used in the assembly of this services code:
 - https://developers.google.com/web/updates/2017/02/navigation-preload
 */
 
-/*
-addEventListener('install',e=>{
-	e.waitUntil(
-		caches.open(cacheName).then(cache=>{
-			return cache.addAll(cacheFiles);
-		})
-	);
-});
-*/
 self.addEventListener('install', (event) => {
   event.waitUntil((async() => {
 		const cache = await caches.open(cacheName).then(cache => {
@@ -81,37 +72,6 @@ self.addEventListener('install', (event) => {
   })());
 });
 
-
-/*
-// This event fires after the worker is up and running.  It looks for and removes old services workers and their cache based on version number.
-self.addEventListener('activate', e => {
-	e.waitUntil(
-		caches.keys().then(keyList => {
-			return Promise.all(keyList.map(key => {
-				if(key !== cacheName) {
-					return caches.delete(key);
-				}
-			}));
-		})
-	);
-});
-*/
-/*
-self.addEventListener('activate', (event) => {
-  event.waitUntil((async() => {
-    // Enable navigation preload if it's supported.
-    // See https://developers.google.com/web/updates/2017/02/navigation-preload
-    if('navigationPreload' in self.registration) {
-      console.log('Navigation Preload enabled.');
-			await self.registration.navigationPreload.enable();
-    } else {
-			console.log('Navigation Preload NOT enabled.');
-    }
-  })());
-  // Tell the active service worker to take control of the page immediately.
-  //self.clients.claim();
-});
-*/
 self.addEventListener('activate', (event) => {
   event.waitUntil((async() => {
 		caches.keys().then(keyList => {
@@ -122,48 +82,12 @@ self.addEventListener('activate', (event) => {
 	})());
 });
 
-/*
 self.addEventListener('fetch', (event) => {
-  // We only want to call event.respondWith() if this is a navigation request
-  // for an HTML page.
-  if(event.request.mode === 'navigate') {
-    event.respondWith((async() => {
-      try {
-        // First, try to use the navigation preload response if it's supported.
-        const preloadResponse = await event.preloadResponse;
-        if(preloadResponse) return preloadResponse;
-
-				// If navigation preload is not supported then fall back to fetch.
-        const networkResponse = await fetch(event.request);
-        return networkResponse;
-      } catch (error) {
-        // catch is only triggered if an exception is thrown, which is likely
-        // due to a network error.
-        // If fetch() returns a valid HTTP response with a response code in
-        // the 4xx or 5xx range, the catch() will NOT be called.
-        console.log('Fetch failed; returning offline page instead.', error);
-
-        const cache = await caches.open(CACHE_NAME);
-        const cachedResponse = await cache.match(OFFLINE_URL);
-        return cachedResponse;
-      }
-    })());
-  }
-
-  // If our if() condition is false, then this fetch handler won't intercept the
-  // request. If there are any other fetch handlers registered, they will get a
-  // chance to call event.respondWith(). If no fetch handlers call
-  // event.respondWith(), the request will be handled by the browser as if there
-  // were no service worker involvement.
-});
-*/
-self.addEventListener('fetch', event => {
-  event.respondWith(async function() {
+  event.respondWith((async() => {
 
 		const cache = await caches.open(cacheName);
 
 		try {
-
 			// Respond from the cache, if we already have a copy.
 	    const cachedResponse = await cache.match(event.request);
 	    if(cachedResponse) {
@@ -171,34 +95,15 @@ self.addEventListener('fetch', event => {
 				return cachedResponse;
 			}
 
-	    // Else, use the preloaded response, if its supported on this browser and then from
-			// the cache, if we already have a copy.
-	    /*
-			const preloadResponse = await event.preloadResponse;
-	    if(preloadResponse) {
-				console.log('preloadResponse: ', event.request.url);
-				return preloadResponse;
-			}
-			*/
-
 	    // Else try the network.
 			const fetchResponse = await fetch(event.request);
-
-			// Save anything we get from fetchResponse to Cache Storage in the browser so we don't
-			// have to check the nextwork for that item nexttime.
-			/*
-			event.waitUntil(async function() {
-				const fetchResponseArg = await fetchResponse;
-				await cache.put(event.request, fetchResponseArg.clone());
-			}());
-			*/
-
 			if(fetchResponse) {
 				console.log('fetchResponse: ', event.request.url);
+				// Save anything we get from fetchResponse to Cache Storage in the browser so we don't
+				// have to check the nextwork for that item nexttime.
 				await cache.put(event.request, fetchResponse.clone());
 				return fetchResponse;
 			}
-
 		}	catch (error) {
  			// catch() is only triggered if an exception is thrown, either because the resource requested
 			// returned an error or due to a network problem so display the previously downloaded
@@ -208,230 +113,5 @@ self.addEventListener('fetch', event => {
 			const cachedResponse = await cache.match('/{CCMS_LIB:_default.php;FUNC:ccms_lng}/offline.html');
 			return cachedResponse;
  		}
-  }());
+  })());
 });
-
-
-
-
-
-
-
-
-/* Fetchs cached resources first, otherwise gets from the network.  If no
-network connection displays the offline page. */
-/*
-addEventListener('fetch',e=>{
-	const {request}=e;
-
-	if(request.headers.has('range')) return;
-
-	e.respondWith(async function(){
-
-		const cachedResponse=await caches.match(request);
-		if(cachedResponse) return cachedResponse;
-
-		try{
-			return await fetch(request);
-		}catch(err){
-			if(request.mode==='navigate'){
-				return caches.match('/{CCMS_LIB:_default.php;FUNC:ccms_lng}/offline.html');
-			}
-
-			throw err;
-		}
-	}());
-});
-*/
-
-/*
-self.addEventListener('fetch', e => {
-	//const {request}=e;
-	console.log("1");
-
-	// Always bypass for range requests, due to browser bugs.
-	if(e.request.headers.has('range')) return;
-	console.log("2");
-
-	e.respondWith(async function() {
-		console.log("3");
-
-		// Try to get from the cache.
-
-		const cachedResponse = await caches.match(e.request);
-		console.log("4");
-
-		if(cachedResponse) return cachedResponse;
-		console.log("5");
-
-		// Otherwise get from the network.
-		try {
-			console.log("6");
-
-			return await fetch(e.request);
-		} catch(err) {
-			console.log("7");
-
-			// If this was a navigation, a page requested by the user via clicking on a link and not a .css or .js resource, show the offline page.
-
-			if(e.request.mode === 'navigate') {
-				console.log("8");
-
-				return caches.match('/{CCMS_LIB:_default.php;FUNC:ccms_lng}/offline.html');
-			}
-			console.log("9");
-
-			// Otherwise throw.
-			throw err;
-		}
-	}());
-});
-*/
-
-
-
-
-/*
-self.addEventListener('fetch', (event) => {
-  event.respondWith(async function() {
-
-    const cache = await caches.open(cacheName);
-    const cachedResponse = await cache.match(event.request);
-    const networkResponsePromise = fetch(event.request);
-
-    event.waitUntil(async function() {
-      const networkResponse = await networkResponsePromise;
-      await cache.put(event.request, networkResponse.clone());
-    }());
-
-    // Returned the cached response if we have one, otherwise return the network response.
-    return cachedResponse || networkResponsePromise;
-  }());
-});
-*/
-
-
-/*
-addEventListener('fetch', (event) => {
-  event.respondWith(async function() {
-
-    const cache = await caches.open(cacheName);
-    const cachedResponse = await cache.match(event.request);
-    const networkResponsePromise = fetch(event.request);
-
-    event.waitUntil(async function() {
-      const networkResponse = await networkResponsePromise;
-      await cache.put(event.request, networkResponse.clone());
-    }());
-
-		try {
-			return cachedResponse || networkResponsePromise;
-		} catch(err) {
-			console.log("7");
-
-			if(e.request.mode === 'navigate') {
-				// If this was a navigation, a page requested by the user via clicking on a link and not a .css or .js resource, show the offline page.
-				return cache.match('/{CCMS_LIB:_default.php;FUNC:ccms_lng}/offline.html');
-			}
-
-			// Otherwise throw.
-			throw err;
-		}
-  }());
-});
-*/
-
-/*
-self.addEventListener('fetch', (event) => {
-  // We only want to call event.respondWith() if this is a navigation request
-  // for an HTML page.
-  if (event.request.mode === 'navigate') {
-    event.respondWith((async () => {
-      try {
-        // First, try to use the navigation preload response if it's supported.
-        const preloadResponse = await event.preloadResponse;
-        if (preloadResponse) {
-          return preloadResponse;
-        }
-
-        const networkResponse = await fetch(event.request);
-        return networkResponse;
-      } catch (error) {
-        // catch is only triggered if an exception is thrown, which is likely
-        // due to a network error.
-        // If fetch() returns a valid HTTP response with a response code in
-        // the 4xx or 5xx range, the catch() will NOT be called.
-        console.log('Fetch failed; returning offline page instead.', error);
-
-        const cache = await caches.open(cacheName);
-        const cachedResponse = await cache.match('/{CCMS_LIB:_default.php;FUNC:ccms_lng}/offline.html');
-        return cachedResponse;
-      }
-    })());
-  }
-	// If our if() condition is false, then this fetch handler won't intercept the
-  // request. If there are any other fetch handlers registered, they will get a
-  // chance to call event.respondWith(). If no fetch handlers call
-  // event.respondWith(), the request will be handled by the browser as if there
-  // were no service worker involvement.
-});
-*/
-
-
-/*
-//self.addEventListener('fetch', (event) => {
-addEventListener('fetch', (event) => {
-  event.respondWith(async function() {
-
-    try {
-			const cache = await caches.open(cacheName);
-	    const cachedResponse = await cache.match(event.request);
-	    const networkResponsePromise = fetch(event.request);
-
-	    event.waitUntil(async function() {
-	      const networkResponse = await networkResponsePromise;
-	      await cache.put(event.request, networkResponse.clone());
-	    }());
-
-	    // Returned the cached response if we have one, otherwise return the network response.
-	    return cachedResponse || networkResponsePromise;
-		} catch (error) {
-			// catch is only triggered if an exception is thrown, which is likely
-			// due to a network error.
-			// If fetch() returns a valid HTTP response with a response code in
-			// the 4xx or 5xx range, the catch() will NOT be called.
-			console.log('Fetch failed; returning offline page instead.', error);
-
-			const cache = await caches.open(cacheName);
-			const cachedResponse = await cache.match('/{CCMS_LIB:_default.php;FUNC:ccms_lng}/offline.html');
-			return cachedResponse;
-		}
-  }());
-});
-*/
-
-/*
-addEventListener('fetch', e => {
-	console.log('Fetching: ', e.request.url);
-
-	e.respondWith(
-		// If there is no internet
-		fetch(e.request).catch((error) =>
-			caches.match('/{CCMS_LIB:_default.php;FUNC:ccms_lng}/offline.html')
-		)
-	);
-});
-*/
-
-/*
-addEventListener("fetch", e => {
-	e.respondWith(
-		console.log("Fetching: ", e.request.url);
-
-		// If there is no internet
-		fetch(e.request).catch((error) =>
-			caches.match("/{CCMS_LIB:_default.php;FUNC:ccms_lng}/offline.html")
-		)
-	);
-});
-*/
