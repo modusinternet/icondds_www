@@ -24,7 +24,7 @@ Add these to the right box under Whitelist Headers:
 Then click the 'Yes, Edit' button at the bottom and give it about 10 minutes to propagate through the system and test using Chrome.
 */
 
-const cacheName='{CCMS_LIB:_default.php;FUNC:ccms_lng}-2020.10.10-01';
+const cacheName='{CCMS_LIB:_default.php;FUNC:ccms_lng}-2020.10.09-01';
 
 /*
 Argument details for build_css_link2() and build_js_link() function calls:
@@ -82,8 +82,8 @@ self.addEventListener('activate', (event) => {
 	})());
 });
 
-self.addEventListener('fetch', (event) => {
-  event.respondWith((async() => {
+self.addEventListener('fetch', event => {
+  event.respondWith(async function() {
 
 		const cache = await caches.open(cacheName);
 
@@ -113,5 +113,5 @@ self.addEventListener('fetch', (event) => {
 			const cachedResponse = await cache.match('/{CCMS_LIB:_default.php;FUNC:ccms_lng}/offline.html');
 			return cachedResponse;
  		}
-  })());
+  }());
 });
