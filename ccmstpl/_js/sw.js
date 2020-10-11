@@ -118,7 +118,7 @@ self.addEventListener('fetch', (event) => {
 });
 */
 
-///*
+
 self.addEventListener("fetch", function (event) {
 	event.respondWith(
   	caches.match(event.request)
@@ -128,7 +128,6 @@ self.addEventListener("fetch", function (event) {
         	return response;
         } else {
 					try {
-						// Try the network.
 						fetch(event.request)
 							.then(function (response) {
 								if(response) {
@@ -140,7 +139,6 @@ self.addEventListener("fetch", function (event) {
 							}
 						)
 					}	catch (error) {
-			 			// catch() is only triggered if an exception is thrown, either because the resource requested returned an error or due to a network problem so display the previously downloaded offline template instead.
 			 			console.log('Fetch failed; returning offline page instead.', error);
 						const cache = await caches.open(cacheName);
 						const cachedResponse = await cache.match('/{CCMS_LIB:_default.php;FUNC:ccms_lng}/offline.html');
@@ -150,4 +148,3 @@ self.addEventListener("fetch", function (event) {
 			}
     );
 });
-//*/
