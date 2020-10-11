@@ -133,6 +133,8 @@ self.addEventListener("fetch", function (event) {
 							.then(function (response) {
 								if(response) {
 									console.log('fetchResponse: ', event.request.url);
+									const cache = await caches.open(cacheName);
+									await cache.put(event.request, fetchResponse.clone());
 									return response;
 								}
 							}
