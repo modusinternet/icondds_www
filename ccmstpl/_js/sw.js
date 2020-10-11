@@ -129,7 +129,7 @@ self.addEventListener("fetch", function (event) {
         } else {
 					try {
 						// Try the network.
-						return fetch(event.request)
+						fetch(event.request)
 							.then(function (response) {
 								if(response) {
 									console.log('fetchResponse: ', event.request.url);
