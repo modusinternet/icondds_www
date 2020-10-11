@@ -107,7 +107,6 @@ self.addEventListener('fetch', (event) => {
 		}	catch (error) {
  			problem so display the previously downloaded offline template instead.
  			console.log('Fetch failed; returning offline page instead.', error);
-			const cache = await caches.open(cacheName);
 			const cachedResponse = await cache.match('/{CCMS_LIB:_default.php;FUNC:ccms_lng}/offline.html');
 			return cachedResponse;
  		}
