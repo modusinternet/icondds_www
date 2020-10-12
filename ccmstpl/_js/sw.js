@@ -111,36 +111,3 @@ self.addEventListener('fetch', (event) => {
  		}
   })());
 });
-
-
-/*
-self.addEventListener("fetch", function (event) {
-	event.respondWith(
-  	caches.match(event.request)
-    	.then(function (response) {
-      	if(response) {
-					console.log('cachedResponse: ', event.request.url);
-        	return response;
-        } else {
-					try {
-						fetch(event.request)
-							.then(function (response) {
-								if(response) {
-									console.log('fetchResponse: ', event.request.url);
-									const cache = await caches.open(cacheName);
-									await cache.put(event.request, fetchResponse.clone());
-									return response;
-								}
-							}
-						)
-					}	catch (error) {
-			 			console.log('Fetch failed; returning offline page instead.', error);
-						const cache = await caches.open(cacheName);
-						const cachedResponse = await cache.match('/{CCMS_LIB:_default.php;FUNC:ccms_lng}/offline.html');
-						return cachedResponse;
-			 		}
-				}
-			}
-    );
-});
-*/
