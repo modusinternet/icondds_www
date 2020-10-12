@@ -105,7 +105,7 @@ self.addEventListener('fetch', (event) => {
 				return fetchResponse;
 			}
 		}	catch (error) {
- 			console.log('Fetch failed; returning offline page instead.', error);
+ 			console.log('Fetch failed: ', error);
 			const cachedResponse = await cache.match('/{CCMS_LIB:_default.php;FUNC:ccms_lng}/offline.html');
 			return cachedResponse;
  		}
