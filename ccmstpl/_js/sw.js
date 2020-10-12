@@ -24,7 +24,7 @@ Add these to the right box under Whitelist Headers:
 Then click the 'Yes, Edit' button at the bottom and give it about 10 minutes to propagate through the system and test using Chrome.
 */
 
-const cacheName='{CCMS_LIB:_default.php;FUNC:ccms_lng}-2020-10-10.v01';
+const cacheName='{CCMS_LIB:_default.php;FUNC:ccms_lng}-2020-10-12.v01';
 
 /*
 Argument details for build_css_link2() and build_js_link() function calls:
