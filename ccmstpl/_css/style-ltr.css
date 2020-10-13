@@ -1679,7 +1679,7 @@ input[type="search"]::-webkit-search-results-decoration{display:none}
 
 	.cd-primary-nav .cd-nav-icons .cd-nav-item{
 		border-bottom:none;
-		height:100px
+		height:120px
 	}
 
 	.cd-primary-nav .cd-nav-icons .cd-nav-item:hover{background:#f6f6f5}
