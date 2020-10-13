@@ -158,7 +158,7 @@ sup{
 	text-align:initial
 }
 
-.footerQuickSiteNav>li>a{line-height:1.8em}
+/*.footerQuickSiteNav>li>a{line-height:1.8em}*/
 
 .footerQuickSiteNav>li>a.active{font-weight:400}
 
