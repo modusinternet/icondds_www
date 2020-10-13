@@ -5,6 +5,8 @@ a{text-underline-position:under}
 
 button{text-shadow:1px 1px rgba(0,0,0,.2)}
 
+li{line-height:1.8em}
+
 sub{
 	bottom:-.5em;
 	font-size:0.6em;
