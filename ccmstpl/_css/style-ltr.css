@@ -1694,6 +1694,12 @@ input[type="search"]::-webkit-search-results-decoration{display:none}
 
 	.cd-primary-nav .cd-nav-icons .cd-nav-item::before{left:25px}
 
+	.cd-primary-nav #nl-for-patients li>a.active{
+		background-color:unset;
+		color:var(--cl3)
+	}
+
+
 	.cd-search{
 		height:120px;
 		top:235px
