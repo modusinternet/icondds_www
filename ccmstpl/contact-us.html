@@ -253,8 +253,8 @@
 			arg1 = 1 = build sri code based on version stored on AWS.  empty = build sri code based on version stored on our own server.
 			arg2 = a variable found in the config file that represents a partial pathway to the style sheet. (Not including details about AWS, language code, or language direction)
 			*/
-			
-			{CCMS_LIB:site.php;FUNC:build_css_link("","1","CSS-01","1")}
+
+			{CCMS_LIB:site.php;FUNC:build_css_link("1","1","CSS-01","1")}
 
 			function gRecaptchaCallback() {
 				if(grecaptcha && grecaptcha.getResponse().length > 0){
