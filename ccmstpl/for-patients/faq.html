@@ -241,7 +241,7 @@
 
 								loadFirst("{CCMS_LIB:site.php;FUNC:build_js_link("1","","JQUERY-VALIDATE-ADDITIONAL-METHODS")}",function(){
 
-									loadFirst("{CCMS_LIB:site.php;FUNC:build_js_link("","1","JS-01")}",function(){
+									loadFirst("{CCMS_LIB:site.php;FUNC:build_js_link("1","","JS-01")}",function(){
 
 										jQuery(document).ready(function(e){
 											(function(){
@@ -268,7 +268,7 @@
 										/*window.performance.mark("mark_end_javascript");
 										console.log(window.performance.getEntriesByName("mark_beginning_javascript"));
 										console.log(window.performance.getEntriesByName("mark_end_javascript"));*/
-									});
+									}{CCMS_LIB:site.php;FUNC:build_js_sri("1","JS-01")});
 								}{CCMS_LIB:site.php;FUNC:build_js_sri("1","JQUERY-VALIDATE-ADDITIONAL-METHODS")});
 							}{CCMS_LIB:site.php;FUNC:build_js_sri("1","JQUERY-VALIDATE")});
 						}{CCMS_LIB:site.php;FUNC:build_js_sri("1","JQUERY-MOBILE-CUST")});
