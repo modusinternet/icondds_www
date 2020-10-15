@@ -52,7 +52,7 @@ var cacheFiles=[
 	'{CCMS_LIB:site.php;FUNC:load_resource("JQUERY-MOBILE-CUST")}',
 	'{CCMS_LIB:site.php;FUNC:load_resource("JQUERY-VALIDATE")}',
 	'{CCMS_LIB:site.php;FUNC:load_resource("JQUERY-VALIDATE-ADDITIONAL-METHODS")}',
-	'{CCMS_LIB:site.php;FUNC:build_js_link("","1","JS-01")}'
+	'{CCMS_LIB:site.php;FUNC:build_js_link("1","","JS-01")}'
 ];
 
 /*
