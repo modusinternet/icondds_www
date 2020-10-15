@@ -259,7 +259,7 @@
 			{CCMS_LIB:site.php;FUNC:build_css_link("1","","CSS-01","1")}
 
 			function loadJSResources(){
-				loadFirst("{CCMS_LIB:site.php;FUNC:build_js_link2("1","","MODERNIZER")}",function(){
+				loadFirst("{CCMS_LIB:site.php;FUNC:build_js_link("1","","MODERNIZER")}",function(){
 
 					loadFirst("{CCMS_LIB:site.php;FUNC:build_js_link("1","","JQUERY")}",function(){
 
@@ -269,7 +269,7 @@
 
 								loadFirst("{CCMS_LIB:site.php;FUNC:build_js_link("1","","JQUERY-VALIDATE-ADDITIONAL-METHODS")}",function(){
 
-									loadFirst("{CCMS_LIB:site.php;FUNC:build_js_link("","1","JS-01")}",function(){
+									loadFirst("{CCMS_LIB:site.php;FUNC:build_js_link("1","","JS-01")}",function(){
 
 										/*window.performance.mark("mark_end_javascript");
 										console.log(window.performance.getEntriesByName("mark_beginning_javascript"));
