@@ -210,6 +210,36 @@ function build_js_link($aws_flag = null, $lng_flag = null, $path){
 
 /*
 $aws_flag = if not null append AWS link.
+$lng_flag = if not null append language code to link.
+$path = a variable found in the config file that represents a partial pathway to the style sheet. (Not including details about AWS, language code, or language direction.)
+*/
+function build_js_link2($aws_flag = null, $lng_flag = null, $path){
+	global $CFG;
+
+	/* If $path is not found in the config.php file then do nothing. */
+	if(!isset($CFG["RES"][$path])) return;
+
+	$url = "";
+
+	if($aws_flag){
+		if($CFG["RES"]["AWS"]){
+			$url .= $CFG["RES"]["AWS"] . "/ccmstpl";
+		}
+	}
+
+	/* We do this for safety to help just incase the script calling this function requests the AWS code and the language code by accident.  We never ask for language code ones things are located on AWS. */
+	if($lng_flag){
+		if(!$aws_flag){
+			$url .= "/" . ccms_lng_ret();
+		}
+	}
+
+	echo $url .= $CFG["RES"][$path];
+}
+
+
+/*
+$aws_flag = if not null append AWS link.
 $path = a variable found in the config file that represents a partial pathway to the style sheet. (Not including details about AWS, language code, or language direction.)
 */
 function build_js_sri($aws_flag, $path){
@@ -237,7 +267,7 @@ function build_js_sri($aws_flag, $path){
 	$row = $qry->fetch(PDO::FETCH_ASSOC);
 	if($row) {
 		echo $buff .= "sha256-" . $row["sri-code"] . "','anonymous'";
-	}else{
+	} else {
 		$tmp = file_get_contents($url);
 		$result = base64_encode(hash("sha256", $tmp, true));
 		$qry = $CFG["DBH"]->prepare("INSERT INTO `sri` (`id`, `url`, `sri-code`) VALUES (NULL, :url, :result);");
