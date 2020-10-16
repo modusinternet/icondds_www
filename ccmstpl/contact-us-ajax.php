@@ -64,6 +64,7 @@ if($_POST["g-recaptcha-response"]) {
 
 //echo "\/*" . $resp . "*\/";
 print_r($resp);
+die();
 
 	//$resp = json_decode($resp);
 	//if($resp->success == false) {
