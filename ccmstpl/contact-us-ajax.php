@@ -66,7 +66,8 @@ echo "\/*" . $resp . "*\/";
 
 	//$resp = json_decode($resp);
 	//if($resp->success == false) {
-	if($resp.success == false) {
+	//if($resp.success == false) {
+	if (!$resp->is_valid) {
 		$error = $resp.error-codes;
 		$json['error']['grecaptcha'] = "Incorrect code. Please try again.<br />error code: " . $error;
 	}
