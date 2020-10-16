@@ -60,16 +60,17 @@ if($_POST["g-recaptcha-response"]) {
 
 
 
-	$resp = file_get_contents( "https://www.google.com/recaptcha/api/siteverify?secret=" . $CFG['GOOGLE_RECAPTCHA_PRIVATEKEY'] . "&response=" . $_POST['g-recaptcha-response'] . "&remoteip=" . $_SERVER['REMOTE_ADDR'] );
+	$response = file_get_contents( "https://www.google.com/recaptcha/api/siteverify?secret=" . $CFG['GOOGLE_RECAPTCHA_PRIVATEKEY'] . "&response=" . $_POST['g-recaptcha-response'] . "&remoteip=" . $_SERVER['REMOTE_ADDR'] );
 
 //echo "\/*" . $resp . "*\/";
-print_r($resp);
-die();
+//print_r($resp);
+//die();
 
 	//$resp = json_decode($resp);
+	$resp = json_decode($response, true);
 	//if($resp->success == false) {
 	//if($resp.success == false) {
-	if (!$resp->is_valid) {
+	//if (!$resp->is_valid) {
 		$error = $resp.error-codes;
 		$json['error']['grecaptcha'] = "Incorrect code. Please try again.<br />error code: " . $error;
 	}
