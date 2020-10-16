@@ -9,7 +9,7 @@ include $_SERVER["DOCUMENT_ROOT"] . "/" . $CFG["LIBDIR"] . "/_default.php";
 $json = array();
 
 if(!strstr($_SERVER["HTTP_REFERER"], $CFG["DOMAIN"])) {
-	$json['error']['invalid_referer'] = "Invalid submission, your POST does not appeared to have been submitted from the " . $CFG["DOMAIN"] . " website.";
+	$json['error']['invalid_referer'] = "Invalid submission, your POST does not appeared to have been submitted from the " . $CFG["DOMAIN"] . " website. (HTTP_REFERER = ". $_SERVER["HTTP_REFERER"] . ")";
 }
 
 if(!ccms_badIPCheck($_SERVER["REMOTE_ADDR"])) {
