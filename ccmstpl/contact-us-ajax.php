@@ -62,7 +62,8 @@ if($_POST["g-recaptcha-response"]) {
 
 	$resp = file_get_contents( "https://www.google.com/recaptcha/api/siteverify?secret=" . $CFG['GOOGLE_RECAPTCHA_PRIVATEKEY'] . "&response=" . $_POST['g-recaptcha-response'] . "&remoteip=" . $_SERVER['REMOTE_ADDR'] );
 
-echo "\/*" . $resp . "*\/";
+//echo "\/*" . $resp . "*\/";
+print_r($resp);
 
 	//$resp = json_decode($resp);
 	//if($resp->success == false) {
