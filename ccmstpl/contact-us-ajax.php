@@ -69,8 +69,9 @@ if($_POST["g-recaptcha-response"]) {
 	//$resp = json_decode($resp);
 	$resp = json_decode($response, true);
 	//if($resp->success == false) {
-	if($resp.success == false) {
+	//if($resp.success == false) {
 	//if (!$resp->is_valid) {
+	if($resp["success"] == false) {
 		$error = $resp.error-codes;
 		$json['error']['grecaptcha'] = "Incorrect code. Please try again.<br />error code: " . $error;
 	}
