@@ -25,7 +25,7 @@ Then click the 'Yes, Edit' button at the bottom and give it about 10 minutes to 
 */
 
 
-const cacheName='{CCMS_LIB:_default.php;FUNC:ccms_lng}-2020-10-15.v01';
+const cacheName='{CCMS_LIB:_default.php;FUNC:ccms_lng}-2020-10-21.v01';
 
 
 /*
