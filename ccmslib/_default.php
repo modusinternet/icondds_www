@@ -93,7 +93,6 @@ function ccms_canonical() {
 
 			echo '<link rel="canonical" href="' . $_SERVER['SCRIPT_URI'] . '" />';
 		}
-	//}
 }
 
 function ccms_user_admin_slider() {
