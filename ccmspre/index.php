@@ -162,7 +162,7 @@ function CCMS_Set_SESSION() {
 	ini_set('session.cookie_lifetime', $CFG["COOKIE_SESSION_EXPIRE"]);
 	ini_set('session.cookie_httponly', 1);
 	ini_set('session.cookie_secure', 1);
-	ini_set('session.cookie_samesite', "Lax");
+	ini_set('session.cookie_samesite', "Strict");
 
 	session_name("__Host-ccms_session");
 
