@@ -1,7 +1,7 @@
 <?
 header("Content-Type: text/html; charset=utf-8");
 header("Cache-Control: public, must-revalidate, proxy-revalidate");
-?>{CCMS_DB_PRELOAD:all,search}{CCMS_LIB:site.php;FUNC:csp_header}<!DOCTYPE html>
+?>{CCMS_DB_PRELOAD:all,search}<!DOCTYPE html>
 <html dir="{CCMS_LIB:_default.php;FUNC:ccms_lng_dir}" lang="{CCMS_LIB:_default.php;FUNC:ccms_lng}" prefix="og: http://ogp.me/ns#">
 	<head>
 		<!-- Repeated content and can be placed once in your header head template. -->
