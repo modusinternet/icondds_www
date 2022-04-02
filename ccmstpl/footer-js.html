@@ -1,27 +1,6 @@
 /* ----------
 ServiceWorker Code Begin.
 ---------- */
-/*
-if(navigator.serviceWorker){
-	window.addEventListener('load',() => {
-		navigator.serviceWorker
-		.register('/sw.js')
-		.then(console.log('[ServiceWorker] Registered Successfully'))
-		.catch(err => console.log(`[ServiceWorker] Error: ${err}`));
-	});
-} else {
-	console.log('Service Worker not supported.');
-}
-*/
-/*
-if('serviceWorker' in navigator) {
-  navigator.serviceWorker
-		.register('/sw.js')
-		.then(console.log('[ServiceWorker] Registered Successfully'))
-		.catch(err => console.log(`[ServiceWorker] Error: ${err}`));
-}
-*/
-
 if('serviceWorker' in navigator) {
 	window.addEventListener('load', function() {
 		navigator.serviceWorker.register('/serviceworker.php',{scope:'/'}).then(function(registration) {
@@ -31,8 +10,6 @@ if('serviceWorker' in navigator) {
 		});
 	});
 }
-
-
 /* ----------
 ServiceWorker Code End.
 ---------- */
