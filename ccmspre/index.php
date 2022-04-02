@@ -1117,6 +1117,7 @@ function CCMS_Main() {
 			//echo CCMS_TPL_Parser($buf);
 			CCMS_TPL_Parser($buf);
 		} else {
+			echo "ccms_tpl=[" . $CLEAN["ccms_tpl"] . "]";
 			echo '<div style="margin:100px auto;text-align:center"><img src="https://custodiancms.org/cross-origin-resources/404-animated-ascii.gif" style="display:block;margin:0 auto" /><br>Under Construction</div>';
 		}
 	}
