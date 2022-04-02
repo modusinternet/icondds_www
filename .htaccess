@@ -175,7 +175,7 @@ AddOutputFilterByType DEFLATE application/x-javascript
 
 	# Custodian CMS example URL Rewrite.  (This code is not necessary for CCMS to function properly, and could be removed if desired.  It is only here to aid the 'example' templates with the loading of a very handy ServiceWorker.  I had to call this template with a .php extension because some webservers running Nginx don't work properly when parsing incoming requests with only 2 letter extensions like .js.)
 	# ------------------------------
-	RewriteRule ^serviceworker\.php$ /index.php?ccms_tpl=/examples/_js/serviceworker.php [L,NC]
+	RewriteRule ^serviceworker\.php$ /index.php?ccms_tpl=/_js/serviceworker.php [L,NC]
 
 	# Custodian CMS URL Rewrite
 	# ------------------------------
