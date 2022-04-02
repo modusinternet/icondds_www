@@ -9,11 +9,11 @@
 $CFG = array();
 $CLEAN = array();
 
-$CFG["VERSION"] = "0.6.8";
-$CFG["RELEASE_DATE"] = "Nov 11, 2019";
+$CFG["VERSION"] = "0.7.7";
+$CFG["RELEASE_DATE"] = "Mar 31, 2022";
 
 // Necessary to solve a problem on GoDaddy servers when running sites found in sub folders of existing sites.
-if($_SERVER["REAL_DOCUMENT_ROOT"]) {
+if(isset($_SERVER["REAL_DOCUMENT_ROOT"])) {
 	$_SERVER["DOCUMENT_ROOT"] = $_SERVER["REAL_DOCUMENT_ROOT"];
 }
 
@@ -23,6 +23,11 @@ if(file_exists($_SERVER["DOCUMENT_ROOT"] . "/ccms-setup.php")) {
 }
 
 require_once "ccmspre/config.php";
+
+if($CFG["ERROR_REPORTING"]) {
+	error_reporting(E_ALL);
+	ini_set('display_errors', 1);
+}
 
 ob_start("ob_gzhandler");
 
@@ -35,6 +40,8 @@ CCMS_DB_First_Connect();
 CCMS_Filter($_SERVER + $_REQUEST, $ccms_whitelist);
 
 CCMS_Public_Filter($_SERVER + $_REQUEST, $whitelist);
+
+CCMS_Set_SESSION();
 
 CCMS_Main();
 

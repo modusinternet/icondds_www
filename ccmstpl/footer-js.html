@@ -13,13 +13,23 @@ if(navigator.serviceWorker){
 	console.log('Service Worker not supported.');
 }
 */
-
-
+/*
 if('serviceWorker' in navigator) {
   navigator.serviceWorker
 		.register('/sw.js')
 		.then(console.log('[ServiceWorker] Registered Successfully'))
 		.catch(err => console.log(`[ServiceWorker] Error: ${err}`));
+}
+*/
+
+if('serviceWorker' in navigator) {
+	window.addEventListener('load', function() {
+		navigator.serviceWorker.register('/serviceworker.php',{scope:'/'}).then(function(registration) {
+			console.log('SW registered.');
+		}, function(err) {
+			console.log('SW registration failed: ', err);
+		});
+	});
 }
 
 
@@ -107,18 +117,3 @@ https://web.dev/customize-install/#criteria
 https://web.dev/codelab-make-installable/
 https://developer.mozilla.org/en-US/docs/Web/Apps/Progressive/Add_to_home_screen#How_do_you_make_an_app_A2HS-ready
 ---------- */
-
-
-/* This feature helps clear out a cached cookies so that a new one can be written in place when changing your language.	You can choose to not use if you wish, it was just added to help make sure the example templates would do as we wished them to as written.	Your templates probably will not require such code, all links should contain the full language snippit in them to help drive the templates to the correct language content.
-ie: { CCMS_LIB:_default.php;FUNC:ccms_lng}
-     ^-- remove this space.
-lcu = language cookie update */
-function ccms_lcu(lng) {
-		document.cookie = "ccms_lng={CCMS_LIB:_default.php;FUNC:ccms_lng}; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/";
-		/* insert a new cookie and get it in the cache, just incase we're dealing with the home page. */
-		var d = new Date();
-		d.setTime(d.getTime() + (365*24*60*60*1000));
-		var expires = "expires=" + d.toUTCString();
-		document.cookie = "ccms_lng=" + lng + "; " + expires + "; path=/";
-		return;
-}

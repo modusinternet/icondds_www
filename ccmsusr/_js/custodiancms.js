@@ -1,5 +1,124 @@
+/* Loading Screen START */
+window.setTimeout(function(){
+	document.getElementById("loading_svg").style.opacity="0";
+	window.setTimeout(function(){
+		document.getElementById("loading_svg").style.display="none";
+	},500);
+},500);
+window.setTimeout(function(){
+	document.getElementsByTagName("main")[0].style.opacity="1";
+},250);
+/* Loading Screen END */
+
+
+// Fade in navigation.
+$("header").delay(250).animate({"opacity": "1"}, 250);
+
+
+/* metisMenu START */
+$(() => {
+	const menu = $('#menu-ctn'),
+	bars = $('.menu-bars'),
+	content = $('#menu-cnt');
+	let firstClick = true,
+	menuClosed = true;
+	let handleMenu = event => {
+		if(!firstClick) {
+			bars.toggleClass('crossed hamburger');
+		} else {
+			bars.addClass('crossed');
+			firstClick = false;
+		}
+		menuClosed = !menuClosed;
+		content.toggleClass('dropped');
+		event.stopPropagation();
+	};
+	menu.on('click', event => {
+		handleMenu(event);
+	});
+	$('body').not('#menu-cnt, #menu-ctn').on('click', event => {
+		if(!menuClosed) handleMenu(event);
+	});
+	$('#menu-cnt, #menu-ctn').on('click', event => event.stopPropagation());
+});
+
+$("#menu1").metisMenu();
+navActiveSub.forEach(function(nl){$("#"+nl).addClass("mm-active");});
+navActiveSub.forEach(function(nl){$("#"+nl+">a").attr("aria-expanded","true");});
+navActiveSub.forEach(function(nl){$("#"+nl+">a").addClass("active");});
+navActiveSub.forEach(function(nl){$("#"+nl+">ul").addClass("mm-show");});
+navActiveItem.forEach(function(nl){$("#"+nl+">a").addClass("active");});
+/* metisMenu END */
+
+
+/* w3schoolMenu START */
+navActiveW3schoolsItem.forEach(function(nl){$("#"+nl).addClass("active");});
+/* w3schoolMenu END */
+
+
+/* Fetch Cache BEGIN */
+const cachedFetch = (url, options) => {
+	let expiry = 5 * 60; // 5 min default
+	if(typeof options === 'number') {
+		expiry = options;
+		options = undefined;
+	} else if(typeof options === 'object') {
+		// Don't set it to 0 seconds
+		expiry = options.seconds || expiry;
+	}
+	let cached = localStorage.getItem(url);
+	let whenCached = localStorage.getItem(url + ':ts');
+	if(cached !== null && whenCached !== null) {
+		let age = (Date.now() - whenCached) / 1000;
+		if(cached[0].errorMsg !== null || age > expiry) {
+			// Clean up the old key
+			localStorage.removeItem(url);
+			localStorage.removeItem(url + ':ts');
+		} else {
+			let response = new Response(new Blob([cached]));
+			return Promise.resolve(response);
+		}
+	}
+
+	return fetch(url + "?token=" + Math.random() + "&ajax_flag=1", options).then(response => {
+		if(response.status === 200) {
+			response.clone().text().then(content => {
+				localStorage.setItem(url, content);
+				localStorage.setItem(url+':ts', Date.now());
+			});
+		}
+		return response;
+	});
+}
+/*
+Combined with fetch's options object but called with a custom name
+let init = {
+	mode: 'same-origin',
+	seconds: 3 * 60 // 3 minutes
+}
+cachedFetch('https://httpbin.org/get', init)
+	.then(r => r.json())
+	.then(info => {
+		console.log('3) ********** Your origin is ' + info.origin)
+	}
+)
+
+cachedFetch('https://httpbin.org/image/png')
+	.then(r => r.blob())
+	.then(image => {
+		console.log('Image is ' + image.size + ' bytes')
+	}
+)
+*/
+/* Fetch Cache END */
+
+
+
+
+
 /* ===== metisMenu load ===== */
 /* Loads the correct sidebar on window load, collapses the sidebar on window resize. Sets the min-height of #page-wrapper to window size. */
+/*
 function showHideNav() {
 	topOffset = 50;
 	width = (this.window.innerWidth > 0) ? this.window.innerWidth : this.screen.width;
@@ -20,88 +139,25 @@ function showHideNav() {
 
 $(function(){$(window).bind("load resize",function(){showHideNav();})});
 showHideNav();
+*/
 /* ===== metisMenu load Close ===== */
+
+
+
+
+
+
+
+
 
 
 /* =========== open: scroll to ID value on page ============== */
 $.fn.scrollView = function () {
-    return this.each(function () {
-        $('html, body').animate({
-            scrollTop: $(this).offset().top
-        }, 1000);
-    });
+	return this.each(function () {
+		$('html, body').animate({
+			scrollTop: $(this).offset().top
+		}, 1000);
+	});
 }
 // use it like:  $('#your-div').scrollView();
 /* =========== close: scroll to ID value on page ============== */
-
-
-/* ========================= Start of Scroll to Top Stuff ========================= */
-//** jQuery Scroll to Top Control script- (c) Dynamic Drive DHTML code library: http://www.dynamicdrive.com.
-//** Available/ usage terms at http://www.dynamicdrive.com (March 30th, 09')
-//** v1.1 (April 7th, 09'):
-//** 1) Adds ability to scroll to an absolute position (from top of page) or specific element on the page instead.
-//** 2) Fixes scroll animation not working in Opera.
-var scrolltotop={
-	//startline: Integer. Number of pixels from top of doc scrollbar is scrolled before showing control
-	//scrollto: Keyword (Integer, or "Scroll_to_Element_ID"). How far to scroll document up when control is clicked on (0=top).
-	setting: {startline:100, scrollto: 0, scrollduration:1000, fadeduration:[500, 100]},
-	controlHTML: '<i class="fa fa-angle-up backtotop"></i>', //HTML for control, which is auto wrapped in DIV w/ ID="topcontrol"
-	controlattrs: {offsetx:5, offsety:5}, //offset of control relative to right/ bottom of window corner
-	anchorkeyword: '#top', //Enter href value of HTML anchors on the page that should also act as "Scroll Up" links
-	state: {isvisible:false, shouldvisible:false},
-	scrollup:function(){
-		if (!this.cssfixedsupport) //if control is positioned using JavaScript
-			this.$control.css({opacity:0}) //hide control immediately after clicking it
-		var dest=isNaN(this.setting.scrollto)? this.setting.scrollto : parseInt(this.setting.scrollto)
-		if (typeof dest=="string" && jQuery('#'+dest).length==1) //check element set by string exists
-			dest=jQuery('#'+dest).offset().top
-		else
-			dest=0
-		this.$body.animate({scrollTop: dest}, this.setting.scrollduration);
-	},
-	keepfixed:function(){
-		var $window=jQuery(window)
-		var controlx=$window.scrollLeft() + $window.width() - this.$control.width() - this.controlattrs.offsetx
-		var controly=$window.scrollTop() + $window.height() - this.$control.height() - this.controlattrs.offsety
-		this.$control.css({left:controlx+'px', top:controly+'px'})
-	},
-	togglecontrol:function(){
-		var scrolltop=jQuery(window).scrollTop()
-		if (!this.cssfixedsupport)
-			this.keepfixed()
-		this.state.shouldvisible=(scrolltop>=this.setting.startline)? true : false
-		if (this.state.shouldvisible && !this.state.isvisible){
-			this.$control.stop().animate({opacity:1}, this.setting.fadeduration[0])
-			this.state.isvisible=true
-		}
-		else if (this.state.shouldvisible==false && this.state.isvisible){
-			this.$control.stop().animate({opacity:0}, this.setting.fadeduration[1])
-			this.state.isvisible=false
-		}
-	},
-	init:function(){
-		jQuery(document).ready(function($){
-			var mainobj=scrolltotop
-			var iebrws=document.all
-			mainobj.cssfixedsupport=!iebrws || iebrws && document.compatMode=="CSS1Compat" && window.XMLHttpRequest //not IE or IE7+ browsers in standards mode
-			mainobj.$body=(window.opera)? (document.compatMode=="CSS1Compat"? $('html') : $('body')) : $('html,body')
-			mainobj.$control=$('<div id="topcontrol">'+mainobj.controlHTML+'</div>')
-				.css({position:mainobj.cssfixedsupport? 'fixed' : 'absolute', bottom:mainobj.controlattrs.offsety, right:mainobj.controlattrs.offsetx, opacity:0, cursor:'pointer'})
-				.attr({title:''})
-				.click(function(){mainobj.scrollup(); return false})
-				.appendTo('body')
-			if (document.all && !window.XMLHttpRequest && mainobj.$control.text()!='') //loose check for IE6 and below, plus whether control contains any text
-				mainobj.$control.css({width:mainobj.$control.width()}) //IE6- seems to require an explicit width on a DIV containing text
-			mainobj.togglecontrol()
-			$('a[href="' + mainobj.anchorkeyword +'"]').click(function(){
-				mainobj.scrollup()
-				return false
-			})
-			$(window).bind('scroll resize', function(e){
-				mainobj.togglecontrol()
-			})
-		})
-	}
-}
-scrolltotop.init();
-/* ========================= End of Scroll to Top Stuff ========================= */

@@ -2,9 +2,8 @@
 // Domain name
 $CFG["DOMAIN"] = "";
 
-// Primary indexes for /ccmstpl/ and /ccmsusr/ sections of the site.
-$CFG["INDEX"] = "index";
-$CFG["USRINDEX"] = "dashboard/";
+// Primary index for /ccmstpl/.
+$CFG["INDEX"] = "index.html";
 
 // Document root folder globals.
 $CFG["DBH"] = NULL;
@@ -48,17 +47,23 @@ $CFG["CACHE_EXPIRE"] = 12000;
 // $CFG["DEBUG_SQL"] = 1; // on
 $CFG["DEBUG_SQL"] = 0;
 
+// Log events for later analisys in the 'ccms_log' table.
+// e.g.:
+// $CFG["LOG_EVENTS"] = 0; // off
+// $CFG["LOG_EVENTS"] = 1; // on
+$CFG["LOG_EVENTS"] = 0;
+
 // This is for deep PHP debugging error messages.
 // e.g.:
-// $CFG["DEBUG_ERROR_REPORTING"] = 0; // off
-// $CFG["DEBUG_ERROR_REPORTING"] = 1; // on
-$CFG["DEBUG_ERROR_REPORTING"] = 0;
+// $CFG["ERROR_REPORTING"] = 0; // off
+// $CFG["ERROR_REPORTING"] = 1; // on
+$CFG["ERROR_REPORTING"] = 0;
 
-// COOKIE based SESSION expire time.  Set in number of minutes.
+// COOKIE based SESSION expire time.  Set in number of seconds.
 // e.g.:
-// $CFG["COOKIE_SESSION_EXPIRE"] = 30; // 30 minutes.
-// $CFG["COOKIE_SESSION_EXPIRE"] = 180; // 3 hours.
-$CFG["COOKIE_SESSION_EXPIRE"] = 120;
+// $CFG["COOKIE_SESSION_EXPIRE"] = 1800; // 1800 seconds = 30 minutes.
+// $CFG["COOKIE_SESSION_EXPIRE"] = 10800; // 10800 seconds = 3 hours.
+$CFG["COOKIE_SESSION_EXPIRE"] = 1800;
 
 // When emails are sent by the server what email address do you want them to be sent from.
 $CFG["EMAIL_FROM"] = "";
@@ -71,10 +76,23 @@ $CFG["EMAIL_BOUNCES_RETURNED_TO"] = "";
 $CFG["GOOGLE_CUSTOM_SEARCH_ENGINE_CODE"] = "";
 
 // To add Google reCaptcha to your web forms enter your recaptcha keys here.
-// https://www.google.com/recaptcha/
+// https://www.google.com/recaptcha/admin/create
+// https://codeforgeek.com/google-recaptcha-v3-tutorial/
 $CFG["GOOGLE_RECAPTCHA_PUBLICKEY"] = ""; // Site key
 $CFG["GOOGLE_RECAPTCHA_PRIVATEKEY"] = ""; // Secret key
 
-// To add Google Credentials so that you can embed things like Google Maps to your site add your key here.
+// To add Google Credentials so that you can embed things like maps to your site add your key here.
 // https://console.cloud.google.com
 $CFG["GOOGLE_CREDENTIALS_KEY"] = "";
+
+// List of resource names and versions used throughout the site.  We use this method to maintain
+// our resource versions because of the problems pushing updates to existing resources already found
+// on Amazon Cloudfront servers.
+//$CFG["RES"]["AWS"]                = "";
+//$CFG["RES"]["CSS-01"]             = "/examples/_css/style";
+$CFG["RES"]["CSS-01"]             = "/ccmstpl/examples/_css/style";
+$CFG["RES"]["JQUERY"]             = "/ccmsusr/_js/jquery-3.5.1.min.js";
+$CFG["RES"]["JQUERY-VALIDATE"]    = "/ccmsusr/_js/jquery-validate-1.19.0.min.js";
+//$CFG["RES"]["JS-01"]              = "/examples/_js/main";
+$CFG["RES"]["JS-01"]              = "/ccmstpl/examples/_js/main";
+$CFG["RES"]["MODERNIZER"]         = "/ccmstpl/_js/modernizr-3.6.0-custom-min.js";

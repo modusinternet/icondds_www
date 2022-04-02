@@ -16,7 +16,7 @@
 							</a>
 							<ul class="dropdown-menu dropdown-user">
 								<li id="user_profile">
-									<a href="/en/user/user_profile/"><i class="fa fa-user fa-fw"></i> User Profile</a>
+									<a href="/{CCMS_LIB:_default.php;FUNC:ccms_lng}/user/user_profile/"><i class="fa fa-user fa-fw"></i> User Profile</a>
 								</li>
 								<li>
 									<a href="/{CCMS_LIB:_default.php;FUNC:ccms_lng}/?ccms_token={CCMS_LIB:_default.php;FUNC:ccms_token}"><i class="fa fa-home fa-fw"></i> Back to Homepage</a>
@@ -32,7 +32,7 @@
 						<img alt="Custodian CMS Banner" src="/{CCMS_LIB:_default.php;FUNC:ccms_cfgUsrDir}/_img/ccms-535x107.png" style="height: 45px;" title="Custodian CMS Bannver.  Easy gears no spilled beers.">
 					</a>
 				</div>
-				
+
 				<div id="sidebar-wrapper">
 					<div class="navbar-default sidebar" role="navigation">
 						<div class="sidebar-nav navbar-collapse">
@@ -75,7 +75,7 @@
 									</a>
 								</li>
 								<li>
-									<a class="line-height-1-4" id="github" href="/en/user/github/">
+									<a class="line-height-1-4" id="github" href="/{CCMS_LIB:_default.php;FUNC:ccms_lng}/user/admin/github/">
 										<i class="fa fa-github fa-fw"></i> GitHub
 									</a>
 								</li>
