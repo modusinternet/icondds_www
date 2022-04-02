@@ -1,7 +1,7 @@
 <?php
 header("Content-Type: application/manifest+json; charset=utf-8");
 header("Expires: " . gmdate("D, d M Y H:i:s T", time() + ($CFG["CACHE_EXPIRE"] * 60)));
-?>{CCMS_DB_PRELOAD:all,index}{
+?>{CCMS_DB_PRELOAD:all,index} {
 	"short_name": "ICONIC",
 	"name": "{CCMS_DB:all,company-name}",
 	"description": "{CCMS_DB:index,description}",
