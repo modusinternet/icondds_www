@@ -578,9 +578,7 @@ function CCMS_DB_Dir($a) {
 		if(($a[5] ?? null) === "1") {
 			// Make editable on the public side.
 
-			if(isset($_SESSION["USER_ID"])) {
-				$json_a = json_decode($_SESSION["PRIV"], true);
-			}
+
 
 			//if($CLEAN["CCMS_DB_Preload_Content"][$a[2]][$a[3]][$CLEAN["ccms_lng"]]["content"] ?? null) {
 			if($CLEAN["CCMS_DB_Preload_Content"][$a[2]][$a[3]][$CLEAN["ccms_lng"]]["content"] !== "") {
@@ -589,12 +587,17 @@ function CCMS_DB_Dir($a) {
 				echo $CLEAN["CCMS_DB_Preload_Content"][$a[2]][$a[3]][$CFG["DEFAULT_SITE_CHAR_SET"]]["dir"] . "\" data-ccms=\"" . $CLEAN["CCMS_DB_Preload_Content"][$a[2]][$a[3]][$CLEAN["ccms_lng"]]["id"] . "\" data-ccms-grp=\"" . $CLEAN["CCMS_DB_Preload_Content"][$a[2]][$a[3]][$CLEAN["ccms_lng"]]["grp"] . "\" data-ccms-name=\"" . $CLEAN["CCMS_DB_Preload_Content"][$a[2]][$a[3]][$CLEAN["ccms_lng"]]["name"];
 			}
 
+			if(isset($_SESSION["USER_ID"])) {
+				$json_a = json_decode($_SESSION["PRIV"], true);
+				echo '" data-ccms-rw="' . $json_a["content_manager"]["sub"][$CLEAN["ccms_lng"]];
+			}
 
 
 
 
 
-echo '" data-ccms-rw="' . $json_a["content_manager"]["sub"][$CLEAN["ccms_lng"]];
+
+
 
 
 

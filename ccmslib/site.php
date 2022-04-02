@@ -86,7 +86,7 @@ $lng_flag = if not null append language code to link
 $path = a variable found in the config file that represents a partial pathway to the style sheet, not including and details about AWS, language code, or language direction)
 $dir_flag = if not null append language direction to link
 */
-//function build_css_link($aws_flag = null, $lng_flag = null, $path, $dir_flag = null){
+/*function build_css_link($aws_flag = null, $lng_flag = null, $path, $dir_flag = null){*/
 function build_css_link($aws_flag, $lng_flag, $path, $dir_flag){
 	global $CFG;
 
