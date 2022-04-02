@@ -45,7 +45,6 @@ Analytics and Service Worker:
 https://developers.google.com/web/ilt/pwa/integrating-analytics#analytics_and_service_worker
 self.importScripts('/ccmstpl/_js/analytics-helper.js');
 
-
 Important resources used in the assembly of this services code:
 https://googlechrome.github.io/samples/service-worker/custom-offline-page/
 https://developers.google.com/web/updates/2017/02/navigation-preload
