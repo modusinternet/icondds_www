@@ -94,6 +94,7 @@ function CCMS_Set_Headers(){
 			//if($CLEAN["ccms_tpl"] === "search"){
 			if($CLEAN["ccms_tpl"] === "/search.php"){
 				// This helps make sure Google's Custom Search Engine (CSE) will work properly on the search template.
+				// NOTE: this presumes that your search template is located in the ccmstpl folder and is named 'search.php'.  'search.html' will not fail to add 'unsafe-eval' to your headers properly for this page to function.
 				$search = array(
 					"{UNSAFE-EVAL}",
 					"{NONCE}"
