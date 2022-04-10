@@ -91,6 +91,7 @@ function CCMS_Set_Headers(){
 	while($row = $qry->fetch()) {
 		if($row["name"] === "Content-Security-Policy"){
 			$CFG["nonce"] = hash("sha256", rand());
+header("ccms_tpl: [" . $CLEAN["ccms_tpl"] . "]");
 			if($CLEAN["ccms_tpl"] === "search"){
 				// This helps make sure Google's Custom Search Engine (CSE) will work properly on the search template.
 				$search = array(
