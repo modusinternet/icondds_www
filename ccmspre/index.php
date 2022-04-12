@@ -981,8 +981,22 @@ function CCMS_Main() {
 						$etag = md5($CLEAN["ccms_tpl"]) . "." . $row["date"];
 						header("ETag: " . $etag);
 
-						$search = "{NONCE}";
-						$replace = $CFG["nonce"];
+						/*
+						The nonce search and replace is neccesary in order to help makesure Content-Security-Policy's (nonce validation in templates specificaly) remain valid and secure regardless of where it comes from, dynamicly generated or simply pulled from the cache.
+
+						The canonical update is neccesary because we don't ever want the index page to be crawled by spiders if the URI doesn't contain a language code.  The problem we have to deal with in this case is that the index page of a site may be either dynacically generated or pulled from the cache.  In both cases we must be sure that the <meta name="robots" content="noindex" /> tag IS SENT to the visitor if the language declaration IS NOT found in the URI. (Even if it's sent twice.)
+						ie: https://yourdomain.com
+						And that the <meta name="robots" content="noindex" /> tag IS NOT sent to the visitor if the language declaration IS found in the URI.
+						ie: https://yourdomain.com/en/
+						*/
+						if($_SERVER['REQUEST_URI'] === "/"){
+							$search = array('{NONCE}','<link rel="canonical" href="');
+							$replace = array($CFG["nonce"],'<meta name="robots" content="noindex" /><link rel="canonical" href="');
+						} else {
+							$search = array('{NONCE}','<meta name="robots" content="noindex" />');
+							$replace = array($CFG["nonce"]);
+						}
+
 						echo str_replace($search, $replace, $row["content"]);
 					} else {
 						// Cached template IS expried.  It should be removed, rebuilt and recached.

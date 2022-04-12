@@ -89,29 +89,29 @@ function ccms_hrefLang_list() {
 function ccms_canonical() {
 	global $CFG, $CLEAN;
 
-	// Only use this feature on the homepage to help prevent dupicate indexing attempts
-	// by search engines when dealing with language dir.
-	// ie:
-	// https://yourdomain.com
-	// vs
-	// https://yourdomain.com/en/
-	//
-	// Both would contain the same content so we want Google to not index the normal domain, an index the one containing the /en/ dir instead.
-	// The reason for this is, depending on what language page your currently viewing a site in, (eg: /en/, /fr/, /sp/). the root page
-	// content will look exactly the same, when using CustodianCMS, as the one found in the language specific sub dir.
-	// ie:
-	// https://somedomain.com and https://somedomain.com/cx/
-	//
-	// We need to tell search engines not to index the content on the https://somedomain.com but go ahead and index the content on the
-	// https://somedomain.com/cx/ page.
+	/*
+	Only use this feature on the homepage to help prevent dupicate indexing attempts by search engines when dealing with language dir.
+	ie:
+	https://yourdomain.com
+	vs
+	https://yourdomain.com/en/
+
+	Both would contain the same content so we want Google to not index the normal domain, an index the one containing the /en/ dir instead.  The reason for this is, depending on what language page your currently viewing a site in, (eg: /en/, /fr/, /sp/). the root page content will look exactly the same, when using CustodianCMS, as the one found in the language specific sub dir.
+	ie:
+	https://somedomain.com
+	and
+	https://somedomain.com/cx/
+
+	We need to tell search engines not to index the content on the https://somedomain.com but go ahead and index the content on the https://somedomain.com/cx/ page.
+	*/
 
 	if($_SERVER['REQUEST_URI'] === "/"){
-		// if the visitor is looking at the root of the website WITHOUT the language dir.
+		// The visitor is looking at the root of the website WITHOUT the language dir.
 		// ie: https://yourdomain.com
 		echo '<meta name="robots" content="noindex" />';
 		echo '<link rel="canonical" href="' . $_SERVER['REQUEST_SCHEME'] . "://" . $CFG["DOMAIN"] . "/" . $CLEAN["ccms_lng"] . '/" />';
 	} else {
-		// if the visitor is looking at the root of the website WITH the language dir.
+		// The visitor is looking at the root of the website WITH the language dir.
 		// ie: https://yourdomain.com/en/
 		echo '<link rel="canonical" href="' . $_SERVER['REQUEST_SCHEME'] . "://" . $CFG["DOMAIN"] . $_SERVER['REQUEST_URI'] . '" />';
 	}
