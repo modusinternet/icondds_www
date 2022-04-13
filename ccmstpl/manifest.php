@@ -9,6 +9,10 @@ header("Expires: " . gmdate("D, d M Y H:i:s T", time() + ($CFG["CACHE_EXPIRE"] *
 		{
 			"src": "{CCMS_LIB:site.php;FUNC:load_resource("AWS")}/ccmstpl/_img/ico/android-chrome-192x192.png",
 			"sizes": "192x192",
+			"type": "image/png"
+		},{
+			"src": "{CCMS_LIB:site.php;FUNC:load_resource("AWS")}/ccmstpl/_img/ico/android-chrome-192x192.png",
+			"sizes": "192x192",
 			"type": "image/png",
 			"purpose": "any"
 		},{
