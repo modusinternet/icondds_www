@@ -845,7 +845,7 @@ function CCMS_Main() {
 		$CLEAN["ccms_tpl"] = "/" . $CFG["INDEX"];
 	}
 
-	CCMS_Set_Headers();
+	//CCMS_Set_Headers();
 
 	CCMS_Set_LNG();
 
