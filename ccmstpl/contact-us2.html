@@ -322,16 +322,16 @@
 
 
 
-												$('#cuForm').submit(function(event) {
+												/*$('#cuForm').submit(function(event) {
 													event.preventDefault();
 													grecaptcha.ready(function() {
 														grecaptcha.execute('{CCMS_LIB:_default.php;FUNC:ccms_googleRecapPubKey}', {action: 'cuForm'}).then(function(token) {
 															$('#cuForm').prepend('<input type="hidden" name="g-recaptcha-response" value="' + token + '">');
 															$('#cuForm').prepend('<input type="hidden" name="g-recaptcha-action" value="cuForm">');
-															/*$('#cuForm').unbind('submit').submit();*/
+															//$('#cuForm').unbind('submit').submit();
 														});
 													});
-												});
+												});*/
 
 
 
@@ -391,6 +391,7 @@
 														if(request) request.abort();
 
 
+														/* Google recaptcha v2 */
 														/*
 														var response = grecaptcha.getResponse();
 														if(response.length == 0){
@@ -405,6 +406,15 @@
 															// return true;
 														}
 														*/
+
+														/* Google recaptcha v3 */
+														grecaptcha.ready(function() {
+															grecaptcha.execute('{CCMS_LIB:_default.php;FUNC:ccms_googleRecapPubKey}', {action: 'cuForm'}).then(function(token) {
+																$('#cuForm').prepend('<input type="hidden" name="g-recaptcha-response" value="' + token + '">');
+																$('#cuForm').prepend('<input type="hidden" name="g-recaptcha-action" value="cuForm">');
+																/*$('#cuForm').unbind('submit').submit();*/
+															});
+														});
 
 
 														var $inputs = $(form).find("input, select, textarea, button");
