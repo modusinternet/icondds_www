@@ -328,7 +328,7 @@
 														grecaptcha.execute('{CCMS_LIB:_default.php;FUNC:ccms_googleRecapPubKey}', {action: 'cuForm'}).then(function(token) {
 															$('#cuForm').prepend('<input type="hidden" name="g-recaptcha-response" value="' + token + '">');
 															$('#cuForm').prepend('<input type="hidden" name="g-recaptcha-action" value="cuForm">');
-															$('#cuForm').unbind('submit').submit();
+															/*$('#cuForm').unbind('submit').submit();*/
 														});
 													});
 												});
