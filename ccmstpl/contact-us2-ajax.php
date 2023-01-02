@@ -14,7 +14,7 @@ if(!strstr($_SERVER["HTTP_REFERER"], $CFG["DOMAIN"])) {
 }
 */
 
-if(!ccms_badIPCheck($_SERVER["REMOTE_ADDR"])) {
+if(ccms_badIPCheck($_SERVER["REMOTE_ADDR"])) {
 	$json['error']['invalid_badIPCheck'] = "There is a problem with your message, it can not be posted using this form from your current IP Address.  Please contact the website administrators directly by either phone or email if you feel this message is in error for more information.";
 }
 
