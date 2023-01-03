@@ -233,10 +233,12 @@
 									<div class="g-recaptcha" data-callback="gRecaptchaCallback" data-sitekey="{CCMS_LIB:_default.php;FUNC:ccms_googleRecapPubKey}"></div>
 									<label id="grecaptcha-error" class="error" dir="{CCMS_DB_DIR:all,grecaptcha-error}" for="g-recaptcha" style="display:none"></label>
 								</div -->
+								<label id="grecaptcha-error" class="error" dir="{CCMS_DB_DIR:all,grecaptcha-error}" for="g-recaptcha" style="display:none"></label>
 
 
 								<!-- button dir="{CCMS_DB_DIR:all,submit}" id="cuSubmit" role="button" type="submit">{CCMS_DB:all,submit}</button -->
-								<button class="g-recaptcha" data-sitekey="reCAPTCHA_site_key" data-callback='onSubmit' data-action='submit' dir="{CCMS_DB_DIR:all,submit}" id="cuSubmit" role="button">Submit</button>
+								<!-- button class="g-recaptcha" data-sitekey="reCAPTCHA_site_key" data-callback='onSubmit' data-action='submit' dir="{CCMS_DB_DIR:all,submit}" id="cuSubmit" role="button">Submit</button -->
+								<button dir="{CCMS_DB_DIR:all,submit}" id="cuSubmit" role="button">Submit</button>
 							</form>
 
 						</div>
@@ -267,11 +269,13 @@
 
 			{CCMS_LIB:site.php;FUNC:build_css_link("1","","CSS-01","1")}
 
+			/*
 			function gRecaptchaCallback() {
 				if(grecaptcha && grecaptcha.getResponse().length > 0){
 					$('#grecaptcha-error').slideUp();
 				}
 			};
+			*/
 
 			function loadJSResources(){
 				loadFirst("{CCMS_LIB:site.php;FUNC:build_js_link("1","","JQUERY")}",function(){
@@ -333,13 +337,34 @@
 													});
 												});*/
 
+												/*
 												grecaptcha.ready(function() {
 													grecaptcha.execute('{CCMS_LIB:_default.php;FUNC:ccms_googleRecapPubKey}', {action: 'cuForm'}).then(function(token) {
 														$('#cuForm').prepend('<input type="hidden" name="g-recaptcha-response" value="' + token + '">');
 														$('#cuForm').prepend('<input type="hidden" name="g-recaptcha-action" value="cuForm">');
-														/*$('#cuForm').unbind('submit').submit();*/
+														//$('#cuForm').unbind('submit').submit();
 													});
 												});
+												*/
+
+												/*
+												grecaptcha.ready(function() {
+													// do request for recaptcha token
+													// response is promise with passed token
+													grecaptcha.execute('{CCMS_LIB:_default.php;FUNC:ccms_googleRecapPubKey}', {action: 'cuForm'}).then(function(token) {
+														// add token to form
+														$('#cuForm').prepend('<input type="hidden" name="g-recaptcha-response" value="' + token + '">');
+														$.post("form.php",{email: email, comment: comment, token: token}, function(result) {
+															console.log(result);
+															if(result.success) {
+																alert('Thanks for posting comment.')
+															} else {
+																alert('You are spammer ! Get the @$%K out.')
+															}
+														});
+													});;
+												});
+												*/
 
 
 
@@ -416,18 +441,17 @@
 
 
 														/* Google recaptcha v3 */
-														/*
-														$('#cuForm').submit(function(event) {
-															event.preventDefault();
+														//$('#cuForm').submit(function(event) {
+															//event.preventDefault();
 															grecaptcha.ready(function() {
 																grecaptcha.execute('{CCMS_LIB:_default.php;FUNC:ccms_googleRecapPubKey}', {action: 'cuForm'}).then(function(token) {
 																	$('#cuForm').prepend('<input type="hidden" name="g-recaptcha-response" value="' + token + '">');
 																	$('#cuForm').prepend('<input type="hidden" name="g-recaptcha-action" value="cuForm">');
 																});
-																$('#cuForm').unbind('submit').submit();
+																//$('#cuForm').unbind('submit').submit();
 															});
-														});
-														*/
+														//});
+
 
 
 
@@ -467,9 +491,9 @@
 																}
 
 
-																/*if(json.error.grecaptcha) {
+																if(json.error.grecaptcha) {
 																	$('#grecaptcha-error').html(json.error.grecaptcha).slideDown();
-																}*/
+																}
 
 
 																$inputs.prop("disabled", false);
