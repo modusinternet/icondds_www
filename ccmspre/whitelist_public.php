@@ -63,6 +63,17 @@ define('NO_BADCHARS', '/^[^\<\>&#]*\z/');
 // \z	End of subject or newline at end. (Better then $ because $ does not include /n characters at the end of a line.)
 // /	End of the Pattern.
 
+define('G_RECAPTCHA_RESPONSE', '/^[a-z\pN\-_]*\z/i');
+// ^		Start of line
+// [		Start of the character class.
+// a-z		Any kind of letter from any language, upper or lower case.
+// \pN		Any number.
+// -		Hyphans
+// _		Underscore
+// ]		End of the character class.
+// \z		End of subject or newline at end. (Better then $ because $ does not include /n characters at the end of a line.)
+// /i		Case insensitive
+
 
 $whitelist = array(
 	"example_given_name" => array("type" => "EXAMPLE_EXPRESSION_1", "minlength" => 1, "maxlength" => 15),
@@ -70,13 +81,15 @@ $whitelist = array(
 	"example_dropdown"		=> array("type" => "EXAMPLE_EXPRESSION_3",	"options"		=> array("apple", "ball", "car", "tooth")),
 
 	/* All Windows Message Box */
-	"msgName"				=> array("type" => "NO_BADCHARS", "minlength" => 2, "maxlength" => 32),
-	"msgEmail"				=> array("type" => "EMAIL",		 "maxlength" => 256),
-	"msgTextarea"			=> array("type" => "NO_BADCHARS", "maxlength" => 1536),
+	"msgName"								=> array("type" => "NO_BADCHARS", "minlength" => 2, "maxlength" => 32),
+	"msgEmail"							=> array("type" => "EMAIL",		 "maxlength" => 256),
+	"msgTextarea"						=> array("type" => "NO_BADCHARS", "maxlength" => 1536),
 
-	"cuName"					=> array("type" => "NO_BADCHARS",	"minlength" => 2,	"maxlength" => 32),
-	"cuEmail"				=> array("type" => "EMAIL",			"maxlength" => 256),
-	"cuMessage"				=> array("type" => "NO_BADCHARS",	"maxlength" => 1536)
+	"cuName"								=> array("type" => "NO_BADCHARS",	"minlength" => 2,	"maxlength" => 32),
+	"cuEmail"								=> array("type" => "EMAIL",			"maxlength" => 256),
+	"cuMessage"							=> array("type" => "NO_BADCHARS",	"maxlength" => 1536),
+	"g_recaptcha_action"		=> array("type" => "NO_BADCHARS",						"maxlength" => 32),
+	"g_recaptcha_response"	=> array("type" => "G_RECAPTCHA_RESPONSE",	"maxlength" => 2048)
 );
 
 
@@ -101,6 +114,9 @@ function CCMS_Public_Filter($input, $whitelist){
 						break;
 					case "EMAIL":
 						$buf = (filter_var($value, FILTER_VALIDATE_EMAIL)) ? $value : "INVAL";
+						break;
+					case "G_RECAPTCHA_RESPONSE":
+						$buf = (preg_match(G_RECAPTCHA_RESPONSE, $value)) ? $value : "INVAL";
 						break;
 
 

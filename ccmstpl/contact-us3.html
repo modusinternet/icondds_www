@@ -1,0 +1,526 @@
+{CCMS_DB_PRELOAD:all,contact-us}<!DOCTYPE html>
+<html dir="{CCMS_LIB:_default.php;FUNC:ccms_lng_dir}" lang="{CCMS_LIB:_default.php;FUNC:ccms_lng}" prefix="og: http://ogp.me/ns#">
+	<head>
+		<!-- Repeated content and can be placed once in your header head template. -->
+		{CCMS_TPL:header-head.html}
+
+		<!-- Should be representative of the page in reference. -->
+		<title dir="{CCMS_DB_DIR:all,company-name}">{CCMS_DB:all,company-name} / {CCMS_DB:all,contact-us}</title>
+		<meta name="description" content="{CCMS_DB:contact-us,description}" />
+
+		<!-- Google / Search Engine Tags -->
+		<meta itemprop="name" content="{CCMS_DB:all,company-name} / {CCMS_DB:all,contact-us}" />
+		<meta itemprop="description" content="{CCMS_DB:contact-us,description}" />
+
+		<!-- Facebook Meta Tags -->
+		<meta property="og:url" content="https://{CCMS_LIB:_default.php;FUNC:ccms_cfgDomain}/{CCMS_LIB:_default.php;FUNC:ccms_lng}/" />
+		<meta property="og:title" content="{CCMS_DB:all,company-name} / {CCMS_DB:all,contact-us}" />
+		<meta property="og:description" content="{CCMS_DB:contact-us,description}" />
+
+		<!-- Twitter Meta Tags -->
+		<meta name="twitter:title" content="{CCMS_DB:all,company-name} / {CCMS_DB:all,contact-us}" />
+		<meta name="twitter:description" content="{CCMS_DB:contact-us,description}" />
+
+		<script type="application/ld+json">
+			[{
+				"@context":"https://schema.org",
+				"@type":"WebSite",
+				"name":"{CCMS_DB:all,company-name}",
+				"url":"https://{CCMS_LIB:_default.php;FUNC:ccms_cfgDomain}/{CCMS_LIB:_default.php;FUNC:ccms_lng}/contact-us.html",
+				"alternateName":"{CCMS_DB:all,company-name} / {CCMS_DB:all,contact-us}"
+			},{
+				"@context":"https://schema.org",
+				"@type":"Dentist",
+				"name":"{CCMS_DB:all,company-name}",
+				"description":"{CCMS_DB:contact-us,description}",
+				"url":"https://{CCMS_LIB:_default.php;FUNC:ccms_cfgDomain}/{CCMS_LIB:_default.php;FUNC:ccms_lng}/contact-us.html",
+				"logo":{
+					"@type":"ImageObject",
+					"url":"{CCMS_LIB:site.php;FUNC:load_resource("AWS")}/ccmstpl/_img/logo1.3.png"
+				},
+				"telephone":"(714) 835-4441",
+				"email":"info@{CCMS_LIB:_default.php;FUNC:ccms_cfgDomain}",
+				"priceRange":"Call for pricing options",
+				"address":{
+					"@type":"PostalAddress",
+					"addressLocality":"Tustin",
+					"addressRegion":"CA",
+					"postalCode":"92780",
+					"streetAddress":"17501 Irvine Blvd Ste 101 Tustin",
+					"addressCountry":"US"
+				},
+				"sameAs":[
+					/*"https://twitter.com/mywebsite",*/
+					"https://www.instagram.com/iconic.dds/?hl=en",
+					/*"https://plus.google.com/+mywebsite",*/
+					"https://www.facebook.com/tustindentistry/"
+					/*"https://www.pinterest.com/mywebsite/",*/
+					/*"https://www.youtube.com/user/mywebsite"*/
+				],
+				"geo":{
+					"@type":"GeoCoordinates",
+					"latitude":33.748438,
+					"longitude":-117.82662
+				},
+				"openingHours":["Mon-Fri: 9am - 5pm", "Sat-Sun: Closed"],
+				"image":"{CCMS_LIB:site.php;FUNC:load_resource("AWS")}/ccmstpl/_img/business-card.png"
+			}]
+		</script>
+
+		<style nonce="{CCMS_LIB:site.php;FUNC:csp_nounce}">
+			{CCMS_TPL:/_css/header.html}
+
+			.gm-style,.gm-style.gm-style-iw{
+				font-family:unset !important;
+				font-size:1.8rem !important;
+				font-weight:unset !important;
+				line-height:2rem !important
+			}
+
+			.gm-style>div>div:nth-child(3){box-shadow:0 2px 12px rgba(136,136,136,.5) inset}
+
+			.gm-style-iw-c,.gm-style-iw-d{max-width:250px !important}
+
+			#cuform label{font-weight:500}
+
+			.alert-success{
+				background:var(--cl2);
+				border-radius:8px;
+				color:white;
+				display:block;
+				margin-bottom:18px;
+				padding:15px
+			}
+
+			#cuForm input[type=text],#cuForm textarea{
+				background-color:#f4f4f4;
+				border:1px solid #e3e3e3;
+				border-radius:8px;
+				font-size:1.8rem;
+				line-height: initial;
+				padding:10px;
+				margin-bottom:10px;
+				width:100%;
+				transition:all .5s ease-in-out
+			}
+
+			#cuFormCaptcha{margin-bottom:10px}
+
+			#cuForm input[type=text]::placeholder,#cuForm textarea::placeholder{
+				color:rgb(175,171,163)
+			}
+
+			#cuForm input[type="text"]:focus,#cuForm textarea:focus{
+				border-color:#808080;
+				outline:none
+			}
+
+			#cuForm textarea{
+				height:100px;
+				resize:none
+			}
+
+			#cuSubmit{
+				background-color:var(--cl2);
+				border:none;
+				border-radius:8px;
+				color:rgb(255,255,255);
+				cursor:pointer;
+				display:block;
+				font-size:20px;
+				padding:10px 0;
+				text-align:center;
+				text-decoration:none;
+				width:100%
+			}
+
+			#cuSubmit:hover{background:var(--cl2-tran)}
+
+			#cuForm label.error{
+				color:rgb(255,0,0);
+				display:block;
+				font-size:18px;
+				margin: 2px 0 15px 0;
+				position:relative;
+				/*top:-10px*/
+			}
+
+
+			/* #cuForm .g-recaptcha{
+				transform:scale(0.85);
+				-webkit-transform:scale(0.85);
+				transform-origin:0 0;
+				-webkit-transform-origin:0 0
+			} */
+
+
+			/* 400px or larger. */
+			/* @media only screen and (min-width:400px){
+				#cuForm .g-recaptcha{
+					transform:unset;
+					-webkit-transform:unset;
+					transform-origin:unset;
+					-webkit-transform-origin:unset
+				}
+			}*/
+
+
+
+			.grecaptcha-badge{z-index:2}
+		</style>
+
+		<script nonce="{CCMS_LIB:site.php;FUNC:csp_nounce}">
+			var navActiveArray = ["nl-contact-us","nl-lng","lng-{CCMS_LIB:_default.php;FUNC:ccms_lng}"];
+			var navActiveFooterArray = ["fl-contact-us"];
+		</script>
+	</head>
+	<body>
+		<div id="loading_svg"></div>
+		<main class="cd-main-content">
+			<div id="map" style="height:570px;width:100%;"></div>
+			<div style="padding-bottom:15px">
+				<div class="bcGrid" dir="{CCMS_LIB:_default.php;FUNC:ccms_lng_dir}">
+					<h1 class="c1" dir="{CCMS_DB_DIR:all,contact-us}">{CCMS_DB:all,contact-us}</h1>
+					<i class="c2"></i>
+					<h4 class="c3" style="margin:8px 0 0">
+						<a dir="{CCMS_DB_DIR:all,homepage}" href="/{CCMS_LIB:_default.php;FUNC:ccms_lng}/">{CCMS_DB:all,homepage}</a> <span style="color:#888888">/</span> <span dir="{CCMS_DB_DIR:all,contact-us}" style="color:var(--cl2)">{CCMS_DB:all,contact-us}</span>
+					</h4>
+				</div>
+			</div>
+
+			<div class="contentType1">
+				<div>
+					<div class="contactGrid">
+						<div class="box c1" style="margin-bottom:1.5em;text-align:initial">
+							<span dir="{CCMS_DB_DIR:all,hours}" style="font-weight:400">{CCMS_DB:all,hours}:</span><br>
+							Mon-Fri: 9am - 5pm<br>
+							Sat-Sun: Closed<br>
+							<br>
+							<p><span dir="{CCMS_DB_DIR:contact-us,contact-methods}" style="font-weight:400">{CCMS_DB:contact-us,contact-methods}:</span></p>
+							<p><span dir="{CCMS_DB_DIR:all,phone}">{CCMS_DB:all,phone}:</span> <a href="tel:17148354441" rel="nofollow">(714) 835-4441</a></p>
+							<p><span dir="{CCMS_DB_DIR:all,fax}">{CCMS_DB:all,fax}:</span> <a href="tel:17148350188" rel="nofollow">(714) 835-0188</a></p>
+							<p><span dir="{CCMS_DB_DIR:all,email}">{CCMS_DB:all,email}:</span> <a href="mailto:info@{CCMS_LIB:_default.php;FUNC:ccms_cfgDomain}" rel="nofollow">info@{CCMS_LIB:_default.php;FUNC:ccms_cfgDomain}</a></p>
+							<br>
+							<span dir="{CCMS_DB_DIR:all,address}" style="font-weight:400">{CCMS_DB:all,address}:</span><br>
+							<address>
+								ICONIC Dentistry<br>
+								17501 Irvine Blvd Ste 101<br>
+								Tustin, CA 92780
+							</address>
+						</div>
+						<div class="box c2" style="text-align:initial">
+
+							<div class="" id="cuAlertMessage" role="alert"></div>
+							<form id="cuForm">
+								<div>
+									<label for="cuName" dir="{CCMS_DB_DIR:all,name}">{CCMS_DB:all,name}</label>
+									<input dir="{CCMS_DB_DIR:all,name}" id="cuName" placeholder="{CCMS_DB:all,name-placeholder}" name="cuName" type="text">
+									<label id="cuName-error" class="error" dir="{CCMS_DB_DIR:all,name}" for="cuName" style="display:none"></label>
+								</div>
+								<div>
+									<label for="cuEmail" dir="{CCMS_DB_DIR:all,email}">{CCMS_DB:all,email}</label>
+									<input dir="{CCMS_DB_DIR:all,email}" id="cuEmail" placeholder="{CCMS_DB:all,email-placeholder}" name="cuEmail" type="text">
+									<label id="cuEmail-error" class="error" dir="{CCMS_DB_DIR:all,email}" for="cuEmail" style="display:none"></label>
+								</div>
+								<div>
+									<label for="cuMessage" dir="{CCMS_DB_DIR:all,message}">{CCMS_DB:all,message}</label>
+									<textarea data-gramm="false" dir="{CCMS_DB_DIR:all,message}" id="cuMessage" placeholder="{CCMS_DB:all,message-placeholder}" name="cuMessage"></textarea>
+									<label id="cuMessage-error" class="error" dir="{CCMS_DB_DIR:all,message}" for="cuMessage" style="display:none"></label>
+								</div>
+
+
+								<!-- div id="cuFormCaptcha">
+									<div class="g-recaptcha" data-callback="gRecaptchaCallback" data-sitekey="{CCMS_LIB:_default.php;FUNC:ccms_googleRecapPubKey}"></div>
+									<label id="grecaptcha-error" class="error" dir="{CCMS_DB_DIR:all,grecaptcha-error}" for="g-recaptcha" style="display:none"></label>
+								</div -->
+								<label id="grecaptcha-error" class="error" dir="{CCMS_DB_DIR:all,grecaptcha-error}" for="g_recaptcha_action" style="display:none"></label>
+								<input type="hidden" name="g_recaptcha_action" value="cuForm">
+								<input id="g_recaptcha_response" type="hidden" name="g_recaptcha_response">
+
+								<!-- button dir="{CCMS_DB_DIR:all,submit}" id="cuSubmit" role="button" type="submit">{CCMS_DB:all,submit}</button -->
+								<!-- button class="g-recaptcha" data-sitekey="reCAPTCHA_site_key" data-callback='onSubmit' data-action='submit' dir="{CCMS_DB_DIR:all,submit}" id="cuSubmit" role="button">Submit</button -->
+								<button dir="{CCMS_DB_DIR:all,submit}" id="cuSubmit" role="button">Submit</button>
+							</form>
+
+						</div>
+					</div>
+				</div>
+			</div>
+{CCMS_TPL:footer.html}
+		</main>
+{CCMS_TPL:header-body.html}
+<!-- {  CCMS_TPL:msg-popup.html} -->
+{CCMS_TPL:a2hs-box.html}
+		<script nonce="{CCMS_LIB:site.php;FUNC:csp_nounce}">
+			/*window.performance.mark("mark_beginning_javascript");*/
+{CCMS_TPL:footer-js2.html}
+			function loadFirst(e,t,i,c){var a=document.createElement("script");a.async="true";a.setAttribute("nonce", "{CCMS_LIB:site.php;FUNC:csp_nounce}");if(i){a.integrity=i;a.crossOrigin=c;}a.readyState?a.onreadystatechange=function(){("loaded"==a.readyState||"complete"==a.readyState)&&(a.onreadystatechange=null,t())}:a.onload=function(){t()},a.src=e,document.body.appendChild(a)}
+
+			/*
+			Argument details for build_css_link2() and build_js_link() function calls:
+			arg1 = (1 = append AWS link), (empty = do not append AWS link)
+			arg2 = (1 = append language code to link), (empty = do not append language code to link)	In other words, send it through the parser first like a normal template.
+			arg3 = a variable found in the config file that represents a partial pathway to the style sheet, not including and details about AWS, language code, or language direction)
+			arg4 = (1 = append language direction to link), (empty = do not append language direction to link)
+
+			Argument details for build_js_sri() function calls:
+			arg1 = 1 = build sri code based on version stored on AWS.  empty = build sri code based on version stored on our own server.
+			arg2 = a variable found in the config file that represents a partial pathway to the style sheet. (Not including details about AWS, language code, or language direction)
+			*/
+
+			{CCMS_LIB:site.php;FUNC:build_css_link("1","","CSS-01","1")}
+
+			function loadJSResources(){
+				loadFirst("{CCMS_LIB:site.php;FUNC:build_js_link("1","","JQUERY")}",function(){
+
+					loadFirst("{CCMS_LIB:site.php;FUNC:build_js_link("1","","JQUERY-MOBILE-CUST")}",function(){
+
+						loadFirst("{CCMS_LIB:site.php;FUNC:build_js_link("1","","JQUERY-VALIDATE")}",function(){
+
+							loadFirst("{CCMS_LIB:site.php;FUNC:build_js_link("1","","JQUERY-VALIDATE-ADDITIONAL-METHODS")}",function(){
+
+								loadFirst("{CCMS_LIB:site.php;FUNC:build_js_link("1","","MODERNIZER")}",function(){
+
+									loadFirst("https://maps.googleapis.com/maps/api/js?key={CCMS_LIB:_default.php;FUNC:ccms_googleCredKey}&language={CCMS_LIB:_default.php;FUNC:ccms_lng}",function(){
+
+										/* loadFirst("https://www.google.com/recaptcha/api.js?hl={CCMS_LIB:_default.php;FUNC:ccms_lng}", function(){ */
+										loadFirst("https://www.google.com/recaptcha/api.js?render={CCMS_LIB:_default.php;FUNC:ccms_googleRecapPubKey}&hl={CCMS_LIB:_default.php;FUNC:ccms_lng}", function() {
+
+											loadFirst("{CCMS_LIB:site.php;FUNC:build_js_link("1","","JS-01")}",function(){
+
+												var center = {lat: 33.7502339, lng: -117.8263036};
+												var icondds = {lat: 33.7484893, lng: -117.8271579};
+												var map = new google.maps.Map(document.getElementById('map'), {
+													zoom:16,
+													center:center,
+													disableDefaultUI:false,
+													/*gestureHandling:'cooperative',*/
+													scrollwheel:false,
+													mapTypeControl:false,
+													fullscreenControl:false
+												});
+												var contentString = '<div id="content">'+
+													'<h2>Iconic DDS</h2>'+
+													'<h4>(Dr. Sheldon Lu)</h4>'+
+													'<p dir="{CCMS_DB_DIR:contact-us,gen-family}">{CCMS_DB:contact-us,gen-family}</p>'+
+													'<p>17501 Irvine Blvd Ste 101<br>Tustin, CA 92780</p>'+
+													'<p><a dir="{CCMS_DB_DIR:contact-us,view-large}" href="https://goo.gl/maps/Mb8dJQxC7K42" target="_blank">{CCMS_DB:contact-us,view-large}</a></p>'+
+													'</div>';
+												infowindow = new google.maps.InfoWindow({content:contentString});
+												var marker = new google.maps.Marker({
+													position:icondds,
+													map:map,
+													title:'Iconic Doctors of Denial Surgery'
+												});
+												marker.addListener('click', function() {infowindow.open(map, marker);});
+												google.maps.event.addListener(map, 'click', function() {infowindow.close();});
+												infowindow.open(map, marker);
+
+
+												$.validator.addMethod(
+													"badCharRegex",
+													function(value,element,regexp){
+														var re=new RegExp(regexp);
+														return this.optional(element)||re.test(value);
+													},
+													"Please check your input."
+												);
+
+												$.validator.addMethod(
+													"checkCaptcha",
+													function(){
+														grecaptcha.ready(function() {
+															grecaptcha.execute('{CCMS_LIB:_default.php;FUNC:ccms_googleRecapPubKey}', {action: 'cuForm'}).then(function(token) {
+																$('#g_recaptcha_response').value(token);
+															});
+														});
+														return true;
+													}, ""
+												);
+
+												$("#cuForm").validate({
+													rules:{
+														cuName:{
+															required:true,
+															minlength:2,
+															maxlength:32,
+															badCharRegex:/^[^\<\>&#]+$/i
+														},
+														cuEmail:{
+															required:true,
+															email:true,
+															maxlength:256
+														},
+														cuMessage:{
+															required:true,
+															maxlength:512,
+															badCharRegex:/^[^\<\>&#]+$/i
+														},
+														g_recaptcha_response: {
+															required: true,
+															checkCaptcha: true
+														}
+													},
+													messages:{
+														cuName:{
+															required:"{CCMS_DB:all,name-error-req}",
+															minlength:"{CCMS_DB:all,name-error-minMax}",
+															maxlength:"{CCMS_DB:all,name-error-minMax}",
+															badCharRegex:"{CCMS_DB:all,name-error-badChar}"
+														},
+														cuEmail: {
+															required:"{CCMS_DB:all,email-error-req}",
+															maxlength:"{CCMS_DB:all,email-error-max}"
+														},
+														cuMessage:{
+															required:"{CCMS_DB:all,message-error-req}",
+															maxlength:"{CCMS_DB:all,message-error-max}",
+															badCharRegex:"{CCMS_DB:all,name-error-badChar}"
+														},
+														g_recaptcha_response: {
+															checkCaptcha: "Captcha not responsive. Please try again."
+														}
+													},
+													errorPlacement:function($error,$element){
+														var name=$element.attr("name");
+														$("#"+name+"-error").append($error);
+													},
+													submitHandler:function(form){
+														var request;
+														/* Abort any pending request. */
+														if(request) request.abort();
+
+
+														/* Google recaptcha v2 */
+														/*
+														var response = grecaptcha.getResponse();
+														if(response.length == 0){
+															// recaptcha failed validation
+															$('#grecaptcha-error').slideDown();
+															$('#grecaptcha-error').html("{CCMS_DB:all,grecaptcha-error}");
+															return false;
+														} else {
+															// recaptcha passed validation
+															// $('#grecaptcha-error').hide();
+															$('#grecaptcha-error').slideUp();
+															// return true;
+														}
+														*/
+
+
+														/* Google recaptcha v3 */
+														//$('#cuForm').submit(function(event) {
+															/*
+															event.preventDefault();
+															grecaptcha.ready(function() {
+																grecaptcha.execute('{CCMS_LIB:_default.php;FUNC:ccms_googleRecapPubKey}', {action: 'cuForm'}).then(function(token) {
+																	$('#cuForm').prepend('<input type="hidden" name="g-recaptcha-response" value="' + token + '">');
+																	$('#cuForm').prepend('<input type="hidden" name="g-recaptcha-action" value="cuForm">');
+																});
+																$('#cuForm').unbind('submit').submit();
+															});
+															*/
+														//});
+
+
+
+
+
+
+														var $inputs = $(form).find("input, select, textarea, button");
+														var serializedData = $(form).serialize();
+														/* Disable the inputs for the duration of the ajax request. */
+														$inputs.prop("disabled", true);
+														request = $.ajax({
+															beforeSend:function(XMLHttpRequest){
+																$('#cuForm .has-error').removeClass('has-error');
+																$('#cuForm .help-block').html('').hide();
+																$('#cuAlertMessage').removeClass('alert-success').html('');
+															},
+															cache: false,
+															data: serializedData,
+															dataType: 'json',
+															type: "POST",
+															url: "/{CCMS_LIB:_default.php;FUNC:ccms_lng}/contact-us3-ajax.php"
+														});
+														/* Called on success. */
+														request.done(function(json, textStatus) {
+															if(json.error) {
+																/* Error messages */
+																if(json.error.cuName) {
+																	$('#cuName').parent().addClass('has-error');
+																	$('#cuName-error').html(json.error.cuName).slideDown();
+																}
+																if(json.error.cuEmail) {
+																	$('#cuEmail').parent().addClass('has-error');
+																	$('#cuEmail-error').html(json.error.cuEmail).slideDown();
+																}
+																if(json.error.cuMessage) {
+																	$('#cuMessage').parent().addClass('has-error');
+																	$('#cuMessage-error').html(json.error.cuMessage).slideDown();
+																}
+
+
+																if(json.error.grecaptcha) {
+																	$('#grecaptcha-error').html(json.error.grecaptcha).slideDown();
+																}
+
+
+																$inputs.prop("disabled", false);
+															}
+
+
+															/* Refresh Captcha */
+															//grecaptcha.reset();
+
+
+															if(json.success) {
+																$('#cuAlertMessage').addClass('alert-success').html(json.success).slideDown();
+																setTimeout(function() {
+																	$('#cuAlertMessage').slideUp("fast", function() {
+																		$(this).removeClass('alert-success').html('');
+																	});
+																},5000);
+																$('#cuForm').find('.form-control').val('');
+																/* reenable the inputs */
+																setTimeout(function() {
+																	$inputs.prop("disabled", false);
+																}, 2000);
+															}
+														});
+														/* Called on failure. */
+														request.fail(function (jqXHR, textStatus, errorThrown){
+															/* log the error to the console */
+															$("#cuForm").html("The following error occurred: " + textStatus, errorThrown);
+														});
+														/* Called if the request failed or succeeded. */
+														request.always(function () {
+															/* reenable the inputs */
+															setTimeout(function() {
+																$inputs.prop("disabled", false);
+															}, 2000);
+														});
+														/* Prevent default posting of form. */
+														return false;
+													}
+												});
+
+												/*window.performance.mark("mark_end_javascript");
+												console.log(window.performance.getEntriesByName("mark_beginning_javascript"));
+												console.log(window.performance.getEntriesByName("mark_end_javascript"));*/
+											}{CCMS_LIB:site.php;FUNC:build_js_sri("1","JS-01")});
+										});
+									});
+								}{CCMS_LIB:site.php;FUNC:build_js_sri("1","MODERNIZER")});
+							}{CCMS_LIB:site.php;FUNC:build_js_sri("1","JQUERY-VALIDATE-ADDITIONAL-METHODS")});
+						}{CCMS_LIB:site.php;FUNC:build_js_sri("1","JQUERY-VALIDATE")});
+					}{CCMS_LIB:site.php;FUNC:build_js_sri("1","JQUERY-MOBILE-CUST")});
+				}{CCMS_LIB:site.php;FUNC:build_js_sri("1","JQUERY")});
+			};
+
+			if(window.addEventListener){window.addEventListener("load",loadJSResources,false)}
+			else if(window.attachEvent){window.attachEvent("onload",loadJSResources)}
+			else{window.onload=loadJSResources}
+		</script>
+	</body>
+</html>
