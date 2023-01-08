@@ -57,7 +57,7 @@ if(!bad_word_check($CLEAN["cuMessage"])) {
 }
 
 // Checking reCaptcha
-if($_POST["g-recaptcha-response"]) {
+if($_POST["g_recaptcha_response"]) {
 	//$resp = file_get_contents( "https://www.google.com/recaptcha/api/siteverify?secret={$CFG['GOOGLE_RECAPTCHA_PRIVATEKEY']}&response={$_POST['g-recaptcha-response']}&remoteip={$_SERVER['REMOTE_ADDR']}" );
 
 
@@ -88,7 +88,7 @@ if($_POST["g-recaptcha-response"]) {
 	// query use fsockopen
 	$fp = @fsockopen('ssl://www.google.com', 443, $errno, $errstr, 10);
 	if($fp !== false) {
-		$out = "GET /recaptcha/api/siteverify?secret={$CFG['GOOGLE_RECAPTCHA_PRIVATEKEY']}&response={$CLEAN['g-recaptcha-response']}&remoteip={$_SERVER['REMOTE_ADDR']} HTTP/1.1\r\n";
+		$out = "GET /recaptcha/api/siteverify?secret={$CFG['GOOGLE_RECAPTCHA_PRIVATEKEY']}&response={$CLEAN['g_recaptcha_response']}&remoteip={$_SERVER['REMOTE_ADDR']} HTTP/1.1\r\n";
 		$out .= "Host: www.google.com\r\n";
 		$out .= "Connection: Close\r\n\r\n";
 		@fwrite($fp, $out);
@@ -105,7 +105,7 @@ if($_POST["g-recaptcha-response"]) {
 		$resp = trim($resp, "\r\n0");
 		$resp = json_decode($resp, true);
 
-		if($resp["success"] == false || $resp["action"] !== $CLEAN["g-recaptcha-action"] || $resp["score"] <= 0.4) {
+		if($resp["success"] == false || $resp["action"] !== $CLEAN["g_recaptcha_action"] || $resp["score"] <= 0.4) {
 			//$ccms_login_message["FAIL"] = 'Google reCAPTCHA failed or expired. Try again. (success=['.$resp["success"].'], score=['.$resp["score"].'], action=['.$resp["action"].'], error-codes=['.$resp["error-codes"].'])';
 			//$ccms_login_message["FAIL"] = 'Google reCAPTCHA failed or expired. Try again.';
 			$json['error']['grecaptcha'] = 'Google reCAPTCHA failed or expired. Try again.';
