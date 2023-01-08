@@ -326,18 +326,6 @@
 													"Please check your input."
 												);
 
-												$.validator.addMethod(
-													"checkCaptcha",
-													function(){
-														grecaptcha.ready(function() {
-															grecaptcha.execute('{CCMS_LIB:_default.php;FUNC:ccms_googleRecapPubKey}', {action: 'cuForm'}).then(function(token) {
-																$('#g_recaptcha_response').value(token);
-															});
-														});
-														return true;
-													}, ""
-												);
-
 												$("#cuForm").validate({
 													rules:{
 														cuName:{
@@ -355,10 +343,6 @@
 															required:true,
 															maxlength:512,
 															badCharRegex:/^[^\<\>&#]+$/i
-														},
-														g_recaptcha_response: {
-															required: true,
-															checkCaptcha: true
 														}
 													},
 													messages:{
@@ -376,9 +360,6 @@
 															required:"{CCMS_DB:all,message-error-req}",
 															maxlength:"{CCMS_DB:all,message-error-max}",
 															badCharRegex:"{CCMS_DB:all,name-error-badChar}"
-														},
-														g_recaptcha_response: {
-															checkCaptcha: "Captcha not responsive. Please try again."
 														}
 													},
 													errorPlacement:function($error,$element){
@@ -391,58 +372,33 @@
 														if(request) request.abort();
 
 
-														/* Google recaptcha v2 */
-														/*
-														var response = grecaptcha.getResponse();
-														if(response.length == 0){
-															// recaptcha failed validation
-															$('#grecaptcha-error').slideDown();
-															$('#grecaptcha-error').html("{CCMS_DB:all,grecaptcha-error}");
-															return false;
-														} else {
-															// recaptcha passed validation
-															// $('#grecaptcha-error').hide();
-															$('#grecaptcha-error').slideUp();
-															// return true;
-														}
-														*/
+														grecaptcha.ready(function() {
+															grecaptcha.execute('{CCMS_LIB:_default.php;FUNC:ccms_googleRecapPubKey}', {action: 'cuForm'}).then(function(token) {
+																$('#g_recaptcha_response').value(token);
 
-
-														/* Google recaptcha v3 */
-														//$('#cuForm').submit(function(event) {
-															/*
-															event.preventDefault();
-															grecaptcha.ready(function() {
-																grecaptcha.execute('{CCMS_LIB:_default.php;FUNC:ccms_googleRecapPubKey}', {action: 'cuForm'}).then(function(token) {
-																	$('#cuForm').prepend('<input type="hidden" name="g-recaptcha-response" value="' + token + '">');
-																	$('#cuForm').prepend('<input type="hidden" name="g-recaptcha-action" value="cuForm">');
+																var $inputs = $(form).find("input, select, textarea, button");
+																var serializedData = $(form).serialize();
+																/* Disable the inputs for the duration of the ajax request. */
+																$inputs.prop("disabled", true);
+																request = $.ajax({
+																	beforeSend:function(XMLHttpRequest){
+																		$('#cuForm .has-error').removeClass('has-error');
+																		$('#cuForm .help-block').html('').hide();
+																		$('#cuAlertMessage').removeClass('alert-success').html('');
+																	},
+																	cache: false,
+																	data: serializedData,
+																	dataType: 'json',
+																	type: "POST",
+																	url: "/{CCMS_LIB:_default.php;FUNC:ccms_lng}/contact-us3-ajax.php"
 																});
-																$('#cuForm').unbind('submit').submit();
+
+																
 															});
-															*/
-														//});
-
-
-
-
-
-
-														var $inputs = $(form).find("input, select, textarea, button");
-														var serializedData = $(form).serialize();
-														/* Disable the inputs for the duration of the ajax request. */
-														$inputs.prop("disabled", true);
-														request = $.ajax({
-															beforeSend:function(XMLHttpRequest){
-																$('#cuForm .has-error').removeClass('has-error');
-																$('#cuForm .help-block').html('').hide();
-																$('#cuAlertMessage').removeClass('alert-success').html('');
-															},
-															cache: false,
-															data: serializedData,
-															dataType: 'json',
-															type: "POST",
-															url: "/{CCMS_LIB:_default.php;FUNC:ccms_lng}/contact-us3-ajax.php"
 														});
+
+
+
 														/* Called on success. */
 														request.done(function(json, textStatus) {
 															if(json.error) {
