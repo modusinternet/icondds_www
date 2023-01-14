@@ -330,7 +330,7 @@
 													"checkCaptcha",
 													function(){
 
-														event.preventDefault();
+														//event.preventDefault();
 
 														grecaptcha.ready(function() {
 															grecaptcha.execute('{CCMS_LIB:_default.php;FUNC:ccms_googleRecapPubKey}', {action: 'cuForm'}).then(function(token) {
@@ -338,8 +338,7 @@
 															});
 														});
 
-
-														$('#cuForm').unbind('submit').submit();
+														//$('#cuForm').unbind('submit').submit();
 
 														return true;
 													}, ""
@@ -396,12 +395,6 @@
 														var request;
 														/* Abort any pending request. */
 														if(request) request.abort();
-
-
-
-
-
-
 														var $inputs = $(form).find("input, select, textarea, button");
 														var serializedData = $(form).serialize();
 														/* Disable the inputs for the duration of the ajax request. */
@@ -434,13 +427,9 @@
 																	$('#cuMessage').parent().addClass('has-error');
 																	$('#cuMessage-error').html(json.error.cuMessage).slideDown();
 																}
-
-
 																if(json.error.grecaptcha) {
 																	$('#grecaptcha-error').html(json.error.grecaptcha).slideDown();
 																}
-
-
 																$inputs.prop("disabled", false);
 															}
 															if(json.success) {
