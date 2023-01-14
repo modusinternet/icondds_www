@@ -326,25 +326,6 @@
 													"Please check your input."
 												);
 
-												$.validator.addMethod(
-													"checkCaptcha",
-													function(){
-
-														event.preventDefault();
-
-														grecaptcha.ready(function() {
-															grecaptcha.execute('{CCMS_LIB:_default.php;FUNC:ccms_googleRecapPubKey}', {action: 'cuForm'}).then(function(token) {
-																$('#g_recaptcha_response').value(token);
-															});
-														});
-
-
-														$('#cuForm').unbind('submit').submit();
-
-														return true;
-													}, ""
-												);
-
 												$("#cuForm").validate({
 													rules:{
 														cuName:{
@@ -362,10 +343,6 @@
 															required:true,
 															maxlength:512,
 															badCharRegex:/^[^\<\>&#]+$/i
-														},
-														g_recaptcha_response: {
-															required: true,
-															checkCaptcha: true
 														}
 													},
 													messages:{
@@ -383,9 +360,6 @@
 															required:"{CCMS_DB:all,message-error-req}",
 															maxlength:"{CCMS_DB:all,message-error-max}",
 															badCharRegex:"{CCMS_DB:all,name-error-badChar}"
-														},
-														g_recaptcha_response: {
-															checkCaptcha: "Captcha not responsive. Please try again."
 														}
 													},
 													errorPlacement:function($error,$element){
@@ -398,26 +372,33 @@
 														if(request) request.abort();
 
 
+														grecaptcha.ready(function() {
+															grecaptcha.execute('{CCMS_LIB:_default.php;FUNC:ccms_googleRecapPubKey}', {action: 'cuForm'}).then(function(token) {
+																$('#g_recaptcha_response').value(token);
+
+																var $inputs = $(form).find("input, select, textarea, button");
+																var serializedData = $(form).serialize();
+																/* Disable the inputs for the duration of the ajax request. */
+																$inputs.prop("disabled", true);
+																request = $.ajax({
+																	beforeSend:function(XMLHttpRequest){
+																		$('#cuForm .has-error').removeClass('has-error');
+																		$('#cuForm .help-block').html('').hide();
+																		$('#cuAlertMessage').removeClass('alert-success').html('');
+																	},
+																	cache: false,
+																	data: serializedData,
+																	dataType: 'json',
+																	type: "POST",
+																	url: "/{CCMS_LIB:_default.php;FUNC:ccms_lng}/contact-us3-ajax.php"
+																});
 
 
-
-
-														var $inputs = $(form).find("input, select, textarea, button");
-														var serializedData = $(form).serialize();
-														/* Disable the inputs for the duration of the ajax request. */
-														$inputs.prop("disabled", true);
-														request = $.ajax({
-															beforeSend:function(XMLHttpRequest){
-																$('#cuForm .has-error').removeClass('has-error');
-																$('#cuForm .help-block').html('').hide();
-																$('#cuAlertMessage').removeClass('alert-success').html('');
-															},
-															cache: false,
-															data: serializedData,
-															dataType: 'json',
-															type: "POST",
-															url: "/{CCMS_LIB:_default.php;FUNC:ccms_lng}/contact-us3-ajax.php"
+															});
 														});
+
+
+
 														/* Called on success. */
 														request.done(function(json, textStatus) {
 															if(json.error) {
