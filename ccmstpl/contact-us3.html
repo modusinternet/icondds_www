@@ -236,8 +236,8 @@
 
 								<div>
 									<input type="hidden" name="g_recaptcha_action" value="cuForm">
-									<input id="g_recaptcha_response" type="hidden" name="g_recaptcha_response" value="">
-									<label id="g_recaptcha_response-error" class="error" dir="{CCMS_DB_DIR:all,grecaptcha-error}" for="g_recaptcha_response" style="display:none"></label>
+									<input id="gRecaptchaResponse" type="hidden" name="gRecaptchaResponse" value="">
+									<label id="gRecaptchaResponse-error" class="error" dir="{CCMS_DB_DIR:all,grecaptcha-error}" for="gRecaptchaResponse" style="display:none"></label>
 								</div>
 
 								<!-- button dir="{CCMS_DB_DIR:all,submit}" id="cuSubmit" role="button" type="submit">{CCMS_DB:all,submit}</button -->
@@ -337,7 +337,7 @@
 
 														grecaptcha.ready(function() {
 															grecaptcha.execute('{CCMS_LIB:_default.php;FUNC:ccms_googleRecapPubKey}', {action: 'cuForm'}).then(function(token) {
-																$('#g_recaptcha_response').value(token);
+																$('#gRecaptchaResponse').value(token);
 															});
 														});
 
@@ -365,7 +365,7 @@
 															maxlength:512,
 															badCharRegex:/^[^\<\>&#]+$/i
 														},
-														g_recaptcha_response: {
+														gRecaptchaResponse: {
 															required: true,
 															checkCaptcha: true
 														}
@@ -386,7 +386,7 @@
 															maxlength:"{CCMS_DB:all,message-error-max}",
 															badCharRegex:"{CCMS_DB:all,name-error-badChar}"
 														},
-														g_recaptcha_response: {
+														gRecaptchaResponse: {
 															checkCaptcha: "Captcha not responsive. Please try again."
 														}
 													},
