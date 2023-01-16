@@ -333,6 +333,7 @@
 													"checkCaptcha",
 													function(){
 
+														/*
 														try {
 															grecaptcha.ready(function() {
 																grecaptcha.execute('{CCMS_LIB:_default.php;FUNC:ccms_googleRecapPubKey}', {action: 'cuForm'}).then(function(token) {
@@ -344,6 +345,8 @@
 															document.getElementById("gRecaptchaResponse-error").innerHTML = err.message;
 															return false;
 														}
+														*/
+														console.log("inside grecaptcha call./n");
 
 
 
