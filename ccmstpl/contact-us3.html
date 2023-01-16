@@ -322,7 +322,7 @@
 
 												$.validator.addMethod(
 													"checkCaptcha",
-													function(){
+													function(value,element){
 
 														/*
 														try {
@@ -333,7 +333,7 @@
 															});
 															return true;
 														} catch(err) {
-															document.getElementById("gRecaptchaResponse-error").innerHTML = err.message;
+															document.getElementById("gRecaptchaResponse-error").innerHTML = err;
 															return false;
 														}
 														*/
@@ -387,7 +387,7 @@
 															maxlength:"{CCMS_DB:all,name-error-minMax}",
 															badCharRegex:"{CCMS_DB:all,name-error-badChar}"
 														},
-														cuEmail: {
+														cuEmail:{
 															required:"{CCMS_DB:all,email-error-req}",
 															maxlength:"{CCMS_DB:all,email-error-max}"
 														},
@@ -396,8 +396,8 @@
 															maxlength:"{CCMS_DB:all,message-error-max}",
 															badCharRegex:"{CCMS_DB:all,name-error-badChar}"
 														},
-														gRecaptchaResponse: {
-															checkCaptcha: "Captcha not responsive. Please try again."
+														gRecaptchaResponse:{
+															checkCaptcha:"Captcha not responsive. Please try again."
 														}
 													},
 													errorPlacement:function($error,$element){
