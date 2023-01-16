@@ -321,15 +321,6 @@
 
 
 												$.validator.addMethod(
-													"badCharRegex",
-													function(value,element,regexp){
-														var re=new RegExp(regexp);
-														return this.optional(element)||re.test(value);
-													},
-													"Please check your input."
-												);
-
-												$.validator.addMethod(
 													"checkCaptcha",
 													function(){
 
@@ -355,6 +346,15 @@
 													}, "Unable to retrieve Google Recaptcha responce."
 												);
 
+												$.validator.addMethod(
+													"badCharRegex",
+													function(value,element,regexp){
+														var re=new RegExp(regexp);
+														return this.optional(element)||re.test(value);
+													},
+													"Please check your input."
+												);
+
 												$("#cuForm").validate({
 													rules:{
 														cuName:{
@@ -374,8 +374,8 @@
 															badCharRegex:/^[^\<\>&#]+$/i
 														},
 														gRecaptchaResponse: {
-															required: true,
-															checkCaptcha: true
+															required:true,
+															checkCaptcha:true
 														}
 													},
 													messages:{
