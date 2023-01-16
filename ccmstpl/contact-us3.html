@@ -333,17 +333,22 @@
 													"checkCaptcha",
 													function(){
 
-														//event.preventDefault();
-
-														grecaptcha.ready(function() {
-															grecaptcha.execute('{CCMS_LIB:_default.php;FUNC:ccms_googleRecapPubKey}', {action: 'cuForm'}).then(function(token) {
-																$('#gRecaptchaResponse').value(token);
+														try {
+															grecaptcha.ready(function() {
+																grecaptcha.execute('{CCMS_LIB:_default.php;FUNC:ccms_googleRecapPubKey}', {action: 'cuForm'}).then(function(token) {
+																	$('#gRecaptchaResponse').value(token);
+																});
 															});
-														});
+															return true;
+														} catch(err) {
+															document.getElementById("gRecaptchaResponse-error").innerHTML = err.message;
+															return false;
+														}
 
-														//$('#cuForm').unbind('submit').submit();
 
-														return true;
+
+
+
 													}, "Unable to retrieve Google Recaptcha responce."
 												);
 
