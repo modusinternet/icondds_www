@@ -324,7 +324,6 @@
 													"checkCaptcha",
 													function(value,element){
 
-														/*
 														try {
 															grecaptcha.ready(function() {
 																grecaptcha.execute('{CCMS_LIB:_default.php;FUNC:ccms_googleRecapPubKey}', {action: 'cuForm'}).then(function(token) {
@@ -336,8 +335,7 @@
 															document.getElementById("gRecaptchaResponse-error").innerHTML = err;
 															return false;
 														}
-														*/
-														console.log("inside grecaptcha call./n");
+														//console.log("inside grecaptcha call./n");
 
 
 
@@ -357,7 +355,6 @@
 
 												$("#cuForm").validate({
 													rules:{
-														/*
 														cuName:{
 															required:true,
 															minlength:2,
@@ -374,7 +371,6 @@
 															maxlength:512,
 															badCharRegex:/^[^\<\>&#]+$/i
 														},
-														*/
 														gRecaptchaResponse:{
 															//required:true,
 															checkCaptcha:true
