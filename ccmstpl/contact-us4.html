@@ -374,7 +374,7 @@
 														if(request) request.abort();
 
 
-														grecaptcha.ready(function() {
+														//grecaptcha.ready(function() {
 															grecaptcha.execute('{CCMS_LIB:_default.php;FUNC:ccms_googleRecapPubKey}', {action: 'cuForm'}).then(function(token) {
 																$('#g_recaptcha_response').value(token);
 
@@ -397,7 +397,7 @@
 
 
 															});
-														});
+														//});
 
 
 
