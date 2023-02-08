@@ -373,6 +373,7 @@
 														/* Abort any pending request. */
 														if(request) request.abort();
 
+console.log("Inside the submitHandler function.\n");
 
 														//grecaptcha.ready(function() {
 															grecaptcha.execute('{CCMS_LIB:_default.php;FUNC:ccms_googleRecapPubKey}', {action: 'cuForm'}).then(function(token) {
