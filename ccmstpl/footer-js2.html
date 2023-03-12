@@ -112,12 +112,13 @@ https://developer.mozilla.org/en-US/docs/Web/Apps/Progressive/Add_to_home_screen
 ie: { CCMS_LIB:_default.php;FUNC:ccms_lng}
      ^-- remove this space.
 lcu = language cookie update */
+/*
 function ccms_lcu(lng) {
 		document.cookie = "ccms_lng={CCMS_LIB:_default.php;FUNC:ccms_lng}; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/";
-		/* insert a new cookie and get it in the cache, just incase we're dealing with the home page. */
 		var d = new Date();
 		d.setTime(d.getTime() + (365*24*60*60*1000));
 		var expires = "expires=" + d.toUTCString();
 		document.cookie = "ccms_lng=" + lng + "; " + expires + "; path=/";
 		return;
 }
+*/
