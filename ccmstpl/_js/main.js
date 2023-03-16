@@ -1,4 +1,4 @@
-{CCMS_DB_PRELOAD:all,contact-us}/* Compress using https://jscompress.com/ */
+/*{  CCMS_DB_PRELOAD:all,contact-us}*//* Compress using https://jscompress.com/ */
 
 /* nav bar active selector */
 navActiveArray.forEach(function(s){$("#"+s).addClass("active");});
