@@ -872,7 +872,7 @@ function CCMS_Main() {
 	// /fruit/orange/vitamin/js/c.js
 	// Make into:
 	// /fruit/orange/vitamin/js/
-	//$ccms_dir = @strstr($CLEAN["ccms_tpl"], $ccms_file[0], true);
+	// $ccms_dir = @strstr($CLEAN["ccms_tpl"], $ccms_file[0], true);
 
 	// Test to see if CLEAN["ccms_tpl"] file being requested is stored on server with a .php or
 	// .html extension.  .php is tested for first, if found it is pre-parsed by php, stored in
