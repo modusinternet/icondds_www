@@ -5,7 +5,7 @@ ServiceWorker Code Begin.
 if(navigator.serviceWorker){
 	window.addEventListener('load',() => {
 		navigator.serviceWorker
-		.register('/sw.js')
+		.register('/_js/sw.js')
 		.then(console.log('[ServiceWorker] Registered Successfully'))
 		.catch(err => console.log(`[ServiceWorker] Error: ${err}`));
 	});
@@ -16,7 +16,7 @@ if(navigator.serviceWorker){
 
 if('serviceWorker' in navigator) {
   navigator.serviceWorker
-		.register('/sw.js')
+		.register('/{CCMS_LIB:_default.php;FUNC:ccms_lng}/_js/sw.js')
 		.then(console.log('[ServiceWorker] Registered Successfully'))
 		.catch(err => console.log(`[ServiceWorker] Error: ${err}`));
 }
