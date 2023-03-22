@@ -43,6 +43,8 @@ var cacheFiles=[
 	'{CCMS_LIB:site.php;FUNC:load_resource("AWS")}/ccmstpl/_img/ico/favicon-32x32.png',
 	'{CCMS_LIB:site.php;FUNC:load_resource("AWS")}/ccmstpl/_img/ico/favicon-16x16.png',
 	'/{CCMS_LIB:_default.php;FUNC:ccms_lng}/manifest.html',
+	'{CCMS_LIB:site.php;FUNC:load_resource("AWS")}/ccmstpl/_img/footerBG.png',
+	'{CCMS_LIB:site.php;FUNC:load_resource("AWS")}/ccmstpl/_img/footerBG.webp',
 	'{CCMS_LIB:site.php;FUNC:load_resource("AWS")}/ccmstpl/_img/logo1.3.webp',
 	'{CCMS_LIB:site.php;FUNC:load_resource("AWS")}/ccmstpl/_img/logo1.3.png',
 	'{CCMS_LIB:site.php;FUNC:load_resource("AWS")}/ccmstpl/_img/logo2.png',
@@ -52,26 +54,15 @@ var cacheFiles=[
 	'{CCMS_LIB:site.php;FUNC:load_resource("MODERNIZER")}',
 	'{CCMS_LIB:site.php;FUNC:load_resource("JQUERY")}',
 	'{CCMS_LIB:site.php;FUNC:load_resource("JQUERY-MOBILE-CUST")}',
+	/*
 	'{CCMS_LIB:site.php;FUNC:load_resource("JQUERY-VALIDATE")}',
 	'{CCMS_LIB:site.php;FUNC:load_resource("JQUERY-VALIDATE-ADDITIONAL-METHODS")}',
-	'{CCMS_LIB:site.php;FUNC:build_js_link("1","","JS-01")}'
+	*/
+	'{CCMS_LIB:site.php;FUNC:build_js_link("","1","JS-02")}'
 ];
 
 
 /*
-Analytics and Service Worker:
-https://developers.google.com/web/ilt/pwa/integrating-analytics#analytics_and_service_worker
-self.importScripts('/ccmstpl/_js/analytics-helper.js');
-*/
-
-
-/*
-Important resources used in the assembly of this services code:
-https://googlechrome.github.io/samples/service-worker/custom-offline-page/
-https://developers.google.com/web/updates/2017/02/navigation-preload
-*/
-
-
 self.addEventListener('install', (event) => {
   event.waitUntil((async() => {
 		const cache = await caches.open(cacheName).then(cache => {
@@ -111,8 +102,82 @@ self.addEventListener('fetch', (event) => {
 			}
 		}	catch (error) {
  			console.log('Fetch failed: ', error);
-			const cachedResponse = await cache.match('/{CCMS_LIB:_default.php;FUNC:ccms_lng}/offline.html');
+			const cachedResponse = await cache.match('/{  CCMS_LIB:_default.php;FUNC:ccms_lng}/offline.html');
 			return cachedResponse;
  		}
   })());
+});
+*/
+
+/*
+Analytics and Service Worker:
+https://developers.google.com/web/ilt/pwa/integrating-analytics#analytics_and_service_worker
+self.importScripts('/ccmstpl/_js/analytics-helper.js');
+
+Important resources used in the assembly of this services code:
+https://googlechrome.github.io/samples/service-worker/custom-offline-page/
+https://developers.google.com/web/updates/2017/02/navigation-preload
+*/
+
+self.addEventListener('install',(event) => {
+	event.waitUntil((async() => {
+		const cache = await caches.open(cacheName).then(cache => {
+			return cache.addAll(cacheFiles);
+		})
+	})());
+});
+
+
+self.addEventListener('activate',(event) => {
+	event.waitUntil((async() => {
+		caches.keys().then(keyList => {
+			return Promise.all(keyList.map(key => {
+				if(key !== cacheName) return caches.delete(key);
+			}));
+		})
+	})());
+});
+
+
+self.addEventListener('fetch',(event) => {
+	console.log('SW fetch event.', event.request.method, event.request.url);
+	/*
+		This example demonstrates how to avoid doing a serviceWorker cache of templates if they are coming from WordPress folders, Google RECAPTCHA or the CustodianCMS 'user' folder/admin.
+		if(!/\/wp\-(.*)|\/recaptcha\/|(\/(([a-z]{2,3})(-[a-z0-9]{2,3})?)\/user\/)/i.test(event.request.url)) {
+	*/
+	if(!/\/recaptcha\/|(\/(([a-z]{2,3})(-[a-z0-9]{2,3})?)\/user\/)/i.test(event.request.url)){
+		event.respondWith(
+			caches.open(cacheName).then(cache => {
+				return cache.match(event.request).then(response => {
+					/*
+						Go here to learn more about cors:
+						https://jakearchibald.com/2015/thats-so-fetch/#no-cors-and-opaque-responses
+						or
+						https://developers.google.com/web/fundamentals/primers/service-workers/#non-cors_fail_by_default
+						const fetchResponse = await fetch(event.request, {mode:'cors'});
+						const fetchResponse = await fetch(event.request, {mode:'no-cors'});
+						const fetchResponse = await fetch(event.request, {mode:'immutable'});
+					*/
+					const fetchPromise = fetch(event.request).then(networkResponse => {
+						/* Makesure never to cache a failed page call. */
+						if(networkResponse.status === 404) {
+							return networkResponse;
+						}
+						cache.put(event.request, networkResponse.clone());
+						return networkResponse;
+					});
+					return response || fetchPromise;
+				}).catch(function() {
+					/* The template being called was not found in cache and there is no internet connection at the moment so display the offline page instead.  The code below makes sure we're dispalying the appropriate offline template for the language that's currently selected by the client. */
+					const regex = /\/(([a-z]{2,3})(-[a-z0-9]{2,3})?)\//i;
+					const lng = event.request.url.match(regex);
+					const searchForThis = '/' + lng[1] + '/offline.html';
+					return caches.match(searchForThis);
+				})
+			})
+		);
+	} else {
+		/* This request appears to be for a Google RECAPTCHA URL or the CustodianCMS '/user/' dir, so don't cache it. Keep it fresh and always comming from the source. */
+		event.respondWith(fetch(event.request));
+	}
 });
