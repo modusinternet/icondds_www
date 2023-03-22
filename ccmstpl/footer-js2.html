@@ -14,14 +14,14 @@ if(navigator.serviceWorker){
 }
 */
 
-/*
+/**/
 if('serviceWorker' in navigator) {
 	navigator.serviceWorker
 		.register('/{CCMS_LIB:_default.php;FUNC:ccms_lng}/_js/sw.js')
 		.then(console.log('[ServiceWorker] Registered Successfully'))
 		.catch(err => console.log(`[ServiceWorker] Error: ${err}`));
 }
-*/
+/**/
 /* ----------
 ServiceWorker Code End.
 ---------- */
