@@ -198,8 +198,27 @@
 				</div>
 			</div>
 
+
+
+
 			<div class="footer">
 				<div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 					<div class="cssgrid-footer">
 						<div class="c1">
 							<div>
@@ -229,6 +248,40 @@
 									<p>Tustin, CA 92780</p>
 								</address>
 							</div>
+						</div>
+					</div>
+
+
+
+
+
+					<div class="contactGrid">
+						<div class="box c1" style="margin-bottom:1.5em;text-align:initial"></div>
+						<div class="box c2" style="text-align:initial">
+							<div class="" id="cuAlertMessage" role="alert"></div>
+							<form id="cuForm">
+								<div>
+									<label for="cuName" dir="{CCMS_DB_DIR:all,name}">{CCMS_DB:all,name}</label>
+									<input dir="{CCMS_DB_DIR:all,name}" id="cuName" placeholder="{CCMS_DB:all,name-placeholder}" name="cuName" type="text">
+									<label id="cuName-error" class="error" dir="{CCMS_DB_DIR:all,name}" for="cuName" style="display:none"></label>
+								</div>
+								<div>
+									<label for="cuEmail" dir="{CCMS_DB_DIR:all,email}">{CCMS_DB:all,email}</label>
+									<input dir="{CCMS_DB_DIR:all,email}" id="cuEmail" placeholder="{CCMS_DB:all,email-placeholder}" name="cuEmail" type="text">
+									<label id="cuEmail-error" class="error" dir="{CCMS_DB_DIR:all,email}" for="cuEmail" style="display:none"></label>
+								</div>
+								<div>
+									<label for="cuMessage" dir="{CCMS_DB_DIR:all,message}">{CCMS_DB:all,message}</label>
+									<textarea data-gramm="false" dir="{CCMS_DB_DIR:all,message}" id="cuMessage" placeholder="{CCMS_DB:all,message-placeholder}" name="cuMessage"></textarea>
+									<label id="cuMessage-error" class="error" dir="{CCMS_DB_DIR:all,message}" for="cuMessage" style="display:none"></label>
+								</div>
+								<div id="alert"></div>
+								<div>
+									<input id="g_recaptcha_response" type="hidden" name="g_recaptcha_response" value="">
+									<label id="g_recaptcha_response-error" class="error" dir="{CCMS_DB_DIR:all,grecaptcha-error}" for="g_recaptcha_response" style="display:none"></label>
+								</div>
+								<button dir="{CCMS_DB_DIR:all,submit}" id="cuSubmit" role="button">{CCMS_DB:all,submit}</button>
+							</form>
 						</div>
 					</div>
 				</div>
