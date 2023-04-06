@@ -274,7 +274,7 @@
 								</div>
 								<div id="alert"></div>
 								<div>
-									<input id="g_recaptcha_response" type="hidden" name="g_recaptcha_response" value="">
+									<!-- input id="g_recaptcha_response" type="hidden" name="g_recaptcha_response" value="" -->
 									<label id="g_recaptcha_response-error" class="error" dir="{CCMS_DB_DIR:all,grecaptcha-error}" for="g_recaptcha_response" style="display:none"></label>
 								</div>
 								<button dir="{CCMS_DB_DIR:all,submit}" id="cuSubmit" role="button">{CCMS_DB:all,submit}</button>
@@ -362,7 +362,14 @@
 														grecaptcha.execute('{CCMS_LIB:_default.php;FUNC:ccms_googleRecapPubKey}', { action: 'cuForm' }).then(function (token) {
 															/* var recaptchaResponse = document.getElementById('recaptchaResponse'); */
 															/* recaptchaResponse.value = token; */
-															$('#g_recaptcha_response').value(token);
+															/*$('#g_recaptcha_response').value(token);*/
+
+
+															// add token to form
+															$('#cuForm').prepend('<input type="hidden" name="g_recaptcha_response" value="' + token + '">');
+
+
+
 															/* Make the Ajax call here */
 															$.ajax({
 																/* url: 'contact.php', */
