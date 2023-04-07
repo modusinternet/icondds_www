@@ -364,7 +364,7 @@
 														grecaptcha.execute('{CCMS_LIB:_default.php;FUNC:ccms_googleRecapPubKey}', { action: 'cuForm' }).then(function (token) {
 															/* var recaptchaResponse = document.getElementById('recaptchaResponse'); */
 															/* recaptchaResponse.value = token; */
-															$('#g_recaptcha_response').value(token);
+															$('#g_recaptcha_response').val(token);
 
 
 															// add token to form
