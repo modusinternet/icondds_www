@@ -154,8 +154,8 @@ if(!isset( $json['error'])) {
 	This e-mail may be privileged and/or confidential, and the sender does not waive any related rights and obligations. Any distribution, use or copying of this e-mail or the information it contains by other than an intended recipient is unauthorized. If you received this e-mail in error, please advise me (by return e-mail or otherwise) immediately.
 	</div>";
 
-	$mail_headers = "MIME-Version: 1.0\n";
-	$mail_headers .= "Content-type: text/html; charset=UTF-8\n";
+	$mail_headers = "MIME-Version: 1.0" . "\r\n";
+	$mail_headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
 	$mail_headers .= "From: " . $CFG["EMAIL_FROM"] . "\r\n";
 	// Sending email
 	mail( $CFG["EMAIL_FROM"], "Email from " . $CFG["DOMAIN"] . ", Contact Us Form", $mail_message, $mail_headers, "-f" . $CFG["EMAIL_BOUNCES_RETURNED_TO"] );
