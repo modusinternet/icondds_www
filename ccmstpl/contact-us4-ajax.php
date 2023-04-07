@@ -144,7 +144,7 @@ if(!isset( $json['error'])) {
 	$replace = array("<br />", "", "<br />");
 
 	// Email text
-	$mail_message = "<div style=\"margin:10px;\">This email message was sent by someone using the Contact Us Form on <a href=\"" . $_SERVER["HTTP_REFERER"] . "\">" . $_SERVER["HTTP_REFERER"] . "</a>.<br /><br />IP Address: " . $_SERVER["REMOTE_ADDR"] . "<br />";
+	$mail_message = "<div style=\"padding:10px;\">This email message was sent by someone using the Contact Us Form on <a href=\"" . $_SERVER["HTTP_REFERER"] . "\">" . $_SERVER["HTTP_REFERER"] . "</a>.<br /><br />IP Address: " . $_SERVER["REMOTE_ADDR"] . "<br />";
 	$mail_message .= "From: " . $CLEAN["cuName"] . "<br />";
 	$mail_message .= "E-mail: " . $CLEAN["cuEmail"] . "<br />";
 	$mail_message .= "Message:<br />
