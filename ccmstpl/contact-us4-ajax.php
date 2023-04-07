@@ -86,7 +86,7 @@ if($_POST["g_recaptcha_response"]) {
 
 	$resp = '';
 	// query use fsockopen
-	$fp = @fsockopen('ssl://www.google.com', 443, $errno, $errstr, 10);
+	$fp = fsockopen('ssl://www.google.com', 443, $errno, $errstr, 10);
 	if($fp !== false) {
 		$out = "GET /recaptcha/api/siteverify?secret={$CFG['GOOGLE_RECAPTCHA_PRIVATEKEY']}&response={$CLEAN['g_recaptcha_response']}&remoteip={$_SERVER['REMOTE_ADDR']} HTTP/1.1\r\n";
 		$out .= "Host: www.google.com\r\n";
@@ -117,7 +117,7 @@ if($_POST["g_recaptcha_response"]) {
 			$json['error']['grecaptcha'] = 'Google reCAPTCHA failed or expired. Try again. (1)  (success=['.$resp["success"].'], score=['.$resp["score"].'], action=['.$resp["action"].'], error-codes=['.$resp["error-codes"].'])';
 			//$json['error']['grecaptcha'] = 'Google reCAPTCHA failed or expired. Try again. (1)';
 		} elseif($resp["action"] !== $CLEAN["g_recaptcha_action"]) {
-			$json['error']['grecaptcha'] = 'Google reCAPTCHA failed or expired. Try again. (2)';
+			$json['error']['grecaptcha'] = 'Google reCAPTCHA failed or expired. Try again. (2 ' . $resp["action"] . ')';
 		} elseif($resp["score"] <= 0.4) {
 			$json['error']['grecaptcha'] = 'Google reCAPTCHA failed or expired. Try again. (3)';
 		}
