@@ -117,7 +117,7 @@ if($_POST["g_recaptcha_response"]) {
 			$json['error']['grecaptcha'] = 'Google reCAPTCHA failed or expired. Try again. (1)  (success=['.$resp["success"].'], score=['.$resp["score"].'], action=['.$resp["action"].'], error-codes=['.$resp["error-codes"].'])';
 			//$json['error']['grecaptcha'] = 'Google reCAPTCHA failed or expired. Try again. (1)';
 		} elseif($resp["action"] !== $CLEAN["g_recaptcha_action"]) {
-			$json['error']['grecaptcha'] = 'Google reCAPTCHA failed or expired. Try again. (2 ' . $resp["action"] . ')';
+			$json['error']['grecaptcha'] = 'Google reCAPTCHA failed or expired. Try again. (2 ' . $CLEAN["g_recaptcha_action"] . ')';
 		} elseif($resp["score"] <= 0.4) {
 			$json['error']['grecaptcha'] = 'Google reCAPTCHA failed or expired. Try again. (3)';
 		}
