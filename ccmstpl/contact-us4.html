@@ -419,7 +419,7 @@
 																		if(json.error.grecaptcha) {
 																			$('#grecaptcha-error').html(json.error.grecaptcha).slideDown();
 																		}
-																		$inputs.prop("disabled", false);
+																		//$inputs.prop("disabled", false);
 																	}
 																	if(json.success) {
 																		$('#cuAlertMessage').addClass('alert-success').html(json.success).slideDown();
@@ -430,7 +430,7 @@
 																		},5000);
 																		$('#cuForm').find('.form-control').val('');
 																		setTimeout(function() {
-																			$inputs.prop("disabled", false);
+																			//$inputs.prop("disabled", false);
 																		}, 2000);
 																	}
 																},
