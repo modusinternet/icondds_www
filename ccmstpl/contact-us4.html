@@ -377,17 +377,59 @@
 																type: 'post',
 																data: $('#cuForm').serialize(),
 																dataType: 'json',
-																success: function( _response ){
+																//success: function( _response ){
 																	/* The Ajax request is a success. _response is a JSON object */
-																	var error = _response.error;
-																	var success = _response.success;
-																	if(error != "") {
+																	//var error = _response.error;
+																	//var success = _response.success;
+
+
+																	//if(error != "") {
 																		/* In case of error, display it to user */
-																		$('#alert').html(error);
-																	} else {
+																		//$('#alert').html(error);
+																	//} else {
 																		/* In case of success, display it to user and remove the submit button */
-																		$('#alert').html(success);
-																		$('#cuSubmit').remove();
+																		//$('#alert').html(success);
+																		//$('#cuSubmit').remove();
+																	//}
+
+
+
+																//},
+
+
+
+
+																//success: function( _response ){
+																success: function(json){
+																	if(json.error) {
+																		if(json.error.cuName) {
+																			$('#cuName').parent().addClass('has-error');
+																			$('#cuName-error').html(json.error.cuName).slideDown();
+																		}
+																		if(json.error.cuEmail) {
+																			$('#cuEmail').parent().addClass('has-error');
+																			$('#cuEmail-error').html(json.error.cuEmail).slideDown();
+																		}
+																		if(json.error.cuMessage) {
+																			$('#cuMessage').parent().addClass('has-error');
+																			$('#cuMessage-error').html(json.error.cuMessage).slideDown();
+																		}
+																		if(json.error.grecaptcha) {
+																			$('#grecaptcha-error').html(json.error.grecaptcha).slideDown();
+																		}
+																		$inputs.prop("disabled", false);
+																	}
+																	if(json.success) {
+																		$('#cuAlertMessage').addClass('alert-success').html(json.success).slideDown();
+																		setTimeout(function() {
+																			$('#cuAlertMessage').slideUp("fast", function() {
+																				$(this).removeClass('alert-success').html('');
+																			});
+																		},5000);
+																		$('#cuForm').find('.form-control').val('');
+																		setTimeout(function() {
+																			$inputs.prop("disabled", false);
+																		}, 2000);
 																	}
 																},
 																error: function(jqXhr, json, errorThrown){
