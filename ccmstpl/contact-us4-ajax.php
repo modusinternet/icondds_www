@@ -144,15 +144,14 @@ if(!isset( $json['error'])) {
 	$replace = array("<br />", "", "<br />");
 
 	// Email text
-	$mail_message = "This email message was sent by someone using the Contact Us Form on <a href=\"" . $_SERVER["HTTP_REFERER"] . "\">" . $_SERVER["HTTP_REFERER"] . "</a>.<br /><br />IP Address: " . $_SERVER["REMOTE_ADDR"] . "<br />";
+	$mail_message = "<div style=\"margin:10px;\">This email message was sent by someone using the Contact Us Form on <a href=\"" . $_SERVER["HTTP_REFERER"] . "\">" . $_SERVER["HTTP_REFERER"] . "</a>.<br /><br />IP Address: " . $_SERVER["REMOTE_ADDR"] . "<br />";
 	$mail_message .= "From: " . $CLEAN["cuName"] . "<br />";
 	$mail_message .= "E-mail: " . $CLEAN["cuEmail"] . "<br />";
 	$mail_message .= "Message:<br />
 	" . str_replace($search, $replace, $CLEAN["cuMessage"]) . "<br />
 	<br />
 	<div style='color: gray; font-size: .8em;'>
-	This e-mail may be privileged and/or confidential, and the sender does not waive any related rights and obligations. Any distribution, use or copying of this e-mail or the information it contains by other than an intended recipient is unauthorized. If you received this e-mail in error, please advise me (by return e-mail or otherwise) immediately.
-	</div>";
+	This e-mail may be privileged and/or confidential, and the sender does not waive any related rights and obligations. Any distribution, use or copying of this e-mail or the information it contains by other than an intended recipient is unauthorized. If you received this e-mail in error, please advise me (by return e-mail or otherwise) immediately.</div></div>";
 
 	$mail_headers = "MIME-Version: 1.0" . "\r\n";
 	$mail_headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
