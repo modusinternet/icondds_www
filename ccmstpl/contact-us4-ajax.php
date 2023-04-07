@@ -105,11 +105,22 @@ if($_POST["g_recaptcha_response"]) {
 		$resp = trim($resp, "\r\n0");
 		$resp = json_decode($resp, true);
 
-		if($resp["success"] == false || $resp["action"] !== $CLEAN["g_recaptcha_action"] || $resp["score"] <= 0.4) {
-			//$ccms_login_message["FAIL"] = 'Google reCAPTCHA failed or expired. Try again. (success=['.$resp["success"].'], score=['.$resp["score"].'], action=['.$resp["action"].'], error-codes=['.$resp["error-codes"].'])';
-			//$ccms_login_message["FAIL"] = 'Google reCAPTCHA failed or expired. Try again.';
-			$json['error']['grecaptcha'] = 'Google reCAPTCHA failed or expired. Try again.';
+		//if($resp["success"] == false || $resp["action"] !== $CLEAN["g_recaptcha_action"] || $resp["score"] <= 0.4) {
+			/*$ccms_login_message["FAIL"] = 'Google reCAPTCHA failed or expired. Try again. (success=['.$resp["success"].'], score=['.$resp["score"].'], action=['.$resp["action"].'], error-codes=['.$resp["error-codes"].'])';*/
+			//$json['error']['grecaptcha'] = 'Google reCAPTCHA failed or expired. Try again. (1)';
+		//}
+
+
+
+
+		if($resp["success"] == false) {
+			$json['error']['grecaptcha'] = 'Google reCAPTCHA failed or expired. Try again. (1)';
+		} elseif($resp["action"] !== $CLEAN["g_recaptcha_action"]) {
+			$json['error']['grecaptcha'] = 'Google reCAPTCHA failed or expired. Try again. (2)';
+		} elseif($resp["score"] <= 0.4) {
+			$json['error']['grecaptcha'] = 'Google reCAPTCHA failed or expired. Try again. (3)';
 		}
+
 
 	} else {
 		//$ccms_login_message["FAIL"] = 'Unable to connect to Google reCAPTCHA.)';
