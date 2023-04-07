@@ -257,6 +257,8 @@
 						<div class="box c2" style="text-align:initial">
 							<div class="" id="cuAlertMessage" role="alert"></div>
 							<form id="cuForm">
+								<input type="hidden" name="g_recaptcha_action" type="cuForm">
+								<input id="g_recaptcha_response" type="hidden" name="g_recaptcha_response" type="">
 								<div>
 									<label for="cuName" dir="{CCMS_DB_DIR:all,name}">{CCMS_DB:all,name}</label>
 									<input dir="{CCMS_DB_DIR:all,name}" id="cuName" placeholder="{CCMS_DB:all,name-placeholder}" name="cuName" type="text">
@@ -362,12 +364,11 @@
 														grecaptcha.execute('{CCMS_LIB:_default.php;FUNC:ccms_googleRecapPubKey}', { action: 'cuForm' }).then(function (token) {
 															/* var recaptchaResponse = document.getElementById('recaptchaResponse'); */
 															/* recaptchaResponse.value = token; */
-															/*$('#g_recaptcha_response').value(token);*/
+															$('#g_recaptcha_response').value(token);
 
 
 															// add token to form
-															$('#cuForm').prepend('<input type="hidden" name="g_recaptcha_response" value="' + token + '">');
-															$('#cuForm').prepend('<input type="hidden" name="g_recaptcha_action" value="cuForm">');
+															//$('#cuForm').prepend('<input type="hidden" name="g_recaptcha_response" value="' + token + '">');
 
 
 
