@@ -420,6 +420,7 @@
 																			$('#grecaptcha-error').html(json.error.grecaptcha).slideDown();
 																		}
 																		//$inputs.prop("disabled", false);
+																		$('#alert').fadeOut("slow");
 																	}
 																	if(json.success) {
 																		$('#cuAlertMessage').addClass('alert-success').html(json.success).slideDown();
