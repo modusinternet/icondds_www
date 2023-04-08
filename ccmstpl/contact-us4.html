@@ -360,6 +360,16 @@
 													event.preventDefault();
 													/* Display "Processing" to let the user know that the form is being submitted */
 													$('#alert').text('Processing...').fadeIn(0);
+
+													$('#cuName').removeClass('has-error');
+													$('#cuName-error').html("");
+													$('#cuEmail').removeClass('has-error');
+													$('#cuEmail-error').html("");
+													$('#cuMessage').removeClass('has-error');
+													$('#cuMessage-error').html("");
+													$('#grecaptcha-error').html("");
+
+
 													grecaptcha.ready(function () {
 														grecaptcha.execute('{CCMS_LIB:_default.php;FUNC:ccms_googleRecapPubKey}', { action: 'cuForm' }).then(function (token) {
 															/* var recaptchaResponse = document.getElementById('recaptchaResponse'); */
@@ -422,6 +432,15 @@
 																		//$inputs.prop("disabled", false);
 																		$('#alert').fadeOut("slow");
 																	}
+
+
+
+
+
+
+
+
+
 																	if(json.success) {
 																		$('#cuAlertMessage').addClass('alert-success').html(json.success).slideDown();
 																		setTimeout(function() {
