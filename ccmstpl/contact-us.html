@@ -383,12 +383,6 @@
 															/* recaptchaResponse.value = token; */
 															$('#g_recaptcha_response').val(token);
 
-
-															// add token to form
-															//$('#cuForm').prepend('<input type="hidden" name="g_recaptcha_response" value="' + token + '">');
-
-
-
 															/* Make the Ajax call here */
 															$.ajax({
 																/* url: 'contact.php', */
@@ -396,29 +390,6 @@
 																type: 'post',
 																data: $('#cuForm').serialize(),
 																dataType: 'json',
-																//success: function( _response ){
-																	/* The Ajax request is a success. _response is a JSON object */
-																	//var error = _response.error;
-																	//var success = _response.success;
-
-
-																	//if(error != "") {
-																		/* In case of error, display it to user */
-																		//$('#alert').html(error);
-																	//} else {
-																		/* In case of success, display it to user and remove the submit button */
-																		//$('#alert').html(success);
-																		//$('#cuSubmit').remove();
-																	//}
-
-
-
-																//},
-
-
-
-
-																//success: function( _response ){
 																success: function(json){
 																	if(json.error) {
 																		if(json.error.cuName) {
@@ -436,18 +407,8 @@
 																		if(json.error.grecaptcha) {
 																			$('#grecaptcha-error').html(json.error.grecaptcha).slideDown();
 																		}
-																		//$inputs.prop("disabled", false);
 																		$('#alert').fadeOut("slow");
 																	}
-
-
-
-
-
-
-
-
-
 																	if(json.success) {
 																		$('#cuAlertMessage').addClass('alert-success').html(json.success).slideDown();
 																		setTimeout(function() {
@@ -457,14 +418,8 @@
 																		},5000);
 																		$('#cuForm').find('.form-control').val('');
 																		setTimeout(function() {
-																			//$inputs.prop("disabled", false);
 																		}, 2000);
-
 																		$('#alert').fadeOut("slow");
-
-
-
-
 																	}
 																},
 																error: function(jqXhr, json, errorThrown){
@@ -476,128 +431,6 @@
 														});
 													});
 												});
-
-
-												/*
-												$.validator.addMethod(
-													"badCharRegex",
-													function(value,element,regexp){
-														var re=new RegExp(regexp);
-														return this.optional(element)||re.test(value);
-													},
-													"Please check your input."
-												);
-
-												$("#cuForm").validate({
-													rules:{
-														cuName:{
-															required:true,
-															minlength:2,
-															maxlength:32,
-															badCharRegex:/^[^\<\>&#]+$/i
-														},
-														cuEmail:{
-															required:true,
-															email:true,
-															maxlength:256
-														},
-														cuMessage:{
-															required:true,
-															maxlength:512,
-															badCharRegex:/^[^\<\>&#]+$/i
-														}
-													},
-													messages:{
-														cuName:{
-															required:"{CCMS_DB:all,name-error-req}",
-															minlength:"{CCMS_DB:all,name-error-minMax}",
-															maxlength:"{CCMS_DB:all,name-error-minMax}",
-															badCharRegex:"{CCMS_DB:all,name-error-badChar}"
-														},
-														cuEmail: {
-															required:"{CCMS_DB:all,email-error-req}",
-															maxlength:"{CCMS_DB:all,email-error-max}"
-														},
-														cuMessage:{
-															required:"{CCMS_DB:all,message-error-req}",
-															maxlength:"{CCMS_DB:all,message-error-max}",
-															badCharRegex:"{CCMS_DB:all,name-error-badChar}"
-														}
-													},
-													errorPlacement:function($error,$element){
-														var name=$element.attr("name");
-														$("#"+name+"-error").append($error);
-													},
-													submitHandler:function(form){
-														var request;
-														if(request) request.abort();
-														grecaptcha.execute('{CCMS_LIB:_default.php;FUNC:ccms_googleRecapPubKey}', {action: 'cuForm'}).then(function(token) {
-															$('#g_recaptcha_response').value(token);
-															var $inputs = $(form).find("input, select, textarea, button");
-															var serializedData = $(form).serialize();
-															$inputs.prop("disabled", true);
-															request = $.ajax({
-																beforeSend:function(XMLHttpRequest){
-																	$('#cuForm .has-error').removeClass('has-error');
-																	$('#cuForm .help-block').html('').hide();
-																	$('#cuAlertMessage').removeClass('alert-success').html('');
-																},
-																cache: false,
-																data: serializedData,
-																dataType: 'json',
-																type: "POST",
-																url: "/{CCMS_LIB:_default.php;FUNC:ccms_lng}/contact-us4-ajax.php"
-															});
-														});
-														request.done(function(json, textStatus) {
-															if(json.error) {
-																if(json.error.cuName) {
-																	$('#cuName').parent().addClass('has-error');
-																	$('#cuName-error').html(json.error.cuName).slideDown();
-																}
-																if(json.error.cuEmail) {
-																	$('#cuEmail').parent().addClass('has-error');
-																	$('#cuEmail-error').html(json.error.cuEmail).slideDown();
-																}
-																if(json.error.cuMessage) {
-																	$('#cuMessage').parent().addClass('has-error');
-																	$('#cuMessage-error').html(json.error.cuMessage).slideDown();
-																}
-																if(json.error.grecaptcha) {
-																	$('#grecaptcha-error').html(json.error.grecaptcha).slideDown();
-																}
-																$inputs.prop("disabled", false);
-															}
-															if(json.success) {
-																$('#cuAlertMessage').addClass('alert-success').html(json.success).slideDown();
-																setTimeout(function() {
-																	$('#cuAlertMessage').slideUp("fast", function() {
-																		$(this).removeClass('alert-success').html('');
-																	});
-																},5000);
-																$('#cuForm').find('.form-control').val('');
-																setTimeout(function() {
-																	$inputs.prop("disabled", false);
-																}, 2000);
-															}
-														});
-														request.fail(function (jqXHR, textStatus, errorThrown){
-															$("#cuForm").html("The following error occurred: " + textStatus, errorThrown);
-														});
-														request.always(function () {
-															setTimeout(function() {
-																$inputs.prop("disabled", false);
-															}, 2000);
-														});
-														return false;
-													}
-												});
-												*/
-
-												/*window.performance.mark("mark_end_javascript");
-												console.log(window.performance.getEntriesByName("mark_beginning_javascript"));
-												console.log(window.performance.getEntriesByName("mark_end_javascript"));*/
-											/*}{CCMS_LIB:site.php;FUNC:build_js_sri("1","JS-02")});*/
 											});
 										});
 									});
