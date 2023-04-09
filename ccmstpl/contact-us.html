@@ -81,6 +81,16 @@
 
 			.gm-style-iw-c,.gm-style-iw-d{max-width:250px !important}
 
+
+
+			#alert{
+				display:none;
+				margin:15px 0 0;
+				color:#808080
+			}
+
+
+
 			#cuform label{font-weight:500}
 
 			.alert-success{
@@ -90,6 +100,13 @@
 				display:block;
 				margin-bottom:18px;
 				padding:15px
+			}
+
+			.asdf{
+				display:block;
+				position:relative;
+				content:"";
+				width:100%
 			}
 
 			#cuForm input[type=text],#cuForm textarea{
@@ -145,22 +162,28 @@
 				/*top:-10px*/
 			}
 
-			#cuForm .g-recaptcha{
+
+			/* #cuForm .g-recaptcha{
 				transform:scale(0.85);
 				-webkit-transform:scale(0.85);
 				transform-origin:0 0;
 				-webkit-transform-origin:0 0
-			}
+			} */
+
 
 			/* 400px or larger. */
-			@media only screen and (min-width:400px){
+			/* @media only screen and (min-width:400px){
 				#cuForm .g-recaptcha{
 					transform:unset;
 					-webkit-transform:unset;
 					transform-origin:unset;
 					-webkit-transform-origin:unset
 				}
-			}
+			}*/
+
+
+
+			.grecaptcha-badge{z-index:2}
 		</style>
 
 		<script nonce="{CCMS_LIB:site.php;FUNC:csp_nounce}">
@@ -182,30 +205,60 @@
 				</div>
 			</div>
 
+
+			<div class="contentType1">
+				<div>
+					<div class="asdf">
+						<div>
+							<div class="cssgrid-footer">
+								<div class="c1">
+									<div>
+										<h3 dir="{CCMS_DB_DIR:all,contact-us}">Hours</h3>
+										<div style="margin-top:20px;text-align:initial">
+											<p>Mon-Fri: 9am - 5pm</p>
+											<p>Sat-Sun: Closed</p>
+										</div>
+									</div>
+								</div>
+								<div class="c2">
+									<div>
+										<h3 dir="{CCMS_DB_DIR:all,contact-us}">Contact Methods</h3>
+										<div style="margin-top:20px;text-align:initial">
+											<p><span dir="{CCMS_DB_DIR:all,phone}">{CCMS_DB:all,phone}:</span> <a href="tel:17148354441" rel="nofollow">(714) 835-4441</a></p>
+											<p><span dir="{CCMS_DB_DIR:all,fax}">{CCMS_DB:all,fax}:</span> <a href="tel:17148350188" rel="nofollow">(714) 835-0188</a></p>
+											<p><span dir="{CCMS_DB_DIR:all,email}">{CCMS_DB:all,email}:</span> <a href="mailto:info@{CCMS_LIB:_default.php;FUNC:ccms_cfgDomain}" rel="nofollow">info@{CCMS_LIB:_default.php;FUNC:ccms_cfgDomain}</a></p>
+										</div>
+									</div>
+								</div>
+								<div class="c3">
+									<h3 dir="{CCMS_DB_DIR:all,contact-us}">Address</h3>
+									<div style="margin-top:20px;text-align:initial">
+										<address>
+											<p>ICONIC Dentistry</p>
+											<p>17501 Irvine Blvd Ste 101</p>
+											<p>Tustin, CA 92780</p>
+										</address>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+
+
+
 			<div class="contentType1">
 				<div>
 					<div class="contactGrid">
-						<div class="box c1" style="margin-bottom:1.5em;text-align:initial">
-							<span dir="{CCMS_DB_DIR:all,hours}" style="font-weight:400">{CCMS_DB:all,hours}:</span><br>
-							Mon-Fri: 9am - 5pm<br>
-							Sat-Sun: Closed<br>
-							<br>
-							<p><span dir="{CCMS_DB_DIR:contact-us,contact-methods}" style="font-weight:400">{CCMS_DB:contact-us,contact-methods}:</span></p>
-							<p><span dir="{CCMS_DB_DIR:all,phone}">{CCMS_DB:all,phone}:</span> <a href="tel:17148354441" rel="nofollow">(714) 835-4441</a></p>
-							<p><span dir="{CCMS_DB_DIR:all,fax}">{CCMS_DB:all,fax}:</span> <a href="tel:17148350188" rel="nofollow">(714) 835-0188</a></p>
-							<p><span dir="{CCMS_DB_DIR:all,email}">{CCMS_DB:all,email}:</span> <a href="mailto:info@{CCMS_LIB:_default.php;FUNC:ccms_cfgDomain}" rel="nofollow">info@{CCMS_LIB:_default.php;FUNC:ccms_cfgDomain}</a></p>
-							<br>
-							<span dir="{CCMS_DB_DIR:all,address}" style="font-weight:400">{CCMS_DB:all,address}:</span><br>
-							<address>
-								ICONIC Dentistry<br>
-								17501 Irvine Blvd Ste 101<br>
-								Tustin, CA 92780
-							</address>
-						</div>
+						<div class="box c1" style="margin-bottom:1.5em;text-align:initial"></div>
 						<div class="box c2" style="text-align:initial">
-
 							<div class="" id="cuAlertMessage" role="alert"></div>
 							<form id="cuForm">
+								<input type="hidden" name="g_recaptcha_action" value="cuForm">
+								<input id="g_recaptcha_response" type="hidden" name="g_recaptcha_response" type="">
 								<div>
 									<label for="cuName" dir="{CCMS_DB_DIR:all,name}">{CCMS_DB:all,name}</label>
 									<input dir="{CCMS_DB_DIR:all,name}" id="cuName" placeholder="{CCMS_DB:all,name-placeholder}" name="cuName" type="text">
@@ -221,13 +274,13 @@
 									<textarea data-gramm="false" dir="{CCMS_DB_DIR:all,message}" id="cuMessage" placeholder="{CCMS_DB:all,message-placeholder}" name="cuMessage"></textarea>
 									<label id="cuMessage-error" class="error" dir="{CCMS_DB_DIR:all,message}" for="cuMessage" style="display:none"></label>
 								</div>
-								<div id="cuFormCaptcha">
-									<div class="g-recaptcha" data-callback="gRecaptchaCallback" data-sitekey="{CCMS_LIB:_default.php;FUNC:ccms_googleRecapPubKey}"></div>
-									<label id="grecaptcha-error" class="error" dir="{CCMS_DB_DIR:all,grecaptcha-error}" for="g-recaptcha" style="display:none"></label>
+								<div id="alert"></div>
+								<div>
+									<!-- input id="g_recaptcha_response" type="hidden" name="g_recaptcha_response" value="" -->
+									<label id="g_recaptcha_response-error" class="error" dir="{CCMS_DB_DIR:all,grecaptcha-error}" for="g_recaptcha_response" style="display:none"></label>
 								</div>
-								<button dir="{CCMS_DB_DIR:all,submit}" id="cuSubmit" role="button" type="submit">{CCMS_DB:all,submit}</button>
+								<button dir="{CCMS_DB_DIR:all,submit}" id="cuSubmit" role="button">{CCMS_DB:all,submit}</button>
 							</form>
-
 						</div>
 					</div>
 				</div>
@@ -256,28 +309,23 @@
 
 			{CCMS_LIB:site.php;FUNC:build_css_link("1","","CSS-01","1")}
 
-			function gRecaptchaCallback() {
-				if(grecaptcha && grecaptcha.getResponse().length > 0){
-					$('#grecaptcha-error').slideUp();
-				}
-			};
-
 			function loadJSResources(){
 				loadFirst("{CCMS_LIB:site.php;FUNC:build_js_link("1","","JQUERY")}",function(){
 
 					loadFirst("{CCMS_LIB:site.php;FUNC:build_js_link("1","","JQUERY-MOBILE-CUST")}",function(){
 
-						loadFirst("{CCMS_LIB:site.php;FUNC:build_js_link("1","","JQUERY-VALIDATE")}",function(){
+						/* loadFirst("{CCMS_LIB:site.php;FUNC:build_js_link("1","","JQUERY-VALIDATE")}",function(){ */
 
-							loadFirst("{CCMS_LIB:site.php;FUNC:build_js_link("1","","JQUERY-VALIDATE-ADDITIONAL-METHODS")}",function(){
+							/* loadFirst("{CCMS_LIB:site.php;FUNC:build_js_link("1","","JQUERY-VALIDATE-ADDITIONAL-METHODS")}",function(){ */
 
 								loadFirst("{CCMS_LIB:site.php;FUNC:build_js_link("1","","MODERNIZER")}",function(){
 
 									loadFirst("https://maps.googleapis.com/maps/api/js?key={CCMS_LIB:_default.php;FUNC:ccms_googleCredKey}&language={CCMS_LIB:_default.php;FUNC:ccms_lng}",function(){
 
-										loadFirst("https://www.google.com/recaptcha/api.js?hl={CCMS_LIB:_default.php;FUNC:ccms_lng}", function(){ /* Google reCaptcha loaded */
+										loadFirst("https://www.google.com/recaptcha/api.js?render={CCMS_LIB:_default.php;FUNC:ccms_googleRecapPubKey}&hl={CCMS_LIB:_default.php;FUNC:ccms_lng}", function() {
 
-											loadFirst("{CCMS_LIB:site.php;FUNC:build_js_link("1","","JS-01")}",function(){
+											loadFirst("{CCMS_LIB:site.php;FUNC:build_js_link("","1","JS-02")}",function(){
+
 
 												var center = {lat: 33.7502339, lng: -117.8263036};
 												var icondds = {lat: 33.7484893, lng: -117.8271579};
@@ -285,7 +333,6 @@
 													zoom:16,
 													center:center,
 													disableDefaultUI:false,
-													/*gestureHandling:'cooperative',*/
 													scrollwheel:false,
 													mapTypeControl:false,
 													fullscreenControl:false
@@ -308,6 +355,130 @@
 												infowindow.open(map, marker);
 
 
+												$('#cuForm').submit(function(event) {
+													/* Prevent direct form submission */
+													event.preventDefault();
+													/* Display "Processing" to let the user know that the form is being submitted */
+													$('#alert').text('Processing...').fadeIn(0);
+
+
+
+
+
+													$('#cuName').removeClass('has-error');
+													$('#cuName-error').html("");
+													$('#cuEmail').removeClass('has-error');
+													$('#cuEmail-error').html("");
+													$('#cuMessage').removeClass('has-error');
+													$('#cuMessage-error').html("");
+													$('#grecaptcha-error').html("");
+
+
+
+
+
+													grecaptcha.ready(function () {
+														grecaptcha.execute('{CCMS_LIB:_default.php;FUNC:ccms_googleRecapPubKey}', { action: 'cuForm' }).then(function (token) {
+															/* var recaptchaResponse = document.getElementById('recaptchaResponse'); */
+															/* recaptchaResponse.value = token; */
+															$('#g_recaptcha_response').val(token);
+
+
+															// add token to form
+															//$('#cuForm').prepend('<input type="hidden" name="g_recaptcha_response" value="' + token + '">');
+
+
+
+															/* Make the Ajax call here */
+															$.ajax({
+																/* url: 'contact.php', */
+																url: '/{CCMS_LIB:_default.php;FUNC:ccms_lng}/contact-us4-ajax.php',
+																type: 'post',
+																data: $('#cuForm').serialize(),
+																dataType: 'json',
+																//success: function( _response ){
+																	/* The Ajax request is a success. _response is a JSON object */
+																	//var error = _response.error;
+																	//var success = _response.success;
+
+
+																	//if(error != "") {
+																		/* In case of error, display it to user */
+																		//$('#alert').html(error);
+																	//} else {
+																		/* In case of success, display it to user and remove the submit button */
+																		//$('#alert').html(success);
+																		//$('#cuSubmit').remove();
+																	//}
+
+
+
+																//},
+
+
+
+
+																//success: function( _response ){
+																success: function(json){
+																	if(json.error) {
+																		if(json.error.cuName) {
+																			$('#cuName').parent().addClass('has-error');
+																			$('#cuName-error').html(json.error.cuName).slideDown();
+																		}
+																		if(json.error.cuEmail) {
+																			$('#cuEmail').parent().addClass('has-error');
+																			$('#cuEmail-error').html(json.error.cuEmail).slideDown();
+																		}
+																		if(json.error.cuMessage) {
+																			$('#cuMessage').parent().addClass('has-error');
+																			$('#cuMessage-error').html(json.error.cuMessage).slideDown();
+																		}
+																		if(json.error.grecaptcha) {
+																			$('#grecaptcha-error').html(json.error.grecaptcha).slideDown();
+																		}
+																		//$inputs.prop("disabled", false);
+																		$('#alert').fadeOut("slow");
+																	}
+
+
+
+
+
+
+
+
+
+																	if(json.success) {
+																		$('#cuAlertMessage').addClass('alert-success').html(json.success).slideDown();
+																		setTimeout(function() {
+																			$('#cuAlertMessage').slideUp("fast", function() {
+																				$(this).removeClass('alert-success').html('');
+																			});
+																		},5000);
+																		$('#cuForm').find('.form-control').val('');
+																		setTimeout(function() {
+																			//$inputs.prop("disabled", false);
+																		}, 2000);
+
+																		$('#alert').fadeOut("slow");
+
+
+
+
+																	}
+																},
+																error: function(jqXhr, json, errorThrown){
+																	/* In case of Ajax error too, display the result */
+																	var error = jqXhr.responseText;
+																	$('#alert').html(error);
+																}
+															});
+														});
+													});
+												});
+
+
+												/*
 												$.validator.addMethod(
 													"badCharRegex",
 													function(value,element,regexp){
@@ -359,41 +530,27 @@
 													},
 													submitHandler:function(form){
 														var request;
-														/* Abort any pending request. */
 														if(request) request.abort();
-														var response = grecaptcha.getResponse();
-														if(response.length == 0){
-															/* recaptcha failed validation */
-															/*$('#grecaptcha-error').show();*/
-															$('#grecaptcha-error').slideDown();
-															$('#grecaptcha-error').html("{CCMS_DB:all,grecaptcha-error}");
-															return false;
-														} else {
-															/* recaptcha passed validation */
-															/*$('#grecaptcha-error').hide();*/
-															$('#grecaptcha-error').slideUp();
-															/*return true;*/
-														}
-														var $inputs = $(form).find("input, select, textarea, button");
-														var serializedData = $(form).serialize();
-														/* Disable the inputs for the duration of the ajax request. */
-														$inputs.prop("disabled", true);
-														request = $.ajax({
-															beforeSend:function(XMLHttpRequest){
-																$('#cuForm .has-error').removeClass('has-error');
-																$('#cuForm .help-block').html('').hide();
-																$('#cuAlertMessage').removeClass('alert-success').html('');
-															},
-															cache: false,
-															data: serializedData,
-															dataType: 'json',
-															type: "POST",
-															url: "/{CCMS_LIB:_default.php;FUNC:ccms_lng}/contact-us-ajax.html"
+														grecaptcha.execute('{CCMS_LIB:_default.php;FUNC:ccms_googleRecapPubKey}', {action: 'cuForm'}).then(function(token) {
+															$('#g_recaptcha_response').value(token);
+															var $inputs = $(form).find("input, select, textarea, button");
+															var serializedData = $(form).serialize();
+															$inputs.prop("disabled", true);
+															request = $.ajax({
+																beforeSend:function(XMLHttpRequest){
+																	$('#cuForm .has-error').removeClass('has-error');
+																	$('#cuForm .help-block').html('').hide();
+																	$('#cuAlertMessage').removeClass('alert-success').html('');
+																},
+																cache: false,
+																data: serializedData,
+																dataType: 'json',
+																type: "POST",
+																url: "/{CCMS_LIB:_default.php;FUNC:ccms_lng}/contact-us4-ajax.php"
+															});
 														});
-														/* Called on success. */
 														request.done(function(json, textStatus) {
 															if(json.error) {
-																/* Error messages */
 																if(json.error.cuName) {
 																	$('#cuName').parent().addClass('has-error');
 																	$('#cuName-error').html(json.error.cuName).slideDown();
@@ -411,8 +568,6 @@
 																}
 																$inputs.prop("disabled", false);
 															}
-															/* Refresh Captcha */
-															grecaptcha.reset();
 															if(json.success) {
 																$('#cuAlertMessage').addClass('alert-success').html(json.success).slideDown();
 																setTimeout(function() {
@@ -421,38 +576,34 @@
 																	});
 																},5000);
 																$('#cuForm').find('.form-control').val('');
-																/* reenable the inputs */
 																setTimeout(function() {
 																	$inputs.prop("disabled", false);
 																}, 2000);
 															}
 														});
-														/* Called on failure. */
 														request.fail(function (jqXHR, textStatus, errorThrown){
-															/* log the error to the console */
 															$("#cuForm").html("The following error occurred: " + textStatus, errorThrown);
 														});
-														/* Called if the request failed or succeeded. */
 														request.always(function () {
-															/* reenable the inputs */
 															setTimeout(function() {
 																$inputs.prop("disabled", false);
 															}, 2000);
 														});
-														/* Prevent default posting of form. */
 														return false;
 													}
 												});
+												*/
 
 												/*window.performance.mark("mark_end_javascript");
 												console.log(window.performance.getEntriesByName("mark_beginning_javascript"));
 												console.log(window.performance.getEntriesByName("mark_end_javascript"));*/
-											}{CCMS_LIB:site.php;FUNC:build_js_sri("1","JS-01")});
+											/*}{CCMS_LIB:site.php;FUNC:build_js_sri("1","JS-02")});*/
+											});
 										});
 									});
 								}{CCMS_LIB:site.php;FUNC:build_js_sri("1","MODERNIZER")});
-							}{CCMS_LIB:site.php;FUNC:build_js_sri("1","JQUERY-VALIDATE-ADDITIONAL-METHODS")});
-						}{CCMS_LIB:site.php;FUNC:build_js_sri("1","JQUERY-VALIDATE")});
+							/* }{CCMS_LIB:site.php;FUNC:build_js_sri("1","JQUERY-VALIDATE-ADDITIONAL-METHODS")}); */
+						/* }{CCMS_LIB:site.php;FUNC:build_js_sri("1","JQUERY-VALIDATE")}); */
 					}{CCMS_LIB:site.php;FUNC:build_js_sri("1","JQUERY-MOBILE-CUST")});
 				}{CCMS_LIB:site.php;FUNC:build_js_sri("1","JQUERY")});
 			};
