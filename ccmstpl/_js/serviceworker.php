@@ -37,7 +37,8 @@ const cacheName = '{CCMS_LIB:_default.php;FUNC:ccms_lng}-2022-04-01.v1';
 var cacheFiles = [
 '/{CCMS_LIB:_default.php;FUNC:ccms_lng}/offline.html',
 '{CCMS_LIB:site.php;FUNC:load_resource("AWS")}/ccmstpl/_img/offline_01.webp',
-'{CCMS_LIB:site.php;FUNC:load_resource("AWS")}/ccmstpl/_img/offline_01-min.jpg'
+'{CCMS_LIB:site.php;FUNC:load_resource("AWS")}/ccmstpl/_img/offline_01-min.jpg',
+'/{CCMS_LIB:_default.php;FUNC:ccms_lng}/manifest.php'
 ];
 
 /*
